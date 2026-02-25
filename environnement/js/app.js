@@ -97,9 +97,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // === FLIP CARDS ===
   document.querySelectorAll(".flip-card").forEach(function(card){
-    card.onclick=function(e){card.classList.toggle("flipped");};
-    var back=card.querySelector(".flip-card-back");
-    if(back) back.onclick=function(e){e.stopPropagation();card.classList.remove("flipped");};
+    card.addEventListener("click", function(e){
+      e.stopPropagation();
+      card.classList.toggle("flipped");
+    }, true);
   });
 
   // === TABS ===
