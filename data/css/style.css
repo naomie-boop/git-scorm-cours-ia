@@ -265,3 +265,9 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .completion-page{position:fixed;inset:0;z-index:9998;display:flex;align-items:center;justify-content:center;background:var(--bg-white);animation:fadeIn .6s ease}
 .completion-page .cover-content h1{font-size:2.4rem;background:linear-gradient(135deg,var(--brand),#5ac8fa,#34c759);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
 .completion-page .badge-icon{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,var(--brand),#5ac8fa);color:#fff;font-size:2.4rem;display:flex;align-items:center;justify-content:center;animation:fadeIn .8s ease;box-shadow:0 12px 40px rgba(0,113,227,.15)}
+
+/* LOCKED NEXT BUTTON */
+.nav-btn.primary[disabled]{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none}
+.nav-btn.primary[disabled]::before{animation:none}
+.step-next-btn[disabled]{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none}
+.step-next-btn[disabled]::before{animation:none}

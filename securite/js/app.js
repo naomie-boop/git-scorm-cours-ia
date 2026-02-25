@@ -304,6 +304,42 @@ document.addEventListener("DOMContentLoaded", function() {
     };
   }
 
+  
+  // STEP LOCKING - must complete activity before next
+  var stepUnlocked = {};
+
+  function checkUnlock() {
+    var container = document.querySelectorAll('.step-container')[cur];
+    if (!container) return;
+    // Check if any interaction was done in current step
+    var hasVF = container.querySelectorAll('.vf-item.answered').length > 0;
+    var hasDnD = container.querySelector('.dnd-check-btn[disabled]');
+    var hasFlip = container.querySelectorAll('.flip-card.flipped').length > 0;
+    var hasMatch = container.querySelectorAll('.match-item.matched').length > 0;
+    var hasScenario = container.querySelector('.scenario-node[data-done]');
+    var hasQuiz = container.querySelectorAll('.quiz-question[data-done]').length > 0;
+    var hasCheck = container.querySelectorAll('.checklist-item.checked').length > 0;
+    var hasDebate = container.querySelector('.debate-container[data-done]');
+    var hasTab = container.querySelectorAll('.tab-btn.active').length > 0;
+    // Step is unlocked if ANY interaction happened OR it's step 0/last
+    var unlocked = cur === 0 || cur === totalSteps - 1 || hasVF || hasDnD || hasFlip || hasMatch || hasScenario || hasQuiz || hasCheck || hasDebate;
+    stepUnlocked[cur] = unlocked;
+    // Update next button state
+    var next = document.getElementById('nextBtn');
+    var ctaBtn = container.querySelector('.step-next-btn');
+    if (next) {
+      if (unlocked) { next.disabled = false; next.style.opacity = '1'; }
+      else { next.disabled = true; next.style.opacity = '0.3'; }
+    }
+    if (ctaBtn) {
+      if (unlocked) { ctaBtn.disabled = false; ctaBtn.style.opacity = '1'; }
+      else { ctaBtn.disabled = true; ctaBtn.style.opacity = '0.3'; }
+    }
+  }
+
+  // Check unlock every 500ms
+  setInterval(checkUnlock, 500);
+
   // === START ===
   go(0);
 });
