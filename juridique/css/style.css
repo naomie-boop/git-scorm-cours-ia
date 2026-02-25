@@ -320,3 +320,66 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(5px); }
 }
+
+/* CELEBRATION STEP (step 8) */
+.step-celebration {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.celebration-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  gap: 1px;
+  pointer-events: none;
+}
+.celebration-grid .pixel {
+  border: .5px solid var(--border);
+  pointer-events: auto;
+  transition: background .3s, opacity .5s;
+}
+.celebration-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 500px;
+  padding: 40px 20px;
+}
+.celebration-content .badge-icon {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand), #5ac8fa);
+  color: #fff;
+  font-size: 2.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 12px 40px rgba(0,113,227,.15);
+}
+.celebration-content h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--brand), #5ac8fa, #34c759);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+.celebration-content p {
+  color: var(--text-secondary);
+  font-size: .95rem;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+.celebration-sub {
+  font-size: .85rem !important;
+  color: var(--text-muted) !important;
+  max-width: 400px;
+  margin: 8px auto 0 !important;
+}

@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   document.getElementById("prevBtn").onclick = function(){go(cur-1);};
-  document.getElementById("nextBtn").onclick = function(){ if(cur===totalSteps-1){showCompletion();}else{go(cur+1);} };
+  document.getElementById("nextBtn").onclick = function(){ go(cur+1); };
   document.querySelectorAll(".breadcrumb-link").forEach(function(l){
     l.onclick = function(){go(parseInt(l.dataset.step));};
   });
@@ -359,6 +359,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Check unlock every 500ms
   setInterval(checkUnlock, 500);
+
+  
+  // CELEBRATION GRID (step 8)
+  var celebGrid = document.getElementById('celebGrid');
+  if (celebGrid) {
+    var gs3 = 18;
+    var cols3 = ['#0071e3','#5ac8fa','#34c759','#5856d6','#ff9f0a'];
+    celebGrid.style.gridTemplateColumns = 'repeat('+gs3+',1fr)';
+    celebGrid.style.gridTemplateRows = 'repeat('+gs3+',1fr)';
+    for (var k=0; k<gs3*gs3; k++) { var d=document.createElement('div'); d.className='pixel'; celebGrid.appendChild(d); }
+    document.addEventListener('mousemove', function(e) {
+      if (!celebGrid.offsetParent) return;
+      var r=celebGrid.getBoundingClientRect();
+      var col3=Math.floor((e.clientX-r.left)/(r.width/gs3));
+      var row3=Math.floor((e.clientY-r.top)/(r.height/gs3));
+      var idx3=row3*gs3+col3;
+      var px3=celebGrid.children[idx3];
+      if(px3&&!px3.dataset.lit){px3.dataset.lit='1';px3.style.background=cols3[Math.floor(Math.random()*5)];px3.style.opacity='0.7';
+        setTimeout(function(){px3.style.background='';px3.style.opacity='';delete px3.dataset.lit;},700);}
+    });
+  }
 
   // === START ===
   go(0);
