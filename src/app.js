@@ -261,9 +261,29 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll(".step-container").forEach(function(step, idx) {
     if (idx >= totalSteps - 1) return; // skip last step
     var nextLabel = labels[idx + 1] || "suivante";
+    var teasers = [
+      "Prêt à explorer cet enjeu en profondeur ?",
+      "Passons aux risques concrets.",
+      "Découvrez comment y répondre.",
+      "Vivez une situation réaliste.",
+      "Testez vos connaissances.",
+      "Voyons votre score.",
+      "Terminez en beauté."
+    ];
+    var previews = [
+      "Mécanismes IA, usages concrets et principes clés.",
+      "Les risques identifiés avec des exemples réels.",
+      "Des mesures concrètes avec des activités interactives.",
+      "Un scénario professionnel où vos choix comptent.",
+      "Un quiz chronométré pour valider vos acquis.",
+      "Votre synthèse personnalisée et vos engagements.",
+      "Votre badge de complétion."
+    ];
+    var teaser = teasers[idx] || "La suite vous attend.";
+    var preview = previews[idx] || "";
     var cta = document.createElement("div");
     cta.className = "step-next-cta";
-    cta.innerHTML = "<p>Vous avez terminé cette section</p><button class='step-next-btn' data-goto='" + (idx+1) + "'>Étape suivante : " + nextLabel + " <span class='arrow'>&#8594;</span></button>";
+    cta.innerHTML = "<div class='next-teaser'>✅ Section terminée</div><div class='next-title'>" + teaser + "</div><div class='next-preview'>" + preview + "</div><button class='step-next-btn' data-goto='" + (idx+1) + "'>Continuer vers " + nextLabel + " <span class='arrow'>&#8594;</span></button>";
     step.appendChild(cta);
   });
   document.querySelectorAll(".step-next-btn").forEach(function(btn) {

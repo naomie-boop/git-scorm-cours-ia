@@ -271,3 +271,52 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .nav-btn.primary[disabled]::before{animation:none}
 .step-next-btn[disabled]{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none}
 .step-next-btn[disabled]::before{animation:none}
+
+/* NEXT STEP CTA - more enticing */
+.step-next-cta {
+  text-align: center;
+  padding: 36px 20px 28px;
+  margin-top: 24px;
+  border-top: .5px solid var(--border);
+  background: linear-gradient(180deg, transparent 0%, rgba(0,113,227,0.02) 100%);
+}
+.step-next-cta .next-teaser {
+  font-size: .78rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+.step-next-cta .next-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+.step-next-cta .next-preview {
+  font-size: .8rem;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+.step-next-btn {
+  padding: 12px 32px;
+  font-size: .92rem;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 4px 16px rgba(0,113,227,0.15); }
+  50% { box-shadow: 0 8px 32px rgba(0,113,227,0.3); }
+}
+.step-next-btn:disabled { animation: none; }
+.step-next-btn .arrow {
+  display: inline-block;
+  animation: nudge-right 1.5s ease-in-out infinite;
+}
+@keyframes nudge-right {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
