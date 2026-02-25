@@ -234,7 +234,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // === SLIDER ===
   document.querySelectorAll(".slider-container input[type=range]").forEach(function(s){
     var d=s.parentElement.querySelector(".slider-value");
-    var msgs=["Debutant","Notions de base","Intermediaire","Avance","Expert"];
+    var msgs=["Débutant","Notions de base","Intermédiaire","Avancé","Expert"];
     s.oninput=function(){if(d)d.textContent=s.value+"/5 - "+msgs[parseInt(s.value)-1];};
   });
 
@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var nextLabel = labels[idx + 1] || "suivante";
     var cta = document.createElement("div");
     cta.className = "step-next-cta";
-    cta.innerHTML = "<p>Vous avez termine cette section</p><button class='step-next-btn' data-goto='" + (idx+1) + "'>Etape suivante : " + nextLabel + " <span class='arrow'>&#8594;</span></button>";
+    cta.innerHTML = "<p>Vous avez terminé cette section</p><button class='step-next-btn' data-goto='" + (idx+1) + "'>Étape suivante : " + nextLabel + " <span class='arrow'>&#8594;</span></button>";
     step.appendChild(cta);
   });
   document.querySelectorAll(".step-next-btn").forEach(function(btn) {

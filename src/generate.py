@@ -179,7 +179,7 @@ def reveal_html(items):
 def blanks_html(data):
     if not data: return ""
     h = '  <div class="blanks-container animate-in">' + chr(10)
-    h += '    <h4>Completez la phrase</h4>' + chr(10)
+    h += '    <h4>Complétez la phrase</h4>' + chr(10)
     sentence = data["sentence"]
     for answer, _ in data["blanks"]:
         sentence = sentence.replace("_____", '<span class="blank-slot" role="button" tabindex="0" data-answer="' + answer + '">?</span>', 1)
@@ -203,14 +203,14 @@ def debate_html(data):
     h += '      <div class="debate-side" role="button" tabindex="0"><h4>' + data["side_a"][0] + '</h4><p>' + data["side_a"][1] + '</p></div>' + chr(10)
     h += '      <div class="debate-side" role="button" tabindex="0"><h4>' + data["side_b"][0] + '</h4><p>' + data["side_b"][1] + '</p></div>' + chr(10)
     h += '    </div>' + chr(10)
-    h += '    <div class="debate-reveal"><h4>Synthese</h4><p>' + data["synthesis"] + '</p></div>' + chr(10)
+    h += '    <div class="debate-reveal"><h4>Synthèse</h4><p>' + data["synthesis"] + '</p></div>' + chr(10)
     h += '  </div>' + chr(10)
     return h
 
 def checklist_html(items):
     if not items: return ""
     h = '  <div class="checklist-container animate-in">' + chr(10)
-    h += '    <h4>Vos engagements</h4><p style="font-size:.85rem;color:var(--text-muted)">Cochez les bonnes pratiques que vous vous engagez a appliquer.</p>' + chr(10)
+    h += '    <h4>Vos engagements</h4><p style="font-size:.85rem;color:var(--text-muted)">Cochez les bonnes pratiques que vous vous engagez à appliquer.</p>' + chr(10)
     for item in items:
         h += '    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>' + item + '</span></div>' + chr(10)
     h += '    <div class="checklist-progress">0/' + str(len(items)) + ' engagements pris</div>' + chr(10)
@@ -221,7 +221,7 @@ def checklist_html(items):
 def build(e):
     T = 8
     title = e["title"]
-    nav_labels = ["Accroche","Decouverte","Risques","Mesures","Scenario","Quiz","Synthese","Conclusion"]
+    nav_labels = ["Accroche","Découverte","Risques","Mesures","Scénario","Quiz","Synthèse","Conclusion"]
     sidebar_items = ""
     for i, l in enumerate(nav_labels):
         a = " active" if i == 0 else ""
@@ -246,7 +246,7 @@ def build(e):
 <div class="cover-page" id="coverPage">
   <div class="cover-grid" id="coverGrid"></div>
   <div class="cover-content">
-    <div class="cover-subtitle">Les enjeux de l'IA a 360</div>
+    <div class="cover-subtitle">Les enjeux de l'IA à 360</div>
     <h1>""" + icon + " " + title + """</h1>
     <p>""" + defn + """</p>
     <button class="cover-start-btn" id="coverStartBtn">Commencer le module &#8594;</button>
@@ -255,8 +255,8 @@ def build(e):
 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
 <div class="course-layout">
 <aside class="sidebar" role="navigation">
-  <div class="sidebar-header"><h1>""" + icon + " " + title + """</h1><div class="subtitle">Les enjeux de l’IA a 360</div></div>
-  <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% termine</div></div>
+  <div class="sidebar-header"><h1>""" + icon + " " + title + """</h1><div class="subtitle">Les enjeux de l’IA à 360</div></div>
+  <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% terminé</div></div>
   <div class="sidebar-score">Score : <span id="sidebarScore">—</span></div>
   <nav class="sidebar-nav">
 """ + sidebar_items + """  </nav>
@@ -270,19 +270,19 @@ def build(e):
   <div class="animate-in"><div class="highlight-box warning"><strong>""" + hook + """</strong></div></div>
 """ + counters(e["counters"]) + """
   <div class="animate-in"><div class="highlight-box"><strong>Dans ce module, vous allez :</strong><ul>
-    <li>Comprendre cet enjeu en profondeur avec des cas reels</li>
-    <li>Identifier les risques avec des activites interactives</li>
+    <li>Comprendre cet enjeu en profondeur avec des cas réels</li>
+    <li>Identifier les risques avec des activités interactives</li>
     <li>Associer les bonnes mesures aux bons risques</li>
-    <li>Vivre un scenario professionnel realiste</li>
-    <li>Tester vos connaissances avec un quiz chronometre</li>
-    <li>Obtenir votre synthese personnalisee</li>
+    <li>Vivre un scénario professionnel réaliste</li>
+    <li>Tester vos connaissances avec un quiz chronométré</li>
+    <li>Obtenir votre synthèse personnalisée</li>
   </ul></div></div>
 """ + vrai_faux_html(e.get("vrai_faux", [])) + """
 </div></div>""")
 
     # S2 DECOUVERTE (with tabs)
     parts.append("""<div class="step-container" id="step-1">""")
-    parts.append(hero(2,T,"Decouverte : "+title,"Explorez les 4 dimensions de cet enjeu.",c1,c2))
+    parts.append(hero(2,T,"Découverte : "+title,"Explorez les 4 dimensions de cet enjeu.",c1,c2))
     ai_mech = e.get("ai_mechanism", "")
     ai_use = e.get("ai_usages", "")
     focus_content = focus_html(e["focus_title"],e["focus_items"])
@@ -290,16 +290,16 @@ def build(e):
     parts.append("""<div class="content-section">
   <div class="tabs-container animate-in">
     <div class="tabs-header">
-      <button class="tab-btn active" role="tab" tabindex="0" data-tab="tab-mechanism">Comment ca marche</button>
-      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-context">Definition et contexte</button>
+      <button class="tab-btn active" role="tab" tabindex="0" data-tab="tab-mechanism">Comment ça marche</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-context">Définition et contexte</button>
       <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-usages">Usages IA</button>
-      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-principles">Principes cles</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-principles">Principes clés</button>
     </div>
     <div class="tab-panel active" data-tab="tab-mechanism">
       """ + ai_mech + """
     </div>
     <div class="tab-panel" data-tab="tab-context">
-      <h3>Definition et contexte</h3>""" + disc + """
+      <h3>Définition et contexte</h3>""" + disc + """
     </div>
     <div class="tab-panel" data-tab="tab-usages">
       """ + ai_use + """
@@ -309,19 +309,19 @@ def build(e):
     </div>
   </div>
   <div class="divider"></div>
-  <div class="animate-in slider-container"><h4>Auto-evaluation : votre niveau sur cet enjeu ?</h4>
+  <div class="animate-in slider-container"><h4>Auto-évaluation : votre niveau sur cet enjeu ?</h4>
     <input type="range" min="1" max="5" value="3">
-    <div class="slider-labels"><span>1 Debutant</span><span>5 Expert</span></div>
-    <div class="slider-value">3/5 Intermediaire</div>
+    <div class="slider-labels"><span>1 Débutant</span><span>5 Expert</span></div>
+    <div class="slider-value">3/5 Intermédiaire</div>
   </div>
 """ + reveal_content + """
 </div></div>""")
 
     # S3 RISQUES
     parts.append("""<div class="step-container" id="step-2">""")
-    parts.append(hero(3,T,"Les risques identifies",qr,c1,c2))
+    parts.append(hero(3,T,"Les risques identifiés",qr,c1,c2))
     parts.append("""<div class="content-section">
-  <div class="animate-in"><h3>Explorez chaque risque</h3><p>Cliquez sur chaque risque pour decouvrir l explication complete.</p>
+  <div class="animate-in"><h3>Explorez chaque risque</h3><p>Cliquez sur chaque risque pour découvrir l’explication complète.</p>
 """ + accordion(e["risques"]) + """</div>
   <div class="divider"></div>
 """ + dnd(e["risques"],e["mesures"]) + """
@@ -331,7 +331,7 @@ def build(e):
     parts.append("""<div class="step-container" id="step-3">""")
     parts.append(hero(4,T,"Les mesures a appliquer","Associez chaque mesure au bon risque.",c1,c2))
     parts.append("""<div class="content-section">
-  <div class="animate-in"><h3>Decouvrez les mesures</h3><p>Retournez chaque carte pour comprendre comment les mettre en oeuvre.</p>
+  <div class="animate-in"><h3>Découvrez les mesures</h3><p>Retournez chaque carte pour comprendre comment les mettre en œuvre.</p>
 """ + flipcards(e["mesures"],c1) + """</div>
   <div class="divider"></div>
 """ + matching(e["matching"]) + """
@@ -340,9 +340,9 @@ def build(e):
 
     # S5 SCENARIO
     parts.append("""<div class="step-container" id="step-4">""")
-    parts.append(hero(5,T,"Scenario professionnel","Mettez vos connaissances en pratique.",c1,c2))
+    parts.append(hero(5,T,"Scénario professionnel","Mettez vos connaissances en pratique.",c1,c2))
     parts.append("""<div class="content-section">
-  <div class="animate-in"><h3>Mise en situation</h3><p>Faites un choix. Vos decisions impactent votre score.</p></div>
+  <div class="animate-in"><h3>Mise en situation</h3><p>Faites un choix. Vos décisions impactent votre score.</p></div>
 """ + scenario_html(e["scenario"]) + """
   <div class="divider"></div>
 """ + debate_html(e.get("debate")) + """
@@ -350,18 +350,18 @@ def build(e):
 
     # S6 QUIZ
     parts.append("""<div class="step-container" id="step-5">""")
-    parts.append(hero(6,T,"Quiz chronometre","30 secondes par question.",c1,c2))
+    parts.append(hero(6,T,"Quiz chronométré","30 secondes par question.",c1,c2))
     parts.append("""<div class="content-section">
 """ + quiz_html(e["quiz"]) + """
 </div></div>""")
 
     # S7 SYNTHESE
     parts.append("""<div class="step-container" id="step-6">""")
-    parts.append(hero(7,T,"Votre synthese personnalisee","Basee sur vos reponses.",c1,c2))
+    parts.append(hero(7,T,"Votre synthèse personnalisée","Basée sur vos réponses.",c1,c2))
     pq = e.get("project_questions", [])
     pq_html = ""
     if pq:
-        pq_html = '<div class="animate-in"><h3>Questions a se poser dans un projet IA</h3><div class="highlight-box"><ul class="numbered-list">'
+        pq_html = '<div class="animate-in"><h3>Questions à se poser dans un projet IA</h3><div class="highlight-box"><ul class="numbered-list">'
         for q in pq:
             pq_html += '<li><span>' + q + '</span></li>'
         pq_html += '</ul></div></div>'
@@ -378,25 +378,25 @@ def build(e):
     <div class="circle-text">—</div>
   </div></div></div>
   <div class="animate-in"><div class="two-columns">
-    <div class="column-card"><h4 style="color:var(--danger)">Risques cles</h4><ul>""" + risques_li + """</ul></div>
+    <div class="column-card"><h4 style="color:var(--danger)">Risques clés</h4><ul>""" + risques_li + """</ul></div>
     <div class="column-card"><h4 style="color:var(--success)">Mesures essentielles</h4><ul>""" + mesures_li + """</ul></div>
   </div></div>
   """ + pq_html + """
   """ + checklist_html(e.get("checklist", [])) + """
-  <div class="animate-in"><h3>Points a revoir</h3><ul class="weak-areas-list"></ul></div>
+  <div class="animate-in"><h3>Points à revoir</h3><ul class="weak-areas-list"></ul></div>
 </div></div>""")
 
     # S8 BADGE
     parts.append("""<div class="step-container" id="step-7">""")
-    parts.append(hero(8,T,"Felicitations !","Module "+title+" termine.",c1,c2))
+    parts.append(hero(8,T,"Félicitations !","Module "+title+" terminé.",c1,c2))
     parts.append("""<div class="content-section">
   <div class="badge-container animate-in">
     <div class="badge-icon">""" + icon + """</div>
-    <h2>Module """ + title + """ termine !</h2>
-    <p>Vous avez explore en profondeur les risques et les mesures.</p>
+    <h2>Module """ + title + """ terminé !</h2>
+    <p>Vous avez exploré en profondeur les risques et les mesures.</p>
     <div class="badge-message"></div>
   </div>
-  <div class="animate-in"><div class="highlight-box"><strong>Retenez l essentiel</strong>
+  <div class="animate-in"><div class="highlight-box"><strong>Retenez l’essentiel</strong>
     <p>Appliquez ces bonnes pratiques au quotidien et partagez-les avec vos collegues.</p>
   </div></div>
 </div></div>""")
@@ -412,7 +412,7 @@ def build(e):
     bc += '</div>'
     # NAV + CLOSE
     parts.append("""<div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div>
-  <div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#8592; Precedent</button>
+  <div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#8592; Précédent</button>
   """ + bc + """
   <button class="nav-btn primary" id="nextBtn">Suivant &#8594;</button></div>
 </div></main></div>
@@ -482,7 +482,7 @@ def build_vision360():
 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
 <div class="course-layout">
 <aside class="sidebar" role="navigation" style="display:none">
-  <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% termine</div></div>
+  <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% terminé</div></div>
   <div class="sidebar-score">Score : <span id="sidebarScore">-</span></div>
 </aside>
 <main class="main-content">""")
@@ -502,7 +502,7 @@ def build_vision360():
     parts.append('<div class="step-container" id="step-1">')
     parts.append(hero(2,T, "La vision 360", "8 enjeux, une seule vision.", c1, c2))
     parts.append("""<div class="content-section">
-  <div class="animate-in"><h3>Deployer un projet IA : bien plus que de la technique</h3>
+  <div class="animate-in"><h3>Déployer un projet IA : bien plus que de la technique</h3>
   <p>Quand une organisation deploie un outil d IA generative, les questions techniques (quel modele, quelle infrastructure) ne representent qu une partie du defi. Huit dimensions complementaires doivent etre anticipees pour garantir un deploiement responsable, maitrise et perenne.</p>
   <p>Ces 8 enjeux ne sont pas independants : ils interagissent et se renforcent mutuellement. Un defaut de qualite des donnees (enjeu Donnees) peut generer des biais (enjeu Ethique), qui exposent a des sanctions (enjeu Juridique). C est pourquoi une vision 360 est indispensable.</p>
   </div></div></div>""")
@@ -556,7 +556,7 @@ def build_vision360():
 
     # NAV + CLOSE
     parts.append("""<div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div>
-  <div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#8592; Precedent</button>
+  <div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#8592; Précédent</button>
   """ + bc2 + """
   <button class="nav-btn primary" id="nextBtn">Suivant &#8594;</button></div>
 </div></main></div>
