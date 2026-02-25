@@ -416,6 +416,26 @@ def build(e):
   """ + bc + """
   <button class="nav-btn primary" id="nextBtn">Suivant &#8594;</button></div>
 </div></main></div>
+<div class="completion-page" id="completionPage" style="display:none">
+  <div class="cover-grid" id="completionGrid"></div>
+  <div class="cover-content">
+    <div class="badge-icon" style="margin-bottom:20px">""" + icon + """</div>
+    <h1>Félicitations !</h1>
+    <p>Vous avez terminé le module <strong>""" + title + """</strong>. Vous maîtrisez désormais les enjeux clés de cette dimension de l’IA.</p>
+    <button class="cover-start-btn" id="completionCloseBtn">Fermer le module &#10003;</button>
+  </div>
+</div>
+
+<div class="completion-page" id="completionPage" style="display:none">
+  <div class="cover-grid" id="completionGrid"></div>
+  <div class="cover-content">
+    <div class="badge-icon" style="margin-bottom:20px">""" + icon + """</div>
+    <h1>Félicitations !</h1>
+    <p>Vous avez terminé le module <strong>""" + title + """</strong>. Vous maîtrisez désormais les enjeux clés de cette dimension de l’IA.</p>
+    <button class="cover-start-btn" id="completionCloseBtn">Fermer le module &#10003;</button>
+  </div>
+</div>
+
 <div class="scroll-hint" id="scrollHint"><span>Scrollez</span><div class="scroll-arrow"></div></div>
 <div class="scroll-hint" id="scrollHint"><span>Scrollez</span><div class="scroll-arrow"></div></div>
 <script src="js/scorm.js"></script><script src="js/app.js"></script>

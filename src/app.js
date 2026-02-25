@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   document.getElementById("prevBtn").onclick = function(){go(cur-1);};
-  document.getElementById("nextBtn").onclick = function(){go(cur+1);};
+  document.getElementById("nextBtn").onclick = function(){ if(cur===totalSteps-1){showCompletion();}else{go(cur+1);} };
   document.querySelectorAll(".breadcrumb-link").forEach(function(l){
     l.onclick = function(){go(parseInt(l.dataset.step));};
   });
@@ -268,6 +268,40 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll(".step-next-btn").forEach(function(btn) {
     btn.onclick = function() { go(parseInt(btn.dataset.goto)); };
   });
+
+  
+  // COMPLETION PAGE
+  var compPage = document.getElementById("completionPage");
+  var compGrid = document.getElementById("completionGrid");
+  var compClose = document.getElementById("completionCloseBtn");
+
+  if (compGrid && compPage) {
+    var gs2 = 20;
+    var cols2 = ["#0071e3","#5ac8fa","#34c759","#5856d6"];
+    compGrid.style.gridTemplateColumns = "repeat("+gs2+",1fr)";
+    compGrid.style.gridTemplateRows = "repeat("+gs2+",1fr)";
+    for (var j=0; j<gs2*gs2; j++) { var d=document.createElement("div"); d.className="pixel"; compGrid.appendChild(d); }
+    compPage.addEventListener("mousemove", function(e) {
+      if (compPage.style.display==="none") return;
+      var r=compGrid.getBoundingClientRect();
+      var col2=Math.floor((e.clientX-r.left)/(r.width/gs2));
+      var row2=Math.floor((e.clientY-r.top)/(r.height/gs2));
+      var idx2=row2*gs2+col2;
+      var px2=compGrid.children[idx2];
+      if(px2&&!px2.dataset.lit){px2.dataset.lit="1";px2.style.background=cols2[Math.floor(Math.random()*4)];px2.style.opacity="0.8";
+        setTimeout(function(){px2.style.background="";px2.style.opacity="";delete px2.dataset.lit;},700);}
+    });
+  }
+
+  function showCompletion() {
+    if (compPage) { compPage.style.display = "flex"; }
+  }
+
+  if (compClose) {
+    compClose.onclick = function() {
+      if (compPage) { compPage.style.opacity = "0"; setTimeout(function(){ compPage.style.display="none"; },500); }
+    };
+  }
 
   // === START ===
   go(0);
