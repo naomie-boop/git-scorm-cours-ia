@@ -251,3 +251,12 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .matching-grid{grid-template-columns:1fr}
 .match-lines{display:none}
 }
+
+/* COHESIVE COLOR SYSTEM */
+.flip-card-front{background:var(--brand) !important;color:#fff}
+.flip-card-front h4{color:#fff}
+.flip-card:nth-child(2n) .flip-card-front{background:#5856d6 !important}
+.flip-card:nth-child(3n) .flip-card-front{background:#34c759 !important}
+.flip-card:nth-child(4n) .flip-card-front{background:#ff9f0a !important}
+.counter-box:nth-child(2) .counter-num{color:#5856d6}
+.counter-box:nth-child(3) .counter-num{color:#34c759}

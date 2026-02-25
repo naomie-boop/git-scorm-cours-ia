@@ -34,7 +34,7 @@ def manifest(eid, title):
 
 def hero(step, total, title, subtitle, c1, c2):
     return f"""
-  <div class="step-hero" style="background:linear-gradient(135deg,{c1},{c2})">
+  <div class="step-hero" >
     <div class="step-number">\u00c9tape {step} sur {total}</div>
     <h2>{title}</h2>
     <p class="hero-subtitle">{subtitle}</p>
@@ -62,7 +62,7 @@ def flipcards(items, c1):
         c = colors[i % len(colors)]
         h += f"""    <div class="flip-card" role="button" tabindex="0">
       <div class="flip-card-inner">
-        <div class="flip-card-front" style="background:linear-gradient(135deg,{c},{c}cc)"><h4>{t}</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-front" ><h4>{t}</h4><div class="flip-hint">Cliquez pour retourner</div></div>
         <div class="flip-card-back"><h4>{t}</h4><p>{d}</p></div>
       </div>
     </div>\n"""
@@ -461,7 +461,7 @@ def build_vision360():
     cards_html = '<div class="flip-cards-grid animate-in">'
     for name, color, desc in v["enjeux_cards"]:
         cards_html += '<div class="flip-card" role="button" tabindex="0"><div class="flip-card-inner">'
-        cards_html += '<div class="flip-card-front" style="background:linear-gradient(135deg,' + color + ',' + color + 'cc)"><h4>' + name + '</h4><div class="flip-hint">Cliquez pour retourner</div></div>'
+        cards_html += '<div class="flip-card-front" ><h4>' + name + '</h4><div class="flip-hint">Cliquez pour retourner</div></div>'
         cards_html += '<div class="flip-card-back"><h4>' + name + '</h4><p>' + desc + '</p></div>'
         cards_html += '</div></div>'
     cards_html += '</div>'
