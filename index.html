@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les 8 enjeux de l'IA générative à 360°</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--brand:#0071e3;--text:#1d1d1f;--text2:#6e6e73;--text3:#86868b;--bg:#fbfbfd;--border:rgba(0,0,0,0.06);--glass:rgba(255,255,255,0.7);--r:16px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter Tight",-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-0.02em}
+
+.hero{text-align:center;padding:80px 24px 48px;max-width:680px;margin:0 auto}
+.hero-badge{display:inline-block;padding:5px 14px;border-radius:980px;background:rgba(0,113,227,0.06);color:var(--brand);font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px}
+.hero h1{font-size:2.4rem;font-weight:800;line-height:1.15;margin-bottom:12px}
+.hero p{font-size:1rem;color:var(--text2);line-height:1.65;max-width:520px;margin:0 auto}
+
+.section-title{text-align:center;margin:40px 0 20px;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);font-weight:600}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;max-width:920px;margin:0 auto;padding:0 20px}
+.card{background:#fff;border:.5px solid var(--border);border-radius:var(--r);padding:24px;cursor:pointer;transition:all .35s ease;text-decoration:none;color:var(--text);display:flex;flex-direction:column;position:relative;overflow:hidden}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.06);border-color:var(--brand)}
+.card-icon{font-size:1.8rem;margin-bottom:12px}
+.card h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.card p{font-size:.82rem;color:var(--text2);line-height:1.55;flex:1}
+.card-tag{display:inline-block;margin-top:12px;padding:3px 10px;border-radius:980px;font-size:.65rem;font-weight:600;background:rgba(0,113,227,0.06);color:var(--brand)}
+.card-arrow{position:absolute;top:24px;right:24px;font-size:.85rem;color:var(--text3);transition:all .3s ease}
+.card:hover .card-arrow{color:var(--brand);transform:translateX(3px)}
+
+.intro-card{border:1.5px solid var(--brand);background:linear-gradient(135deg,rgba(0,113,227,0.02),rgba(90,200,250,0.02))}
+.intro-card .card-tag{background:var(--brand);color:#fff}
+
+.footer{text-align:center;padding:48px 20px;color:var(--text3);font-size:.75rem}
+.footer a{color:var(--brand);text-decoration:none}
+
+.steps-row{display:flex;justify-content:center;gap:8px;margin:20px auto 0;flex-wrap:wrap;max-width:520px}
+.step-pill{padding:4px 10px;border-radius:980px;font-size:.62rem;font-weight:600;background:rgba(0,0,0,0.03);color:var(--text3)}
+
+@media(max-width:600px){
+  .hero h1{font-size:1.6rem}
+  .grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">Parcours de formation</div>
+  <h1>Les 8 enjeux de l'IA générative à 360°</h1>
+  <p>9 modules interactifs pour comprendre, anticiper et maîtriser les dimensions non-techniques d'un projet d'IA.</p>
+  <div class="steps-row">
+    <span class="step-pill">8 étapes par module</span>
+    <span class="step-pill">Quiz chronométrés</span>
+    <span class="step-pill">Scénarios réalistes</span>
+    <span class="step-pill">SCORM 1.2</span>
+  </div>
+</div>
+
+<div class="section-title">Commencez ici</div>
+<div class="grid">
+  <a class="card intro-card" href="vision360/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">🌐</div>
+    <h3>Vision 360°</h3>
+    <p>Introduction au parcours. Découvrez les 8 enjeux, leurs interdépendances, et identifiez les modules prioritaires selon votre profil.</p>
+    <span class="card-tag">Commencer le parcours</span>
+  </a>
+</div>
+
+<div class="section-title">Les 8 enjeux</div>
+<div class="grid">
+  <a class="card" href="ethique/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">⚖</div>
+    <h3>Éthique</h3>
+    <p>Biais algorithmiques, hallucinations, transparence. Les 5 principes éthiques pour un usage responsable de l'IA.</p>
+    <span class="card-tag">8 étapes</span>
+  </a>
+  <a class="card" href="juridique/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">⚗</div>
+    <h3>Juridique</h3>
+    <p>AI Act, RGPD, CNIL, responsabilité. Le cadre légal européen et les obligations pour les entreprises.</p>
+    <span class="card-tag">8 étapes</span>
+  </a>
+  <a class="card" href="rh/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">👥</div>
+    <h3>Ressources Humaines</h3>
+    <p>Automation complacency, skill atrophy, taxonomie des tâches. Préserver l'expertise métier face à l'IA.</p>
+    <span class="card-tag">8 étapes</span>
+  </a>
+  <a class="card" href="changement/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">🔄</div>
+    <h3>Conduite du changement</h3>
+    <p>Modèle ADKAR, change fatigue, co-construction. Accompagner les équipes dans l'adoption de l'IA.</p>
+    <span class="card-tag">8 étapes</span>
+  </a>
+  <a class="card" href="data/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">📊</div>
+    <h3>Données</h3>
+    <p>RAG, data drift, corpus IA Ready. La qualité des données détermine la qualité de l'IA.</p>
+    <span class="card-tag">8 étapes</span>
+  </a>
+  <a class="card" href="securite/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">🔒</div>
+    <h3>Sécurité</h3>
+    <p>3 règles d'or, Shadow AI, prompt injection. Protéger les données et les systèmes d'information.</p>
+    <span class="card-tag">8 étapes</span>
+  </a>
+  <a class="card" href="ux/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">💻</div>
+    <h3>Design UX</h3>
+    <p>WCAG 2.1, trust calibration, accessibilité. Concevoir des interfaces IA inclusives et intuitives.</p>
+    <span class="card-tag">8 étapes</span>
+  </a>
+  <a class="card" href="environnement/">
+    <span class="card-arrow">→</span>
+    <div class="card-icon">🌱</div>
+    <h3>Environnement</h3>
+    <p>IEA 2025, SLM vs LLM, sobriété numérique. Maîtriser l'empreinte carbone de l'IA.</p>
+    <span class="card-tag">8 étapes</span>
+  </a>
+</div>
+
+<div class="footer">
+  <p>Parcours conçu par <a href="https://cleo-labs.com">Cleo Labs</a> — 9 modules SCORM 1.2</p>
+</div>
+
+</body>
+</html>
