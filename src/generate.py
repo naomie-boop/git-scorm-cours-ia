@@ -523,7 +523,7 @@ def build_vision360():
     parts.append(hero(2,T, "La vision 360", "8 enjeux, une seule vision.", c1, c2))
     parts.append("""<div class="content-section">
   <div class="animate-in"><h3>Déployer un projet IA : bien plus que de la technique</h3>
-  <p>Quand une organisation deploie un outil d IA generative, les questions techniques (quel modele, quelle infrastructure) ne representent qu une partie du defi. Huit dimensions complementaires doivent etre anticipees pour garantir un deploiement responsable, maitrise et perenne.</p>
+  <p>Quand une organisation deploie un outil d’IA generative, les questions techniques (quel modele, quelle infrastructure) ne representent qu’une partie du defi. Huit dimensions complementaires doivent etre anticipees pour garantir un deploiement responsable, maitrise et perenne.</p>
   <p>Ces 8 enjeux ne sont pas independants : ils interagissent et se renforcent mutuellement. Un defaut de qualite des donnees (enjeu Donnees) peut generer des biais (enjeu Ethique), qui exposent a des sanctions (enjeu Juridique). C est pourquoi une vision 360 est indispensable.</p>
   </div></div></div>""")
 
@@ -539,7 +539,7 @@ def build_vision360():
     match_html = matching(inter) if len(inter) > 0 else ""
     parts.append('<div class="step-container" id="step-3">')
     parts.append(hero(4,T, "Les interdependances", "Reliez les enjeux qui sont lies.", c1, c2))
-    parts.append('<div class="content-section"><div class="animate-in"><h3>Les enjeux sont interconnectes</h3><p>Reliez les paires d enjeux qui s influencent mutuellement.</p></div>')
+    parts.append('<div class="content-section"><div class="animate-in"><h3>Les enjeux sont interconnectes</h3><p>Reliez les paires d’enjeux qui s’influencent mutuellement.</p></div>')
     parts.append(match_html)
     parts.append('</div></div>')
 
@@ -558,8 +558,8 @@ def build_vision360():
   <div class="animate-in">""" + profils_html + """</div>
   <div class="animate-in"><div class="badge-container">
     <div class="badge-icon">""" + icon + """</div>
-    <h2>Pret a explorer les 8 enjeux !</h2>
-    <p>Vous avez maintenant une vision d ensemble. Plongez dans les modules qui vous concernent.</p>
+    <h2>Prêt à explorer les 8 enjeux !</h2>
+    <p>Vous avez maintenant une vision d’ensemble. Plongez dans les modules qui vous concernent.</p>
     <div class="badge-message"></div>
   </div></div>
 </div></div>""")
@@ -594,7 +594,7 @@ with open(os.path.join(folder, "index.html"), "w", encoding="utf-8") as f: f.wri
 with open(os.path.join(folder, "css", "style.css"), "w", encoding="utf-8") as f: f.write(CSS)
 with open(os.path.join(folder, "js", "scorm.js"), "w", encoding="utf-8") as f: f.write(SCORM_JS)
 with open(os.path.join(folder, "js", "app.js"), "w", encoding="utf-8") as f: f.write(APP_JS)
-with open(os.path.join(folder, "imsmanifest.xml"), "w", encoding="utf-8") as f: f.write(manifest("vision360", "Vision 360 : Les 8 enjeux de l IA"))
+with open(os.path.join(folder, "imsmanifest.xml"), "w", encoding="utf-8") as f: f.write(manifest("vision360", "Vision 360 : Les 8 enjeux de l’IA"))
 zn = os.path.join(BASE, "out", "scorm-vision360.zip")
 with zipfile.ZipFile(zn, "w", zipfile.ZIP_DEFLATED) as z:
     for root, dirs, files in os.walk(folder):

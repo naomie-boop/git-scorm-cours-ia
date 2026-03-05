@@ -8,8 +8,8 @@
   <metadata><schema>ADL SCORM</schema><schemaversion>1.2</schemaversion></metadata>
   <organizations default="org-vision360">
     <organization identifier="org-vision360">
-      <title>Vision 360 : Les 8 enjeux de l IA</title>
-      <item identifier="item-1" identifierref="res-1"><title>Vision 360 : Les 8 enjeux de l IA</title></item>
+      <title>Vision 360 : Les 8 enjeux de l’IA</title>
+      <item identifier="item-1" identifierref="res-1"><title>Vision 360 : Les 8 enjeux de l’IA</title></item>
     </organization>
   </organizations>
   <resources>

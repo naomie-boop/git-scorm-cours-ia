@@ -383,3 +383,21 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
   max-width: 400px;
   margin: 8px auto 0 !important;
 }
+
+/* FIX: flip card colors */
+.flip-card-front {
+  color: #fff !important;
+}
+.flip-card-front h4, .flip-card-front .flip-hint {
+  color: #fff !important;
+}
+.flip-card-back {
+  background: #fff !important;
+  color: var(--text-primary) !important;
+}
+.flip-card-back h4 {
+  color: var(--text-primary) !important;
+}
+.flip-card-back p {
+  color: var(--text-secondary) !important;
+}

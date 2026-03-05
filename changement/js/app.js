@@ -260,7 +260,11 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   document.querySelectorAll(".step-container").forEach(function(step, idx) {
     if (idx >= totalSteps - 1) return; // skip last step
-    var nextLabel = labels[idx + 1] || "suivante";
+    var nextLabel = "suivante";
+    var nextLink = document.querySelectorAll(".breadcrumb-link")[idx + 1];
+    if (nextLink) {
+      nextLabel = nextLink.textContent.replace(/[0-9]/g, "").trim();
+    }
     var teasers = [
       "Prêt à explorer cet enjeu en profondeur ?",
       "Passons aux risques concrets.",
@@ -342,7 +346,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var hasDebate = container.querySelector('.debate-container[data-done]');
     var hasTab = container.querySelectorAll('.tab-btn.active').length > 0;
     // Step is unlocked if ANY interaction happened OR it's step 0/last
-    var unlocked = cur === 0 || cur === totalSteps - 1 || hasVF || hasDnD || hasFlip || hasMatch || hasScenario || hasQuiz || hasCheck || hasDebate;
+    var unlocked = cur <= 1 || cur === totalSteps - 1 || hasVF || hasDnD || hasFlip || hasMatch || hasScenario || hasQuiz || hasCheck || hasDebate || hasTab;
     stepUnlocked[cur] = unlocked;
     // Update next button state
     var next = document.getElementById('nextBtn');
