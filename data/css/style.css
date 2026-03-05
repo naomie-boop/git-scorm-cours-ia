@@ -401,3 +401,10 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .flip-card-back p {
   color: var(--text-secondary) !important;
 }
+
+/* DND Reset button */
+.dnd-check-btn + .quiz-validate-btn { background: #86868b !important; }
+.dnd-check-btn + .quiz-validate-btn::before { display: none; }
+.dnd-check-btn + .quiz-validate-btn::after { background: #86868b !important; }
+.dnd-check-btn + .quiz-validate-btn:hover { background: #6e6e73 !important; }
+.dnd-check-btn + .quiz-validate-btn:hover::after { background: #6e6e73 !important; }

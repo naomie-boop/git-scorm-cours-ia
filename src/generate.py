@@ -252,7 +252,7 @@ def build(e):
     <button class="cover-start-btn" id="coverStartBtn">Commencer le module &#8594;</button>
   </div>
 </div>
-<button class="mobile-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+
 <div class="course-layout">
 <aside class="sidebar" role="navigation">
   <div class="sidebar-header"><h1>""" + icon + " " + title + """</h1><div class="subtitle">Les enjeux de l’IA à 360</div></div>
@@ -386,20 +386,10 @@ def build(e):
   <div class="animate-in"><h3>Points à revoir</h3><ul class="weak-areas-list"></ul></div>
 </div></div>""")
 
-    # S8 BADGE
+    # S8 CELEBRATION
     parts.append("""<div class="step-container" id="step-7">""")
     parts.append(hero(8,T,"Félicitations !","Module "+title+" terminé.",c1,c2))
-    parts.append("""<div class="content-section">
-  <div class="badge-container animate-in">
-    <div class="badge-icon">""" + icon + """</div>
-    <h2>Module """ + title + """ terminé !</h2>
-    <p>Vous avez exploré en profondeur les risques et les mesures.</p>
-    <div class="badge-message"></div>
-  </div>
-  <div class="animate-in"><div class="highlight-box"><strong>Retenez l’essentiel</strong>
-    <p>Appliquez ces bonnes pratiques au quotidien et partagez-les avec vos collegues.</p>
-  </div></div>
-</div></div>""")
+    parts.append("""<div class="step-celebration"><div class="celebration-grid" id="celebGrid"></div><div class="celebration-content"><div class="badge-icon">""" + icon + """</div><h2>Félicitations !</h2><p>Vous avez terminé le module <strong>""" + title + """</strong></p><p class="celebration-sub">Appliquez ces bonnes pratiques au quotidien.</p><div class="badge-message"></div></div></div></div>""")
 
     bc = '<div class="breadcrumb" id="breadcrumb">'
     for i, l in enumerate(nav_labels):
@@ -482,7 +472,7 @@ def build_vision360():
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head><body>
-<button class="mobile-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+
 <div class="course-layout">
 <aside class="sidebar" role="navigation" style="display:none">
   <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% terminé</div></div>
@@ -495,9 +485,9 @@ def build_vision360():
     parts.append(hero(1,T, icon+" "+title, v["definition"], c1, c2))
     parts.append('<div class="content-section"><div class="animate-in"><div class="highlight-box warning"><strong>' + v["hook"] + '</strong></div></div>')
     parts.append(counters(v["counters"]))
-    parts.append("""<div class="animate-in"><div class="highlight-box"><strong>Ce module vous prepare a :</strong><ul>
-    <li>Comprendre les 8 dimensions a anticiper dans tout projet IA</li>
-    <li>Voir les interdependances entre les enjeux</li>
+    parts.append("""<div class="animate-in"><div class="highlight-box"><strong>Ce module vous prépare à :</strong><ul>
+    <li>Comprendre les 8 dimensions à anticiper dans tout projet IA</li>
+    <li>Voir les interdépendances entre les enjeux</li>
     <li>Identifier les modules prioritaires selon votre profil</li>
     </ul></div></div></div></div>""")
 
@@ -506,14 +496,14 @@ def build_vision360():
     parts.append(hero(2,T, "La vision 360", "8 enjeux, une seule vision.", c1, c2))
     parts.append("""<div class="content-section">
   <div class="animate-in"><h3>Déployer un projet IA : bien plus que de la technique</h3>
-  <p>Quand une organisation deploie un outil d’IA generative, les questions techniques (quel modele, quelle infrastructure) ne representent qu’une partie du defi. Huit dimensions complementaires doivent etre anticipees pour garantir un deploiement responsable, maitrise et perenne.</p>
-  <p>Ces 8 enjeux ne sont pas independants : ils interagissent et se renforcent mutuellement. Un defaut de qualite des donnees (enjeu Donnees) peut generer des biais (enjeu Ethique), qui exposent a des sanctions (enjeu Juridique). C est pourquoi une vision 360 est indispensable.</p>
+  <p>Quand une organisation déploie un outil d’IA générative, les questions techniques (quel modele, quelle infrastructure) ne représentent qu’une partie du défi. Huit dimensions complementaires doivent etre anticipées pour garantir un déploiement responsable, maîtrisé et pérenne.</p>
+  <p>Ces 8 enjeux ne sont pas indépendants : ils interagissent et se renforcent mutuellement. Un défaut de qualité des donnees (enjeu Donnees) peut générer des biais (enjeu Ethique), qui exposent a des sanctions (enjeu Juridique). C est pourquoi une vision 360 est indispensable.</p>
   </div></div></div>""")
 
     # S3 LES 8 ENJEUX
     parts.append('<div class="step-container" id="step-2">')
-    parts.append(hero(3,T, "Les 8 enjeux en bref", "Retournez chaque carte pour decouvrir l enjeu.", c1, c2))
-    parts.append('<div class="content-section"><div class="animate-in"><p>Cliquez sur chaque carte pour decouvrir la definition de l enjeu et ses liens avec les autres.</p></div>')
+    parts.append(hero(3,T, "Les 8 enjeux en bref", "Retournez chaque carte pour découvrir l’enjeu.", c1, c2))
+    parts.append('<div class="content-section"><div class="animate-in"><p>Cliquez sur chaque carte pour decouvrir la définition de l’enjeu et ses liens avec les autres.</p></div>')
     parts.append(cards_html)
     parts.append('</div></div>')
 
@@ -521,21 +511,21 @@ def build_vision360():
     inter = v["interdependances"]
     match_html = matching(inter) if len(inter) > 0 else ""
     parts.append('<div class="step-container" id="step-3">')
-    parts.append(hero(4,T, "Les interdependances", "Reliez les enjeux qui sont lies.", c1, c2))
+    parts.append(hero(4,T, "Les interdépendances", "Reliez les enjeux qui sont liés.", c1, c2))
     parts.append('<div class="content-section"><div class="animate-in"><h3>Les enjeux sont interconnectes</h3><p>Reliez les paires d’enjeux qui s’influencent mutuellement.</p></div>')
     parts.append(match_html)
     parts.append('</div></div>')
 
     # S5 QUIZ
     parts.append('<div class="step-container" id="step-4">')
-    parts.append(hero(5,T, "Quiz : quel enjeu est concerne ?", "Testez votre comprehension des 8 dimensions.", c1, c2))
+    parts.append(hero(5,T, "Quiz : quel’enjeu est concerne ?", "Testez votre compréhension des 8 dimensions.", c1, c2))
     parts.append('<div class="content-section">')
     parts.append(quiz_html(v["quiz"]))
     parts.append('</div></div>')
 
     # S6 ORIENTATION
     parts.append('<div class="step-container" id="step-5">')
-    parts.append(hero(6,T, "Votre parcours personnalise", "Quels modules suivre selon votre profil ?", c1, c2))
+    parts.append(hero(6,T, "Votre parcours personnalisé", "Quels modules suivre selon votre profil ?", c1, c2))
     parts.append("""<div class="content-section">
   <div class="animate-in"><h3>Choisissez votre parcours</h3><p>Selon votre role, certains modules sont prioritaires. Retrouvez les recommandations ci-dessous.</p></div>
   <div class="animate-in">""" + profils_html + """</div>
