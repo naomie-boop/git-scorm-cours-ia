@@ -255,8 +255,8 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .two-columns,.dnd-targets,.debate-sides{grid-template-columns:1fr}
 .flip-cards-grid{grid-template-columns:1fr}
 .counter-row{flex-direction:column}
-.matching-grid{grid-template-columns:1fr}
-.match-lines{display:none}
+.matching-grid{flex-direction:column}
+.match-col{width:100%}
 }
 
 /* COHESIVE COLOR SYSTEM */
