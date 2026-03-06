@@ -85,17 +85,22 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .accordion-body-inner{padding:0 0 14px;font-size:.85rem;color:var(--text-secondary);line-height:1.75}
 
 /* FLIP CARDS */
-.flip-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0}
-.flip-card{perspective:1000px;cursor:pointer}
-.flip-card-inner{position:relative;width:100%}
-
-.flip-card-front,.flip-card-back{border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center}
-.flip-card-front{background:#fff;border:.5px solid var(--border)}
-.flip-card-front h4{font-size:.88rem;font-weight:700;margin-bottom:4px}
-.flip-card-front .flip-hint{font-size:.6rem;color:var(--text-muted);margin-top:8px}
-.flip-card-back{background:#fff;border:.5px solid var(--border);justify-content:flex-start;padding:18px;text-align:left;cursor:pointer;display:none}
-.flip-card-back h4{font-size:.82rem;font-weight:700;margin-bottom:4px;width:100%}
-.flip-card-back p{font-size:.8rem;line-height:1.6;color:var(--text-secondary)}
+.flip-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+.flip-card{cursor:pointer;border-radius:var(--r);overflow:hidden;transition:transform .2s ease,box-shadow .2s ease;min-height:160px}
+.flip-card:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.08)}
+.flip-card-inner{width:100%;height:100%}
+.flip-card-front{background:var(--brand);color:#fff;border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;text-align:center;min-height:160px}
+.flip-card-front h4{font-size:.95rem;font-weight:700;margin-bottom:6px;color:#fff;line-height:1.3}
+.flip-card-front .flip-hint{font-size:.7rem;opacity:.7;margin-top:10px;color:#fff}
+.flip-card:nth-child(2) .flip-card-front{background:#5856d6}
+.flip-card:nth-child(3) .flip-card-front{background:#34c759}
+.flip-card:nth-child(4) .flip-card-front{background:#ff9f0a}
+.flip-card:nth-child(5) .flip-card-front{background:#ff375f}
+.flip-card:nth-child(6) .flip-card-front{background:#30b0c7}
+.flip-card-back{background:#fff;border:1px solid rgba(0,0,0,0.06);border-radius:var(--r);padding:22px 20px;text-align:left;cursor:pointer;display:none;min-height:160px}
+.flip-card-back h4{font-size:.88rem;font-weight:700;margin-bottom:8px;color:var(--text-primary);width:100%}
+.flip-card-back p{font-size:.84rem;line-height:1.7;color:var(--text-secondary)}
+.flip-card-back .flip-hint{font-size:.68rem;color:var(--brand);margin-top:12px;font-weight:500}
 
 /* TABS */
 .tabs-container{margin:14px 0}
@@ -253,11 +258,7 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 }
 
 /* COHESIVE COLOR SYSTEM */
-.flip-card-front{background:var(--brand) !important;color:#fff}
-.flip-card-front h4{color:#fff}
-.flip-card:nth-child(2n) .flip-card-front{background:#5856d6 !important}
-.flip-card:nth-child(3n) .flip-card-front{background:#34c759 !important}
-.flip-card:nth-child(4n) .flip-card-front{background:#ff9f0a !important}
+
 .counter-box:nth-child(2) .counter-num{color:#5856d6}
 .counter-box:nth-child(3) .counter-num{color:#34c759}
 
@@ -384,23 +385,7 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
   margin: 8px auto 0 !important;
 }
 
-/* FIX: flip card colors */
-.flip-card-front {
-  color: #fff !important;
-}
-.flip-card-front h4, .flip-card-front .flip-hint {
-  color: #fff !important;
-}
-.flip-card-back {
-  background: #fff !important;
-  color: var(--text-primary) !important;
-}
-.flip-card-back h4 {
-  color: var(--text-primary) !important;
-}
-.flip-card-back p {
-  color: var(--text-secondary) !important;
-}
+
 
 /* DND Reset button */
 .dnd-check-btn + .quiz-validate-btn { background: #86868b !important; }
