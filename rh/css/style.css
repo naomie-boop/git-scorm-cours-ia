@@ -213,15 +213,12 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .checklist-progress{margin-top:6px;font-size:.72rem;color:var(--text-muted);font-weight:500}
 
 /* PROGRESS CIRCLE */
-.progress-circle-wrap{display:flex;justify-content:center;margin:18px 0}
-.progress-circle{width:140px;height:180px;position:relative}
-.progress-circle svg{display:block}
-.progress-circle .bg{fill:none;stroke:rgba(0,0,0,.04);stroke-width:6}
-.progress-circle .fg-fill{transition:r 1s ease}
-.progress-circle .fg-stroke{fill:none;stroke:var(--success);stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset 1.2s ease}
-.progress-circle .top-line,.progress-circle .bottom-line{position:absolute;left:0;width:100%;height:.5px;background:var(--border)}
-.progress-circle .bottom-line{top:142px}
-.progress-circle .circle-text{position:absolute;left:0;width:100%;top:150px;text-align:center;font-size:1.6rem;font-weight:800}
+.progress-circle-wrap{display:flex;justify-content:center;margin:28px 0}
+.progress-circle{width:180px;height:180px;position:relative;display:flex;align-items:center;justify-content:center}
+.progress-circle svg{display:block;transform:rotate(-90deg)}
+.progress-circle .bg{fill:none;stroke:rgba(0,0,0,.06);stroke-width:8}
+.progress-circle .fg-stroke{fill:none;stroke:var(--brand);stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1.2s ease}
+.progress-circle .circle-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;color:var(--text-primary);letter-spacing:-0.02em}
 
 /* BADGE */
 .badge-container{text-align:center;padding:28px 20px}

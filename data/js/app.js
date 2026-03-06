@@ -104,11 +104,10 @@ document.addEventListener("DOMContentLoaded", function() {
   function updateScoreDisplay() {
     var container=allSteps[cur]; if(!container) return;
     // Circle
-    var fgStroke=container.querySelector(".fg-stroke"),fgFill=container.querySelector(".fg-fill"),ct=container.querySelector(".circle-text");
+    var fgStroke=container.querySelector(".fg-stroke"),ct=container.querySelector(".circle-text");
     if(fgStroke&&ct&&scoreTotal>0){
-      var pct=Math.round((score/scoreTotal)*100),circ=2*Math.PI*70;
+      var pct=Math.round((score/scoreTotal)*100),circ=2*Math.PI*78;
       fgStroke.style.strokeDasharray=circ;fgStroke.style.strokeDashoffset=circ-(circ*pct/100);
-      if(fgFill){var r2=70*(pct/100);fgFill.setAttribute("r",r2);fgFill.setAttribute("cy",140-r2);}
       ct.textContent=pct+"%";fgStroke.style.stroke=pct>=80?"#34c759":pct>=60?"#0071e3":"#ff3b30";
     }
     // Weak areas
