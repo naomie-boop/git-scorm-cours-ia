@@ -90,7 +90,7 @@ def matching(pairs):
 def dnd(risques, mesures):
     h = '  <div class="dnd-container animate-in">\n'
     h += '    <h4>Classez les \u00e9l\u00e9ments dans la bonne cat\u00e9gorie</h4>\n'
-    h += '    <p style="font-size:.85rem;color:var(--text-muted)">Glissez chaque \u00e9l\u00e9ment dans la zone Risques ou Mesures.</p>\n'
+    h += '    <p style="font-size:.85rem;color:var(--text-muted)">Glissez ou cliquez sur chaque \u00e9l\u00e9ment dans la zone Risques ou Mesures.</p>\n'
     h += '    <div class="dnd-sources">\n'
     items = [(t, "risque") for t, _ in risques[:3]] + [(t, "mesure") for t, _ in mesures[:3]]
     random.seed(7)
@@ -168,7 +168,7 @@ def vrai_faux_html(items):
 
 def reveal_html(items):
     if not items: return ""
-    h = '  <div class="animate-in"><h4>Le saviez-vous ? Cliquez pour decouvrir</h4></div>' + chr(10)
+    h = '  <div class="animate-in"><h4>Le saviez-vous ? Cliquez pour découvrir</h4></div>' + chr(10)
     h += '  <div class="reveal-grid animate-in">' + chr(10)
     for title, content in items:
         content_safe = content.replace('"', '&quot;')
@@ -179,7 +179,7 @@ def reveal_html(items):
 def blanks_html(data):
     if not data: return ""
     h = '  <div class="blanks-container animate-in">' + chr(10)
-    h += '    <h4>Complétez la phrase</h4>' + chr(10)
+    h += '    <h4>Complétez la phrase (cliquez sur un espace vide, puis sur le mot correspondant)</h4>' + chr(10)
     sentence = data["sentence"]
     for answer, _ in data["blanks"]:
         sentence = sentence.replace("_____", '<span class="blank-slot" role="button" tabindex="0" data-answer="' + answer + '">?</span>', 1)
@@ -282,7 +282,7 @@ def build(e):
 
     # S2 DECOUVERTE (with tabs)
     parts.append("""<div class="step-container" id="step-1">""")
-    parts.append(hero(2,T,"Découverte : "+title,"Explorez les 4 dimensions de cet enjeu.",c1,c2))
+    parts.append(hero(2,T,"Découverte : "+title,"Explorez cet enjeu de cet enjeu.",c1,c2))
     ai_mech = e.get("ai_mechanism", "")
     ai_use = e.get("ai_usages", "")
     focus_content = focus_html(e["focus_title"],e["focus_items"])
@@ -329,7 +329,7 @@ def build(e):
 
     # S4 MESURES
     parts.append("""<div class="step-container" id="step-3">""")
-    parts.append(hero(4,T,"Les mesures a appliquer","Associez chaque mesure au bon risque.",c1,c2))
+    parts.append(hero(4,T,"Les mesures à appliquer","Associez chaque mesure au bon risque.",c1,c2))
     parts.append("""<div class="content-section">
   <div class="animate-in"><h3>Découvrez les mesures</h3><p>Retournez chaque carte pour comprendre comment les mettre en œuvre.</p>
 """ + flipcards(e["mesures"],c1) + """</div>
@@ -503,7 +503,7 @@ def build_vision360():
     # S3 LES 8 ENJEUX
     parts.append('<div class="step-container" id="step-2">')
     parts.append(hero(3,T, "Les 8 enjeux en bref", "Retournez chaque carte pour découvrir l’enjeu.", c1, c2))
-    parts.append('<div class="content-section"><div class="animate-in"><p>Cliquez sur chaque carte pour decouvrir la définition de l’enjeu et ses liens avec les autres.</p></div>')
+    parts.append('<div class="content-section"><div class="animate-in"><p>Cliquez sur chaque carte pour découvrir la définition de l’enjeu et ses liens avec les autres.</p></div>')
     parts.append(cards_html)
     parts.append('</div></div>')
 

@@ -88,7 +88,7 @@
   <div class="step-hero" >
     <div class="step-number">Étape 2 sur 8</div>
     <h2>Découverte : Données</h2>
-    <p class="hero-subtitle">Explorez les 4 dimensions de cet enjeu.</p>
+    <p class="hero-subtitle">Explorez cet enjeu de cet enjeu.</p>
   </div>
 <div class="content-section">
   <div class="tabs-container animate-in">
@@ -99,7 +99,7 @@
       <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-principles">Principes clés</button>
     </div>
     <div class="tab-panel active" data-tab="tab-mechanism">
-      <p><strong>Comment ça marche ?</strong> Le <strong>RAG</strong> (Retrieval Augmented Generation) est le mécanisme utilisé par les chatbots internes. Il fonctionne en 3 étapes : (1) <em>Découpage</em> des documents en fragments (chunks), (2) <em>Recherche</em> des fragments pertinents via des vecteurs mathématiques (embeddings), (3) <em>Génération</em> d’une réponse à partir de ces fragments. La qualité de la réponse dépend à 100 % de la qualité du corpus : si les documents sont obsolètes, en double, ou mal structurés, l’IA produira des réponses obsolètes, contradictoires ou incohérentes.</p>
+      <p><strong>Comment ça marche ?</strong> Le <strong>RAG</strong> (Retrieval Augmented Generation) est le mécanisme utilisé par les chatbots internes. Il fonctionne en 3 étapes : (1) <em>Découpage</em> des documents en fragments (chunks), (2) <em>Recherche</em> des fragments pertinents via des vecteurs mathématiques (représentations mathématiques (embeddings)), (3) <em>Génération</em> d’une réponse à partir de ces fragments. La qualité de la réponse dépend à 100 % de la qualité du corpus : si les documents sont obsolètes, en double, ou mal structurés, l’IA produira des réponses obsolètes, contradictoires ou incohérentes.</p><p><strong>Ne pas confondre RAG et fine-tuning</strong> : le RAG cherche dans des documents existants sans modifier le modèle. Le fine-tuning réentraîne le modèle lui-même avec de nouvelles données. Pour un chatbot interne qui répond sur les procédures, c’est le RAG qui est utilisé : on alimente le corpus, pas le modèle.</p>
     </div>
     <div class="tab-panel" data-tab="tab-context">
       <h3>Définition et contexte</h3><p>Un système <strong>RAG</strong> (Retrieval-Augmented Generation) fonctionne en deux temps : d'abord, l'IA <strong>recherche</strong> les documents les plus pertinents dans un corpus interne ; ensuite, elle <strong>génère</strong> une réponse en s'appuyant sur ces documents. C'est comme un collaborateur qui consulte la base documentaire avant de répondre à une question. La qualité de la réponse dépend donc entièrement de la qualité du corpus : si les documents sont obsolètes, contradictoires ou incomplets, l'IA produira des réponses erronées avec la même assurance que si elles étaient exactes.</p><p>Le <strong>data drift</strong> (dérive des données) est un risque critique dans un environnement ferroviaire. Les procédures de sécurité évoluent, les référentiels techniques sont mis à jour, les politiques RH changent. Si le corpus IA n'est pas synchronisé avec ces évolutions, l'IA continue de fournir les anciennes versions. Exemple concret : une procédure de maintenance sur un type de rail a été mise à jour en mars 2025 suite à un retour d'expérience, mais le corpus IA contient encore la version de 2023. Un technicien qui interroge l'IA obtient l'ancienne procédure — potentiellement dangereuse.</p><p>Pour la SNCF, les conséquences sont amplifiées par la criticité du domaine. Une <strong>mauvaise procédure de sécurité</strong> fournie par l'IA n'est pas une simple erreur administrative — elle peut compromettre la sécurité des voyageurs et des agents. C'est pourquoi la qualité des données qui alimentent l'IA est un sujet de sécurité ferroviaire au même titre que la maintenance des voies ou la signalisation.</p><p>La <strong>gouvernance des données comme code</strong> signifie automatiser les contrôles qualité : vérification automatique de la fraîcheur des documents, détection des doublons et contradictions, traçabilité de chaque source citée par l'IA. L'objectif est de passer d'une gestion documentaire artisanale à un pipeline industrialisé où chaque document entrant dans le corpus IA est validé, versionné et traçable — comme les pièces d'un matériel roulant sont certifiées avant montage.</p>
@@ -159,7 +159,7 @@
   <div class="divider"></div>
   <div class="dnd-container animate-in">
     <h4>Classez les éléments dans la bonne catégorie</h4>
-    <p style="font-size:.85rem;color:var(--text-muted)">Glissez chaque élément dans la zone Risques ou Mesures.</p>
+    <p style="font-size:.85rem;color:var(--text-muted)">Glissez ou cliquez sur chaque élément dans la zone Risques ou Mesures.</p>
     <div class="dnd-sources">
       <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="02bf0fb3d770" data-zone="mesure">Cycles de revue réguliers pour détecter le data drift</div>
       <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="cd2b074bce74" data-zone="risque">Data drift : procédure de sécurité obsolète dans le corpus IA</div>
@@ -181,7 +181,7 @@
 
   <div class="step-hero" >
     <div class="step-number">Étape 4 sur 8</div>
-    <h2>Les mesures a appliquer</h2>
+    <h2>Les mesures à appliquer</h2>
     <p class="hero-subtitle">Associez chaque mesure au bon risque.</p>
   </div>
 <div class="content-section">
