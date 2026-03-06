@@ -408,3 +408,37 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .dnd-check-btn + .quiz-validate-btn::after { background: #86868b !important; }
 .dnd-check-btn + .quiz-validate-btn:hover { background: #6e6e73 !important; }
 .dnd-check-btn + .quiz-validate-btn:hover::after { background: #6e6e73 !important; }
+
+/* MATCHING ARROWS */
+.matching-container { position: relative; }
+.matching-container svg.match-arrows {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+.match-arrow-line {
+  stroke: var(--success);
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.match-arrow-line.visible {
+  opacity: 1;
+}
+/* Matched items get a subtle dot indicator */
+.match-item.matched::after {
+  content: '✓';
+  position: absolute;
+  right: 8px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--success);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.match-item { position: relative; }
+/* Hide the static match-lines divs */
+.match-lines { display: none !important; }
