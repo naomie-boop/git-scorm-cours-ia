@@ -410,7 +410,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // === REVEAL ===
   document.querySelectorAll(".reveal-card").forEach(function(c){
-    c.onclick=function(){if(c.classList.contains("revealed"))return;c.classList.add("revealed");c.textContent=c.dataset.content;};
+    c._origHTML=c.innerHTML;
+    c.onclick=function(){
+      if(c.classList.contains("revealed")){c.classList.remove("revealed");c.innerHTML=c._origHTML;}
+      else{c.classList.add("revealed");c.innerHTML=c.dataset.content+'<span class="reveal-label">Cliquez pour fermer</span>';}
+    };
   });
 
   // === BLANKS (block re-selection of filled slots, unlock after ALL filled) ===
