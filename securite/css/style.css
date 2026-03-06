@@ -442,3 +442,16 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .match-item { position: relative; }
 /* Hide the static match-lines divs */
 .match-lines { display: none !important; }
+
+/* VIDEO INTRO */
+.video-intro {
+  margin: 16px auto;
+  max-width: 540px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: .5px solid var(--border);
+}
+.video-intro video {
+  width: 100%;
+  display: block;
+}

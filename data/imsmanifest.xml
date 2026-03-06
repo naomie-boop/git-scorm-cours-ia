@@ -15,6 +15,6 @@
   <resources>
     <resource identifier="res-1" type="webcontent" adlcp:scormtype="sco" href="index.html">
       <file href="index.html"/><file href="css/style.css"/><file href="js/scorm.js"/><file href="js/app.js"/>
-    </resource>
+    <file href="intro.mp4"/></resource>
   </resources>
 </manifest>
