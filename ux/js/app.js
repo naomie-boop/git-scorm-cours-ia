@@ -246,7 +246,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var flipped=new Set();
     grid.querySelectorAll(".flip-card").forEach(function(card,i){
       card.addEventListener("click",function(e){e.stopPropagation();card.classList.toggle("flipped");
-        if(card.classList.contains("flipped"))flipped.add(i);
+        var front=card.querySelector(".flip-card-front");
+        var back=card.querySelector(".flip-card-back");
+        if(card.classList.contains("flipped")){front.style.display="none";back.style.display="flex";flipped.add(i);}
+        else{front.style.display="flex";back.style.display="none";}
         var total=grid.querySelectorAll(".flip-card").length;
         if(flipped.size>=Math.min(2,total)) markStepDone();
       },true);

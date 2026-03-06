@@ -86,14 +86,14 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 
 /* FLIP CARDS */
 .flip-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:14px 0}
-.flip-card{perspective:1000px;height:220px;cursor:pointer}
-.flip-card-inner{position:relative;width:100%;height:100%;transition:transform .5s ease;transform-style:preserve-3d}
-.flip-card.flipped .flip-card-inner{transform:rotateY(180deg)}
-.flip-card-front,.flip-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center}
+.flip-card{perspective:1000px;cursor:pointer}
+.flip-card-inner{position:relative;width:100%}
+
+.flip-card-front,.flip-card-back{border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;text-align:center}
 .flip-card-front{background:#fff;border:.5px solid var(--border)}
 .flip-card-front h4{font-size:.88rem;font-weight:700;margin-bottom:4px}
 .flip-card-front .flip-hint{font-size:.6rem;color:var(--text-muted);margin-top:8px}
-.flip-card-back{background:#fff;border:.5px solid var(--border);transform:rotateY(180deg);overflow-y:auto;justify-content:flex-start;padding-top:18px;text-align:left;cursor:pointer}
+.flip-card-back{background:#fff;border:.5px solid var(--border);justify-content:flex-start;padding:18px;text-align:left;cursor:pointer;display:none}
 .flip-card-back h4{font-size:.82rem;font-weight:700;margin-bottom:4px;width:100%}
 .flip-card-back p{font-size:.8rem;line-height:1.6;color:var(--text-secondary)}
 
