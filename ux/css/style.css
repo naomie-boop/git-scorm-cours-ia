@@ -123,13 +123,13 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 
 /* MATCHING */
 .matching-container{margin:14px 0}
-.matching-grid{display:grid;grid-template-columns:1fr 16px 1fr;gap:6px;align-items:start;width:100%}
-.match-col{display:flex;flex-direction:column;gap:6px;min-width:0}
+.matching-grid{display:flex;gap:16px;align-items:stretch;width:100%}
+.match-col{display:flex;flex-direction:column;gap:6px;flex:1;min-width:0}
 .match-item{padding:8px 10px;background:#fff;border:.5px solid var(--border);border-radius:var(--rs);cursor:pointer;font-size:.8rem;transition:all var(--tr);word-break:normal;white-space:normal;line-height:1.4}
 .match-item:hover{border-color:var(--brand)}
 .match-item.matched{border-color:var(--success);background:rgba(52,199,89,.04)}
 .match-item.wrong{border-color:var(--danger);animation:shake .3s ease}
-.match-lines{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.match-lines{display:none}
 .match-line{width:1px;height:12px;background:var(--border)}
 
 /* SCENARIO */
