@@ -445,14 +445,13 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 
 /* VIDEO INTRO */
 .video-intro {
-  margin: 20px auto;
-  max-width: 680px;
-  border-radius: var(--r);
+  margin: 16px auto;
+  max-width: 420px;
+  border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  border: .5px solid var(--border);
 }
 .video-intro video {
   width: 100%;
   display: block;
-  border-radius: var(--r);
 }
