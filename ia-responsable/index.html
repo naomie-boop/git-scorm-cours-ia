@@ -1,489 +1,132 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>IA Responsable &amp; Bonnes Pratiques</title>
+<title>Session 2 : Détecter et corriger les biais</title>
 <link rel="stylesheet" href="css/style.css">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head><body>
 <div class="cover-page" id="coverPage">
   <div class="cover-grid" id="coverGrid"></div>
   <div class="cover-content">
-    <div class="cover-subtitle">Les enjeux de l'IA à 360</div>
-    <h1>&#128274; IA Responsable</h1>
-    <p>Comment utiliser l'IA sans compromettre la confidentialité, reproduire des biais ou nuire à l'environnement ? Ce module vous donne les clés pour une utilisation responsable au quotidien.</p>
+    <div class="cover-subtitle">IA Responsable &amp; Bonnes Pratiques</div>
+    <h1>Session 2 : Détecter et corriger les biais</h1>
+    <p>L’intelligence artificielle n’est jamais totalement neutre. Elle apprend à partir de nos données... et parfois, de nos biais.</p>
     <button class="cover-start-btn" id="coverStartBtn">Commencer le module &#8594;</button>
   </div>
 </div>
-
 <div class="course-layout">
-<aside class="sidebar" role="navigation">
-  <div class="sidebar-header"><h1>&#128274; IA Responsable</h1><div class="subtitle">Bonnes Pratiques IA</div></div>
-  <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% terminé</div></div>
-  <div class="sidebar-score">Score : <span id="sidebarScore">—</span></div>
-  <nav class="sidebar-nav">
-      <div class="nav-item active"><span class="nav-number">1</span><span class="nav-label">Accroche</span></div>
-      <div class="nav-item"><span class="nav-number">2</span><span class="nav-label">Découverte</span></div>
-      <div class="nav-item"><span class="nav-number">3</span><span class="nav-label">Risques</span></div>
-      <div class="nav-item"><span class="nav-number">4</span><span class="nav-label">Mesures</span></div>
-      <div class="nav-item"><span class="nav-number">5</span><span class="nav-label">Scénario</span></div>
-      <div class="nav-item"><span class="nav-number">6</span><span class="nav-label">Quiz</span></div>
-      <div class="nav-item"><span class="nav-number">7</span><span class="nav-label">Synthèse</span></div>
-      <div class="nav-item"><span class="nav-number">8</span><span class="nav-label">Conclusion</span></div>
-  </nav>
-</aside>
+<aside class="sidebar" role="navigation" style="display:none"></aside>
 <main class="main-content">
 <div class="step-container active" id="step-0">
-
-  <div class="step-hero" >
+  <div class="step-hero">
     <div class="step-number">Étape 1 sur 8</div>
-    <h2>&#128274; IA Responsable</h2>
-    <p class="hero-subtitle">L'IA semble légère et virtuelle, mais chaque requête a un im, équitable et transparente de l’IA générative, en intégrant la dimension de service public : l’IA ne doit pas créer d’inégalité de traitement entre usagers, territoires ou collaborateurs.</p>
+    <h2>Introduction</h2>
+    <p class="hero-subtitle">L’intelligence artificielle n’est jamais totalement neutre. Elle apprend à partir de nos données... et parfois, de nos biais.</p>
   </div>
 <div class="content-section">
-  <div class="animate-in"><div class="highlight-box warning"><strong>En mai 2025, un juge californien a certifié une action collective contre un éditeur de logiciel RH pour discrimination algorithmique, statuant que « distinguer un décideur logiciel d’un décideur humain viderait les lois anti-discrimination ». Dans une entreprise de service public, cette vigilance est encore plus critique.</strong></div></div>
-  <div class="counter-row animate-in">
-    <div class="counter-box"><span class="counter-num" data-target="5" data-suffix="">5</span><span class="counter-label">principes éthiques de l’École Numérique</span></div>
-    <div class="counter-box"><span class="counter-num" data-target="65" data-suffix="%">65%</span><span class="counter-label">d’incidents IA haute sévérité = malveillants (MIT 2025)</span></div>
-    <div class="counter-box"><span class="counter-num" data-target="7" data-suffix="">7</span><span class="counter-label">exigences du cadre européen IA de confiance</span></div>
-  </div>
-
-  <div class="animate-in"><div class="highlight-box"><strong>Dans ce module, vous allez :</strong><ul>
-    <li>Comprendre cet enjeu en profondeur avec des cas réels</li>
-    <li>Identifier les risques avec des activités interactives</li>
-    <li>Associer les bonnes mesures aux bons risques</li>
-    <li>Vivre un scénario professionnel réaliste</li>
-    <li>Tester vos connaissances avec un quiz chronométré</li>
-    <li>Obtenir votre synthèse personnalisée</li>
-  </ul></div></div>
+  <div class="animate-in"><div class="highlight-box warning"><strong>Dans ce micro learning, vous allez voir :<br>– d’où viennent les biais et pourquoi ils comptent ;<br>– leurs effets concrets dans les usages professionnels ;<br>– et quatre méthodes simples pour les détecter et les analyser.</strong></div></div>
+  <div class="animate-in"><h3>Dans ce module, vous allez</h3><ul>
+    <li>Comprendre à quelles étapes du cycle de vie d’une IA les biais peuvent apparaître</li>
+    <li>Faire la différence entre les types de biais</li>
+    <li>Maîtriser 4 méthodes pratiques pour détecter les biais</li>
+    <li>Mesurer l’impact des biais sur la fiabilité, l’équité et la conformité</li>
+  </ul></div>
   <div class="vf-container animate-in">
-    <h4>Selon vous, vrai ou faux ?</h4>
+    <h4>Selon vous, vrai ou faux ?</h4>
     <div class="vf-item" data-correct="faux">
-      <span>Selon vous : les LLM (Large Language Model, grand modèle de langage) comprennent le sens des mots qu'ils produisent.</span>
-      <div class="vf-btns">
-        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
-        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
-      </div>
-      <div class="vf-feedback">Faux. Les LLM prédisent des tokens probables sans aucune compréhension sémantique.</div>
+      <span>Selon vous : les biais dans l’IA proviennent uniquement des données d’entraînement.</span>
+      <div class="vf-btns"><button class="vf-btn" data-answer="vrai">Vrai</button><button class="vf-btn" data-answer="faux">Faux</button></div>
+      <div class="vf-feedback">Faux. Les biais peuvent s’introduire involontairement à chaque étape du cycle de développement : collecte, annotation, conception, entraînement et déploiement.</div>
     </div>
     <div class="vf-item" data-correct="vrai">
-      <span>Selon vous : un modèle IA peut discriminer même sans variable explicite de genre ou d'âge.</span>
-      <div class="vf-btns">
-        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
-        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
-      </div>
-      <div class="vf-feedback">Vrai. C'est le biais de proxy : l'IA infère ces caractéristiques via d'autres variables corrélées.</div>
+      <span>Selon vous : un outil d’IA peut reproduire des discriminations existantes sans que ce soit intentionnel.</span>
+      <div class="vf-btns"><button class="vf-btn" data-answer="vrai">Vrai</button><button class="vf-btn" data-answer="faux">Faux</button></div>
+      <div class="vf-feedback">Vrai. L’IA apprend à partir des données qu’on lui fournit. Si ces données reflètent des inégalités, le modèle les reproduit et peut même les amplifier.</div>
     </div>
     <div class="vf-item" data-correct="vrai">
-      <span>Selon vous : l'AI Act (règlement européen sur l’intelligence artificielle) européen impose d'informer les utilisateurs quand ils interagissent avec une IA.</span>
-      <div class="vf-btns">
-        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
-        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
-      </div>
-      <div class="vf-feedback">Vrai. L'article 50 du règlement 2024/1689 impose cette transparence depuis février 2025.</div>
+      <span>Selon vous : il est possible de détecter les biais sans être expert technique.</span>
+      <div class="vf-btns"><button class="vf-btn" data-answer="vrai">Vrai</button><button class="vf-btn" data-answer="faux">Faux</button></div>
+      <div class="vf-feedback">Vrai. Repérer les biais ne demande pas une expertise technique, mais un regard critique, structuré par quelques bonnes pratiques comme les prompts miroir ou la grille multicritère.</div>
     </div>
   </div>
-
 </div></div>
 <div class="step-container" id="step-1">
-
-  <div class="step-hero" >
+  <div class="step-hero">
     <div class="step-number">Étape 2 sur 8</div>
-    <h2>Les 3 piliers de l’IA responsable</h2>
-    <p class="hero-subtitle">Données, biais et environnement : comprendre les enjeux, d’hallucination et de détournement pour s’en protéger..</p>
+    <h2>À quelles étapes les biais apparaissent-ils ?</h2>
+    <p class="hero-subtitle">Les biais dans l’IA générative ne viennent pas uniquement des réponses produites. Ils peuvent émerger à chaque étape de son cycle de développement, souvent de manière involontaire.</p>
   </div>
 <div class="content-section">
-  <div class="tabs-container animate-in">
-    <div class="tabs-header">
-      <button class="tab-btn active" role="tab" tabindex="0" data-tab="tab-mechanism">C
-       <h3>L'IA et les données : comment ça marche ?</h3>
-<p>Une IA, et en particulier une <em>IA générative</em>, a besoin de <strong>données</strong> pour apprendre et pour fonctionner. On peut simplifier son fonctionnement en trois étapes : l'entrée, le traitement interne et la sortie.</p>
-<ul>
-<li><strong>Entrée (données fournies à l'IA)</strong> : C'est tout ce qu'on donne à l'IA pour qu'elle travaille. Il peut s'agir de votre question (prompt) posée à un chatbot, d'une image que vous chargez dans un outil de génération, ou de données d'entraînement pour construire le modèle. Sans ces entrées, l'IA ne peut rien faire car elle n'a pas de contexte ni d'information sur quoi opérer.</li>
-<li><strong>Traitement interne</strong> : L'IA va analyser l'entrée grâce à son modèle pré-entraîné. Ce modèle a lui-même été formé en amont sur d'énormes volumes de données (par exemple, des millions de textes provenant d'Internet). Pendant cette phase, l'IA ne <strong>recopie pas</strong> simplement les données qu'elle a vues, elle en extrait des <strong>régularités statistiques</strong> qui lui permettent de générer une réponse pertinente.</li>
-<li><strong>Sortie (réponse de l'IA)</strong> : C'est le résultat que l'IA génère – un texte, une image, une décision. Cette sortie est basée sur les données d'entrée que vous lui avez fournies et sur tout ce qu'elle a appris durant son entraînement.</li>
-</ul>
-<h3>Pourquoi l'IA a besoin de nos données ?</h3>
-<p>Lorsqu'on parle de confier <strong>des données sensibles ou personnelles</strong> à une IA, cela soulève des questions de <strong>confidentialité</strong>. Les données personnelles sont des informations qui permettent d'identifier une personne (nom, email, numéro de sécurité sociale, données de santé, etc.). Si vous fournissez ce type de données à une IA en ligne, il faut savoir que :</p>
-<ul>
-<li>Elles peuvent être <strong>stockées</strong> sur les serveurs du fournisseur de l'IA.</li>
-<li>Elles peuvent parfois être <strong>réutilisées</strong> pour améliorer le modèle ou à d'autres fins. Par exemple, certains services conservent vos requêtes pour affiner leurs algorithmes.</li>
-<li>En cas de faille de sécurité, ces données pourraient être <strong>exposées</strong> involontairement.</li>
-</ul>
-<h3>Politiques de confidentialité</h3>
-<p>Toute plateforme sérieuse d'IA propose une politique de confidentialité qui décrit comment les données des utilisateurs sont collectées, utilisées, partagées et protégées. Voici quelques points clés à vérifier :</p>
-<ul>
-<li><strong>Durée de conservation</strong> : Combien de temps l'outil garde vos données ? Sont-elles supprimées après un certain délai ?</li>
-<li><strong>Utilisation ultérieure</strong> : Le fournisseur se réserve-t-il le droit d'utiliser vos données pour entraîner d'autres modèles ?</li>
-<li><strong>Partage avec des tiers</strong> : Les données sont-elles partagées avec des partenaires ou sous-traitants ?</li>
-<li><strong>Vos droits</strong> : Pouvez-vous demander la suppression de vos données ? (notions importantes du <strong>RGPD</strong>)</li>
-</ul>
-<p>En Europe, le <strong>RGPD (Règlement Général sur la Protection des Données)</strong> impose de ne traiter les données personnelles que pour des raisons légitimes, avec le consentement de la personne concernée, et d'assurer leur sécurité. Confier des données clients ou employés à un service externe d'IA doit donc être fait avec précaution.</p>
-<h3>Propriété intellectuelle à l'ère de l'IA générative</h3>
-<p>Les données utilisées dans le cycle de vie d'une IA peuvent être protégées par des droits d'auteur. Il est donc important de faire attention aux données que l'on fournit à une IA et s'assurer que leur utilisation ne porte pas atteinte à des droits de propriété intellectuelle.</p>
-<p>La question de savoir qui détient les droits d'auteur sur les créations générées par l'IA est complexe et en cours de débat. Une intervention humaine significative est exigée pour qu'une œuvre soit protégée par le droit d'auteur.</p>
-     </div>
-    <div class="tab-panel active" data-tab="tab-mechanism">
-      <p><strong>Chapitre 1 : Données ?</strong> Les LLM (Large Language Models) apprennent des <em>patterns statistiques</em> dans d’immenses corpus de texte. Ils ne « comprennent » pas le sens : ils prédisent le mot suivant le plus probable. Si les données d’entraînement contiennent des biais historiques (surreprésentation d’un genre, d’une origine, d’un âge), le modèle les <strong>reproduit et les amplifie</strong> mathématiquement. Ce n’est pas intentionnel : c’est un reflet statistique des inégalités présentes dans les données.</p><p>De même, quand un LLM génère du contenu faux avec assurance (hallucination), c’est parce qu’il optimise la <em>plausibilité linguistique</em>, pas la <em>vérité factuelle</em>. Il n’a aucune notion de « vrai » ou « faux ».</p>
-    </div>
-    <div class="tab-panel" data-tab="tab-context">
-
-       <h3>D'où viennent les biais dans l'IA ?</h3>
-<p>Une IA n'a pas de conscience ni d'intention propre : elle apprend des données et des instructions qu'on lui donne. Ainsi, si les humains ont des préjugés (conscients ou non), ceux-ci peuvent se retrouver <strong>transmis à l'IA</strong>. Voici les principales sources de biais :</p>
-<ul>
-<li><strong>Biais liés aux données d'entraînement</strong> : L'IA est aussi bonne que les données qu'on lui fournit. Si ces données sont incomplètes ou déséquilibrées, le modèle apprendra une vision déformée de la réalité. Par exemple, si on entraîne un système de reconnaissance faciale avec 90% de visages à peau claire, il sera moins précis pour identifier des personnes à peau foncée.</li>
-<li><strong>Biais de sélection et erreurs humaines</strong> : Les humains choisissent quelles données utiliser et comment les étiqueter. Ils peuvent involontairement introduire des biais en sélectionnant des exemples qui confirment leurs attentes ou en excluant certains cas.</li>
-<li><strong>Biais algorithmiques</strong> : Parfois, le biais vient de la façon dont l'algorithme lui-même fonctionne. Par exemple, un algorithme de recommandation peut donner plus de visibilité à des contenus sensationnalistes parce qu'il est programmé pour maximiser les clics.</li>
-<li><strong>Biais culturels et contextuels</strong> : Une IA reflète le contexte culturel des données qu'elle a ingérées. Un modèle entraîné majoritairement avec des données américaines pourrait être moins pertinent pour d'autres cultures.</li>
-</ul>
-<h3>Pourquoi est-ce problématique ?</h3>
-<ul>
-<li>Sur le plan <strong>éthique et social</strong> : Les biais peuvent perpétuer ou aggraver des injustices existantes. Une IA de recrutement biaisée peut défavoriser systématiquement des candidats d'un certain genre ou d'une certaine origine.</li>
-<li>Sur le plan <strong>de la fiabilité</strong> : Un système biaisé prend de mauvaises décisions dans certains cas.</li>
-<li>Sur le plan <strong>légal</strong> : Utiliser un outil de décision automatisée qui discrimine peut être illégal.</li>
-</ul>
-<h3>Détecter et limiter les biais</h3>
-<p>La première étape est de prendre conscience que le biais existe potentiellement. Ensuite, quelques bonnes pratiques :</p>
-<ul>
-<li><strong>Vérifier les données</strong> : analyser le jeu de données d'entraînement pour voir s'il représente bien la diversité des cas réels.</li>
-<li><strong>Tester l'IA sur des cas variés</strong> : ne pas se contenter d'une moyenne de performance globale, mais tester sur différents sous-groupes.</li>
-<li><strong>Tester les contre-factuels</strong> : changer une seule variable (genre, origine) et vérifier si le résultat de l'IA change. Si oui, il y a un biais.</li>
-<li><strong>Impliquer un regard humain diversifié</strong> : avoir des personnes d'horizons divers pour évaluer les résultats de l'IA.</li>
-</ul>
-     </div>
-    <div class="tab-panel" data-tab="tab-usages">
-
-       <h3>Consommation énergétique : l'essor des data centers</h3>
-<p>Les grands modèles de machine learning demandent d'<strong>importantes ressources de calcul</strong>. Selon l'Agence Internationale de l'Énergie (IEA, 2023), les data centers dans le monde consomment environ <strong>400 TWh</strong> d'électricité par an, soit 1% à 1,5% de la consommation électrique mondiale. Une part croissante est liée aux charges de travail d'IA.</p>
-<p>Pourquoi l'IA est-elle énergivore ?</p>
-<ul>
-<li><strong>Entraînement des modèles</strong> : La phase où un modèle apprend sur de gigantesques volumes de données exige des milliers d'heures de calcul sur des serveurs puissants.</li>
-<li><strong>Inférence</strong> : Une fois déployée, l'IA répond à nos requêtes. Avec la popularité des chatbots, ce volume peut atteindre des dizaines de millions de requêtes par jour.</li>
-</ul>
-<h3>Empreinte carbone</h3>
-<p>L'entraînement de ChatGPT-3 a été estimé à plus de <strong>500 tonnes d'équivalent CO₂</strong>, soit les émissions de 110 voitures américaines en circulation pendant un an. Ces chiffres varient en fonction du mix énergétique utilisé pour alimenter les serveurs.</p>
-<h3>Extraction de ressources et déchets électroniques</h3>
-<p>L'industrie de l'IA nécessite des terres rares et des métaux (cobalt, lithium, indium, tungstène). L'extraction de ces matériaux est énergivore et soulève des questions éthiques. En 2023, l'IA générative a généré environ 2 600 tonnes de déchets électroniques.</p>
-<h3>Quelles solutions pour une IA plus "verte" ?</h3>
-<ul>
-<li><strong>Optimiser les modèles</strong> : Des techniques comme le transfer learning, la distillation de modèles ou la quantisation permettent de diminuer la consommation d'énergie.</li>
-<li><strong>Data centers plus écologiques</strong> : Alimenter les centres de données via des énergies renouvelables (solaire, éolienne, hydroélectrique).</li>
-<li><strong>Allonger la durée de vie du matériel</strong> : Réutiliser ou recycler les serveurs et les composants.</li>
-<li><strong>Sobriété numérique</strong> : Limiter l'utilisation de l'IA aux cas où elle est réellement nécessaire. Il n'est pas nécessaire d'utiliser un gros modèle pour une simple recherche.</li>
-</ul>
-     </div>
-    <div class="tab-panel" data-tab="tab-principles">
-        <div class="highlight-box animate-in">
-    <strong>Les 5 principes éthiques de l’École Numérique</strong>
-    <ul class="numbered-list">
-      <li><span><strong>Transparence et authenticité du contenu</strong> — Toujours signaler qu’un contenu a été généré ou assisté par IA, que ce soit un email, un rapport, une réponse voyageur ou un document interne. À la SNCF, un voyageur qui reçoit une réponse officielle doit pouvoir savoir si elle a été rédigée par un agent ou générée par IA.</span></li>
-      <li><span><strong>Autonomie dans la prise de décision assistée par IA</strong> — L’IA propose des éléments d’aide à la décision, mais le collaborateur garde le dernier mot. Chez SNCF, cela vaut pour la maintenance prédictive, la planification des circulations, le recrutement ou la réponse aux réclamations : l’IA assiste, l’humain décide et assume.</span></li>
-      <li><span><strong>Protection des données et respect de la confidentialité</strong> — Utiliser Groupe SNCF GPT pour tout traitement impliquant des données internes, personnelles ou commerciales. ChatGPT et Gemini sont tolérés uniquement pour des requêtes génériques ne contenant aucune donnée sensible. Copilot (Microsoft SNCF) respecte le périmètre Microsoft du Groupe.</span></li>
-      <li><span><strong>Biais, hallucinations, deepfake… Demeurer conscient des limites</strong> — Connaître les failles pour mieux s’en protéger. L’IA peut discriminer par proxy (date de diplôme → âge), halluciner des horaires ou des politiques commerciales, et être détournée via deepfakes. Le réflexe de vérification doit devenir systématique avant toute diffusion.</span></li>
-      <li><span><strong>Limiter l’utilisation aux situations de nécessité</strong> — L’IA est un outil au service d’une mission, pas un réflexe automatique. Avant chaque usage, se demander : l’IA apporte-t-elle une vraie valeur ajoutée ici ? Pour un agent SNCF, reformuler un email simple ne justifie pas forcément l’IA ; analyser un volume important de réclamations pour en extraire les tendances, oui.</span></li>
-    </ul>
-  </div>
-
-    </div>
-  </div>
-  <div class="divider"></div>
-  <div class="animate-in slider-container"><h4>Auto-évaluation : votre niveau sur cet enjeu ?</h4>
-    <input type="range" min="1" max="5" value="3">
-    <div class="slider-labels"><span>1 Débutant</span><span>5 Expert</span></div>
-    <div class="slider-value">3/5 Intermédiaire</div>
-  </div>
-  <div class="animate-in"><h4>Le saviez-vous ? Cliquez pour découvrir</h4></div>
-  <div class="reveal-grid animate-in">
-    <div class="reveal-card" role="button" tabindex="0" data-content="L'IA peut déduire votre âge à partir de votre date de diplôme, et votre origine à partir de votre code postal.">Biais de proxy<span class="reveal-label">Cliquez</span></div>
-    <div class="reveal-card" role="button" tabindex="0" data-content="En 2026, un avocat américain a été condamné à une amende pour avoir soumis des citations juridiques entièrement inventées par IA. Depuis 2023, plusieurs cas similaires ont été signalés.">Hallucinations<span class="reveal-label">Cliquez</span></div>
-    <div class="reveal-card" role="button" tabindex="0" data-content="En mars 2025, des fraudeurs ont utilisé du clonage facial en direct sur Zoom pour voler 499 000$.">Deepfake en temps réel<span class="reveal-label">Cliquez</span></div>
-  </div>
-
+  <div class="animate-in"><p>De la collecte des données au déploiement du modèle, plusieurs moments clés peuvent introduire des déséquilibres qui se retrouvent ensuite dans les résultats.</p></div>
+  <div class="animate-in"><div class="accordion">
+    <div class="accordion-item"><div class="accordion-header" role="button" tabindex="0"><span>Collecte et sélection du corpus</span><span class="icon">+</span></div><div class="accordion-body"><div class="accordion-body-inner"><p>Un corpus peu varié transmet les biais du monde réel. Par exemple, un modèle formé surtout en anglais comprendra mal les cultures francophones. Il faut diversifier les sources.</p></div></div></div>
+    <div class="accordion-item"><div class="accordion-header" role="button" tabindex="0"><span>Annotation et filtrage</span><span class="icon">+</span></div><div class="accordion-body"><div class="accordion-body-inner"><p>Les filtres appliqués par les humains peuvent exclure à tort des contenus légitimes (ex. LGBTQIA+). Multiplier les points de vue réduit ce risque.</p></div></div></div>
+    <div class="accordion-item"><div class="accordion-header" role="button" tabindex="0"><span>Conception algorithmique</span><span class="icon">+</span></div><div class="accordion-body"><div class="accordion-body-inner"><p>Certains choix techniques favorisent les formes de langage les plus fréquentes, au détriment de variantes locales ou minoritaires. On peut corriger cela en adaptant l’apprentissage.</p></div></div></div>
+    <div class="accordion-item"><div class="accordion-header" role="button" tabindex="0"><span>Retour humain (RLHF)</span><span class="icon">+</span></div><div class="accordion-body"><div class="accordion-body-inner"><p>Des évaluateurs trop homogènes influencent le ton du modèle (ex. anglais US). Un panel diversifié permet un meilleur équilibre.</p></div></div></div>
+    <div class="accordion-item"><div class="accordion-header" role="button" tabindex="0"><span>Déploiement</span><span class="icon">+</span></div><div class="accordion-body"><div class="accordion-body-inner"><p>Un modèle peut mal s’adapter au terrain (ex. chatbot français face à des expressions africaines). Il faut l’ajuster selon les usages réels et locaux.</p></div></div></div>
+  </div></div>
+  <div class="animate-in"><div class="highlight-box"><strong>Les biais dans l’IA ne viennent pas d’un seul moment : ils peuvent apparaître à chaque étape du processus, de la collecte des données jusqu’à l’usage final. Il est donc essentiel de penser l’éthique de bout en bout, pas uniquement à la fin.</strong></div></div>
 </div></div>
 <div class="step-container" id="step-2">
-
-  <div class="step-hero" >
+  <div class="step-hero">
     <div class="step-number">Étape 3 sur 8</div>
-    <h2>Les risques à connaître</h2>
-    <p class="hero-subtitle">Ce que l’IA peut mal faire si on n’y prend pas garde.</p>
+    <h2>À quel type de biais cet exemple correspond-il ?</h2>
+    <p class="hero-subtitle">Les biais dans l’IA ne sont pas seulement des erreurs techniques : ils reflètent des choix humains, souvent inconscients, qui interviennent à toutes les étapes du développement.</p>
   </div>
 <div class="content-section">
-  <div class="animate-in"><h3>Explorez chaque risque</h3><p>Cliquez sur chaque risque pour découvrir l’explication complète.</p>
-  <div class="accordion">
-    <div class="accordion-item">
-      <div class="accordion-header" role="button" tabindex="0"><span>Biais algorithmiques dans le recrutement et la mobilité interne</span><span class="icon">+</span></div>
-      <div class="accordion-body"><div class="accordion-body-inner"><p>Un outil de présélection IA entraîné sur les parcours passés peut défavoriser les profils seniors (date de diplôme = proxy d’âge) ou les reconversions professionnelles, dans une entreprise où l’ancienneté et la promotion interne sont des valeurs clés. Le biais par proxy rend la discrimination invisible : l’algorithme ne mentionne jamais l’âge, mais le résultat est le même.</p></div></div>
-    </div>
-    <div class="accordion-item">
-      <div class="accordion-header" role="button" tabindex="0"><span>Hallucinations dans les réponses aux voyageurs</span><span class="icon">+</span></div>
-      <div class="accordion-body"><div class="accordion-body-inner"><p>Un chatbot IA génère une réponse à un voyageur avec un horaire de correspondance fictif, une politique d’indemnisation qui n’existe pas, ou des conditions de remboursement inventées. Le voyageur, qui fait confiance à un canal officiel SNCF, prend des décisions sur la base d’informations fausses. Litige, insatisfaction, atteinte à la crédibilité du service public.</p></div></div>
-    </div>
-    <div class="accordion-item">
-      <div class="accordion-header" role="button" tabindex="0"><span>Opacité des décisions automatisées</span><span class="icon">+</span></div>
-      <div class="accordion-body"><div class="accordion-body-inner"><p>Un système IA recommande les priorités de maintenance du réseau, mais ne peut pas expliquer pourquoi une ligne régionale a été dépriorisée au profit d’une LGV. Sans traçabilité de la décision, impossible de démontrer l’absence de discrimination territoriale — un enjeu majeur pour une entreprise soumise à des obligations de service public et de desserte équilibrée du territoire.</p></div></div>
-    </div>
-    <div class="accordion-item">
-      <div class="accordion-header" role="button" tabindex="0"><span>Deepfakes et fraude ciblant les collaborateurs</span><span class="icon">+</span></div>
-      <div class="accordion-body"><div class="accordion-body-inner"><p>Un enregistrement vocal cloné imitant un chef d’escale transmet de fausses instructions opérationnelles à une équipe terrain : changement de voie de dernière minute, annulation fictive de train, consigne de sécurité modifiée. Dans un environnement ferroviaire, une fausse instruction opérationnelle peut avoir des conséquences sur la sécurité des voyageurs et des agents.</p></div></div>
-    </div>
+  <div class="animate-in"><p><strong>Les types de biais représentés dans le tableau :</strong></p></div>
+  <div class="flip-cards-grid animate-in">
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Biais dans la collecte des données</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>→ Quand les sources utilisées pour entraîner l’IA sont partielles, stéréotypées, ou non diversifiées (ex : photos, textes, langues dominantes).</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Biais dans l’annotation</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>→ Quand des annotateurs humains mal formés, non représentatifs ou influencés par leurs propres normes étiquettent mal certains contenus.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Biais dans le filtrage des données</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>→ Quand certains types de contenus (langues minoritaires, formats atypiques) sont supprimés, ignorés ou mal interprétés.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Biais liés au renforcement par retour humain (RLHF)</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>→ Quand les retours humains servant à affiner l’IA valident ou invalident des comportements de manière non neutre, reproduisant des normes culturelles dominantes.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Biais liés au contexte de déploiement</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>→ Quand un outil est déployé dans un environnement qu’il ne connaît pas bien (langue, culture, usages) et produit alors des erreurs ou des discriminations inattendues.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
   </div>
-</div>
-  <div class="divider"></div>
-  
-
 </div></div>
 <div class="step-container" id="step-3">
-
-  <div class="step-hero" >
+  <div class="step-hero">
     <div class="step-number">Étape 4 sur 8</div>
-    <h2>Les bonnes pratiques</h2>
-    <p class="hero-subtitle">Associez chaque mesure au bon risque.</p>
+    <h2>Impact des biais IA</h2>
+    <p class="hero-subtitle">Sur la fiabilité, l’équité et la conformité.</p>
   </div>
 <div class="content-section">
-  <div class="animate-in"><h3>Découvrez les mesures</h3><p>Retournez chaque carte pour comprendre comment les mettre en œuvre.</p>
-  <div class="flip-cards-grid animate-in">
-    <div class="flip-card" role="button" tabindex="0">
-      <div class="flip-card-inner">
-        <div class="flip-card-front" ><h4>Supervision humaine différenciée selon le niveau de risque</h4><div class="flip-hint">Cliquez pour retourner</div></div>
-        <div class="flip-card-back"><h4>Supervision humaine différenciée selon le niveau de risque</h4><p>Adapter le degré de contrôle humain au niveau d’impact : une note interne peut être relue rapidement, une communication destinée aux voyageurs doit être validée par un responsable, un document de sécurité ferroviaire exige une vérification experte complète. Plus l’impact potentiel est élevé, plus la supervision doit être rigoureuse.</p></div>
-      </div>
-    </div>
-    <div class="flip-card" role="button" tabindex="0">
-      <div class="flip-card-inner">
-        <div class="flip-card-front" ><h4>Appliquer systématiquement les 5 principes éthiques de l’École Numérique</h4><div class="flip-hint">Cliquez pour retourner</div></div>
-        <div class="flip-card-back"><h4>Appliquer systématiquement les 5 principes éthiques de l’École Numérique</h4><p>Avant chaque usage d’IA, vérifier les 5 principes : le contenu est-il signalé comme assisté par IA (transparence) ? La décision finale reste-t-elle humaine (autonomie) ? Les données sont-elles traitées dans l’outil adéquat (confidentialité) ? Les limites ont-elles été prises en compte (vigilance) ? L’IA est-elle vraiment nécessaire ici (sobriété) ?</p></div>
-      </div>
-    </div>
-    <div class="flip-card" role="button" tabindex="0">
-      <div class="flip-card-inner">
-        <div class="flip-card-front" ><h4>Utiliser Groupe SNCF GPT pour toute donnée interne</h4><div class="flip-hint">Cliquez pour retourner</div></div>
-        <div class="flip-card-back"><h4>Utiliser Groupe SNCF GPT pour toute donnée interne</h4><p>Groupe SNCF GPT est l’outil sécurisé du Groupe : les données restent dans l’environnement SNCF et ne servent pas à l’entraînement de modèles externes. ChatGPT, Gemini et autres outils externes sont tolérés uniquement pour des requêtes génériques sans aucune donnée interne, personnelle ou commerciale. Copilot (Microsoft SNCF) suit les règles de l’environnement Microsoft du Groupe.</p></div>
-      </div>
-    </div>
-    <div class="flip-card" role="button" tabindex="0">
-      <div class="flip-card-inner">
-        <div class="flip-card-front" ><h4>Former tous les collaborateurs aux limites de l’IA et aux réflexes de vérification</h4><div class="flip-hint">Cliquez pour retourner</div></div>
-        <div class="flip-card-back"><h4>Former tous les collaborateurs aux limites de l’IA et aux réflexes de vérification</h4><p>Chaque collaborateur doit savoir que l’IA peut halluciner (inventer des faits), amplifier des biais (discriminer sans variable explicite) et être détournée (deepfakes, injection de prompts). Le réflexe de vérification doit devenir automatique : recouper avec une source officielle, ne jamais diffuser un contenu IA non vérifié, signaler toute sortie suspecte.</p></div>
-      </div>
-    </div>
-  </div>
-</div>
+  <div class="animate-in"><p>Avant d’utiliser un outil d’IA générative dans un cadre professionnel ou public, il est essentiel de comprendre les risques liés aux biais. Ces biais, souvent invisibles au premier abord, peuvent avoir des conséquences concrètes sur la qualité, l’équité et la fiabilité des réponses produites.</p></div>
+  <div class="animate-in"><p>Les biais, souvent invisibles au premier abord, peuvent avoir des <strong>conséquences concrètes</strong> dans trois dimensions :</p>
+  <ol>
+    <li><strong>Fiabilité</strong> → Quand l’IA donne des résultats faux ou incomplets pour certains groupes d’utilisateurs.</li>
+    <li><strong>Éthique et social</strong> → Quand l’IA reproduit ou amplifie des discriminations existantes.</li>
+    <li><strong>Légal et réglementaire</strong> → Quand l’IA viole des principes de non-discrimination ou de conformité.</li>
+  </ol></div>
   <div class="divider"></div>
-  
-  <div class="divider"></div>
-  <div class="dnd-container animate-in">
-    <h4>Classez les éléments dans la bonne catégorie</h4>
-    <p style="font-size:.85rem;color:var(--text-muted)">Glissez ou cliquez sur chaque élément dans la zone Risques ou Mesures.</p>
-    <div class="dnd-sources">
-      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="437c2859ed90" data-zone="mesure">Appliquer systématiquement les 5 principes éthiques de l’École Numérique</div>
-      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="1e0a065592fa" data-zone="risque">Biais algorithmiques dans le recrutement et la mobilité interne</div>
-      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="9d44fbb147eb" data-zone="mesure">Utiliser Groupe SNCF GPT pour toute donnée interne</div>
-      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="912c1a8959f6" data-zone="mesure">Supervision humaine différenciée selon le niveau de risque</div>
-      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="bebabba22a24" data-zone="risque">Hallucinations dans les réponses aux voyageurs</div>
-      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="1b9faf325063" data-zone="risque">Opacité des décisions automatisées</div>
-    </div>
-    <div class="dnd-targets">
-      <div class="dnd-zone" data-zone="risque"><h4>&#9888; Risques</h4></div>
-      <div class="dnd-zone" data-zone="mesure"><h4>&#10003; Mesures</h4></div>
-    </div>
-    <button class="quiz-validate-btn dnd-check-btn">Vérifier</button>
-    <div class="dnd-feedback"></div>
-  </div>
-
-  <div class="divider"></div>
-<div class="matching-container animate-in">
+  <div class="matching-container animate-in">
     <h4>Complétez les phrases</h4>
-    <p style="font-size:.85rem;color:var(--text-muted)">Cliquez sur un début de phrase à gauche, puis sur la fin qui lui correspond à droite.</p>
+    <p style="font-size:.85rem;color:var(--text-muted)">Associez chaque type d’impact potentiel à un exemple de biais réel observé dans des IA génératives.</p>
     <div class="matching-grid">
       <div class="match-col match-left">
-        <div class="match-item" role="button" tabindex="0" data-match="0">Un biais dans l’outil de recrutement interne…</div>
-        <div class="match-item" role="button" tabindex="0" data-match="1">Une hallucination dans la réponse au voyageur…</div>
-        <div class="match-item" role="button" tabindex="0" data-match="2">Une décision automatisée que personne ne peut expliquer…</div>
-        <div class="match-item" role="button" tabindex="0" data-match="3">Un deepfake imitant un responsable…</div>
+        <div class="match-item" role="button" tabindex="0" data-match="0">Impact légal et réglementaire</div>
+        <div class="match-item" role="button" tabindex="0" data-match="1">Impact sur la fiabilité</div>
+        <div class="match-item" role="button" tabindex="0" data-match="2">Impact éthique et social</div>
       </div>
-        <div class="match-col match-right">
-        <div class="match-item" role="button" tabindex="0" data-match="2">…impose de former chaque collaborateur aux limites de l’IA.</div>
-        <div class="match-item" role="button" tabindex="0" data-match="1">…nécessite une supervision humaine adaptée au niveau de risque.</div>
-        <div class="match-item" role="button" tabindex="0" data-match="3">…rappelle l’importance des 5 principes éthiques de l’École Numérique.</div>
-        <div class="match-item" role="button" tabindex="0" data-match="0">…exige une traçabilité et une explicabilité complètes.</div>
+      <div class="match-col match-right">
+        <div class="match-item" role="button" tabindex="0" data-match="1">Un chatbot médical donne des conseils moins précis à des patients issus de minorités, faute de données représentatives dans l’entraînement.</div>
+        <div class="match-item" role="button" tabindex="0" data-match="0">Une IA exclut automatiquement des CV féminins pour des postes techniques, car elle a appris à partir de données majoritairement masculines.</div>
+        <div class="match-item" role="button" tabindex="0" data-match="2">Une IA traduit systématiquement le mot « nurse » par « infirmière » (au féminin), reflétant un stéréotype de genre.</div>
       </div>
     </div>
     <div class="dnd-feedback"></div>
   </div>
-
-  <div class="blanks-container animate-in">
-    <h4>Complétez la phrase (cliquez sur un espace vide, puis sur le mot correspondant)</h4>
-    <div class="blanks-sentence">Les LLM optimisent la <span class="blank-slot" role="button" tabindex="0" data-answer="plausibilité">?</span> linguistique, pas la <span class="blank-slot" role="button" tabindex="0" data-answer="vérité">?</span> factuelle.</div>
-    <div class="blank-options">
-      <span class="blank-option" role="button" tabindex="0" data-value="vitesse">vitesse</span>
-      <span class="blank-option" role="button" tabindex="0" data-value="plausibilité">plausibilité</span>
-      <span class="blank-option" role="button" tabindex="0" data-value="vérité">vérité</span>
-      <span class="blank-option" role="button" tabindex="0" data-value="complexité">complexité</span>
-    </div>
-  </div>
-
 </div></div>
 <div class="step-container" id="step-4">
-
-  <div class="step-hero" >
+  <div class="step-hero">
     <div class="step-number">Étape 5 sur 8</div>
-    <h2>Scénario professionnel</h2>
-    <p class="hero-subtitle">Mettez vos connaissances en pratique.</p>
+    <h2>Quelles méthodes pour repérer les biais ?</h2>
+    <p class="hero-subtitle">4 approches pratiques pour identifier rapidement les biais dans les réponses générées par une IA.</p>
   </div>
 <div class="content-section">
-  <div class="animate-in"><h3>Mise en situation</h3><p>Faites un choix. Vos décisions impactent votre score.</p></div>
-  <div class="scenario-container animate-in">
-    <div class="scenario-node" style="display:block">
-      <div class="scenario-card">
-        <div class="scenario-context">Vous êtes agent d’accueil en gare. Un voyageur dépose une réclamation : il a raté sa correspondance à Lyon Part-Dieu à cause d’un retard de 45 minutes sur son TER. Il demande un remboursement et une compensation. Vous utilisez Groupe SNCF GPT pour rédiger un projet de réponse. L’IA génère un texte professionnel qui cite une « Garantie Correspondance TER-TGV » prévoyant un remboursement intégral et une indemnisation forfaitaire de 75 €. Vous n’avez jamais entendu parler de cette garantie.</div>
-        <h4>Comment réagissez-vous ?</h4>
-        <div class="scenario-choices">
-          <div class="scenario-choice" role="button" tabindex="0" data-points="0" data-feedback="L’IA a halluciné : la « Garantie Correspondance TER-TGV » avec indemnisation forfaitaire de 75 € n’existe pas. En l’envoyant sur un canal officiel SNCF, vous engagez l’entreprise sur une obligation fictive. Le voyageur pourra exiger l’application de cette « garantie » et citer votre réponse en cas de litige. C’est exactement le risque des hallucinations en contexte de service public." data-next="">La réponse est bien rédigée et semble professionnelle, j’envoie telle quelle au voyageur</div>
-          <div class="scenario-choice" role="button" tabindex="0" data-points="2" data-feedback="Excellent réflexe. Vous appliquez le principe de vérification systématique : toute information générée par l’IA doit être recoupée avec une source officielle avant diffusion, surtout quand elle engage l’entreprise vis-à-vis d’un voyageur. L’IA vous a fait gagner du temps sur la rédaction ; à vous de garantir l’exactitude du fond." data-next="">Je vérifie la « Garantie Correspondance TER-TGV » dans la base documentaire officielle avant d’envoyer, et je corrige la réponse si la politique citée n’existe pas</div>
-          <div class="scenario-choice" role="button" tabindex="0" data-points="0" data-feedback="Le problème n’est pas le montant, c’est l’existence même de la « Garantie Correspondance TER-TGV ». Modifier un détail d’une hallucination ne la rend pas vraie. Vous engagez toujours l’entreprise sur une politique fictive. Le réflexe correct est de vérifier l’existence de la politique dans la base documentaire officielle, pas d’ajuster les détails d’une information potentiellement fausse." data-next="">Je modifie le montant de 75 € par un montant plus réaliste et j’envoie la réponse</div>
-        </div>
-        <div class="scenario-result" style="display:none"></div>
-      </div>
-    </div>
+  <div class="flip-cards-grid animate-in">
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Prompts Miroir</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>Pour chaque question, changez un seul paramètre, par exemple le genre, l’âge ou l’origine, et comparez les réponses. Si le ton, les exigences ou les recommandations varient sans raison valable, un biais est probablement en jeu.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Scénarios Extrêmes</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>Soumettez des cas limites : profils à faibles revenus, situations de handicap ou régions peu couvertes. Lorsque l’IA reste précise, respectueuse et utile pour ces situations atypiques, vous gagnez en confiance. Dans le cas contraire, un biais d’exclusion se révèle.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Suivi en Production</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>Conservez de façon anonymisée un échantillon de questions et réponses réelles, puis réévaluez-le régulièrement avec votre grille multicritère. Vous détecterez ainsi les nouveaux biais qui peuvent apparaître lorsque l’outil est confronté à des usages réels et évolutifs.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
+    <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Grille Multicritère</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>Évaluez chaque réponse selon trois critères faciles à retenir : exactitude, neutralité, inclusivité. Une simple note de 1 à 5 suffit pour repérer les points faibles récurrents. Faites répéter ces tests par plusieurs personnes aux profils variés.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
   </div>
-
-  <div class="divider"></div>
-  <div class="debate-container animate-in">
-    <div class="debate-question">Faut-il interdire les outils d'IA de recrutement pour éviter les biais ?</div>
-    <div class="debate-sides">
-      <div class="debate-side" role="button" tabindex="0"><h4>Oui, interdire</h4><p>Les biais sont inévitables dans les données historiques. Seul un humain peut évaluer équitablement.</p></div>
-      <div class="debate-side" role="button" tabindex="0"><h4>Non, encadrer</h4><p>L'IA peut réduire certains biais humains (première impression, affinités). Il faut l'auditer, pas l'interdire.</p></div>
-    </div>
-    <div class="debate-reveal"><h4>Synthèse</h4><p>Les deux positions ont du mérite. Le consensus actuel (AI Act) est d'<strong>encadrer strictement</strong> les systèmes à haut risque avec audits, transparence et supervision humaine, plutôt que d'interdire.</p></div>
-  </div>
-
-</div></div>
-<div class="step-container" id="step-5">
-
-  <div class="step-hero" >
-    <div class="step-number">Étape 6 sur 8</div>
-    <h2>Quiz chronométré</h2>
-    <p class="hero-subtitle">30 secondes par question.</p>
-  </div>
-<div class="content-section">
-  <div class="quiz-container">
-    <div class="quiz-score-bar animate-in"><span class="score-label">Score</span><div class="score-track"><div class="score-fill" style="width:0%"></div></div><span class="score-value" id="quizScoreVal">0%</span></div>
-    <div class="quiz-question animate-in">
-      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
-      <div class="question-number">Question 1 / 5</div>
-      <h4>Un collègue publie un rapport sans mentionner qu’il a été généré par IA. Quel principe de l’École Numérique est violé ?</h4>
-      <div class="quiz-options">
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Protection des données et respect de la confidentialité</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Transparence et authenticité du contenu</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Autonomie dans la prise de décision assistée par IA</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Limiter l’utilisation aux situations de nécessité</span></div>
-      </div>
-      <button class="quiz-validate-btn" disabled>Valider</button>
-      <div class="quiz-feedback" data-correct-text="Exact. Le principe de transparence et d’authenticité impose de toujours signaler qu’un contenu a été généré ou assisté par IA. C’est une obligation éthique interne ET une obligation légale (AI Act, article 50)." data-incorrect-text="C’est le principe de transparence et d’authenticité. Tout contenu généré par IA doit être identifié comme tel, tant pour l’éthique interne que pour la conformité AI Act."></div>
-    </div>
-    <div class="quiz-question animate-in">
-      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
-      <div class="question-number">Question 2 / 5</div>
-      <h4>Le biais par proxy signifie que l’IA peut discriminer :</h4>
-      <div class="quiz-options">
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Uniquement si on lui fournit explicitement des variables sensibles (genre, âge, origine)</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>En inférant des caractéristiques sensibles à partir de variables corrélées (date de diplôme, code postal, prénom)</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Seulement si le modèle a été délibérément configuré pour le faire</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Uniquement sur des données d’entraînement antérieures à 2020</span></div>
-      </div>
-      <button class="quiz-validate-btn" disabled>Valider</button>
-      <div class="quiz-feedback" data-correct-text="Exact. Le biais par proxy est particulièrement dangereux car il est invisible : la date d’obtention du diplôme révèle l’âge, le code postal peut indiquer l’origine ethnique ou sociale, le prénom le genre. Retirer les variables sensibles ne suffit pas à éliminer la discrimination." data-incorrect-text="Le biais par proxy agit via des variables corrélées : la date de diplôme révèle l’âge, le code postal l’origine, le prénom le genre. Même en retirant les variables sensibles explicites, l’algorithme peut reconstruire l’information et discriminer de manière invisible."></div>
-    </div>
-    <div class="quiz-question animate-in">
-      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
-      <div class="question-number">Question 3 / 5</div>
-      <h4>Dans un contexte de transport ferroviaire, quel est le risque principal des hallucinations IA dans les réponses aux voyageurs ?</h4>
-      <div class="quiz-options">
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Les réponses sont trop longues et peu lisibles</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>L’IA peut inventer des politiques d’indemnisation, des horaires ou des procédures qui n’existent pas, engageant l’entreprise sur des obligations fictives</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Les réponses manquent de personnalité et semblent trop génériques</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>L’IA ne peut pas gérer les réclamations en langues étrangères</span></div>
-      </div>
-      <button class="quiz-validate-btn" disabled>Valider</button>
-      <div class="quiz-feedback" data-correct-text="Exact. L’hallucination est un risque critique en contexte de service public : une politique d’indemnisation inventée, un horaire fictif ou une procédure de sécurité erronée, diffusés sur un canal officiel SNCF, engagent l’entreprise et peuvent avoir des conséquences opérationnelles, juridiques et sécuritaires." data-incorrect-text="Le risque principal n’est pas la forme mais le fond : l’IA peut générer avec assurance des informations complètement fausses — horaires fictifs, politiques d’indemnisation inexistantes, procédures de sécurité erronées. Diffusées sur un canal officiel, ces hallucinations engagent la responsabilité de l’entreprise."></div>
-    </div>
-    <div class="quiz-question animate-in">
-      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
-      <div class="question-number">Question 4 / 5</div>
-      <h4>Un collègue utilise un deepfake audio pour valider une commande en imitant la voix de son responsable. Quel risque éthique est en jeu ?</h4>
-      <div class="quiz-options">
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Biais algorithmique</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">B</span><span>Hallucination</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">C</span><span>Deepfake et fraude</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Opacité décisionnelle</span></div>
-      </div>
-      <button class="quiz-validate-btn" disabled>Valider</button>
-      <div class="quiz-feedback" data-correct-text="Exact ! Les deepfakes permettent d'usurper l'identité d'une personne, créant un risque de fraude opérationnelle." data-incorrect-text="C'est un risque lié aux deepfakes : l'IA peut cloner une voix ou un visage pour tromper des systèmes ou des personnes."></div>
-    </div>
-    <div class="quiz-question animate-in">
-      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
-      <div class="question-number">Question 5 / 5</div>
-      <h4>Quel outil interne faut-il privilégier pour traiter des données SNCF avec de l'IA ?</h4>
-      <div class="quiz-options">
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>ChatGPT</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Groupe SNCF GPT</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Gemini</span></div>
-        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Claude</span></div>
-      </div>
-      <button class="quiz-validate-btn" disabled>Valider</button>
-      <div class="quiz-feedback" data-correct-text="Exact ! Groupe SNCF GPT est l'outil sécurisé du Groupe : les données restent dans l'environnement SNCF." data-incorrect-text="Les outils externes (ChatGPT, Gemini, Claude) peuvent réutiliser vos données pour l'entraînement. Groupe SNCF GPT est l'outil interne sécurisé."></div>
-    </div>
-    <div class="quiz-retry-msg" style="display:none"><p>Score insuffisant.</p><button class="quiz-retry-btn quiz-validate-btn">Revoir les risques</button></div>
-  </div>
-
-</div></div>
-<div class="step-container" id="step-6">
-
-  <div class="step-hero" >
-    <div class="step-number">Étape 7 sur 8</div>
-    <h2>Votre synthèse personnalisée</h2>
-    <p class="hero-subtitle">Basée sur vos réponses.</p>
-  </div>
-<div class="content-section">
-  <div class="animate-in"><div class="progress-circle-wrap"><div class="progress-circle">
-    <svg width="180" height="180" viewBox="0 0 180 180">
-      <circle class="bg" cx="90" cy="90" r="78"/>
-      <circle class="fg-stroke" cx="90" cy="90" r="78" stroke-dasharray="490.09" stroke-dashoffset="490.09"/>
-    </svg>
-    <div class="circle-text">—</div>
-  </div></div></div>
-  <div class="animate-in"><div class="two-columns">
-    <div class="column-card"><h4 style="color:var(--danger)">Risques clés</h4><ul><li>Biais algorithmiques dans le recrutement et la mobilité interne</li><li>Hallucinations dans les réponses aux voyageurs</li><li>Opacité des décisions automatisées</li><li>Deepfakes et fraude ciblant les collaborateurs</li></ul></div>
-    <div class="column-card"><h4 style="color:var(--success)">Mesures essentielles</h4><ul><li>Supervision humaine différenciée selon le niveau de risque</li><li>Appliquer systématiquement les 5 principes éthiques de l’École Numérique</li><li>Utiliser Groupe SNCF GPT pour toute donnée interne</li><li>Former tous les collaborateurs aux limites de l’IA et aux réflexes de vérification</li></ul></div>
-  </div></div>
-  <div class="animate-in"><h3>Questions à se poser dans un projet IA</h3><div class="highlight-box"><ul class="numbered-list"><li><span>Le modèle IA a-t-il été testé pour les biais (tests adverses (tests adverses (faire tester l’IA par des équipes qui cherchent volontairement à la mettre en défaut)), audit avec indicateurs d’équité (fairness metrics)) ?</span></li><li><span>Qui valide les résultats avant diffusion ? Le niveau de supervision est-il adapté au niveau de risque ?</span></li><li><span>Les utilisateurs savent-ils qu’ils interagissent avec une IA (transparence AI Act art. 50) ?</span></li><li><span>Les 5 principes éthiques de l’École Numérique sont-ils documentés et appliqués dans le projet ?</span></li><li><span>Un processus de signalement des biais ou erreurs est-il en place pour les utilisateurs ?</span></li></ul></div></div>
-    <div class="checklist-container animate-in">
-    <h4>Vos engagements</h4><p style="font-size:.85rem;color:var(--text-muted)">Cochez les bonnes pratiques que vous vous engagez à appliquer.</p>
-    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je vérifierai systématiquement les contenus générés par IA avant diffusion</span></div>
-    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>J'indiquerai la mention 'assisté par IA' sur les documents concernés</span></div>
-    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je signalerai tout résultat biaisé ou inapproprié que je détecte</span></div>
-    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je ne ferai jamais confiance aveugle à une recommandation IA sans la questionner</span></div>
-    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>J'appliquerai les 5 principes éthiques de l'École Numérique</span></div>
-    <div class="checklist-progress">0/5 engagements pris</div>
-  </div>
-
-  <div class="animate-in"><h3>Points à revoir</h3><ul class="weak-areas-list"></ul></div>
-</div></div>
-<div class="step-container" id="step-7">
-
-  <div class="step-hero" >
-    <div class="step-number">Étape 8 sur 8</div>
-    <h2>Félicitations !</h2>
-    <p class="hero-subtitle">Module IA Responsable terminé.</p>
-  </div>
-<div class="step-celebration"><div class="celebration-grid" id="celebGrid"></div><div class="celebration-content"><div class="badge-icon">&#9878;</div><h2>Félicitations !</h2><p>Vous avez terminé le module <strong>IA Responsable</strong></p><p class="celebration-sub">Appliquez ces bonnes pratiques au quotidien.</p><div class="badge-message"></div></div></div></div>
-<div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div>
-  <div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#9650;</button>
-  <div class="breadcrumb" id="breadcrumb"><span class="breadcrumb-item"><span class="breadcrumb-link active" data-step="0"><span class="step-num">1</span>Accroche</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="1"><span class="step-num">2</span>Découverte</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="2"><span class="step-num">3</span>Risques</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="3"><span class="step-num">4</span>Mesures</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="4"><span class="step-num">5</span>Scénario</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="5"><span class="step-num">6</span>Quiz</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="6"><span class="step-num">7</span>Synthèse</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="7"><span class="step-num">8</span>Conclusion</span></span></div>
-  <button class="nav-btn primary" id="nextBtn">&#9660;</button></div>
-</div></main></div>
-</div>
-
-</div>
-
-<div class="scroll-hint" id="scrollHint"><span>Scrollez</span><div class="scroll-arrow"></div></div>
-<script src="js/scorm.js"></script><script src="js/app.js"></script>
-</body></html>
+  <div class="animate-in"><div class="highlight-box"><strong>Repérer les biais ne demande pas une expertise technique, mais un regard critique, structuré par quelques bonnes pratiques comme celles présentées ici.</strong></div></div>
+</div></div><div class="step-container" id="step-5"><div class="step-hero"><div class="step-number">Etape 6 sur 8</div><h2>Quiz</h2><p class="hero-subtitle">Testez vos connaissances.</p></div><div class="content-section"><div class="quiz-container"><div class="quiz-score-bar animate-in"><span class="score-label">Score</span><div class="score-track"><div class="score-fill" style="width:0%"></div></div><span class="score-value" id="quizScoreVal">0%</span></div><div class="quiz-question animate-in"><div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div><div class="question-number">Question 1 / 2</div><h4>Les biais dans l'IA générative peuvent avoir des conséquences sur : (plusieurs réponses sont possibles)</h4><div class="quiz-options"><div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">A</span><span>L'équité et la représentativité</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Le respect des lois</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">C</span><span>La sécurité dans les domaines sensibles</span></div></div><button class="quiz-validate-btn" disabled>Valider</button><div class="quiz-feedback" data-correct-text="Exact ! Les trois réponses sont correctes." data-incorrect-text="Les trois réponses sont correctes."></div></div><div class="quiz-question animate-in"><div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div><div class="question-number">Question 2 / 2</div><h4>Parmi les affirmations suivantes concernant l'origine des biais, laquelle est correcte ?</h4><div class="quiz-options"><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Les biais proviennent uniquement des bases de données utilisées pour l'entraînement.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">B</span><span>Les biais apparaissent seulement au moment où l'IA génère sa réponse finale.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">C</span><span>Les biais peuvent s'introduire involontairement à chaque étape du cycle de développement.</span></div></div><button class="quiz-validate-btn" disabled>Valider</button><div class="quiz-feedback" data-correct-text="Exact ! Collecte, annotation, conception, entraînement, déploiement." data-incorrect-text="Réponse C. Les biais peuvent s'introduire à chaque étape."></div></div><div class="quiz-retry-msg" style="display:none"><p>Score insuffisant.</p><button class="quiz-retry-btn quiz-validate-btn">Revoir</button></div></div></div></div><div class="step-container" id="step-6"><div class="step-hero"><div class="step-number">Etape 7 sur 8</div><h2>Synthèse</h2><p class="hero-subtitle">Ce que vous avez appris.</p></div><div class="content-section"><div class="animate-in"><div class="progress-circle-wrap"><div class="progress-circle"><svg width="180" height="180" viewBox="0 0 180 180"><circle class="bg" cx="90" cy="90" r="78"/><circle class="fg-stroke" cx="90" cy="90" r="78" stroke-dasharray="490.09" stroke-dashoffset="490.09"/></svg><div class="circle-text">—</div></div></div></div><div class="animate-in"><div class="highlight-box"><strong>Félicitations &#127881; ! Vous avez exploré les origines des biais dans l'IA générative et les méthodes accessibles pour les repérer dans la pratique.</strong></div></div><div class="animate-in"><h3>Vous avez appris à :</h3><ol class="numbered-list"><li><span><strong>Identifier les principales sources de biais</strong>, en comprenant à quelles étapes du cycle de vie d'un modèle (collecte, annotation, conception, entraînement, déploiement) les déséquilibres peuvent apparaître.</span></li><li><span><strong>Faire la différence entre les types de biais</strong> : biais dans les données, biais d'annotation, biais algorithmiques, biais liés au renforcement humain ou encore biais contextuels.</span></li><li><span><strong>Utiliser des tests simples pour détecter les biais</strong>, comme les prompts miroir, les scénarios extrêmes ou les contre-factuels.</span></li></ol></div><div class="animate-in"><p>Ces leviers vous permettent d'obtenir des contenus <strong>plus fiables, plus inclusifs, et mieux adaptés</strong> à vos usages professionnels, tout en réduisant les risques éthiques et réglementaires.</p></div><div class="checklist-container animate-in"><h4>Vos engagements</h4><div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je testerai les prompts miroir avant de déployer un outil IA</span></div><div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je vérifierai la diversité des données d'entraînement</span></div><div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>J'utiliserai la grille multicritère (exactitude, neutralité, inclusivité)</span></div><div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je signalerai tout résultat biaisé que je détecte</span></div><div class="checklist-progress">0/4 engagements pris</div></div></div></div><div class="step-container" id="step-7"><div class="step-hero"><div class="step-number">Etape 8 sur 8</div><h2>Félicitations !</h2><p class="hero-subtitle">Module terminé.</p></div><div class="step-celebration"><div class="celebration-grid" id="celebGrid"></div><div class="celebration-content"><div class="badge-icon">&#9878;</div><h2>Félicitations !</h2><p>Vous avez terminé le module <strong>Détecter et corriger les biais</strong></p><p class="celebration-sub">Appliquez ces bonnes pratiques au quotidien.</p><div class="badge-message"></div></div></div></div><div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div><div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#9650;</button><div class="breadcrumb" id="breadcrumb"><span class="breadcrumb-item"><span class="breadcrumb-link active" data-step="0"><span class="step-num">1</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="1"><span class="step-num">2</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="2"><span class="step-num">3</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="3"><span class="step-num">4</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="4"><span class="step-num">5</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="5"><span class="step-num">6</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="6"><span class="step-num">7</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="7"><span class="step-num">8</span></span></span></div><button class="nav-btn primary" id="nextBtn">&#9660;</button></div></div></main></div><script src="js/scorm.js"></script><script src="js/app.js"></script></body></html>
