@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function updateUI() {
     var pct = Math.round(Object.keys(visited).length/totalSteps*100);
-    document.querySelectorAll(".progress-bar-fill").forEach(function(b){b.style.width=pct+"%";});
+    document.querySelectorAll(".progress-bar-fill").forEach(function(b){b.style.height=pct+"%";});
     // Progress text
     document.querySelectorAll(".progress-text").forEach(function(t){t.textContent=pct+"% termin\u00e9";});
     // Breadcrumb
