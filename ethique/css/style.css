@@ -31,7 +31,7 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .nav-progress .progress-bar-bg{width:3px;height:100%;background:transparent;overflow:hidden}
 .nav-progress .progress-bar-fill,.progress-bar-fill{width:100%;background:linear-gradient(180deg,#7B2FFF,#0071e3,#5ac8fa);background-size:100% 200%;animation:shimmer 3s ease infinite;transition:height .6s ease}
 .nav-row{display:flex;flex-direction:column;align-items:center;gap:12px;padding:16px 0;flex:1;justify-content:center;width:100%}
-.nav-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;padding:0;border:.5px solid var(--border);background:#fff;color:var(--text-primary);border-radius:50%;font-size:.75rem;font-weight:600;cursor:pointer;transition:all var(--tr);flex-shrink:0}
+.nav-btn{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;padding:0;border:.5px solid var(--border);background:#fff;color:var(--text-primary);border-radius:50%;font-size:.7rem;font-weight:600;cursor:pointer;transition:all var(--tr);flex-shrink:0;overflow:hidden;text-overflow:clip;white-space:nowrap}
 .nav-btn:hover{border-color:var(--brand);color:var(--brand)}
 .nav-btn:disabled{opacity:.3;cursor:not-allowed}
 .breadcrumb{display:flex;flex-direction:column;align-items:center;gap:6px;overflow:visible;flex-shrink:0}
