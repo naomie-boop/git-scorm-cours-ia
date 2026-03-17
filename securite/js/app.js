@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // === COVER ===
   var cover = document.getElementById("coverPage");
   var coverBtn = document.getElementById("coverStartBtn");
-  var coverGrid = document.getElementById("coverGrid");
+  var coverGrid = null;
   var coverMoveHandler = null;
 
   if (coverBtn) coverBtn.onclick = function() {
@@ -475,11 +475,9 @@ document.addEventListener("DOMContentLoaded", function() {
     var nextLabel=navLabels[idx+1]||"suivante";
     var teasers=["Pr\u00eat \u00e0 explorer cet enjeu ?","Passons aux risques concrets.","D\u00e9couvrez comment y r\u00e9pondre.","Vivez une situation r\u00e9aliste.","Testez vos connaissances.","Voyons votre score.","Terminez en beaut\u00e9."];
     var previews=["M\u00e9canismes IA, usages concrets et principes cl\u00e9s.","Les risques identifi\u00e9s avec des exemples r\u00e9els.","Des mesures concr\u00e8tes avec des activit\u00e9s interactives.","Un sc\u00e9nario professionnel.","Un quiz pour valider vos acquis.","Votre synth\u00e8se personnalis\u00e9e.","Votre badge de compl\u00e9tion."];
-    /* CTA removed */
-    cta.innerHTML="<div class='next-teaser'>\u2705 Section termin\u00e9e</div><div class='next-title'>"+(teasers[idx]||"")+"</div><div class='next-preview'>"+(previews[idx]||"")+"</div><button class='step-next-btn' data-goto='"+(idx+1)+"'>Continuer vers "+nextLabel+" <span class='arrow'>\u2192</span></button>";
+    
     
   });
-  document.querySelectorAll(".step-next-btn").forEach(function(btn){btn.onclick=function(){var t=parseInt(btn.dataset.goto);if(!isNaN(t))go(t);};});
 
   // === STEP 0 : unlock only after VF ===
   // (handled by checkVFComplete - step 0 starts locked, VF completion unlocks it)
