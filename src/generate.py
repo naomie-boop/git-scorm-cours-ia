@@ -3,9 +3,9 @@ from gen_part1 import ENJEUX
 from gen_part2 import ENJEUX2
 ALL = ENJEUX + ENJEUX2
 BASE = os.path.dirname(os.path.abspath(__file__))
-CSS = open(os.path.join(BASE, "css", "style.css")).read()
-SCORM_JS = open(os.path.join(BASE, "js", "scorm.js")).read()
-APP_JS = open(os.path.join(BASE, "js", "app.js")).read()
+CSS = open(os.path.join(BASE, "style.css")).read()
+SCORM_JS = open(os.path.join(BASE, "scorm.js")).read()
+APP_JS = open(os.path.join(BASE, "app.js")).read()
 
 def uid(s):
     return hashlib.md5(s.encode()).hexdigest()[:12]
@@ -104,6 +104,89 @@ def dnd(risques, mesures):
     h += '    </div>\n    <button class="quiz-validate-btn dnd-check-btn">V\u00e9rifier</button>\n'
     h += '    <div class="dnd-feedback"></div>\n  </div>\n'
     return h
+
+def scenario_branching_html(data):
+    h = '  <div class="branching-scenario">\n'
+    # Intro section
+    h += '    <div class="bs-section bs-intro" data-bs="intro">\n'
+    h += '      <div class="bs-title-main">' + data["title"] + '</div>\n'
+    h += '      <p class="bs-pitch">' + data["pitch"] + '</p>\n'
+    h += '      <div class="bs-characters-grid">\n'
+    for c in data["characters"]:
+        h += '        <div class="bs-char-card"><div class="bs-avatar" style="background:' + c["color"] + '">' + c["initials"] + '</div>'
+        h += '<div class="bs-char-info"><strong>' + c["name"] + '</strong><span class="bs-char-role">' + c["role"] + '</span>'
+        h += '<span class="bs-char-desc">' + c["desc"] + '</span></div></div>\n'
+    h += '      </div>\n'
+    h += '      <div class="bs-score-bar"><span class="bs-score-label">Score</span><div class="bs-score-track"><div class="bs-score-fill" id="bsScoreFill"></div></div><span class="bs-score-val" id="bsScoreVal">0/8</span></div>\n'
+    h += '      <button class="bs-btn bs-start-btn">Commencer la journ\u00e9e &#8594;</button>\n'
+    h += '    </div>\n'
+
+    # Character lookup for dialogue
+    char_map = {c["id"]: c for c in data["characters"]}
+
+    # Acts
+    for act in data["acts"]:
+        aid = act["id"]
+        h += '    <div class="bs-section bs-act" data-bs="act-' + str(aid) + '" style="display:none">\n'
+        h += '      <div class="bs-act-header"><span class="bs-time">' + act["time"] + '</span><span class="bs-theme">' + act["theme"] + '</span></div>\n'
+        h += '      <h3 class="bs-act-title">Acte ' + str(aid) + ' \u2014 \u00ab\xa0' + act["title"] + '\xa0\u00bb</h3>\n'
+        # Conditional intros
+        for ci in act.get("conditional_intros", []):
+            cond_safe = ci["cond"]
+            h += '      <div class="bs-conditional" data-cond="' + cond_safe + '">' + ci["text"] + '</div>\n'
+        # Context
+        h += '      <div class="bs-context">' + act["context"] + '</div>\n'
+        # Extra context
+        if "extra_context" in act:
+            h += '      <div class="bs-extra-context">' + act["extra_context"] + '</div>\n'
+        # Dialogue
+        sp = char_map.get(act["speaker"], {})
+        h += '      <div class="bs-dialogue"><div class="bs-avatar" style="background:' + sp.get("color","#0071e3") + '">' + sp.get("initials","?") + '</div>'
+        h += '<div class="bs-bubble"><span class="bs-speaker">' + sp.get("name","") + '</span> <span class="bs-speaker-role">' + sp.get("role","") + '</span>'
+        h += '<p>\u00ab\xa0' + act["dialogue"] + '\xa0\u00bb</p></div></div>\n'
+        # Choices
+        h += '      <div class="bs-choices-list">\n'
+        labels = ["A", "B", "C"]
+        for i, ch in enumerate(act["choices"]):
+            fb_safe = ch["feedback"].replace('"', '&quot;')
+            h += '        <div class="bs-choice" data-act="' + str(aid) + '" data-idx="' + str(i) + '" data-points="' + str(ch["points"]) + '" data-feedback="' + fb_safe + '">' + labels[i] + ') ' + ch["label"] + '</div>\n'
+        h += '      </div>\n'
+        # Feedback box
+        h += '      <div class="bs-feedback-box" style="display:none"><div class="bs-fb"></div></div>\n'
+        # Score indicator
+        h += '      <div class="bs-score-indicator" style="display:none"><span class="bs-points-earned"></span></div>\n'
+        # Continue button
+        if aid < 4:
+            next_section = "act-" + str(aid+1)
+            btn_label = "Acte suivant &#8594;"
+        else:
+            next_section = "epilogue"
+            btn_label = "D\u00e9couvrir l\u2019\u00e9pilogue &#8594;"
+        h += '      <button class="bs-btn bs-continue-btn" data-next="' + next_section + '" style="display:none">' + btn_label + '</button>\n'
+        h += '    </div>\n'
+
+    # Epilogue
+    h += '    <div class="bs-section bs-epilogue" data-bs="epilogue" style="display:none">\n'
+    h += '      <div class="bs-score-final"><div class="bs-score-circle"><span class="bs-score-num">0</span>/8</div></div>\n'
+    for ep in data["epilogues"]:
+        h += '      <div class="bs-epilogue-content" data-min="' + str(ep["min_score"]) + '" data-max="' + str(ep["max_score"]) + '" style="display:none">\n'
+        h += '        <h3>' + ep["title"] + '</h3><p>' + ep["text"] + '</p>\n'
+        h += '      </div>\n'
+    h += '      <button class="bs-btn bs-continue-btn" data-next="recap" style="display:none">Voir le r\u00e9capitulatif &#8594;</button>\n'
+    h += '    </div>\n'
+
+    # Recap
+    h += '    <div class="bs-section bs-recap" data-bs="recap" style="display:none">\n'
+    h += '      <h3>R\u00e9capitulatif p\u00e9dagogique</h3>\n'
+    h += '      <table class="bs-recap-table"><thead><tr><th>Acte</th><th>Risque</th><th>Principe \u00e9thique</th><th>R\u00e9flexe cl\u00e9</th><th>Score</th></tr></thead><tbody>\n'
+    for r in data["recap"]:
+        h += '        <tr><td>' + str(r["act"]) + '</td><td>' + r["risk"] + '</td><td>' + r["principle"] + '</td><td>' + r["reflex"] + '</td><td class="bs-act-result" data-recap-act="' + str(r["act"]) + '">-</td></tr>\n'
+    h += '      </tbody></table>\n'
+    h += '    </div>\n'
+
+    h += '  </div>\n'
+    return h
+
 
 def scenario_html(nodes):
     h = '  <div class="scenario-container animate-in">\n'
@@ -340,9 +423,19 @@ def build(e):
 
     # S5 SCENARIO
     parts.append("""<div class="step-container" id="step-4">""")
-    parts.append(hero(5,T,"Scénario professionnel","Mettez vos connaissances en pratique.",c1,c2))
-    parts.append("""<div class="content-section">
-  <div class="animate-in"><h3>Mise en situation</h3><p>Faites un choix. Vos décisions impactent votre score.</p></div>
+    branching = e.get("scenario_branching")
+    if branching:
+        parts.append(hero(5,T,"Sc\u00e9nario immersif","Une journ\u00e9e de crise \u00e0 Lyon Part-Dieu. Vos choix changent la suite de l\u2019histoire.",c1,c2))
+        parts.append("""<div class="content-section">
+  <div class="animate-in"><h3>Sc\u00e9nario \u00e0 embranchements</h3><p>4 actes, 4 personnages r\u00e9currents. Chaque d\u00e9cision influence la suite. Score maximum\xa0: 8 points.</p></div>
+""" + scenario_branching_html(branching) + """
+  <div class="divider"></div>
+""" + debate_html(e.get("debate")) + """
+</div></div>""")
+    else:
+        parts.append(hero(5,T,"Sc\u00e9nario professionnel","Mettez vos connaissances en pratique.",c1,c2))
+        parts.append("""<div class="content-section">
+  <div class="animate-in"><h3>Mise en situation</h3><p>Faites un choix. Vos d\u00e9cisions impactent votre score.</p></div>
 """ + scenario_html(e["scenario"]) + """
   <div class="divider"></div>
 """ + debate_html(e.get("debate")) + """
@@ -434,6 +527,18 @@ for e in ALL:
                 fp = os.path.join(root, fn)
                 z.write(fp, os.path.relpath(fp, folder))
     print("OK: scorm-" + e["id"] + ".zip")
+    # Also copy ethique to root ethique/ directory
+    if e["id"] == "ethique":
+        ethique_root = os.path.join(BASE, "..", "ethique")
+        if os.path.exists(ethique_root):
+            for sub in ["css", "js"]:
+                os.makedirs(os.path.join(ethique_root, sub), exist_ok=True)
+            with open(os.path.join(ethique_root, "index.html"), "w", encoding="utf-8") as f2: f2.write(build(e))
+            with open(os.path.join(ethique_root, "css", "style.css"), "w", encoding="utf-8") as f2: f2.write(CSS)
+            with open(os.path.join(ethique_root, "js", "scorm.js"), "w", encoding="utf-8") as f2: f2.write(SCORM_JS)
+            with open(os.path.join(ethique_root, "js", "app.js"), "w", encoding="utf-8") as f2: f2.write(APP_JS)
+            with open(os.path.join(ethique_root, "imsmanifest.xml"), "w", encoding="utf-8") as f2: f2.write(manifest(e["id"], "Enjeu : " + e["title"]))
+            print("OK: ethique/ updated")
 
 # BUILD VISION 360
 from gen_vision360 import VISION360

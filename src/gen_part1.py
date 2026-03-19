@@ -26,6 +26,85 @@ ENJEUX = [
     "fill_blank": {'sentence': 'Les LLM optimisent la _____ linguistique, pas la _____ factuelle.', 'blanks': [('plausibilité', 'plausibilité'), ('vérité', 'vérité')], 'options': ['plausibilité', 'vérité', 'vitesse', 'complexité']},
     "debate": {'question': "Faut-il interdire les outils d'IA de recrutement pour éviter les biais ?", 'side_a': ('Oui, interdire', 'Les biais sont inévitables dans les données historiques. Seul un humain peut évaluer équitablement.'), 'side_b': ('Non, encadrer', "L'IA peut réduire certains biais humains (première impression, affinités). Il faut l'auditer, pas l'interdire."), 'synthesis': "Les deux positions ont du mérite. Le consensus actuel (AI Act) est d'<strong>encadrer strictement</strong> les systèmes à haut risque avec audits, transparence et supervision humaine, plutôt que d'interdire."},
     "checklist": ['Je vérifierai systématiquement les contenus générés par IA avant diffusion', "J'indiquerai la mention 'assisté par IA' sur les documents concernés", 'Je signalerai tout résultat biaisé ou inapproprié que je détecte', 'Je ne ferai jamais confiance aveugle à une recommandation IA sans la questionner', "J'appliquerai les 5 principes éthiques de l'École Numérique"],
+    "scenario_branching": {
+      "title": "Une journ\u00e9e de crise \u00e0 Lyon Part-Dieu",
+      "pitch": "Vous \u00eates R\u00e9f\u00e9rent\u00b7e IA fra\u00eechement nomm\u00e9\u00b7e \u00e0 la Direction R\u00e9gionale Auvergne-Rh\u00f4ne-Alpes. C\u2019est votre premi\u00e8re semaine. Un lundi matin, tout bascule\xa0: 4 situations \u00e9thiques s\u2019encha\u00eenent en une seule journ\u00e9e, impliquant les m\u00eames personnages. Vos d\u00e9cisions du matin influencent ce qui se passe l\u2019apr\u00e8s-midi.",
+      "characters": [
+        {"id": "sophie", "name": "Sophie Renault", "role": "Directrice R\u00e9gionale", "initials": "SR", "color": "#5856d6", "desc": "Enthousiaste IA, sous pression politique, parfois trop rapide. Veut des r\u00e9sultats visibles pour sa hi\u00e9rarchie."},
+        {"id": "karim", "name": "Karim Belkacem", "role": "Chef d\u2019escale, 20 ans d\u2019exp\u00e9rience", "initials": "KB", "color": "#34c759", "desc": "Sceptique envers l\u2019IA, pragmatique, protecteur de ses \u00e9quipes. A peur que l\u2019IA remplace son expertise terrain."},
+        {"id": "lea", "name": "L\u00e9a Nguyen", "role": "Data analyst junior", "initials": "LN", "color": "#ff9f0a", "desc": "Brillante, passionn\u00e9e, mais coupe parfois les coins ronds. Veut prouver sa valeur, premier gros projet."},
+        {"id": "marc", "name": "Marc Dubois", "role": "Responsable RH", "initials": "MD", "color": "#0071e3", "desc": "Sous pression pour moderniser le recrutement, bien intentionn\u00e9. Doit recruter 40 conducteurs avant l\u2019\u00e9t\u00e9."},
+      ],
+      "acts": [
+        {
+          "id": 1, "time": "8h30", "title": "Le chatbot qui promet", "theme": "HALLUCINATION",
+          "context": "Sophie vous interpelle en urgence dans le couloir. Le chatbot IA d\u00e9ploy\u00e9 aux bornes d\u2019accueil de Lyon Part-Dieu a r\u00e9pondu \u00e0 un voyageur qu\u2019il avait droit \u00e0 un \u00ab\xa0remboursement int\u00e9gral + 150\xa0\u20ac de compensation\xa0\u00bb suite \u00e0 un retard de 25 minutes. Le voyageur a fait une capture d\u2019\u00e9cran et l\u2019a post\u00e9e sur X (Twitter) avec le commentaire\xa0: \u00ab\xa0Merci @SNCF, j\u2019attends mon virement\xa0!\xa0\u00bb. Le post a d\u00e9j\u00e0 2\xa0000 partages.",
+          "speaker": "sophie",
+          "dialogue": "On fait quoi\xa0? Moi je dis on laisse tourner le chatbot, on ajoute juste un bandeau \u2018r\u00e9ponse non contractuelle\u2019. On ne peut pas se permettre de le couper, la Direction G\u00e9n\u00e9rale l\u2019a mis en avant dans sa com\u2019 la semaine derni\u00e8re.",
+          "choices": [
+            {"label": "Sophie, il faut couper le chatbot imm\u00e9diatement et publier un correctif sur X.", "points": 2, "feedback": "Sophie est contrari\u00e9e mais respecte votre expertise. Le chatbot est coup\u00e9. La com\u2019 publie un message transparent. Karim, qui observe la sc\u00e8ne, note que vous avez tenu t\u00eate \u00e0 la direction. Il vous respecte davantage."},
+            {"label": "OK pour le bandeau, mais on ajoute aussi une v\u00e9rification humaine sur chaque r\u00e9ponse compensation.", "points": 1, "feedback": "Compromis. Le chatbot reste mais avec filtre. Sauf qu\u2019\u00e0 10h, deux autres voyageurs re\u00e7oivent des infos erron\u00e9es avant que le filtre soit en place. La situation se d\u00e9grade."},
+            {"label": "La r\u00e9ponse du chatbot est peut-\u00eatre correcte, laissez-moi v\u00e9rifier la politique de compensation d\u2019abord.", "points": 0, "feedback": "Vous perdez 2 heures \u00e0 chercher. Pendant ce temps, 5 autres captures d\u2019\u00e9cran circulent. Sophie perd confiance en vous."},
+          ],
+        },
+        {
+          "id": 2, "time": "11h00", "title": "Le recruteur invisible", "theme": "BIAIS",
+          "context": "Marc vous invite \u00e0 une r\u00e9union. Il pr\u00e9sente fi\u00e8rement les r\u00e9sultats de l\u2019outil IA de pr\u00e9-s\u00e9lection des CV pour recruter 40 conducteurs/conductrices de train. Sur 400 candidatures, l\u2019IA en a retenu 35.<br><br>Vous remarquez que\xa0:<br>\u2022 33 des 35 candidats retenus sont des hommes<br>\u2022 Aucun candidat de plus de 45 ans n\u2019est retenu<br>\u2022 Les candidats avec un code postal de certains quartiers sont syst\u00e9matiquement \u00e9cart\u00e9s",
+          "speaker": "marc",
+          "dialogue": "Pourtant, on a retir\u00e9 le genre et l\u2019\u00e2ge des variables\xa0! L\u2019algorithme est neutre, non\xa0?",
+          "conditional_intros": [
+            {"cond": "act1=0", "text": "\u26a1 Sophie est pr\u00e9sente et vous demande publiquement votre avis, valorisant votre expertise."},
+            {"cond": "act1=2", "text": "\u26a1 Vous n\u2019\u00eates pas invit\u00e9 \u00e0 la r\u00e9union. L\u00e9a vous envoie un message en douce\xa0: \u00ab\xa0Viens voir les r\u00e9sultats du recrutement, y\u2019a un truc bizarre\u2026\xa0\u00bb"},
+          ],
+          "choices": [
+            {"label": "Marc, c\u2019est un cas classique de biais par proxy. La date de dipl\u00f4me code l\u2019\u00e2ge, le code postal code l\u2019origine. Il faut suspendre l\u2019outil et auditer les corr\u00e9lations.", "points": 2, "feedback": "Marc est d\u00e9stabilis\u00e9 mais convaincu. Vous lancez un audit. Marc devient un alli\u00e9 pr\u00e9cieux pour la suite."},
+            {"label": "Les r\u00e9sultats sont statistiquement d\u00e9s\u00e9quilibr\u00e9s. Je propose qu\u2019on garde l\u2019outil mais qu\u2019on impose 50% de profils diversifi\u00e9s dans la short-list.", "points": 1, "feedback": "Quota artificiel. L\u2019outil continue de biaiser en arri\u00e8re-plan. 3 mois plus tard, une candidature rejet\u00e9e saisit le D\u00e9fenseur des droits."},
+            {"label": "L\u2019algorithme a peut-\u00eatre raison. Les crit\u00e8res objectifs donnent ce r\u00e9sultat, c\u2019est math\u00e9matique.", "points": 0, "feedback": "Erreur. L\u2019IA reproduit les biais historiques de recrutement. Karim apprend la nouvelle et perd confiance\xa0: \u00ab\xa0M\u00eame le r\u00e9f\u00e9rent IA ne voit pas le probl\u00e8me\u2026\xa0\u00bb"},
+          ],
+        },
+        {
+          "id": 3, "time": "14h30", "title": "La voix du chef", "theme": "DEEPFAKE",
+          "context": "Karim vous appelle, inquiet. Il vient de recevoir un message vocal de \u00ab\xa0Sophie\xa0\u00bb lui demandant de d\u00e9vier le TGV 6214 vers la voie 7 pour une \u00ab\xa0op\u00e9ration de maintenance urgente\xa0\u00bb. Le message est parfaitement cr\u00e9dible \u2014 m\u00eame intonation, m\u00eame tic de langage.<br><br>Sauf que Sophie est assise en face de vous en salle de r\u00e9union. Elle n\u2019a jamais envoy\u00e9 ce message.",
+          "speaker": "karim",
+          "dialogue": "J\u2019allais ex\u00e9cuter, c\u2019est sa voix exactement. Mais un truc m\u2019a mis la puce \u00e0 l\u2019oreille\xa0: elle m\u2019a dit \u2018Karim\u2019 et pas \u2018Chef Belkacem\u2019. Sophie m\u2019appelle toujours par mon nom de famille.",
+          "conditional_intros": [
+            {"cond": "act1=0", "text": "\u26a1 Karim a confiance en vous et vous appelle en premier. Vous avez 10 minutes pour r\u00e9agir."},
+            {"cond": "act1!=0", "text": "\u26a1 Karim h\u00e9site, a d\u00e9j\u00e0 transmis l\u2019ordre \u00e0 un aiguilleur. Vous avez 3 minutes."},
+          ],
+          "choices": [
+            {"label": "Karim, ne touche \u00e0 rien. C\u2019est un deepfake audio. J\u2019appelle la cybers\u00e9curit\u00e9 imm\u00e9diatement et on bloque l\u2019ordre.", "points": 2, "feedback": "Crise \u00e9vit\u00e9e. L\u2019\u00e9quipe cybers\u00e9curit\u00e9 remonte la source\xa0: un test de phishing d\u2019un prestataire externe mal encadr\u00e9."},
+            {"label": "Rappelle Sophie sur son num\u00e9ro officiel pour confirmer l\u2019ordre.", "points": 1, "feedback": "Bon r\u00e9flexe de v\u00e9rification, mais pendant l\u2019appel, l\u2019aiguilleur a d\u00e9j\u00e0 commenc\u00e9 la proc\u00e9dure. Situation rattrap\u00e9e de justesse."},
+            {"label": "C\u2019est bizarre mais c\u2019est peut-\u00eatre vraiment elle. Ex\u00e9cute l\u2019ordre par pr\u00e9caution, on v\u00e9rifiera apr\u00e8s.", "points": 0, "feedback": "L\u2019ordre est faux. Le TGV est d\u00e9vi\u00e9 vers une voie en maintenance. Arr\u00eat d\u2019urgence d\u00e9clench\u00e9. Aucun bless\u00e9, mais incident grave."},
+          ],
+        },
+        {
+          "id": 4, "time": "17h00", "title": "La bo\u00eete noire", "theme": "OPACIT\u00c9",
+          "context": "L\u00e9a vient vous voir, stress\u00e9e. Son mod\u00e8le de maintenance pr\u00e9dictive recommande de supprimer 3 dessertes quotidiennes sur la ligne TER Lyon-Roanne pour \u00ab\xa0risque mat\u00e9riel \u00e9lev\u00e9\xa0\u00bb. La recommandation est cat\u00e9gorique.",
+          "speaker": "lea",
+          "dialogue": "Le mod\u00e8le dit que le risque est \u00e0 94%. Mais je ne peux pas expliquer quelles variables p\u00e8sent le plus. C\u2019est un r\u00e9seau de neurones profond. C\u2019est une bo\u00eete noire.",
+          "extra_context": "Le directeur de ligne veut appliquer la recommandation d\u00e8s demain. Supprimer ces 3 dessertes affecte 1\xa0200 usagers quotidiens d\u2019une zone rurale sans alternative de transport.",
+          "conditional_intros": [
+            {"cond": "act1=1", "text": "\u26a1 Les 2 erreurs chatbot du matin ont rendu Sophie nerveuse. Elle pousse pour appliquer la recommandation sans discussion\xa0: \u00ab\xa0On ne peut pas se permettre un accident en plus du fiasco chatbot.\xa0\u00bb"},
+          ],
+          "choices": [
+            {"label": "On ne supprime pas des dessertes sur la base d\u2019une bo\u00eete noire. L\u00e9a, il faut un mod\u00e8le explicable ou au minimum une inspection terrain avant toute d\u00e9cision.", "points": 2, "feedback": "Inspection terrain r\u00e9v\u00e8le que le mod\u00e8le s\u2019appuyait sur des donn\u00e9es m\u00e9t\u00e9o aberrantes (capteur d\u00e9faillant). Les dessertes sont maintenues."},
+            {"label": "R\u00e9duisons \u00e0 1 desserte supprim\u00e9e au lieu de 3, le temps de v\u00e9rifier.", "points": 1, "feedback": "Compromis. 400 usagers impact\u00e9s, mais risque limit\u00e9. L\u2019inspection ult\u00e9rieure confirme que le mod\u00e8le se trompait."},
+            {"label": "94% de risque, on ne peut pas ignorer \u00e7a. On applique la recommandation.", "points": 0, "feedback": "1\xa0200 usagers sans transport, plaintes massives au Conseil R\u00e9gional. L\u2019inspection r\u00e9v\u00e8le que c\u2019\u00e9tait un faux positif. Crise de confiance envers l\u2019IA."},
+          ],
+        },
+      ],
+      "epilogues": [
+        {"min_score": 7, "max_score": 8, "title": "Le R\u00e9f\u00e9rent exemplaire", "text": "Un mois plus tard. Sophie vous propose de piloter le comit\u00e9 \u00e9thique IA r\u00e9gional. Karim, initialement sceptique, devient votre meilleur ambassadeur terrain. Marc a lanc\u00e9 un audit complet du recrutement. L\u00e9a a repris son mod\u00e8le avec une approche explicable. Vous avez prouv\u00e9 qu\u2019\u00e9thique et performance ne sont pas contradictoires."},
+        {"min_score": 4, "max_score": 6, "title": "Des le\u00e7ons apprises", "text": "Certaines de vos d\u00e9cisions ont limit\u00e9 les d\u00e9g\u00e2ts, d\u2019autres ont cr\u00e9\u00e9 des probl\u00e8mes. Sophie a compris qu\u2019il faut vous \u00e9couter davantage, mais la confiance reste \u00e0 construire. Les incidents rappellent que chaque compromis sur l\u2019\u00e9thique IA a un co\u00fbt concret."},
+        {"min_score": 0, "max_score": 3, "title": "Le signal d\u2019alarme", "text": "La direction a d\u00e9cid\u00e9 de suspendre tous les projets IA en attendant un cadre \u00e9thique solide. L\u2019occasion est manqu\u00e9e, mais c\u2019est aussi un \u00e9lectrochoc\xa0: sans vigilance humaine, l\u2019IA peut devenir un risque plut\u00f4t qu\u2019un atout pour le service public."},
+      ],
+      "recap": [
+        {"act": 1, "risk": "Hallucination", "principle": "Transparence", "reflex": "V\u00e9rifier avant de diffuser"},
+        {"act": 2, "risk": "Biais par proxy", "principle": "Vigilance", "reflex": "Questionner la \u00ab\xa0neutralit\u00e9\xa0\u00bb algorithmique"},
+        {"act": 3, "risk": "Deepfake", "principle": "Autonomie", "reflex": "Ne jamais ex\u00e9cuter un ordre non v\u00e9rifi\u00e9"},
+        {"act": 4, "risk": "Opacit\u00e9", "principle": "Autonomie + Transparence", "reflex": "Exiger l\u2019explicabilit\u00e9 avant d\u2019agir"},
+      ],
+    },
   },
   {
     "id": 'juridique',

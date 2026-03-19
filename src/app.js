@@ -364,6 +364,146 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  // === BRANCHING SCENARIO ===
+  document.querySelectorAll(".branching-scenario").forEach(function(bs){
+    var bsChoices = {};
+    var bsScore = 0;
+
+    function showBsSection(name) {
+      bs.querySelectorAll(".bs-section").forEach(function(s){
+        s.style.display = s.dataset.bs === name ? "block" : "none";
+      });
+      // Handle conditional blocks
+      var section = bs.querySelector('[data-bs="' + name + '"]');
+      if (section) {
+        section.querySelectorAll(".bs-conditional").forEach(function(c){
+          var cond = c.dataset.cond; // e.g. "act1=0" or "act1!=0"
+          var show = false;
+          if (cond.indexOf("!=") > -1) {
+            var parts = cond.split("!=");
+            var actNum = parseInt(parts[0].replace("act",""));
+            var val = parseInt(parts[1]);
+            show = bsChoices[actNum] !== val;
+          } else {
+            var parts2 = cond.split("=");
+            var actNum2 = parseInt(parts2[0].replace("act",""));
+            var val2 = parseInt(parts2[1]);
+            show = bsChoices[actNum2] === val2;
+          }
+          c.style.display = show ? "block" : "none";
+        });
+      }
+      // Scroll to scenario
+      bs.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    function updateBsScoreBar() {
+      var fill = document.getElementById("bsScoreFill");
+      var val = document.getElementById("bsScoreVal");
+      if (fill) fill.style.width = (bsScore/8*100) + "%";
+      if (val) val.textContent = bsScore + "/8";
+    }
+
+    // Start button
+    var startBtn = bs.querySelector(".bs-start-btn");
+    if (startBtn) startBtn.onclick = function(){ showBsSection("act-1"); };
+
+    // Choices
+    bs.querySelectorAll(".bs-choice").forEach(function(ch){
+      ch.onclick = function(){
+        var act = parseInt(ch.dataset.act);
+        var idx = parseInt(ch.dataset.idx);
+        var pts = parseInt(ch.dataset.points);
+        if (bsChoices[act] !== undefined) return;
+        bsChoices[act] = idx;
+        bsScore += pts;
+        // Update global score
+        scoreTotal += 2; score += pts;
+        if (pts < 2) weakSet.add("Sc\u00e9nario Acte " + act);
+        // Highlight
+        var parent = ch.closest(".bs-choices-list");
+        parent.querySelectorAll(".bs-choice").forEach(function(c){
+          c.style.pointerEvents = "none";
+          if (c === ch) {
+            var color = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
+            var bg2 = pts >= 2 ? "rgba(52,199,89,.06)" : pts >= 1 ? "rgba(255,159,10,.06)" : "rgba(255,59,48,.06)";
+            c.style.borderColor = color; c.style.background = bg2;
+          } else { c.style.opacity = "0.35"; }
+        });
+        // Show feedback
+        var actSection = ch.closest(".bs-act");
+        var fbBox = actSection.querySelector(".bs-feedback-box");
+        var fbDiv = actSection.querySelector(".bs-fb");
+        if (fbBox && fbDiv) {
+          fbBox.style.display = "block";
+          var color2 = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
+          var bg3 = pts >= 2 ? "rgba(52,199,89,.04)" : pts >= 1 ? "rgba(255,159,10,.04)" : "rgba(255,59,48,.04)";
+          fbDiv.textContent = ch.dataset.feedback;
+          fbDiv.style.display = "block";
+          fbDiv.style.background = bg3;
+          fbDiv.style.borderLeft = "2px solid " + color2;
+          fbDiv.style.padding = "12px 14px";
+          fbDiv.style.borderRadius = "8px";
+        }
+        // Score indicator
+        var indicator = actSection.querySelector(".bs-score-indicator");
+        if (indicator) {
+          indicator.style.display = "block";
+          var label = pts >= 2 ? "+2 points \u2014 Excellent" : pts >= 1 ? "+1 point \u2014 Compromis" : "0 point \u2014 Risqu\u00e9";
+          indicator.querySelector(".bs-points-earned").textContent = label;
+          indicator.style.color = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
+        }
+        // Update score bar
+        updateBsScoreBar();
+        // Show continue
+        var continueBtn = actSection.querySelector(".bs-continue-btn");
+        if (continueBtn) { continueBtn.style.display = "inline-flex"; }
+      };
+    });
+
+    // Continue buttons
+    bs.querySelectorAll(".bs-continue-btn").forEach(function(btn){
+      btn.onclick = function(){
+        var next = btn.dataset.next;
+        if (next === "epilogue") {
+          showBsSection("epilogue");
+          // Show correct epilogue
+          var epSection = bs.querySelector('[data-bs="epilogue"]');
+          var scoreNum = epSection.querySelector(".bs-score-num");
+          if (scoreNum) scoreNum.textContent = bsScore;
+          // Color the circle
+          var circle = epSection.querySelector(".bs-score-circle");
+          if (circle) {
+            circle.style.borderColor = bsScore >= 7 ? "#34c759" : bsScore >= 4 ? "#ff9f0a" : "#ff3b30";
+            circle.style.color = bsScore >= 7 ? "#34c759" : bsScore >= 4 ? "#ff9f0a" : "#ff3b30";
+          }
+          epSection.querySelectorAll(".bs-epilogue-content").forEach(function(ec){
+            var min = parseInt(ec.dataset.min), max = parseInt(ec.dataset.max);
+            ec.style.display = (bsScore >= min && bsScore <= max) ? "block" : "none";
+          });
+          // Show continue to recap
+          var recapBtn = epSection.querySelector(".bs-continue-btn");
+          if (recapBtn) { setTimeout(function(){ recapBtn.style.display = "inline-flex"; }, 800); }
+          markStepDone();
+        } else if (next === "recap") {
+          showBsSection("recap");
+          // Fill recap scores
+          var recapSection = bs.querySelector('[data-bs="recap"]');
+          recapSection.querySelectorAll("[data-recap-act]").forEach(function(td){
+            var a = parseInt(td.dataset.recapAct);
+            if (bsChoices[a] !== undefined) {
+              var p = [2,1,0][bsChoices[a]];
+              td.textContent = p + "/2";
+              td.className = "bs-act-result bs-pts-" + p;
+            }
+          });
+        } else {
+          showBsSection(next);
+        }
+      };
+    });
+  });
+
   // === QUIZ ===
   document.querySelectorAll(".quiz-question").forEach(function(q){
     var selOpt=null;
