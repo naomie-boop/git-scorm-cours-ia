@@ -464,8 +464,6 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // === SCROLL HINT ===
-  var scrollHint=document.getElementById("scrollHint");
-  if(scrollHint) window.addEventListener("scroll",function(){scrollHint.style.opacity=window.scrollY>80?"0":"0.5";});
 
   // === NEXT STEP CTA ===
   var navLabels=[];
