@@ -606,6 +606,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // === STEP 0 : unlock only after VF ===
   // (handled by checkVFComplete - step 0 starts locked, VF completion unlocks it)
+  // Step 0 (intro video) has no activity, auto-complete
+  stepCompleted[0] = true;
   // Step 1 (discovery) is always unlocked (reading only)
   stepCompleted[1] = true;
   // Last step always unlocked
