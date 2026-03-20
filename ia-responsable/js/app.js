@@ -36,37 +36,54 @@ document.addEventListener("DOMContentLoaded", function() {
   var quizScore = 0, quizTotal = 0;
   var weakSet = new Set();
 
-  // === NAVIGATION (vertical slider) ===
-  allSteps.forEach(function(el){ el.style.display = "flex"; });
+  // === NAVIGATION (slider one-step-at-a-time) ===
   document.querySelectorAll(".animate-in").forEach(function(el){
     el.style.opacity="1"; el.style.transform="translateY(0)";
   });
 
-  // Reveal slides on scroll
-  function checkVisibleSlides(){
-    var winH = window.innerHeight;
-    allSteps.forEach(function(el,i){
-      var rect = el.getBoundingClientRect();
-      if(rect.top < winH * 0.75 && rect.bottom > 0){
-        el.classList.add("visible");
-        visited[i] = true;
-        cur = i;
-      }
-    });
-    updateUI();
-  }
-  window.addEventListener("scroll", checkVisibleSlides);
-  checkVisibleSlides();
+  var sliding = false;
 
   function go(idx) {
-    if (idx < 0 || idx >= totalSteps) return;
+    if (idx < 0 || idx >= totalSteps || sliding) return;
+    var prev = cur;
     cur = idx;
     visited[idx] = true;
-    allSteps[idx].scrollIntoView({behavior:"smooth", block:"start"});
-    setTimeout(checkVisibleSlides, 800);
-    runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
-    try{setSCORMLocation(idx);}catch(e){}
-    checkSCORMComplete();
+
+    if (prev === idx) {
+      // First load or same step
+      allSteps[idx].classList.remove("slide-out");
+      allSteps[idx].classList.add("active");
+      window.scrollTo(0, 0);
+      updateUI();
+      runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
+      try{setSCORMLocation(idx);}catch(e){}
+      checkSCORMComplete();
+      return;
+    }
+
+    sliding = true;
+    var oldStep = allSteps[prev];
+    var newStep = allSteps[idx];
+
+    // Slide out old step
+    oldStep.classList.remove("active");
+    oldStep.classList.add("slide-out");
+
+    setTimeout(function(){
+      // Hide old step
+      oldStep.classList.remove("slide-out");
+      // oldStep goes back to display:none via CSS (no .active, no .slide-out)
+
+      // Show new step
+      newStep.classList.add("active");
+      window.scrollTo(0, 0);
+
+      sliding = false;
+      updateUI();
+      runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
+      try{setSCORMLocation(idx);}catch(e){}
+      checkSCORMComplete();
+    }, 300);
   }
 
   function updateUI() {
@@ -596,7 +613,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // === SCROLL HINT ===
   var scrollHint=document.getElementById("scrollHint");
-  if(scrollHint) window.addEventListener("scroll",function(){scrollHint.style.opacity=window.scrollY>80?"0":"0.5";});
+  if(scrollHint) scrollHint.style.display="none";
 
   // === NEXT STEP CTA ===
   var navLabels=[];
