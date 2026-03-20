@@ -48,7 +48,8 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .sidebar{display:none}
 .mobile-toggle{display:none}
 .main-content{margin:0 auto;max-width:800px;padding:20px 20px 20px 84px}
-.step-container{display:none;animation:fadeIn .4s ease}
+.step-container{display:block;animation:fadeIn .4s ease;margin-bottom:40px;border-bottom:1px solid var(--border);padding-bottom:40px}
+.step-container:last-of-type{border-bottom:none}
 .step-hero{text-align:center;padding:40px 24px 28px;border-bottom:.5px solid var(--border)}
 .step-hero .step-number{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--brand);font-weight:600;margin-bottom:6px}
 .step-hero h2{font-size:1.6rem;font-weight:800;margin-bottom:8px}

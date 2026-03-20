@@ -36,23 +36,33 @@ document.addEventListener("DOMContentLoaded", function() {
   var quizScore = 0, quizTotal = 0;
   var weakSet = new Set();
 
-  // === NAVIGATION ===
+  // === NAVIGATION (scroll mode) ===
+  // Show all steps immediately
+  allSteps.forEach(function(el){ el.style.display = "block"; });
+  // Animate all visible elements
+  document.querySelectorAll(".animate-in").forEach(function(el){
+    el.style.opacity="1"; el.style.transform="translateY(0)";
+  });
+
   function go(idx) {
     if (idx < 0 || idx >= totalSteps) return;
-    // Navigation libre entre chapitres
     cur = idx;
-    allSteps.forEach(function(el,i){ el.style.display = i===idx ? "block" : "none"; });
     visited[idx] = true;
+    allSteps[idx].scrollIntoView({behavior:"smooth", block:"start"});
     updateUI();
-    window.scrollTo({top:0,behavior:"smooth"});
-    // Animate in
-    allSteps[idx].querySelectorAll(".animate-in").forEach(function(el,i){
-      setTimeout(function(){el.style.opacity="1";el.style.transform="translateY(0)";},i*80);
-    });
     runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
     try{setSCORMLocation(idx);}catch(e){}
     checkSCORMComplete();
   }
+
+  // Update breadcrumb on scroll
+  window.addEventListener("scroll", function(){
+    var scrollY = window.scrollY + 120;
+    for(var i = totalSteps - 1; i >= 0; i--){
+      if(allSteps[i].offsetTop <= scrollY){ cur = i; visited[i] = true; break; }
+    }
+    updateUI();
+  });
 
   function updateUI() {
     var pct = Math.round(Object.keys(visited).length/totalSteps*100);
@@ -192,26 +202,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // === PREV/NEXT ===
   document.getElementById("prevBtn").onclick=function(){go(cur-1);};
-  document.getElementById("nextBtn").onclick=function(){
-    if(cur===totalSteps-1){
-      // Init celebration grid
-      var cg=document.getElementById("celebGrid");
-      if(cg&&!cg.dataset.init){
-        cg.dataset.init="1";
-        var gs2=18,cols2=["#0071e3","#5ac8fa","#34c759","#5856d6","#ff9f0a"];
-        cg.style.gridTemplateColumns="repeat("+gs2+",1fr)";cg.style.gridTemplateRows="repeat("+gs2+",1fr)";
-        for(var j=0;j<gs2*gs2;j++){var d2=document.createElement("div");d2.className="pixel";cg.appendChild(d2);}
-        cg.parentElement.addEventListener("mousemove",function(e){
-          var r=cg.getBoundingClientRect(),c=Math.floor((e.clientX-r.left)/(r.width/gs2)),row=Math.floor((e.clientY-r.top)/(r.height/gs2)),idx=row*gs2+c;
-          var px=cg.children[idx];
-          if(px&&!px.dataset.lit){px.dataset.lit="1";px.style.background=cols2[Math.floor(Math.random()*5)];px.style.opacity=".7";
-            setTimeout(function(){px.style.background="";px.style.opacity="";delete px.dataset.lit;},600);}
-        });
-      }
-      markStepDone();
-      try{var fs=scoreTotal>0?Math.round((score/scoreTotal)*100):0;setSCORMScore(fs);setSCORMComplete();}catch(e){}
-    } else { go(cur+1); }
-  };
+  document.getElementById("nextBtn").onclick=function(){go(cur+1);};
+
+  // Init celebration grid immediately
+  var cg=document.getElementById("celebGrid");
+  if(cg){
+    var gs2=18,cols2=["#0071e3","#5ac8fa","#34c759","#5856d6","#ff9f0a"];
+    cg.style.gridTemplateColumns="repeat("+gs2+",1fr)";cg.style.gridTemplateRows="repeat("+gs2+",1fr)";
+    for(var j=0;j<gs2*gs2;j++){var d2=document.createElement("div");d2.className="pixel";cg.appendChild(d2);}
+    cg.parentElement.addEventListener("mousemove",function(e){
+      var r=cg.getBoundingClientRect(),c2=Math.floor((e.clientX-r.left)/(r.width/gs2)),row=Math.floor((e.clientY-r.top)/(r.height/gs2)),idx2=row*gs2+c2;
+      var px=cg.children[idx2];
+      if(px&&!px.dataset.lit){px.dataset.lit="1";px.style.background=cols2[Math.floor(Math.random()*5)];px.style.opacity=".7";
+        setTimeout(function(){px.style.background="";px.style.opacity="";delete px.dataset.lit;},600);}
+    });
+  }
 
   // Breadcrumbs (with FULL lock check)
   document.querySelectorAll(".breadcrumb-link").forEach(function(l){
