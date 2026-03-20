@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Enjeu : Environnement</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head><body>
+<div class="cover-page" id="coverPage">
+  <div class="cover-grid" id="coverGrid"></div>
+  <div class="cover-content">
+    <div class="cover-subtitle">Les enjeux de l'IA à 360</div>
+    <h1>&#127793; Environnement</h1>
+    <p>Comprendre et réduire l’impact environnemental de l’IA, un enjeu particulièrement critique pour une entreprise qui promeut le transport durable comme alternative à la voiture et à l’avion.</p>
+    <button class="cover-start-btn" id="coverStartBtn">Commencer le module &#8594;</button>
+  </div>
+</div>
+
+<div class="course-layout">
+<aside class="sidebar" role="navigation">
+  <div class="sidebar-header"><h1>&#127793; Environnement</h1><div class="subtitle">Les enjeux de l’IA à 360</div></div>
+  <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% terminé</div></div>
+  <div class="sidebar-score">Score : <span id="sidebarScore">—</span></div>
+  <nav class="sidebar-nav">
+      <div class="nav-item active"><span class="nav-number">1</span><span class="nav-label">Accroche</span></div>
+      <div class="nav-item"><span class="nav-number">2</span><span class="nav-label">Découverte</span></div>
+      <div class="nav-item"><span class="nav-number">3</span><span class="nav-label">Risques</span></div>
+      <div class="nav-item"><span class="nav-number">4</span><span class="nav-label">Mesures</span></div>
+      <div class="nav-item"><span class="nav-number">5</span><span class="nav-label">Scénario</span></div>
+      <div class="nav-item"><span class="nav-number">6</span><span class="nav-label">Quiz</span></div>
+      <div class="nav-item"><span class="nav-number">7</span><span class="nav-label">Synthèse</span></div>
+      <div class="nav-item"><span class="nav-number">8</span><span class="nav-label">Conclusion</span></div>
+  </nav>
+</aside>
+<main class="main-content">
+<div class="step-container active" id="step-0">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 1 sur 8</div>
+    <h2>&#127793; Environnement</h2>
+    <p class="hero-subtitle">Comprendre et réduire l’impact environnemental de l’IA, un enjeu particulièrement critique pour une entreprise qui promeut le transport durable comme alternative à la voiture et à l’avion.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><div class="highlight-box warning"><strong>Le train est le mode de transport le moins polluant par passager-kilomètre. Mais l’IA générative consomme massivement : selon l’IEA (2025), les datacenters atteindront 1 000 TWh en 2026, l’équivalent de la consommation du Japon. Comment concilier engagement RSE et transformation numérique ?</strong></div></div>
+  <div class="counter-row animate-in">
+    <div class="counter-box"><span class="counter-num" data-target="1000" data-suffix="TWh">1000TWh</span><span class="counter-label">consommation datacenters 2026 (IEA)</span></div>
+    <div class="counter-box"><span class="counter-num" data-target="10" data-suffix="x">10x</span><span class="counter-label">plus énergivore qu’une recherche Google</span></div>
+    <div class="counter-box"><span class="counter-num" data-target="1400" data-suffix="Mt">1400Mt</span><span class="counter-label">CO2 économisables par l’IA d’ici 2035</span></div>
+  </div>
+
+  <div class="animate-in"><div class="highlight-box"><strong>Dans ce module, vous allez :</strong><ul>
+    <li>Comprendre cet enjeu en profondeur avec des cas réels</li>
+    <li>Identifier les risques avec des activités interactives</li>
+    <li>Associer les bonnes mesures aux bons risques</li>
+    <li>Vivre un scénario professionnel réaliste</li>
+    <li>Tester vos connaissances avec un quiz chronométré</li>
+    <li>Obtenir votre synthèse personnalisée</li>
+  </ul></div></div>
+  <div class="vf-container animate-in">
+    <h4>Vrai ou Faux ?</h4>
+    <div class="vf-item" data-correct="vrai">
+      <span>Une requête ChatGPT consomme environ 10x plus d'énergie qu'une recherche Google.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Vrai. Selon l'IEA (2025), environ 10 Wh contre 0,3 Wh.</div>
+    </div>
+    <div class="vf-item" data-correct="vrai">
+      <span>Les datacenters atteindront 1 000 TWh de consommation en 2026.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Vrai. C'est l'équivalent de la consommation électrique du Japon (IEA, 2025).</div>
+    </div>
+    <div class="vf-item" data-correct="faux">
+      <span>Un modèle léger (7 milliards de paramètres) donne toujours de moins bons résultats qu'un modèle lourd.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Faux. Pour 80% des tâches courantes, un SLM est suffisant et consomme ~10x moins.</div>
+    </div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-1">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 2 sur 8</div>
+    <h2>Découverte : Environnement</h2>
+    <p class="hero-subtitle">Explorez cet enjeu de cet enjeu.</p>
+  </div>
+<div class="content-section">
+  <div class="tabs-container animate-in">
+    <div class="tabs-header">
+      <button class="tab-btn active" role="tab" tabindex="0" data-tab="tab-mechanism">Comment ça marche</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-context">Définition et contexte</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-usages">Usages IA</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-principles">Principes clés</button>
+    </div>
+    <div class="tab-panel active" data-tab="tab-mechanism">
+      <p><strong>Comment ça marche ?</strong> Chaque <em>token</em> généré par un LLM nécessite des calculs sur des GPU (processeurs graphiques). Un modèle de <strong>175 milliards de paramètres</strong> (comme GPT-3) consomme environ <strong>10 fois plus d’énergie</strong> qu’un modèle de 7 milliards (comme Mistral 7B) pour une réponse équivalente sur une tâche simple. C’est la différence entre un <strong>SLM</strong> (Small Language Model) et un <strong>LLM</strong>.</p><p>Il faut aussi distinguer trois phases : l’<strong>entraînement</strong> (très énergivore, fait une seule fois), le <strong>fine-tuning</strong> (adaptation du modèle, coût modéré) et l’<strong>inférence</strong> (chaque requête, coût unitaire faible mais multiplicatif à l’échelle).</p>
+    </div>
+    <div class="tab-panel" data-tab="tab-context">
+      <h3>Définition et contexte</h3><p>Le <strong>paradoxe environnemental de l’IA</strong> est particulièrement aigu pour la SNCF. L’entreprise construit sa stratégie RSE sur le fait que le train émet 50 fois moins de CO2 que l’avion par passager-kilomètre. Mais l’IA générative qu’elle déploie consomme massivement : une requête ChatGPT consomme 10 fois plus d’énergie qu’une recherche Google classique. Comment promouvoir la sobriété carbone tout en multipliant les usages IA ?</p><p>Il faut distinguer trois phases de consommation énergétique. L’<strong>entraînement</strong> (training) est la phase la plus intensive : entraîner GPT-4 a consommé l’équivalent de plusieurs centaines de foyers pendant un an. Le <strong>fine-tuning</strong> (adaptation d’un modèle existant à un contexte spécifique, comme le vocabulaire ferroviaire) est bien moins coûteux que l’entraînement complet. L’<strong>inférence</strong> (chaque requête envoyée) semble légère individuellement, mais multipliée par des millions d’utilisateurs quotidiens, elle représente la majorité de la consommation énergétique totale de l’IA en production.</p><p>L’<strong>effet rebond</strong> (paradoxe de Jevons) est le piège principal. Si l’IA permet de rédiger un rapport en 5 minutes au lieu de 30, le collaborateur ne « gagne » pas 25 minutes : il génère 6 versions au lieu d’une. Le gain d’efficacité par unité est annulé par l’augmentation du volume d’utilisation. À l’échelle du Groupe SNCF, si chaque collaborateur effectue 10 requêtes IA par jour au lieu de 2, la consommation totale est multipliée par 5 malgré l’efficacité unitaire.</p><p>La question <strong>SLM vs LLM</strong> (Small Language Model vs Large Language Model) est un levier concret. Pour résumer un compte-rendu de réunion ou reformuler un e-mail, un modèle léger (SLM) suffit et consomme une fraction de l’énergie d’un GPT-4. Réserver les modèles lourds aux tâches complexes (analyse de corpus réglementaire, diagnostic de pannes multi-facteurs) et utiliser des modèles légers pour le quotidien est un acte de sobriété numérique à fort impact.</p><p>Le versant positif existe aussi. Selon l’<strong>IEA</strong>, l’IA pourrait permettre de réduire les émissions mondiales de <strong>1 400 Mt de CO2 d’ici 2035</strong>, notamment par l’optimisation énergétique des bâtiments, des réseaux de transport et de la logistique. À la SNCF, l’IA appliquée à l’éco-conduite, à l’optimisation des circulations et à la maintenance prédictive peut réduire la consommation d’énergie du réseau bien au-delà de ce que l’IA elle-même consomme.</p><p><strong>Attention à ne pas confondre</strong> : l’IA générative (qui crée du contenu : texte, images, code) et l’IA prédictive (qui analyse des données pour faire des prévisions : maintenance prédictive, prévision de trafic). Les deux ont un impact environnemental, mais l’IA générative est particulièrement énergivore car elle génère du contenu token par token.</p>
+    </div>
+    <div class="tab-panel" data-tab="tab-usages">
+      <h4>Outils et usages concernés par l’impact environnemental</h4><ul><li><strong>Modèles légers (SLM)</strong> — Mistral 7B, Phi-3, Gemma : suffisants pour 80 % des usages courants (résumé, traduction, classification)</li><li><strong>Modèles lourds (LLM)</strong> — GPT-4, Claude Opus : nécessaires uniquement pour des tâches complexes (raisonnement multi-étapes, analyse longue)</li><li><strong>Outils de mesure d’impact</strong> — CodeCarbon, ML CO2 Impact : estiment la consommation énergétique des requêtes IA</li><li><strong>Optimisation des prompts</strong> — un prompt précis réduit le nombre d’itérations nécessaires</li></ul>
+    </div>
+    <div class="tab-panel" data-tab="tab-principles">
+        <div class="highlight-box animate-in">
+    <strong>Le paradoxe environnemental de l’IA</strong>
+    <ul class="numbered-list">
+      <li><span><strong>L’IA comme problème : une technologie énergivore</strong> — Les datacenters IA atteindront 1 000 TWh en 2026 (IEA). Une requête d’IA générative consomme 10x plus qu’une recherche Google. L’entraînement d’un modèle comme GPT-4 émet autant de CO2 que des centaines de vols transatlantiques. Pour une entreprise dont la raison d’être est le transport bas carbone, cette réalité ne peut être ignorée.</span></li>
+      <li><span><strong>L’IA comme solution : un levier de décarbonation</strong> — L’IEA estime que l’IA pourrait permettre de réduire les émissions mondiales de 1 400 Mt de CO2 d’ici 2035, par l’optimisation énergétique et logistique. À la SNCF, l’IA appliquée à l’éco-conduite, à l’optimisation des circulations et à la maintenance prédictive peut économiser bien plus d’énergie qu’elle n’en consomme.</span></li>
+      <li><span><strong>Sobriété numérique : les gestes concrets</strong> — Quatre pratiques à ancrer : (1) right-sizing : SLM pour les tâches simples, LLM pour les tâches complexes ; (2) prompting efficace : un prompt précis dès le départ plutôt que 10 itérations ; (3) règle des 3 générations : se fixer un maximum raisonnable par tâche ; (4) se poser la question : ai-je vraiment besoin de l’IA pour cette tâche ?</span></li>
+      <li><span><strong>Mesurer pour agir : intégrer l’IA dans le bilan carbone</strong> — Ce qui ne se mesure pas ne se réduit pas. Intégrer la consommation IA dans le reporting RSE du Groupe, utiliser des outils de mesure (CodeCarbon, ML CO2 Impact), choisir des hébergeurs à énergie renouvelable, et fixer des objectifs de réduction alignés avec la trajectoire bas carbone de la SNCF. La sobriété numérique est le prolongement naturel de la sobriété énergétique du transport ferroviaire.</span></li>
+    </ul>
+  </div>
+
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="animate-in slider-container"><h4>Auto-évaluation : votre niveau sur cet enjeu ?</h4>
+    <input type="range" min="1" max="5" value="3">
+    <div class="slider-labels"><span>1 Débutant</span><span>5 Expert</span></div>
+    <div class="slider-value">3/5 Intermédiaire</div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-2">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 3 sur 8</div>
+    <h2>Les risques identifiés</h2>
+    <p class="hero-subtitle">Quel est l’impact environnemental de l’utilisation de l’IA générative ?</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Explorez chaque risque</h3><p>Cliquez sur chaque risque pour découvrir l’explication complète.</p>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Consommation énergétique massive des datacenters IA</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Selon l’IEA, les datacenters atteindront 1 000 TWh en 2026, soit l’équivalent de la consommation du Japon. Chaque requête IA générative consomme environ 10 fois plus qu’une recherche Google classique. À l’échelle du Groupe SNCF, la multiplication des usages IA peut représenter une empreinte carbone significative, en contradiction avec la stratégie de transport bas carbone.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Effet rebond : plus d’efficacité, plus de consommation</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>L’IA rend les tâches plus rapides, ce qui incite à en faire plus. Un collaborateur qui génère 15 versions d’un e-mail de 3 lignes avec GPT-4 consomme plus que s’il l’avait écrit lui-même. Le paradoxe de Jevons s’applique : le gain unitaire est annulé par l’explosion du volume d’utilisation. Sans régulation, la consommation totale augmente malgré l’efficacité par requête.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Consommation d’eau pour le refroidissement des serveurs</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Les datacenters IA nécessitent des systèmes de refroidissement massifs. L’entraînement de GPT-3 a consommé environ 700 000 litres d’eau. Dans un contexte de stress hydrique croissant en France (restrictions estivales récurrentes), la consommation d’eau des infrastructures IA est un angle mort rarement mesuré par les organisations utilisatrices.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Contradiction avec les engagements RSE de la SNCF</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>La SNCF positionne le train comme le transport le plus écologique. Déployer massivement une technologie énergivore sans mesure d’impact crée un décalage entre le discours RSE et la pratique numérique. Ce risque réputationnel est amplifié par la sensibilité croissante du public et des régulateurs à l’empreinte environnementale du numérique.</p></div></div>
+    </div>
+  </div>
+</div>
+  <div class="divider"></div>
+  <div class="dnd-container animate-in">
+    <h4>Classez les éléments dans la bonne catégorie</h4>
+    <p style="font-size:.85rem;color:var(--text-muted)">Glissez ou cliquez sur chaque élément dans la zone Risques ou Mesures.</p>
+    <div class="dnd-sources">
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="19f1878dda42" data-zone="mesure">Limiter le nombre de générations par tâche</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="0f94492a5ed6" data-zone="risque">Consommation énergétique massive des datacenters IA</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="bb13ff65f540" data-zone="mesure">Mesurer l’empreinte environnementale des usages IA</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="e3af453cde7f" data-zone="mesure">Utiliser le bon modèle pour la bonne tâche (right-sizing)</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="c270f97309b2" data-zone="risque">Effet rebond : plus d’efficacité, plus de consommation</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="b74e1f0380a5" data-zone="risque">Consommation d’eau pour le refroidissement des serveurs</div>
+    </div>
+    <div class="dnd-targets">
+      <div class="dnd-zone" data-zone="risque"><h4>&#9888; Risques</h4></div>
+      <div class="dnd-zone" data-zone="mesure"><h4>&#10003; Mesures</h4></div>
+    </div>
+    <button class="quiz-validate-btn dnd-check-btn">Vérifier</button>
+    <div class="dnd-feedback"></div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-3">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 4 sur 8</div>
+    <h2>Les mesures à appliquer</h2>
+    <p class="hero-subtitle">Associez chaque mesure au bon risque.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Découvrez les mesures</h3><p>Retournez chaque carte pour comprendre comment les mettre en œuvre.</p>
+  <div class="flip-cards-grid animate-in">
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Utiliser le bon modèle pour la bonne tâche (right-sizing)</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Utiliser le bon modèle pour la bonne tâche (right-sizing)</h4><p>Réserver les modèles lourds (GPT-4, Claude Opus) aux tâches complexes : analyse réglementaire, diagnostic multi-facteurs, synthèse de corpus volumineux. Utiliser des modèles légers (SLM) pour les tâches courantes : reformulation d’e-mails, résumés de réunion, suggestions de rédaction. Un SLM consomme une fraction de l’énergie d’un LLM pour un résultat équivalent sur les tâches simples.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Limiter le nombre de générations par tâche</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Limiter le nombre de générations par tâche</h4><p>Instaurer une discipline d’usage : formuler un prompt précis plutôt que de multiplier les itérations, accepter un résultat « suffisamment bon » plutôt que de viser la perfection par 15 régénérations successives. Sensibiliser les collaborateurs au coût environnemental de chaque génération. L’objectif n’est pas d’interdire mais de rendre le coût visible pour encourager la sobriété.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Mesurer l’empreinte environnementale des usages IA</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Mesurer l’empreinte environnementale des usages IA</h4><p>Intégrer le suivi de la consommation énergétique et de l’empreinte carbone dans le tableau de bord des projets IA. Outils disponibles : CodeCarbon, ML CO2 Impact, Green Algorithms. Publier un bilan carbone IA dans le rapport RSE du Groupe pour aligner transparence environnementale et stratégie bas carbone.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Choisir un hébergement à faible empreinte carbone</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Choisir un hébergement à faible empreinte carbone</h4><p>Privilégier les datacenters alimentés en énergie renouvelable et situés dans des zones à mix électrique bas carbone. Favoriser les fournisseurs cloud engagés dans des PPA (Power Purchase Agreements) renouvelables. Intégrer le critère environnemental dans les appels d’offres pour les services d’IA, au même titre que le prix et la performance.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="divider"></div>
+  <div class="matching-container animate-in">
+    <h4>Reliez chaque risque à la mesure correspondante</h4>
+    <p style="font-size:.85rem;color:var(--text-muted)">Cliquez sur un élément à gauche, puis sur sa correspondance à droite.</p>
+    <div class="matching-grid">
+      <div class="match-col match-left">
+        <div class="match-item" role="button" tabindex="0" data-match="0">Consommation énergétique des datacenters</div>
+        <div class="match-item" role="button" tabindex="0" data-match="1">Effet rebond des usages IA</div>
+        <div class="match-item" role="button" tabindex="0" data-match="2">Absence de mesure d’impact</div>
+        <div class="match-item" role="button" tabindex="0" data-match="3">Utilisation de GPT-4 pour des tâches simples</div>
+      </div>
+      <div class="match-lines">
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+      </div>
+      <div class="match-col match-right">
+        <div class="match-item" role="button" tabindex="0" data-match="2">Mesurer l’empreinte environnementale des usages IA</div>
+        <div class="match-item" role="button" tabindex="0" data-match="1">Limiter le nombre de générations par tâche</div>
+        <div class="match-item" role="button" tabindex="0" data-match="3">Utiliser le bon modèle pour la bonne tâche</div>
+        <div class="match-item" role="button" tabindex="0" data-match="0">Choisir un hébergement à faible empreinte carbone</div>
+      </div>
+    </div>
+    <div class="dnd-feedback"></div>
+  </div>
+
+
+</div></div>
+<div class="step-container" id="step-4">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 5 sur 8</div>
+    <h2>Scénario professionnel</h2>
+    <p class="hero-subtitle">Mettez vos connaissances en pratique.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Mise en situation</h3><p>Faites un choix. Vos décisions impactent votre score.</p></div>
+  <div class="scenario-container animate-in">
+    <div class="scenario-node" style="display:block">
+      <div class="scenario-card">
+        <div class="scenario-context">Un collègue de votre service utilise Groupe SNCF GPT (basé sur GPT-4) pour rédiger un e-mail de 3 lignes confirmant une réunion. Insatisfait du ton, il relance 15 fois la génération pour obtenir la formulation parfaite. Vous êtes dans une entreprise qui promeut l’éco-responsabilité et dont la stratégie RSE repose sur le transport bas carbone. En réunion d’équipe, il partage fièrement sa méthode : « Avec l’IA, je peux tester 15 versions et garder la meilleure, c’est ça l’efficacité. »</div>
+        <h4>Comment réagissez-vous ?</h4>
+        <div class="scenario-choices">
+          <div class="scenario-choice" role="button" tabindex="0" data-points="0" data-feedback="L’outil est là pour être utilisé intelligemment, pas sans limite. 15 générations GPT-4 pour un e-mail de 3 lignes consomment autant que 150 recherches Google. Multiplié par tous les collaborateurs du Groupe, l’effet rebond crée une empreinte carbone significative. Dans une entreprise qui promeut le transport durable, la sobriété numérique n’est pas une option mais une cohérence." data-next="">C’est son droit, l’outil est là pour être utilisé</div>
+          <div class="scenario-choice" role="button" tabindex="0" data-points="2" data-feedback="Parfait. Vous sensibilisez sans culpabiliser et proposez des alternatives concrètes. Un prompt bien formulé réduit le nombre d’itérations, un SLM suffit pour reformuler un e-mail, et la règle des 3 générations maximum cadre l’usage sans l’interdire. C’est la sobriété numérique appliquée : utiliser l’IA quand elle apporte de la valeur, avec le bon modèle et le bon nombre de requêtes." data-next="">Expliquer le coût environnemental de chaque génération et proposer des pratiques sobres : prompt précis dès le départ, modèle léger pour les tâches simples, règle des 3 générations maximum</div>
+          <div class="scenario-choice" role="button" tabindex="0" data-points="0" data-feedback="Trop radical. L’interdiction génère de la frustration, du contournement (utilisation d’outils externes non sécurisés) et envoie le message que l’IA est un problème plutôt qu’un outil. La bonne approche est d’éduquer à la sobriété d’usage : bon modèle, bon nombre de requêtes, bon moment. C’est la même logique que la sobriété énergétique : on ne coupe pas le chauffage, on le règle intelligemment." data-next="">Interdire l’utilisation de GPT-4 et limiter l’accès à l’outil</div>
+        </div>
+        <div class="scenario-result" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+</div></div>
+<div class="step-container" id="step-5">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 6 sur 8</div>
+    <h2>Quiz chronométré</h2>
+    <p class="hero-subtitle">30 secondes par question.</p>
+  </div>
+<div class="content-section">
+  <div class="quiz-container">
+    <div class="quiz-score-bar animate-in"><span class="score-label">Score</span><div class="score-track"><div class="score-fill" style="width:0%"></div></div><span class="score-value" id="quizScoreVal">0%</span></div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 1 / 3</div>
+      <h4>Selon l’IEA (2025), quelle sera la consommation des datacenters en 2026 ?</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>100 TWh, soit l’équivalent du Portugal</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">B</span><span>500 TWh, soit l’équivalent de la France</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">C</span><span>1 000 TWh, soit l’équivalent du Japon</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>2 000 TWh, soit l’équivalent des États-Unis</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. L’IEA prévoit 1 000 TWh pour les datacenters en 2026, soit l’équivalent de la consommation électrique annuelle du Japon. Cette croissance est largement tirée par l’IA générative. Pour une entreprise engagée dans le transport bas carbone, cette donnée impose une réflexion sur la sobriété des usages numériques." data-incorrect-text="L’IEA prévoit 1 000 TWh en 2026, soit l’équivalent de la consommation du Japon. Cette projection a doublé en deux ans sous l’effet de l’explosion des usages d’IA générative."></div>
+    </div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 2 / 3</div>
+      <h4>L’effet rebond (paradoxe de Jevons) appliqué à l’IA signifie que :</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>L’IA devient moins performante avec le temps</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Les gains d’efficacité sont annulés par l’augmentation du volume d’utilisation</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Les utilisateurs se lassent de l’IA après quelques mois</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>L’IA consomme moins d’énergie à chaque nouvelle version</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. L’effet rebond est le piège environnemental majeur de l’IA. Si l’IA réduit le temps de rédaction de 30 à 5 minutes, le collaborateur ne gagne pas 25 minutes : il génère 6 versions au lieu d’une. Le gain d’efficacité unitaire est annulé par l’explosion du volume. Sans discipline d’usage, la consommation totale augmente." data-incorrect-text="L’effet rebond signifie que les gains d’efficacité sont annulés par l’augmentation du volume. Quand l’IA rend une tâche 6 fois plus rapide, on la fait 6 fois plus souvent. La consommation totale ne baisse pas, elle augmente."></div>
+    </div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 3 / 3</div>
+      <h4>Pour résumer un compte-rendu de réunion, quelle approche est la plus sobre sur le plan environnemental ?</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Utiliser GPT-4 pour garantir la meilleure qualité possible</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Utiliser un SLM (Small Language Model) adapté à cette tâche simple</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Faire 10 générations et garder la meilleure</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Utiliser deux modèles en parallèle et comparer les résultats</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. Un SLM consomme une fraction de l’énergie d’un LLM comme GPT-4 et produit un résultat équivalent pour les tâches courantes : résumé, reformulation, classification. C’est le principe du right-sizing : utiliser le bon modèle pour la bonne tâche, comme on choisit un TER plutôt qu’un TGV pour 30 km." data-incorrect-text="Un SLM (Small Language Model) suffit amplement pour résumer un compte-rendu et consomme une fraction de l’énergie d’un GPT-4. C’est le principe du right-sizing : adapter la puissance du modèle à la complexité de la tâche."></div>
+    </div>
+    <div class="quiz-retry-msg" style="display:none"><p>Score insuffisant.</p><button class="quiz-retry-btn quiz-validate-btn">Revoir les risques</button></div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-6">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 7 sur 8</div>
+    <h2>Votre synthèse personnalisée</h2>
+    <p class="hero-subtitle">Basée sur vos réponses.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><div class="progress-circle-wrap"><div class="progress-circle">
+    <div class="top-line" style="top:142px"></div>
+    <div class="bottom-line"></div>
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="bg" cx="80" cy="80" r="70"/>
+      <circle class="fg-fill" cx="80" cy="140" r="0"/>
+      <circle class="fg-stroke" cx="80" cy="80" r="70" stroke-dasharray="439.82" stroke-dashoffset="439.82"/>
+    </svg>
+    <div class="circle-text">—</div>
+  </div></div></div>
+  <div class="animate-in"><div class="two-columns">
+    <div class="column-card"><h4 style="color:var(--danger)">Risques clés</h4><ul><li>Consommation énergétique massive des datacenters IA</li><li>Effet rebond : plus d’efficacité, plus de consommation</li><li>Consommation d’eau pour le refroidissement des serveurs</li><li>Contradiction avec les engagements RSE de la SNCF</li></ul></div>
+    <div class="column-card"><h4 style="color:var(--success)">Mesures essentielles</h4><ul><li>Utiliser le bon modèle pour la bonne tâche (right-sizing)</li><li>Limiter le nombre de générations par tâche</li><li>Mesurer l’empreinte environnementale des usages IA</li><li>Choisir un hébergement à faible empreinte carbone</li></ul></div>
+  </div></div>
+  <div class="animate-in"><h3>Questions à se poser dans un projet IA</h3><div class="highlight-box"><ul class="numbered-list"><li><span>Le modèle choisi est-il dimensionné pour la tâche (SLM vs LLM) ?</span></li><li><span>L’impact énergétique du projet est-il mesuré et intégré au bilan carbone ?</span></li><li><span>Des alternatives plus légères ont-elles été évaluées avant de déployer un modèle lourd ?</span></li><li><span>Les utilisateurs sont-ils sensibilisés à la sobriété numérique (limiter les générations, affiner les prompts) ?</span></li><li><span>Le choix d’hébergement privilégie-t-il les fournisseurs utilisant des énergies renouvelables ?</span></li></ul></div></div>
+    <div class="checklist-container animate-in">
+    <h4>Vos engagements</h4><p style="font-size:.85rem;color:var(--text-muted)">Cochez les bonnes pratiques que vous vous engagez à appliquer.</p>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je choisirai le modèle le plus léger adapté à ma tâche (SLM avant LLM)</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je limiterai le nombre de générations en améliorant mes prompts</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je me renseignerai sur l'empreinte carbone de mes outils IA</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je sensibiliserai mes collègues à la sobriété numérique</span></div>
+    <div class="checklist-progress">0/4 engagements pris</div>
+  </div>
+
+  <div class="animate-in"><h3>Points à revoir</h3><ul class="weak-areas-list"></ul></div>
+</div></div>
+<div class="step-container" id="step-7">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 8 sur 8</div>
+    <h2>Félicitations !</h2>
+    <p class="hero-subtitle">Module Environnement terminé.</p>
+  </div>
+<div class="step-celebration"><div class="celebration-grid" id="celebGrid"></div><div class="celebration-content"><div class="badge-icon">&#127793;</div><h2>Félicitations !</h2><p>Vous avez terminé le module <strong>Environnement</strong></p><p class="celebration-sub">Appliquez ces bonnes pratiques au quotidien.</p><div class="badge-message"></div></div></div></div>
+<div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div>
+  <div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#8592; Précédent</button>
+  <div class="breadcrumb" id="breadcrumb"><span class="breadcrumb-item"><span class="breadcrumb-link active" data-step="0"><span class="step-num">1</span>Accroche</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="1"><span class="step-num">2</span>Découverte</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="2"><span class="step-num">3</span>Risques</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="3"><span class="step-num">4</span>Mesures</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="4"><span class="step-num">5</span>Scénario</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="5"><span class="step-num">6</span>Quiz</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="6"><span class="step-num">7</span>Synthèse</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="7"><span class="step-num">8</span>Conclusion</span></span></div>
+  <button class="nav-btn primary" id="nextBtn">Suivant &#8594;</button></div>
+</div></main></div>
+</div>
+
+</div>
+
+<div class="scroll-hint" id="scrollHint"><span>Scrollez</span><div class="scroll-arrow"></div></div>
+<script src="js/scorm.js"></script><script src="js/app.js"></script>
+</body></html>

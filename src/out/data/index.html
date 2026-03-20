@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Enjeu : Données</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head><body>
+<div class="cover-page" id="coverPage">
+  <div class="cover-grid" id="coverGrid"></div>
+  <div class="cover-content">
+    <div class="cover-subtitle">Les enjeux de l'IA à 360</div>
+    <h1>&#128202; Données</h1>
+    <p>Garantir la qualité, la fiabilité et la gouvernance des données qui alimentent les systèmes d'IA du Groupe SNCF. Dans un contexte ferroviaire où une procédure de sécurité obsolète peut mettre des vies en danger, la qualité des données n'est pas un sujet technique — c'est un enjeu de sécurité.</p>
+    <button class="cover-start-btn" id="coverStartBtn">Commencer le module &#8594;</button>
+  </div>
+</div>
+
+<div class="course-layout">
+<aside class="sidebar" role="navigation">
+  <div class="sidebar-header"><h1>&#128202; Données</h1><div class="subtitle">Les enjeux de l’IA à 360</div></div>
+  <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% terminé</div></div>
+  <div class="sidebar-score">Score : <span id="sidebarScore">—</span></div>
+  <nav class="sidebar-nav">
+      <div class="nav-item active"><span class="nav-number">1</span><span class="nav-label">Accroche</span></div>
+      <div class="nav-item"><span class="nav-number">2</span><span class="nav-label">Découverte</span></div>
+      <div class="nav-item"><span class="nav-number">3</span><span class="nav-label">Risques</span></div>
+      <div class="nav-item"><span class="nav-number">4</span><span class="nav-label">Mesures</span></div>
+      <div class="nav-item"><span class="nav-number">5</span><span class="nav-label">Scénario</span></div>
+      <div class="nav-item"><span class="nav-number">6</span><span class="nav-label">Quiz</span></div>
+      <div class="nav-item"><span class="nav-number">7</span><span class="nav-label">Synthèse</span></div>
+      <div class="nav-item"><span class="nav-number">8</span><span class="nav-label">Conclusion</span></div>
+  </nav>
+</aside>
+<main class="main-content">
+<div class="step-container active" id="step-0">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 1 sur 8</div>
+    <h2>&#128202; Données</h2>
+    <p class="hero-subtitle">Garantir la qualité, la fiabilité et la gouvernance des données qui alimentent les systèmes d'IA du Groupe SNCF. Dans un contexte ferroviaire où une procédure de sécurité obsolète peut mettre des vies en danger, la qualité des données n'est pas un sujet technique — c'est un enjeu de sécurité.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><div class="highlight-box warning"><strong>Dans un système RAG (génération augmentée par récupération), l'IA ne sait que ce que son corpus lui donne. Si un référentiel technique est obsolète dans la base, l'IA pourrait fournir une ancienne procédure de sécurité — avec des conséquences potentiellement graves.</strong></div></div>
+  <div class="counter-row animate-in">
+    <div class="counter-box"><span class="counter-num" data-target="80" data-suffix="%">80%</span><span class="counter-label">du temps IA = préparation des données</span></div>
+    <div class="counter-box"><span class="counter-num" data-target="90" data-suffix="%">90%</span><span class="counter-label">de données mondiales non structurées (IDC)</span></div>
+    <div class="counter-box"><span class="counter-num" data-target="1" data-suffix="">1</span><span class="counter-label">corpus fiable nécessaire</span></div>
+  </div>
+
+  <div class="animate-in"><div class="highlight-box"><strong>Dans ce module, vous allez :</strong><ul>
+    <li>Comprendre cet enjeu en profondeur avec des cas réels</li>
+    <li>Identifier les risques avec des activités interactives</li>
+    <li>Associer les bonnes mesures aux bons risques</li>
+    <li>Vivre un scénario professionnel réaliste</li>
+    <li>Tester vos connaissances avec un quiz chronométré</li>
+    <li>Obtenir votre synthèse personnalisée</li>
+  </ul></div></div>
+  <div class="vf-container animate-in">
+    <h4>Vrai ou Faux ?</h4>
+    <div class="vf-item" data-correct="faux">
+      <span>Plus on met de données dans un corpus RAG, meilleure est l'IA.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Faux. C'est la qualité qui compte, pas la quantité. Des données obsolètes dégradent les résultats.</div>
+    </div>
+    <div class="vf-item" data-correct="vrai">
+      <span>80% du temps d'un projet IA est consacré à la préparation des données.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Vrai. Le nettoyage, la structuration et la validation sont les étapes les plus longues.</div>
+    </div>
+    <div class="vf-item" data-correct="vrai">
+      <span>Le data drift signifie que les données deviennent obsolètes progressivement.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Vrai. Sans cycle de revue régulier, le corpus se dégrade dans le temps.</div>
+    </div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-1">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 2 sur 8</div>
+    <h2>Découverte : Données</h2>
+    <p class="hero-subtitle">Explorez cet enjeu de cet enjeu.</p>
+  </div>
+<div class="content-section">
+  <div class="tabs-container animate-in">
+    <div class="tabs-header">
+      <button class="tab-btn active" role="tab" tabindex="0" data-tab="tab-mechanism">Comment ça marche</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-context">Définition et contexte</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-usages">Usages IA</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-principles">Principes clés</button>
+    </div>
+    <div class="tab-panel active" data-tab="tab-mechanism">
+      <p><strong>Comment ça marche ?</strong> Le <strong>RAG</strong> (Retrieval Augmented Generation) est le mécanisme utilisé par les chatbots internes. Il fonctionne en 3 étapes : (1) <em>Découpage</em> des documents en fragments (chunks), (2) <em>Recherche</em> des fragments pertinents via des vecteurs mathématiques (représentations mathématiques (embeddings)), (3) <em>Génération</em> d’une réponse à partir de ces fragments. La qualité de la réponse dépend à 100 % de la qualité du corpus : si les documents sont obsolètes, en double, ou mal structurés, l’IA produira des réponses obsolètes, contradictoires ou incohérentes.</p><p><strong>Ne pas confondre RAG et fine-tuning</strong> : le RAG cherche dans des documents existants sans modifier le modèle. Le fine-tuning réentraîne le modèle lui-même avec de nouvelles données. Pour un chatbot interne qui répond sur les procédures, c’est le RAG qui est utilisé : on alimente le corpus, pas le modèle.</p>
+    </div>
+    <div class="tab-panel" data-tab="tab-context">
+      <h3>Définition et contexte</h3><p>Un système <strong>RAG</strong> (Retrieval-Augmented Generation) fonctionne en deux temps : d'abord, l'IA <strong>recherche</strong> les documents les plus pertinents dans un corpus interne ; ensuite, elle <strong>génère</strong> une réponse en s'appuyant sur ces documents. C'est comme un collaborateur qui consulte la base documentaire avant de répondre à une question. La qualité de la réponse dépend donc entièrement de la qualité du corpus : si les documents sont obsolètes, contradictoires ou incomplets, l'IA produira des réponses erronées avec la même assurance que si elles étaient exactes.</p><p>Le <strong>data drift</strong> (dérive des données) est un risque critique dans un environnement ferroviaire. Les procédures de sécurité évoluent, les référentiels techniques sont mis à jour, les politiques RH changent. Si le corpus IA n'est pas synchronisé avec ces évolutions, l'IA continue de fournir les anciennes versions. Exemple concret : une procédure de maintenance sur un type de rail a été mise à jour en mars 2025 suite à un retour d'expérience, mais le corpus IA contient encore la version de 2023. Un technicien qui interroge l'IA obtient l'ancienne procédure — potentiellement dangereuse.</p><p>Pour la SNCF, les conséquences sont amplifiées par la criticité du domaine. Une <strong>mauvaise procédure de sécurité</strong> fournie par l'IA n'est pas une simple erreur administrative — elle peut compromettre la sécurité des voyageurs et des agents. C'est pourquoi la qualité des données qui alimentent l'IA est un sujet de sécurité ferroviaire au même titre que la maintenance des voies ou la signalisation.</p><p>La <strong>gouvernance des données comme code</strong> signifie automatiser les contrôles qualité : vérification automatique de la fraîcheur des documents, détection des doublons et contradictions, traçabilité de chaque source citée par l'IA. L'objectif est de passer d'une gestion documentaire artisanale à un pipeline industrialisé où chaque document entrant dans le corpus IA est validé, versionné et traçable — comme les pièces d'un matériel roulant sont certifiées avant montage.</p>
+    </div>
+    <div class="tab-panel" data-tab="tab-usages">
+      <h4>Usages IA concernés par l’enjeu données</h4><ul><li><strong>Chatbots internes RAG</strong> (documentation technique, procédures, FAQ RH) — dépendent entièrement du corpus</li><li><strong>Extraction automatique de données</strong> (OCR intelligent, analyse de formulaires) — sensible à la qualité des documents sources</li><li><strong>Catégorisation et tri de documents</strong> — nécessite des données étiquetées correctement</li><li><strong>Maintenance prédictive</strong> — les données capteurs doivent être fiables et à jour</li><li><strong>Analyse de retards/incidents</strong> — qualité des données historiques = qualité des prédictions</li></ul>
+    </div>
+    <div class="tab-panel" data-tab="tab-principles">
+        <div class="highlight-box animate-in">
+    <strong>Le pipeline RAG expliqué simplement</strong>
+    <ul class="numbered-list">
+      <li><span><strong>1. Préparation du corpus</strong> — Avant tout, les documents internes doivent être qualifiés pour alimenter l'IA : vérification de la date de validité, suppression des doublons et versions obsolètes, identification du propriétaire de chaque document. À la SNCF, cela concerne les référentiels techniques, les procédures de sécurité, les politiques RH, les guides opérationnels. Un document non qualifié ne doit pas entrer dans le corpus — c'est le principe du « corpus IA Ready ».</span></li>
+      <li><span><strong>2. Découpage et indexation (chunking)</strong> — Les documents sont découpés en segments (chunks) de taille optimale, puis transformés en vecteurs numériques (embeddings) et stockés dans une base vectorielle. Concrètement, un référentiel technique de 200 pages est découpé en paragraphes thématiques que l'IA pourra retrouver individuellement. La qualité du découpage détermine la pertinence de la recherche : trop large, l'IA noie l'information utile ; trop fin, elle perd le contexte.</span></li>
+      <li><span><strong>3. Recherche et récupération (retrieval)</strong> — Quand un collaborateur pose une question, l'IA cherche dans la base vectorielle les segments les plus proches sémantiquement de la question. Ce n'est pas une recherche par mots-clés : l'IA comprend le sens de la question et retrouve les passages pertinents même s'ils utilisent des termes différents. Elle récupère généralement les 3 à 10 segments les plus pertinents pour construire sa réponse.</span></li>
+      <li><span><strong>4. Génération avec citation des sources</strong> — L'IA génère sa réponse en s'appuyant sur les segments récupérés, en citant explicitement les documents sources. Le collaborateur peut ainsi vérifier chaque affirmation. Si l'IA cite un document de 2022 alors qu'une version 2025 existe, c'est un signal de data drift à remonter. La traçabilité transforme l'IA d'une boîte noire en un assistant vérifiable et corrigeable.</span></li>
+    </ul>
+  </div>
+
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="animate-in slider-container"><h4>Auto-évaluation : votre niveau sur cet enjeu ?</h4>
+    <input type="range" min="1" max="5" value="3">
+    <div class="slider-labels"><span>1 Débutant</span><span>5 Expert</span></div>
+    <div class="slider-value">3/5 Intermédiaire</div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-2">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 3 sur 8</div>
+    <h2>Les risques identifiés</h2>
+    <p class="hero-subtitle">Comment une mauvaise qualité des données compromet-elle la fiabilité des systèmes d'IA ?</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Explorez chaque risque</h3><p>Cliquez sur chaque risque pour découvrir l’explication complète.</p>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Data drift : procédure de sécurité obsolète dans le corpus IA</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Une procédure de maintenance des voies a été mise à jour suite à un retour d'expérience incident, mais le corpus IA contient encore l'ancienne version. Un technicien interroge l'IA sur la procédure à suivre et obtient la version obsolète — potentiellement dangereuse. L'IA ne signale pas que le document date de 2023 alors que la procédure en vigueur date de 2025. Dans un contexte ferroviaire, une procédure périmée peut avoir des conséquences sur la sécurité des circulations.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Contradictions entre documents coexistants</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Deux versions d'une même politique RH coexistent dans le corpus : l'ancienne prévoit 25 jours de congés et la nouvelle 27 pour une catégorie d'agents. Le chatbot interne donne tantôt l'une, tantôt l'autre réponse selon le document récupéré en premier. Les collaborateurs perdent confiance dans l'outil, les managers doivent traiter des réclamations contradictoires, et le service RH passe plus de temps à corriger qu'avant le déploiement de l'IA.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Biais historiques encodés dans les documents internes</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Les données historiques reflètent les pratiques passées, pas les standards actuels. Si un modèle IA est entraîné sur 10 ans de décisions de mobilité interne, il reproduit les biais de ces décisions : sous-représentation de certains profils dans les promotions, schémas de carrière genrés, favorisation implicite de certains parcours. L'IA amplifie et systématise ce que les humains faisaient de manière inconsciente et ponctuelle.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Absence de traçabilité des sources</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>L'IA génère une réponse sur une procédure de sécurité mais ne cite aucune source. Impossible de savoir si la réponse vient du référentiel officiel, d'un compte-rendu de réunion informel ou d'une note personnelle indexée par erreur. Sans traçabilité, le collaborateur ne peut ni vérifier la fiabilité de la réponse ni identifier le document à mettre à jour en cas d'erreur. C'est l'équivalent d'un médicament sans notice : on ne sait pas ce qu'il contient.</p></div></div>
+    </div>
+  </div>
+</div>
+  <div class="divider"></div>
+  <div class="dnd-container animate-in">
+    <h4>Classez les éléments dans la bonne catégorie</h4>
+    <p style="font-size:.85rem;color:var(--text-muted)">Glissez ou cliquez sur chaque élément dans la zone Risques ou Mesures.</p>
+    <div class="dnd-sources">
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="02bf0fb3d770" data-zone="mesure">Cycles de revue réguliers pour détecter le data drift</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="cd2b074bce74" data-zone="risque">Data drift : procédure de sécurité obsolète dans le corpus IA</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="e69493abe057" data-zone="mesure">Traçabilité systématique des sources dans chaque réponse IA</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="646e64179513" data-zone="mesure">Corpus « IA Ready » : qualification des documents avant indexation</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="96363e09fe1b" data-zone="risque">Contradictions entre documents coexistants</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="591c5dbc2d19" data-zone="risque">Biais historiques encodés dans les documents internes</div>
+    </div>
+    <div class="dnd-targets">
+      <div class="dnd-zone" data-zone="risque"><h4>&#9888; Risques</h4></div>
+      <div class="dnd-zone" data-zone="mesure"><h4>&#10003; Mesures</h4></div>
+    </div>
+    <button class="quiz-validate-btn dnd-check-btn">Vérifier</button>
+    <div class="dnd-feedback"></div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-3">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 4 sur 8</div>
+    <h2>Les mesures à appliquer</h2>
+    <p class="hero-subtitle">Associez chaque mesure au bon risque.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Découvrez les mesures</h3><p>Retournez chaque carte pour comprendre comment les mettre en œuvre.</p>
+  <div class="flip-cards-grid animate-in">
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Corpus « IA Ready » : qualification des documents avant indexation</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Corpus « IA Ready » : qualification des documents avant indexation</h4><p>Chaque document intégré au corpus IA doit passer un processus de qualification : vérification de la date de validité, identification du propriétaire, confirmation du statut (en vigueur / archivé / brouillon). Les documents périmés ou en doublon sont exclus automatiquement. C'est le même principe que la certification des pièces avant montage sur du matériel roulant : rien n'entre dans le système sans validation préalable.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Cycles de revue réguliers pour détecter le data drift</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Cycles de revue réguliers pour détecter le data drift</h4><p>Mettre en place des revues trimestrielles du corpus IA par les experts métier de chaque domaine (sécurité, RH, maintenance, commercial). Chaque revue vérifie que les documents indexés correspondent aux versions en vigueur. Automatiser les alertes quand un document source est modifié sans que le corpus IA soit mis à jour. Objectif : aucun document obsolète ne reste plus de 30 jours dans le corpus.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Traçabilité systématique des sources dans chaque réponse IA</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Traçabilité systématique des sources dans chaque réponse IA</h4><p>Configurer les systèmes RAG pour que chaque réponse cite explicitement le ou les documents sources utilisés, avec titre, date de dernière mise à jour et propriétaire. Le collaborateur peut ainsi vérifier la pertinence de la source et signaler toute incohérence. Un bouton « Signaler une erreur » permet de remonter directement au propriétaire du document concerné.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Automatisation de la gouvernance des données</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Automatisation de la gouvernance des données</h4><p>Déployer des contrôles qualité automatisés sur le pipeline de données : détection de doublons, vérification de fraîcheur, analyse de cohérence entre documents portant sur le même sujet, scoring de fiabilité. Intégrer ces contrôles dans le processus d'indexation pour que la qualité soit garantie en continu, pas seulement lors des revues ponctuelles. La gouvernance comme code remplace la gouvernance comme intention.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="divider"></div>
+  <div class="matching-container animate-in">
+    <h4>Reliez chaque risque à la mesure correspondante</h4>
+    <p style="font-size:.85rem;color:var(--text-muted)">Cliquez sur un élément à gauche, puis sur sa correspondance à droite.</p>
+    <div class="matching-grid">
+      <div class="match-col match-left">
+        <div class="match-item" role="button" tabindex="0" data-match="0">Data drift sur une procédure de sécurité</div>
+        <div class="match-item" role="button" tabindex="0" data-match="1">Contradictions entre documents coexistants</div>
+        <div class="match-item" role="button" tabindex="0" data-match="2">Biais historiques dans les données internes</div>
+        <div class="match-item" role="button" tabindex="0" data-match="3">Absence de traçabilité des sources</div>
+      </div>
+      <div class="match-lines">
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+      </div>
+      <div class="match-col match-right">
+        <div class="match-item" role="button" tabindex="0" data-match="2">Automatisation de la gouvernance des données</div>
+        <div class="match-item" role="button" tabindex="0" data-match="1">Corpus « IA Ready » avec qualification avant indexation</div>
+        <div class="match-item" role="button" tabindex="0" data-match="3">Traçabilité systématique dans chaque réponse IA</div>
+        <div class="match-item" role="button" tabindex="0" data-match="0">Cycles de revue réguliers par les experts métier</div>
+      </div>
+    </div>
+    <div class="dnd-feedback"></div>
+  </div>
+
+
+</div></div>
+<div class="step-container" id="step-4">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 5 sur 8</div>
+    <h2>Scénario professionnel</h2>
+    <p class="hero-subtitle">Mettez vos connaissances en pratique.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Mise en situation</h3><p>Faites un choix. Vos décisions impactent votre score.</p></div>
+  <div class="scenario-container animate-in">
+    <div class="scenario-node" style="display:block">
+      <div class="scenario-card">
+        <div class="scenario-context">Vous êtes responsable RH dans une direction régionale SNCF. Depuis 3 mois, un chatbot interne alimenté par RAG répond aux questions des collaborateurs sur les politiques RH (congés, mobilité, formation). Deux agents du même service vous contactent le même jour : le premier a demandé combien de jours de congés exceptionnels il a droit pour un déménagement et le chatbot a répondu « 2 jours ». Le second a posé la même question et a obtenu « 3 jours ». En vérifiant, vous découvrez que deux versions de la note RH coexistent dans le corpus : celle de 2022 (2 jours) et celle de 2024 (3 jours, suite à la révision de la convention collective).</div>
+        <h4>Comment réagissez-vous ?</h4>
+        <div class="scenario-choices">
+          <div class="scenario-choice" role="button" tabindex="0" data-points="1" data-feedback="Vous traitez le symptôme mais pas la cause. Les deux agents sont informés, mais le problème persiste dans le corpus : demain, un autre collaborateur recevra une réponse contradictoire. Sans correction du corpus, le chatbot continuera d'alterner entre les deux versions au gré de la recherche vectorielle. Il faut agir à la source." data-next="">Je corrige manuellement les deux réponses et j'envoie un email de clarification aux agents concernés</div>
+          <div class="scenario-choice" role="button" tabindex="0" data-points="2" data-feedback="Parfait. Vous traitez le problème à trois niveaux : l'immédiat (supprimer le document obsolète), le périmètre (vérifier les autres politiques RH) et le structurel (cycle de revue pour prévenir le data drift). C'est l'approche « corpus IA Ready » : chaque document indexé doit être la version en vigueur, validée par son propriétaire." data-next="">Je fais supprimer l'ancienne version du corpus, je vérifie s'il existe d'autres doublons sur les politiques RH clés, et je mets en place un processus de revue trimestrielle avec les propriétaires de documents</div>
+          <div class="scenario-choice" role="button" tabindex="0" data-points="0" data-feedback="Réaction disproportionnée. Un doublon sur une politique de congés ne justifie pas de couper un outil utilisé par l'ensemble de la direction régionale. La bonne approche est chirurgicale : corriger le document problématique, vérifier les documents similaires, et mettre en place un processus pour que cela ne se reproduise pas. Désactiver l'outil alimente la méfiance et freine l'adoption." data-next="">Je désactive le chatbot le temps de revoir l'intégralité du corpus documentaire RH</div>
+        </div>
+        <div class="scenario-result" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+</div></div>
+<div class="step-container" id="step-5">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 6 sur 8</div>
+    <h2>Quiz chronométré</h2>
+    <p class="hero-subtitle">30 secondes par question.</p>
+  </div>
+<div class="content-section">
+  <div class="quiz-container">
+    <div class="quiz-score-bar animate-in"><span class="score-label">Score</span><div class="score-track"><div class="score-fill" style="width:0%"></div></div><span class="score-value" id="quizScoreVal">0%</span></div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 1 / 3</div>
+      <h4>Dans un système RAG, que signifie « l'IA ne sait que ce que son corpus lui donne » ?</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>L'IA invente toujours ses réponses à partir de ses connaissances générales</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>L'IA recherche d'abord dans un corpus de documents internes, puis génère sa réponse à partir de ces documents</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>L'IA ne peut répondre qu'aux questions posées exactement comme dans les documents</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>L'IA recopie mot pour mot les documents du corpus sans reformulation</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. Un système RAG fonctionne en deux étapes : récupération (l'IA cherche les documents les plus pertinents dans le corpus) puis génération (l'IA formule sa réponse à partir de ces documents). Si le corpus contient des documents obsolètes ou contradictoires, la réponse sera erronée — même si le modèle IA est performant. La qualité du corpus détermine la qualité des réponses." data-incorrect-text="Dans un RAG, l'IA recherche d'abord les documents pertinents dans un corpus interne, puis génère une réponse synthétique à partir de ces documents. Elle ne recopie pas mot pour mot et ne répond pas qu'aux formulations exactes. Mais elle est limitée par la qualité de son corpus : documents obsolètes = réponses obsolètes."></div>
+    </div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 2 / 3</div>
+      <h4>Qu'est-ce que le « data drift » dans le contexte d'un corpus IA d'entreprise ?</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>L'IA qui modifie elle-même les documents du corpus</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Les documents du corpus deviennent obsolètes car les procédures et politiques évoluent sans que le corpus soit mis à jour</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>La perte de données due à une panne serveur</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Le transfert non autorisé de données vers un outil externe</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. Le data drift est l'écart progressif entre les documents du corpus IA et la réalité en vigueur. Les procédures évoluent, les politiques sont mises à jour, mais le corpus IA peut rester figé sur des versions antérieures. Dans un contexte ferroviaire, une procédure de sécurité obsolète fournie par l'IA peut avoir des conséquences graves. D'où la nécessité de cycles de revue réguliers." data-incorrect-text="Le data drift désigne l'obsolescence progressive du corpus : les documents indexés ne reflètent plus les procédures et politiques en vigueur. Ce n'est pas une panne technique mais un problème de gouvernance : les mises à jour métier ne sont pas répercutées dans le corpus IA. Des revues régulières par les experts métier sont essentielles pour le prévenir."></div>
+    </div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 3 / 3</div>
+      <h4>Pourquoi la traçabilité des sources est-elle essentielle dans un système RAG d'entreprise ?</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Pour respecter les droits d'auteur sur les documents internes</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Pour que le collaborateur puisse vérifier la fiabilité de la réponse et identifier le document source à corriger en cas d'erreur</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Pour comptabiliser le nombre de fois où chaque document est consulté</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Pour limiter le nombre de requêtes par collaborateur</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. La traçabilité permet deux choses essentielles : le collaborateur peut vérifier que la source est pertinente et à jour avant de se fier à la réponse, et en cas d'erreur, le propriétaire du document peut être identifié pour corriger la source. Sans traçabilité, l'IA est une boîte noire : on ne sait pas d'où vient l'information ni comment la corriger." data-incorrect-text="La traçabilité des sources permet au collaborateur de vérifier la pertinence et la fraîcheur du document utilisé par l'IA, et d'identifier le propriétaire du document en cas d'erreur pour le corriger à la source. C'est un mécanisme de confiance et de correction continue indispensable à la fiabilité du système."></div>
+    </div>
+    <div class="quiz-retry-msg" style="display:none"><p>Score insuffisant.</p><button class="quiz-retry-btn quiz-validate-btn">Revoir les risques</button></div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-6">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 7 sur 8</div>
+    <h2>Votre synthèse personnalisée</h2>
+    <p class="hero-subtitle">Basée sur vos réponses.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><div class="progress-circle-wrap"><div class="progress-circle">
+    <div class="top-line" style="top:142px"></div>
+    <div class="bottom-line"></div>
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="bg" cx="80" cy="80" r="70"/>
+      <circle class="fg-fill" cx="80" cy="140" r="0"/>
+      <circle class="fg-stroke" cx="80" cy="80" r="70" stroke-dasharray="439.82" stroke-dashoffset="439.82"/>
+    </svg>
+    <div class="circle-text">—</div>
+  </div></div></div>
+  <div class="animate-in"><div class="two-columns">
+    <div class="column-card"><h4 style="color:var(--danger)">Risques clés</h4><ul><li>Data drift : procédure de sécurité obsolète dans le corpus IA</li><li>Contradictions entre documents coexistants</li><li>Biais historiques encodés dans les documents internes</li><li>Absence de traçabilité des sources</li></ul></div>
+    <div class="column-card"><h4 style="color:var(--success)">Mesures essentielles</h4><ul><li>Corpus « IA Ready » : qualification des documents avant indexation</li><li>Cycles de revue réguliers pour détecter le data drift</li><li>Traçabilité systématique des sources dans chaque réponse IA</li><li>Automatisation de la gouvernance des données</li></ul></div>
+  </div></div>
+  <div class="animate-in"><h3>Questions à se poser dans un projet IA</h3><div class="highlight-box"><ul class="numbered-list"><li><span>Le corpus de données est-il à jour, dédoublonné et validé par les experts métier ?</span></li><li><span>Un processus de revue périodique est-il en place pour éviter le data drift ?</span></li><li><span>Les sources de chaque réponse IA sont-elles traçables et vérifiables ?</span></li><li><span>Le pipeline RAG a-t-il été testé avec des questions pièges pour vérifier la robustesse ?</span></li><li><span>Un corpus « IA Ready » avec métadonnées et versioning est-il en place ?</span></li></ul></div></div>
+    <div class="checklist-container animate-in">
+    <h4>Vos engagements</h4><p style="font-size:.85rem;color:var(--text-muted)">Cochez les bonnes pratiques que vous vous engagez à appliquer.</p>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je vérifierai que mes documents sont à jour avant de les intégrer dans un corpus IA</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je signalerai les doublons et versions obsolètes que je repère</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je documenterai la source et la date de chaque document que je fournis</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je participerai aux cycles de revue du corpus</span></div>
+    <div class="checklist-progress">0/4 engagements pris</div>
+  </div>
+
+  <div class="animate-in"><h3>Points à revoir</h3><ul class="weak-areas-list"></ul></div>
+</div></div>
+<div class="step-container" id="step-7">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 8 sur 8</div>
+    <h2>Félicitations !</h2>
+    <p class="hero-subtitle">Module Données terminé.</p>
+  </div>
+<div class="step-celebration"><div class="celebration-grid" id="celebGrid"></div><div class="celebration-content"><div class="badge-icon">&#128202;</div><h2>Félicitations !</h2><p>Vous avez terminé le module <strong>Données</strong></p><p class="celebration-sub">Appliquez ces bonnes pratiques au quotidien.</p><div class="badge-message"></div></div></div></div>
+<div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div>
+  <div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#8592; Précédent</button>
+  <div class="breadcrumb" id="breadcrumb"><span class="breadcrumb-item"><span class="breadcrumb-link active" data-step="0"><span class="step-num">1</span>Accroche</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="1"><span class="step-num">2</span>Découverte</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="2"><span class="step-num">3</span>Risques</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="3"><span class="step-num">4</span>Mesures</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="4"><span class="step-num">5</span>Scénario</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="5"><span class="step-num">6</span>Quiz</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="6"><span class="step-num">7</span>Synthèse</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="7"><span class="step-num">8</span>Conclusion</span></span></div>
+  <button class="nav-btn primary" id="nextBtn">Suivant &#8594;</button></div>
+</div></main></div>
+</div>
+
+</div>
+
+<div class="scroll-hint" id="scrollHint"><span>Scrollez</span><div class="scroll-arrow"></div></div>
+<script src="js/scorm.js"></script><script src="js/app.js"></script>
+</body></html>

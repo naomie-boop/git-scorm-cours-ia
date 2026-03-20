@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Enjeu : Design UX</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head><body>
+<div class="cover-page" id="coverPage">
+  <div class="cover-grid" id="coverGrid"></div>
+  <div class="cover-content">
+    <div class="cover-subtitle">Les enjeux de l'IA à 360</div>
+    <h1>&#128187; Design UX</h1>
+    <p>Concevoir des interfaces IA accessibles à tous les utilisateurs, y compris les voyageurs en situation de handicap, dans les gares et sur les applications mobiles.</p>
+    <button class="cover-start-btn" id="coverStartBtn">Commencer le module &#8594;</button>
+  </div>
+</div>
+
+<div class="course-layout">
+<aside class="sidebar" role="navigation">
+  <div class="sidebar-header"><h1>&#128187; Design UX</h1><div class="subtitle">Les enjeux de l’IA à 360</div></div>
+  <div class="sidebar-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div><div class="progress-text">0% terminé</div></div>
+  <div class="sidebar-score">Score : <span id="sidebarScore">—</span></div>
+  <nav class="sidebar-nav">
+      <div class="nav-item active"><span class="nav-number">1</span><span class="nav-label">Accroche</span></div>
+      <div class="nav-item"><span class="nav-number">2</span><span class="nav-label">Découverte</span></div>
+      <div class="nav-item"><span class="nav-number">3</span><span class="nav-label">Risques</span></div>
+      <div class="nav-item"><span class="nav-number">4</span><span class="nav-label">Mesures</span></div>
+      <div class="nav-item"><span class="nav-number">5</span><span class="nav-label">Scénario</span></div>
+      <div class="nav-item"><span class="nav-number">6</span><span class="nav-label">Quiz</span></div>
+      <div class="nav-item"><span class="nav-number">7</span><span class="nav-label">Synthèse</span></div>
+      <div class="nav-item"><span class="nav-number">8</span><span class="nav-label">Conclusion</span></div>
+  </nav>
+</aside>
+<main class="main-content">
+<div class="step-container active" id="step-0">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 1 sur 8</div>
+    <h2>&#128187; Design UX</h2>
+    <p class="hero-subtitle">Concevoir des interfaces IA accessibles à tous les utilisateurs, y compris les voyageurs en situation de handicap, dans les gares et sur les applications mobiles.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><div class="highlight-box warning"><strong>La directive européenne 2019/882 (European Accessibility Act) est applicable depuis juin 2025. Les bornes interactives en gare, l’application mobile et les chatbots voyageurs doivent être accessibles à tous, y compris les personnes en situation de handicap.</strong></div></div>
+  <div class="counter-row animate-in">
+    <div class="counter-box"><span class="counter-num" data-target="2025" data-suffix="">2025</span><span class="counter-label">directive accessibilité UE en vigueur</span></div>
+    <div class="counter-box"><span class="counter-num" data-target="4" data-suffix="">4</span><span class="counter-label">principes WCAG 2.1</span></div>
+    <div class="counter-box"><span class="counter-num" data-target="12" data-suffix="M">12M</span><span class="counter-label">voyageurs/jour en Île-de-France</span></div>
+  </div>
+
+  <div class="animate-in"><div class="highlight-box"><strong>Dans ce module, vous allez :</strong><ul>
+    <li>Comprendre cet enjeu en profondeur avec des cas réels</li>
+    <li>Identifier les risques avec des activités interactives</li>
+    <li>Associer les bonnes mesures aux bons risques</li>
+    <li>Vivre un scénario professionnel réaliste</li>
+    <li>Tester vos connaissances avec un quiz chronométré</li>
+    <li>Obtenir votre synthèse personnalisée</li>
+  </ul></div></div>
+  <div class="vf-container animate-in">
+    <h4>Vrai ou Faux ?</h4>
+    <div class="vf-item" data-correct="faux">
+      <span>Un design minimaliste est toujours le meilleur choix pour une interface IA.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Faux. Sans guidage, les utilisateurs ne savent pas quoi demander (blank page problem).</div>
+    </div>
+    <div class="vf-item" data-correct="vrai">
+      <span>La directive européenne d'accessibilité est applicable depuis juin 2025.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Vrai. L'European Accessibility Act (2019/882) impose l'accessibilité de tous les services numériques.</div>
+    </div>
+    <div class="vf-item" data-correct="faux">
+      <span>L'IA signale toujours quand elle est moins sûre de sa réponse.</span>
+      <div class="vf-btns">
+        <button class="vf-btn" role="button" tabindex="0" data-answer="vrai">Vrai</button>
+        <button class="vf-btn" role="button" tabindex="0" data-answer="faux">Faux</button>
+      </div>
+      <div class="vf-feedback">Faux. Les LLM produisent toutes leurs réponses avec le même niveau de confiance apparent.</div>
+    </div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-1">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 2 sur 8</div>
+    <h2>Découverte : Design UX</h2>
+    <p class="hero-subtitle">Explorez cet enjeu de cet enjeu.</p>
+  </div>
+<div class="content-section">
+  <div class="tabs-container animate-in">
+    <div class="tabs-header">
+      <button class="tab-btn active" role="tab" tabindex="0" data-tab="tab-mechanism">Comment ça marche</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-context">Définition et contexte</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-usages">Usages IA</button>
+      <button class="tab-btn" role="tab" tabindex="0" data-tab="tab-principles">Principes clés</button>
+    </div>
+    <div class="tab-panel active" data-tab="tab-mechanism">
+      <p><strong>Comment ça marche ?</strong> Les LLM ne « comprennent » pas l’intention de l’utilisateur. Ils interprètent le texte du prompt comme une séquence de tokens. Un prompt mal formulé = une réponse inutile ou trompeuse. C’est le <strong>blank page problem</strong> : face à un champ vide, la plupart des utilisateurs ne savent pas quoi demander ni comment le formuler. D’où l’importance cruciale du <em>guidage dans l’interface</em>.</p><p>Par ailleurs, l’IA générative produit des réponses avec un <em>niveau de confiance uniforme</em> : elle ne signale pas quand elle est « moins sûre ». L’interface doit donc <strong>calibrer la confiance</strong> de l’utilisateur en indiquant les limites de fiabilité.</p>
+    </div>
+    <div class="tab-panel" data-tab="tab-context">
+      <h3>Définition et contexte</h3><p>Les <strong>WCAG 2.1</strong> (Web Content Accessibility Guidelines) définissent quatre principes fondamentaux d’accessibilité : <strong>Perceptible</strong>, <strong>Utilisable</strong>, <strong>Compréhensible</strong> et <strong>Robuste</strong>. Appliqués au contexte ferroviaire, ces principes imposent que les bornes interactives en gare, l’application SNCF Connect et les chatbots voyageurs soient utilisables par les personnes malvoyantes, malentendantes, à mobilité réduite ou en situation de handicap cognitif. Un chatbot vocal en gare qui ne propose pas d’alternative textuelle exclut les voyageurs sourds ; une borne tactile sans guidage vocal exclut les voyageurs malvoyants.</p><p>La <strong>calibration de la confiance</strong> (trust calibration) est un enjeu critique dans le transport. Un voyageur doit pouvoir faire confiance au chatbot pour des informations courantes (horaires, voie de départ), tout en sachant que pour une correspondance serrée ou une situation perturbée, l’information doit être vérifiée auprès d’un agent ou d’un affichage officiel. L’<strong>over-trust</strong> est dangereux : un voyageur qui se fie aveuglément au chatbot pour une correspondance de 6 minutes à Paris-Montparnasse risque de rater son TGV si l’IA hallucine le temps de correspondance. L’<strong>under-trust</strong> est un gaspillage : un agent qui refuse d’utiliser l’assistant IA par méfiance passe 20 minutes à chercher manuellement une information que l’outil fournit en 10 secondes.</p><p>L’<strong>AI literacy dans le design d’interface</strong> consiste à aider l’utilisateur à comprendre ce que l’IA peut et ne peut pas faire, directement depuis l’interface. Cela passe par des indicateurs de confiance (« cette information est vérifiée en temps réel » vs « réponse générée, vérifiez auprès d’un agent »), des conversation starters qui guident le voyageur (« Demandez-moi un horaire, une correspondance ou un itinéraire accessible PMR (Personnes à Mobilité Réduite) »), et des limites explicites (« Je ne peux pas réserver de billet ni modifier votre réservation »).</p><p>L’<strong>accessibilité pour les PMR (Personnes à Mobilité Réduite)</strong> (personnes à mobilité réduite) dans les interfaces IA ne se limite pas à la conformité technique. Un voyageur en fauteuil roulant qui utilise la borne interactive a besoin d’un écran positionné à la bonne hauteur, d’une taille de texte suffisante et d’un temps de réponse adapté. Un voyageur avec un handicap cognitif a besoin d’un langage simple et de parcours linéaires. Concevoir pour l’accessibilité, c’est concevoir pour 100 % des voyageurs.</p>
+    </div>
+    <div class="tab-panel" data-tab="tab-usages">
+      <h4>Interfaces IA concernées par l’enjeu UX</h4><ul><li><strong>Chatbots voyageurs</strong> (web, app, bornes en gare) — premier point de contact, accessibilité critique</li><li><strong>Bornes interactives en gare</strong> — utilisées par tous les profils, y compris PMR et personnes âgées</li><li><strong>Assistants vocaux</strong> — interaction mains-libres, essentielle pour l’accessibilité</li><li><strong>Recommandation d’itinéraires</strong> — confiance dans les suggestions = enjeu sécurité voyageur</li><li><strong>Interfaces internes</strong> (Groupe SNCF GPT, Copilot) — adoption dépend de la facilité d’utilisation</li></ul>
+    </div>
+    <div class="tab-panel" data-tab="tab-principles">
+        <div class="highlight-box animate-in">
+    <strong>Calibrer la confiance des utilisateurs</strong>
+    <ul class="numbered-list">
+      <li><span><strong>Over-trust : quand le voyageur fait trop confiance</strong> — Un voyageur qui se fie aveuglément au chatbot pour une correspondance serrée, un itinéraire accessible PMR ou une information tarifaire prend des décisions sur la base d’informations potentiellement hallucinées. En contexte ferroviaire, l’over-trust peut entraîner un train raté, un voyageur PMR bloqué ou un litige commercial. L’interface doit signaler le niveau de fiabilité de chaque réponse.</span></li>
+      <li><span><strong>Under-trust : quand l’utilisateur rejette l’IA</strong> — Un agent d’accueil qui a vécu une mauvaise expérience avec un outil IA développe une méfiance généralisée. Il revient aux méthodes manuelles, même pour des tâches où l’IA est fiable et rapide. L’under-trust se propage dans l’équipe par le bouche-à-oreille négatif. Une première impression ratée coûte très cher en adoption.</span></li>
+      <li><span><strong>Confiance appropriée : l’objectif du design</strong> — Le voyageur bien calibré utilise le chatbot pour les informations courantes (horaires, voie de départ, services en gare) et sait quand vérifier auprès d’un agent (correspondance serrée, situation perturbée, accessibilité PMR spécifique). L’interface guide cette calibration par des indicateurs visuels : « vérifié en temps réel », « généré – à confirmer ».</span></li>
+      <li><span><strong>Stratégies de design en contexte ferroviaire</strong> — Quatre leviers pour calibrer la confiance : (1) indicateurs de fiabilité contextuels sur chaque réponse, (2) conversation starters qui montrent le périmètre de l’IA, (3) escalade transparente vers un agent humain quand la question dépasse les capacités du chatbot, (4) limites explicites affichées dès le premier écran. Un design qui ne calibre pas la confiance est un design qui la laisse au hasard.</span></li>
+    </ul>
+  </div>
+
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="animate-in slider-container"><h4>Auto-évaluation : votre niveau sur cet enjeu ?</h4>
+    <input type="range" min="1" max="5" value="3">
+    <div class="slider-labels"><span>1 Débutant</span><span>5 Expert</span></div>
+    <div class="slider-value">3/5 Intermédiaire</div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-2">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 3 sur 8</div>
+    <h2>Les risques identifiés</h2>
+    <p class="hero-subtitle">Quels sont les risques d’interfaces IA mal conçues dans un contexte de transport public ?</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Explorez chaque risque</h3><p>Cliquez sur chaque risque pour découvrir l’explication complète.</p>
+  <div class="accordion">
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Exclusion des PMR et voyageurs malvoyants des services IA</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Une borne interactive sans synthèse vocale, un chatbot sans alternative textuelle, une application mobile non compatible avec les lecteurs d’écran : autant de barrières qui excluent les personnes en situation de handicap des services alimentés par l’IA. Depuis juin 2025, l’European Accessibility Act rend cette exclusion non seulement éthique mais juridiquement sanctionnable.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Over-trust : le voyageur se fie aveuglément au chatbot</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Un voyageur en correspondance serrée à Lyon Part-Dieu demande au chatbot s’il a le temps de changer de train. L’IA répond « oui, 8 minutes suffisent » alors que le changement de quai nécessite 15 minutes via la passerelle. Le voyageur rate son TGV. L’interface n’a affiché aucun indicateur de fiabilité ni invité à vérifier auprès d’un agent. Exemple : en 2025, des voyageurs ont raté leur correspondance après avoir suivi les indications d’un chatbot qui avait confondu deux gares homonymes.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Blank page : le voyageur ne sait pas quoi demander à l’IA</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Un voyageur devant une borne IA en gare voit un champ de saisie libre : « Posez votre question ». Sans suggestion ni conversation starter, il ne sait pas ce que l’IA peut faire. Il abandonne la borne et va faire la queue au guichet. L’investissement technologique ne produit aucune valeur pour le voyageur.</p></div></div>
+    </div>
+    <div class="accordion-item">
+      <div class="accordion-header" role="button" tabindex="0"><span>Under-trust : les agents rejettent des outils IA utiles</span><span class="icon">+</span></div>
+      <div class="accordion-body"><div class="accordion-body-inner"><p>Après une mauvaise expérience initiale (résultat incorrect, interface peu intuitive), des agents d’accueil refusent d’utiliser l’assistant IA et reviennent aux méthodes manuelles. Le temps de réponse aux voyageurs augmente, la file d’attente s’allonge, et l’investissement dans l’outil est perdu.</p></div></div>
+    </div>
+  </div>
+</div>
+  <div class="divider"></div>
+  <div class="dnd-container animate-in">
+    <h4>Classez les éléments dans la bonne catégorie</h4>
+    <p style="font-size:.85rem;color:var(--text-muted)">Glissez ou cliquez sur chaque élément dans la zone Risques ou Mesures.</p>
+    <div class="dnd-sources">
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="8e5349868a61" data-zone="mesure">Guidage contextuel avec conversation starters</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="6523f5494749" data-zone="risque">Exclusion des PMR et voyageurs malvoyants des services IA</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="aa9369450cc6" data-zone="mesure">Design de calibration de confiance</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="d97f50849bb4" data-zone="mesure">Conformité WCAG 2.1 sur tous les points de contact</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="fe96b8734c1e" data-zone="risque">Over-trust : le voyageur se fie aveuglément au chatbot</div>
+      <div class="dnd-item" draggable="true" role="button" tabindex="0" data-id="dfc19011f747" data-zone="risque">Blank page : le voyageur ne sait pas quoi demander à l’IA</div>
+    </div>
+    <div class="dnd-targets">
+      <div class="dnd-zone" data-zone="risque"><h4>&#9888; Risques</h4></div>
+      <div class="dnd-zone" data-zone="mesure"><h4>&#10003; Mesures</h4></div>
+    </div>
+    <button class="quiz-validate-btn dnd-check-btn">Vérifier</button>
+    <div class="dnd-feedback"></div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-3">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 4 sur 8</div>
+    <h2>Les mesures à appliquer</h2>
+    <p class="hero-subtitle">Associez chaque mesure au bon risque.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Découvrez les mesures</h3><p>Retournez chaque carte pour comprendre comment les mettre en œuvre.</p>
+  <div class="flip-cards-grid animate-in">
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Conformité WCAG 2.1 sur tous les points de contact</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Conformité WCAG 2.1 sur tous les points de contact</h4><p>Auditer et mettre en conformité WCAG 2.1 niveau AA l’ensemble des interfaces IA : bornes en gare (synthèse vocale, contraste, hauteur d’écran PMR), application mobile (compatibilité lecteurs d’écran, navigation clavier), chatbots (alternative textuelle pour le vocal, alternative vocale pour le textuel). Intégrer l’accessibilité dès la conception, pas en rattrapage.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Guidage contextuel avec conversation starters</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Guidage contextuel avec conversation starters</h4><p>Remplacer le champ libre vide par des suggestions contextuelles adaptées à la situation du voyageur : « Prochains départs vers Paris », « Itinéraire accessible PMR », « État du trafic en temps réel ». Afficher les limites de l’IA dès le premier écran : ce qu’elle peut faire, ce qu’elle ne peut pas faire, et quand consulter un agent.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Design de calibration de confiance</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Design de calibration de confiance</h4><p>Intégrer des indicateurs visuels de fiabilité dans chaque réponse IA : badge « vérifié en temps réel » pour les horaires issus de la base opérationnelle, mention « réponse générée – vérifiez auprès d’un agent » pour les informations non vérifiables. Aider l’utilisateur à calibrer sa confiance plutôt qu’à faire aveuglément confiance ou à rejeter l’outil.</p></div>
+      </div>
+    </div>
+    <div class="flip-card" role="button" tabindex="0">
+      <div class="flip-card-inner">
+        <div class="flip-card-front" ><h4>Tests avec des profils utilisateurs diversifiés incluant les PMR</h4><div class="flip-hint">Cliquez pour retourner</div></div>
+        <div class="flip-card-back"><h4>Tests avec des profils utilisateurs diversifiés incluant les PMR</h4><p>Tester chaque interface IA avec un panel représentatif des voyageurs : personnes en fauteuil roulant, malvoyants, malentendants, personnes âgées, voyageurs non francophones, voyageurs en situation de handicap cognitif. Un design qui fonctionne pour les cas extrêmes fonctionne pour tous. Intégrer ces tests dans le cycle de développement, pas uniquement en recette finale.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="divider"></div>
+  <div class="matching-container animate-in">
+    <h4>Reliez chaque risque à la mesure correspondante</h4>
+    <p style="font-size:.85rem;color:var(--text-muted)">Cliquez sur un élément à gauche, puis sur sa correspondance à droite.</p>
+    <div class="matching-grid">
+      <div class="match-col match-left">
+        <div class="match-item" role="button" tabindex="0" data-match="0">Exclusion des PMR des services IA</div>
+        <div class="match-item" role="button" tabindex="0" data-match="1">Over-trust du voyageur envers le chatbot</div>
+        <div class="match-item" role="button" tabindex="0" data-match="2">Blank page devant la borne IA</div>
+        <div class="match-item" role="button" tabindex="0" data-match="3">Under-trust des agents</div>
+      </div>
+      <div class="match-lines">
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+        <div class="match-line"></div>
+      </div>
+      <div class="match-col match-right">
+        <div class="match-item" role="button" tabindex="0" data-match="2">Guidage contextuel avec conversation starters</div>
+        <div class="match-item" role="button" tabindex="0" data-match="1">Design de calibration de confiance</div>
+        <div class="match-item" role="button" tabindex="0" data-match="3">Tests avec des profils utilisateurs diversifiés</div>
+        <div class="match-item" role="button" tabindex="0" data-match="0">Conformité WCAG 2.1 sur tous les points de contact</div>
+      </div>
+    </div>
+    <div class="dnd-feedback"></div>
+  </div>
+
+
+</div></div>
+<div class="step-container" id="step-4">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 5 sur 8</div>
+    <h2>Scénario professionnel</h2>
+    <p class="hero-subtitle">Mettez vos connaissances en pratique.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><h3>Mise en situation</h3><p>Faites un choix. Vos décisions impactent votre score.</p></div>
+  <div class="scenario-container animate-in">
+    <div class="scenario-node" style="display:block">
+      <div class="scenario-card">
+        <div class="scenario-context">Vous êtes designer UX pour le projet de chatbot IA destiné aux voyageurs de la gare Paris-Montparnasse, l’une des gares les plus fréquentées de France. Le chatbot sera déployé sur les bornes interactives en gare et sur l’application SNCF Connect. Votre collègue propose une interface minimaliste : un champ de saisie libre avec le message « Posez votre question », sans suggestion ni indication de fiabilité. Il argue que « c’est plus propre et les utilisateurs sont habitués aux chatbots ». Vous savez que 12 millions de voyageurs transitent chaque jour en Île-de-France, dont une proportion significative de PMR, de personnes âgées et de touristes non francophones.</div>
+        <h4>Que proposez-vous ?</h4>
+        <div class="scenario-choices">
+          <div class="scenario-choice" role="button" tabindex="0" data-points="0" data-feedback="Un champ vide sans guidage provoque le blank page problem : les voyageurs ne savent pas quoi demander et abandonnent la borne. Sans indicateur de fiabilité, les réponses générées sont perçues comme des vérités officielles SNCF, créant un risque d’over-trust. Et sans adaptations PMR, l’interface viole l’European Accessibility Act applicable depuis juin 2025." data-next="">Accepter le design minimaliste : c’est élégant et les voyageurs s’adapteront</div>
+          <div class="scenario-choice" role="button" tabindex="0" data-points="2" data-feedback="Excellente approche. Les conversation starters résolvent le blank page problem et guident les voyageurs vers les capacités réelles du chatbot. Les indicateurs de fiabilité calibrent la confiance : le voyageur sait quand l’information est vérifiée et quand il doit la recouper. La conception PMR assure la conformité à la directive 2019/882 et sert 100 % des voyageurs. Les tests utilisateurs diversifiés valident l’ensemble avant déploiement." data-next="">Enrichir l’interface avec des conversation starters, des indicateurs de fiabilité, et une conception accessible PMR testée avec des utilisateurs diversifiés</div>
+          <div class="scenario-choice" role="button" tabindex="0" data-points="1" data-feedback="La mention légale est nécessaire (obligation de transparence de l’AI Act pour les systèmes à risque limité) mais largement insuffisante. Un disclaimer en bas de page ne résout ni le blank page problem, ni l’absence de calibration de confiance, ni l’accessibilité PMR. C’est de la conformité minimale, pas du design centré utilisateur." data-next="">Garder le design minimaliste mais ajouter une mention « réponses générées par IA » en bas de page</div>
+        </div>
+        <div class="scenario-result" style="display:none"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+</div></div>
+<div class="step-container" id="step-5">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 6 sur 8</div>
+    <h2>Quiz chronométré</h2>
+    <p class="hero-subtitle">30 secondes par question.</p>
+  </div>
+<div class="content-section">
+  <div class="quiz-container">
+    <div class="quiz-score-bar animate-in"><span class="score-label">Score</span><div class="score-track"><div class="score-fill" style="width:0%"></div></div><span class="score-value" id="quizScoreVal">0%</span></div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 1 / 3</div>
+      <h4>Combien de principes fondamentaux les WCAG 2.1 définissent-elles pour l’accessibilité ?</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>3 : Visible, Utilisable, Compréhensible</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>4 : Perceptible, Utilisable, Compréhensible, Robuste</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>5 : Perceptible, Utilisable, Compréhensible, Robuste, Sécurisé</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>2 : Accessible, Compatible</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. Les WCAG 2.1 reposent sur quatre principes : Perceptible (l’information doit être présentée de manière perceptible par tous), Utilisable (l’interface doit être navigable et opérable), Compréhensible (l’information et les interactions doivent être claires) et Robuste (le contenu doit être interprétable par une variété de technologies d’assistance)." data-incorrect-text="Les WCAG 2.1 définissent quatre principes fondamentaux : Perceptible, Utilisable, Compréhensible et Robuste. Dans le contexte ferroviaire, cela signifie que chaque interface IA — borne, application, chatbot — doit être utilisable par tous les voyageurs, y compris ceux qui utilisent des technologies d’assistance."></div>
+    </div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 2 / 3</div>
+      <h4>La calibration de confiance (trust calibration) dans une interface IA vise à :</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Maximiser la confiance de l’utilisateur pour qu’il utilise davantage le chatbot</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Aider l’utilisateur à identifier quand l’IA est fiable et quand il doit vérifier</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Décourager l’utilisation du chatbot pour les informations critiques</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Supprimer toute mention d’IA pour ne pas inquiéter l’utilisateur</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. La calibration de confiance ne cherche ni à maximiser ni à minimiser la confiance, mais à l’ajuster au niveau approprié. Un voyageur bien calibré sait qu’il peut faire confiance au chatbot pour les horaires vérifiés en temps réel, mais qu’il doit vérifier auprès d’un agent pour une correspondance serrée en situation perturbée." data-incorrect-text="La calibration de confiance vise à aider l’utilisateur à distinguer les situations où l’IA est fiable de celles où il doit vérifier. Ni confiance aveugle (over-trust) ni rejet systématique (under-trust) : l’objectif est une confiance appropriée au contexte."></div>
+    </div>
+    <div class="quiz-question animate-in">
+      <div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div>
+      <div class="question-number">Question 3 / 3</div>
+      <h4>Depuis quelle date l’European Accessibility Act (directive 2019/882) est-elle applicable ?</h4>
+      <div class="quiz-options">
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Janvier 2024</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Juin 2025</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>Août 2026</span></div>
+        <div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">D</span><span>Elle n’est pas encore en vigueur</span></div>
+      </div>
+      <button class="quiz-validate-btn" disabled>Valider</button>
+      <div class="quiz-feedback" data-correct-text="Exact. La directive européenne 2019/882 sur l’accessibilité est applicable depuis juin 2025. Elle impose que les services de transport, y compris les bornes interactives, les applications mobiles et les chatbots, soient accessibles aux personnes en situation de handicap. Pour la SNCF, cela concerne l’ensemble des interfaces IA en contact avec les voyageurs." data-incorrect-text="L’European Accessibility Act est applicable depuis juin 2025. Les bornes interactives en gare, l’application mobile et les chatbots voyageurs doivent être accessibles à tous, y compris les personnes en situation de handicap. La non-conformité expose à des sanctions."></div>
+    </div>
+    <div class="quiz-retry-msg" style="display:none"><p>Score insuffisant.</p><button class="quiz-retry-btn quiz-validate-btn">Revoir les risques</button></div>
+  </div>
+
+</div></div>
+<div class="step-container" id="step-6">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 7 sur 8</div>
+    <h2>Votre synthèse personnalisée</h2>
+    <p class="hero-subtitle">Basée sur vos réponses.</p>
+  </div>
+<div class="content-section">
+  <div class="animate-in"><div class="progress-circle-wrap"><div class="progress-circle">
+    <div class="top-line" style="top:142px"></div>
+    <div class="bottom-line"></div>
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle class="bg" cx="80" cy="80" r="70"/>
+      <circle class="fg-fill" cx="80" cy="140" r="0"/>
+      <circle class="fg-stroke" cx="80" cy="80" r="70" stroke-dasharray="439.82" stroke-dashoffset="439.82"/>
+    </svg>
+    <div class="circle-text">—</div>
+  </div></div></div>
+  <div class="animate-in"><div class="two-columns">
+    <div class="column-card"><h4 style="color:var(--danger)">Risques clés</h4><ul><li>Exclusion des PMR et voyageurs malvoyants des services IA</li><li>Over-trust : le voyageur se fie aveuglément au chatbot</li><li>Blank page : le voyageur ne sait pas quoi demander à l’IA</li><li>Under-trust : les agents rejettent des outils IA utiles</li></ul></div>
+    <div class="column-card"><h4 style="color:var(--success)">Mesures essentielles</h4><ul><li>Conformité WCAG 2.1 sur tous les points de contact</li><li>Guidage contextuel avec conversation starters</li><li>Design de calibration de confiance</li><li>Tests avec des profils utilisateurs diversifiés incluant les PMR</li></ul></div>
+  </div></div>
+  <div class="animate-in"><h3>Questions à se poser dans un projet IA</h3><div class="highlight-box"><ul class="numbered-list"><li><span>L’interface est-elle conforme WCAG 2.1 (contrastes, navigation clavier, lecteurs d’écran) ?</span></li><li><span>Un guidage contextuel est-il intégré (suggestions de questions, exemples, limites affichées) ?</span></li><li><span>La confiance de l’utilisateur est-elle calibrée (indicateurs de fiabilité, sources citées) ?</span></li><li><span>Des tests ont-ils été réalisés avec des profils divers (PMR, personnes âgées, non-technophiles) ?</span></li><li><span>La multimodalité est-elle proposée (texte + vocal + visuel) ?</span></li></ul></div></div>
+    <div class="checklist-container animate-in">
+    <h4>Vos engagements</h4><p style="font-size:.85rem;color:var(--text-muted)">Cochez les bonnes pratiques que vous vous engagez à appliquer.</p>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je testerai les interfaces IA avec des profils d'utilisateurs variés</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>J'intégrerai des suggestions et exemples dans chaque interface IA</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>Je vérifierai l'accessibilité WCAG 2.1 de tout outil déployé</span></div>
+    <div class="checklist-item" role="button" tabindex="0"><span class="checklist-check">&#10003;</span><span>J'afficherai clairement les limites de fiabilité de l'IA dans l'interface</span></div>
+    <div class="checklist-progress">0/4 engagements pris</div>
+  </div>
+
+  <div class="animate-in"><h3>Points à revoir</h3><ul class="weak-areas-list"></ul></div>
+</div></div>
+<div class="step-container" id="step-7">
+
+  <div class="step-hero" >
+    <div class="step-number">Étape 8 sur 8</div>
+    <h2>Félicitations !</h2>
+    <p class="hero-subtitle">Module Design UX terminé.</p>
+  </div>
+<div class="step-celebration"><div class="celebration-grid" id="celebGrid"></div><div class="celebration-content"><div class="badge-icon">&#128187;</div><h2>Félicitations !</h2><p>Vous avez terminé le module <strong>Design UX</strong></p><p class="celebration-sub">Appliquez ces bonnes pratiques au quotidien.</p><div class="badge-message"></div></div></div></div>
+<div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div>
+  <div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#8592; Précédent</button>
+  <div class="breadcrumb" id="breadcrumb"><span class="breadcrumb-item"><span class="breadcrumb-link active" data-step="0"><span class="step-num">1</span>Accroche</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="1"><span class="step-num">2</span>Découverte</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="2"><span class="step-num">3</span>Risques</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="3"><span class="step-num">4</span>Mesures</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="4"><span class="step-num">5</span>Scénario</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="5"><span class="step-num">6</span>Quiz</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="6"><span class="step-num">7</span>Synthèse</span></span><span class="breadcrumb-chevron">&#8250;</span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="7"><span class="step-num">8</span>Conclusion</span></span></div>
+  <button class="nav-btn primary" id="nextBtn">Suivant &#8594;</button></div>
+</div></main></div>
+</div>
+
+</div>
+
+<div class="scroll-hint" id="scrollHint"><span>Scrollez</span><div class="scroll-arrow"></div></div>
+<script src="js/scorm.js"></script><script src="js/app.js"></script>
+</body></html>
