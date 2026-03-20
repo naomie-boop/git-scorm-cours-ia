@@ -36,33 +36,38 @@ document.addEventListener("DOMContentLoaded", function() {
   var quizScore = 0, quizTotal = 0;
   var weakSet = new Set();
 
-  // === NAVIGATION (scroll mode) ===
-  // Show all steps immediately
-  allSteps.forEach(function(el){ el.style.display = "block"; });
-  // Animate all visible elements
+  // === NAVIGATION (vertical slider) ===
+  allSteps.forEach(function(el){ el.style.display = "flex"; });
   document.querySelectorAll(".animate-in").forEach(function(el){
     el.style.opacity="1"; el.style.transform="translateY(0)";
   });
+
+  // Reveal slides on scroll
+  function checkVisibleSlides(){
+    var winH = window.innerHeight;
+    allSteps.forEach(function(el,i){
+      var rect = el.getBoundingClientRect();
+      if(rect.top < winH * 0.75 && rect.bottom > 0){
+        el.classList.add("visible");
+        visited[i] = true;
+        cur = i;
+      }
+    });
+    updateUI();
+  }
+  window.addEventListener("scroll", checkVisibleSlides);
+  checkVisibleSlides();
 
   function go(idx) {
     if (idx < 0 || idx >= totalSteps) return;
     cur = idx;
     visited[idx] = true;
     allSteps[idx].scrollIntoView({behavior:"smooth", block:"start"});
-    updateUI();
+    setTimeout(checkVisibleSlides, 800);
     runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
     try{setSCORMLocation(idx);}catch(e){}
     checkSCORMComplete();
   }
-
-  // Update breadcrumb on scroll
-  window.addEventListener("scroll", function(){
-    var scrollY = window.scrollY + 120;
-    for(var i = totalSteps - 1; i >= 0; i--){
-      if(allSteps[i].offsetTop <= scrollY){ cur = i; visited[i] = true; break; }
-    }
-    updateUI();
-  });
 
   function updateUI() {
     var pct = Math.round(Object.keys(visited).length/totalSteps*100);
