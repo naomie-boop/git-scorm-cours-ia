@@ -37,6 +37,10 @@ document.addEventListener("DOMContentLoaded", function() {
   var weakSet = new Set();
 
   // === NAVIGATION (slider one-step-at-a-time) ===
+  document.querySelectorAll(".animate-in").forEach(function(el){
+    el.style.opacity="1"; el.style.transform="translateY(0)";
+  });
+
   var sliding = false;
 
   function go(idx) {
@@ -52,10 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
       allSteps[idx].classList.add("active");
       window.scrollTo(0, 0);
       updateUI();
-      // Animate in
-      allSteps[idx].querySelectorAll(".animate-in").forEach(function(el,i){
-        setTimeout(function(){el.style.opacity="1";el.style.transform="translateY(0)";},i*80);
-      });
       runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
       try{setSCORMLocation(idx);}catch(e){}
       checkSCORMComplete();
@@ -77,11 +77,6 @@ document.addEventListener("DOMContentLoaded", function() {
       // Show new step
       newStep.classList.add("active");
       window.scrollTo(0, 0);
-
-      // Animate in
-      newStep.querySelectorAll(".animate-in").forEach(function(el,i){
-        setTimeout(function(){el.style.opacity="1";el.style.transform="translateY(0)";},i*80);
-      });
 
       sliding = false;
       updateUI();
