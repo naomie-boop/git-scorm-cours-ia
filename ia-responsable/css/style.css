@@ -433,8 +433,8 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 /* VIDEO INTRO */
 .video-intro {
   margin: 16px auto;
-  max-width: 540px;
-  border-radius: 10px;
+  max-width: 100%;
+  border-radius: 14px;
   overflow: hidden;
   border: .5px solid var(--border);
 }
