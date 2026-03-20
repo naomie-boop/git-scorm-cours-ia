@@ -39,8 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // === NAVIGATION ===
   function go(idx) {
     if (idx < 0 || idx >= totalSteps) return;
-    // Forward lock: must complete current step to go forward (except step 0 on first load)
-    if (idx > cur && cur > 0 && !stepCompleted[cur]) return;
+    // Navigation libre entre chapitres
     cur = idx;
     allSteps.forEach(function(el,i){ el.style.display = i===idx ? "block" : "none"; });
     visited[idx] = true;
@@ -75,8 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if(prev) prev.disabled=cur===0;
     if(next){
       next.textContent=cur===totalSteps-1?"Terminer \u2713":"Suivant \u2192";
-      var locked=cur>0 && cur<totalSteps-1 && !stepCompleted[cur];
-      next.disabled=locked; next.style.opacity=locked?"0.3":"1";
+      next.disabled=false; next.style.opacity="1";
     }
     // CTA button
     var cta=allSteps[cur]?allSteps[cur].querySelector(".step-next-btn"):null;
@@ -220,8 +218,6 @@ document.addEventListener("DOMContentLoaded", function() {
     l.onclick=function(){
       var target=parseInt(l.dataset.step);if(isNaN(target))return;
       if(target<=cur){go(target);return;}
-      // Must have ALL intermediate steps completed
-      for(var s=0;s<target;s++){if(!stepCompleted[s]&&s>0)return;}
       go(target);
     };
   });
