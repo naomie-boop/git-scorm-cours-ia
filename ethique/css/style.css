@@ -45,7 +45,31 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .sidebar{display:none}
 .mobile-toggle{display:none}
 .main-content{margin:0 auto;max-width:800px;padding:60px 20px 20px}
-.step-container{display:none;animation:fadeIn .4s ease}
+/* Slider one-step-at-a-time */
+.step-container{
+  display:none;flex-direction:column;justify-content:flex-start;align-items:center;
+  padding:80px 20px 40px;
+  opacity:0;
+}
+.step-container.active{
+  display:flex;
+  opacity:1;
+  animation:slideInUp .4s ease both;
+}
+.step-container.slide-out{
+  display:flex;
+  animation:slideOutUp .3s ease both;
+}
+.step-container .step-hero{width:100%;max-width:680px}
+.step-container .content-section{width:100%;max-width:680px}
+@keyframes slideInUp{
+  from{transform:translateY(50px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+@keyframes slideOutUp{
+  from{transform:translateY(0);opacity:1}
+  to{transform:translateY(-50px);opacity:0}
+}
 .step-hero{text-align:center;padding:40px 24px 28px;border-bottom:.5px solid var(--border)}
 .step-hero .step-number{font-size:.65rem;text-transform:uppercase;letter-spacing:.12em;color:var(--brand);font-weight:600;margin-bottom:6px}
 .step-hero h2{font-size:1.6rem;font-weight:800;margin-bottom:8px}

@@ -36,23 +36,59 @@ document.addEventListener("DOMContentLoaded", function() {
   var quizScore = 0, quizTotal = 0;
   var weakSet = new Set();
 
-  // === NAVIGATION ===
+  // === NAVIGATION (slider one-step-at-a-time) ===
+  var sliding = false;
+
   function go(idx) {
-    if (idx < 0 || idx >= totalSteps) return;
+    if (idx < 0 || idx >= totalSteps || sliding) return;
     // Forward lock: must complete current step to go forward (except step 0 on first load)
-    if (idx > cur && cur > 0 && !stepCompleted[cur]) return;
+    var prev = cur;
     cur = idx;
-    allSteps.forEach(function(el,i){ el.style.display = i===idx ? "block" : "none"; });
     visited[idx] = true;
-    updateUI();
-    window.scrollTo({top:0,behavior:"smooth"});
-    // Animate in
-    allSteps[idx].querySelectorAll(".animate-in").forEach(function(el,i){
-      setTimeout(function(){el.style.opacity="1";el.style.transform="translateY(0)";},i*80);
-    });
-    runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
-    try{setSCORMLocation(idx);}catch(e){}
-    checkSCORMComplete();
+
+    if (prev === idx) {
+      // First load or same step
+      allSteps[idx].classList.remove("slide-out");
+      allSteps[idx].classList.add("active");
+      window.scrollTo(0, 0);
+      updateUI();
+      // Animate in
+      allSteps[idx].querySelectorAll(".animate-in").forEach(function(el,i){
+        setTimeout(function(){el.style.opacity="1";el.style.transform="translateY(0)";},i*80);
+      });
+      runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
+      try{setSCORMLocation(idx);}catch(e){}
+      checkSCORMComplete();
+      return;
+    }
+
+    sliding = true;
+    var oldStep = allSteps[prev];
+    var newStep = allSteps[idx];
+
+    // Slide out old step
+    oldStep.classList.remove("active");
+    oldStep.classList.add("slide-out");
+
+    setTimeout(function(){
+      // Hide old step
+      oldStep.classList.remove("slide-out");
+
+      // Show new step
+      newStep.classList.add("active");
+      window.scrollTo(0, 0);
+
+      // Animate in
+      newStep.querySelectorAll(".animate-in").forEach(function(el,i){
+        setTimeout(function(){el.style.opacity="1";el.style.transform="translateY(0)";},i*80);
+      });
+
+      sliding = false;
+      updateUI();
+      runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
+      try{setSCORMLocation(idx);}catch(e){}
+      checkSCORMComplete();
+    }, 300);
   }
 
   function updateUI() {
@@ -75,12 +111,12 @@ document.addEventListener("DOMContentLoaded", function() {
     if(prev) prev.disabled=cur===0;
     if(next){
       next.textContent=cur===totalSteps-1?"Terminer \u2713":"Suivant \u2192";
-      var locked=cur>0 && cur<totalSteps-1 && !stepCompleted[cur];
-      next.disabled=locked; next.style.opacity=locked?"0.3":"1";
+      
+      next.disabled=false; next.style.opacity="1";
     }
     // CTA button
     var cta=allSteps[cur]?allSteps[cur].querySelector(".step-next-btn"):null;
-    if(cta){var l2=!stepCompleted[cur]&&cur>0;cta.disabled=l2;cta.style.opacity=l2?"0.3":"1";}
+    if(cta){cta.disabled=false;cta.style.opacity="1";}
   }
 
   function markStepDone(idx) {
@@ -219,9 +255,6 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll(".breadcrumb-link").forEach(function(l){
     l.onclick=function(){
       var target=parseInt(l.dataset.step);if(isNaN(target))return;
-      if(target<=cur){go(target);return;}
-      // Must have ALL intermediate steps completed
-      for(var s=0;s<target;s++){if(!stepCompleted[s]&&s>0)return;}
       go(target);
     };
   });
