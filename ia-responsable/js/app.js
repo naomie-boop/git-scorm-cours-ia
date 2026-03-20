@@ -517,7 +517,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
   });
   // Quiz retry
-  document.querySelectorAll(".quiz-retry-btn").forEach(function(btn){btn.onclick=function(){go(2);};});
+  document.querySelectorAll(".quiz-retry-btn").forEach(function(btn){btn.onclick=function(){go(1);};});
 
   // === VRAI/FAUX (unlock after ALL answered) ===
   document.querySelectorAll(".vf-btn").forEach(function(btn){
@@ -610,6 +610,8 @@ document.addEventListener("DOMContentLoaded", function() {
   stepCompleted[0] = true;
   // Step 1 (discovery) is always unlocked (reading only)
   stepCompleted[1] = true;
+  // Step 5 (synthesis) is display-only, auto-complete
+  stepCompleted[5] = true;
   // Last step always unlocked
   stepCompleted[totalSteps-1] = true;
 
