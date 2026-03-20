@@ -453,7 +453,7 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .bs-characters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
 .bs-char-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 20px 14px 16px; background: #fff; border: 1px solid var(--border); border-radius: 18px; transition: all var(--tr); box-shadow: 0 2px 12px rgba(0,0,0,.04); }
 .bs-char-card:hover { border-color: var(--brand); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
-.bs-char-card .bs-avatar { width: 90px; height: 90px; margin-bottom: 10px; border: 3px solid #fff; box-shadow: 0 4px 16px rgba(0,0,0,.1); }
+.bs-char-card .bs-avatar { width: 130px; height: 130px; margin-bottom: 12px; border: 3px solid #fff; box-shadow: 0 6px 20px rgba(0,0,0,.12); }
 .bs-char-info strong { font-size: .9rem; display: block; margin-bottom: 2px; }
 .bs-char-info .bs-char-role { font-size: .72rem; color: var(--brand); font-weight: 600; display: block; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .04em; }
 .bs-char-info .bs-char-desc { font-size: .75rem; color: var(--text-secondary); line-height: 1.5; }
@@ -499,8 +499,8 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
   border-radius: 20px; padding: 20px; border: 1px solid rgba(0,113,227,.08);
 }
 .bs-dialogue .bs-avatar {
-  width: 72px; height: 72px; border: 3px solid #fff;
-  box-shadow: 0 4px 16px rgba(0,0,0,.12);
+  width: 100px; height: 100px; border: 3px solid #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,.12);
 }
 .bs-bubble {
   flex: 1; position: relative; background: #fff; border-radius: 4px 18px 18px 18px;
