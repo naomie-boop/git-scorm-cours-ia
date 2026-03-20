@@ -63,22 +63,20 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     sliding = true;
+    scrollAccum = 0;
+    document.body.style.overflow = "hidden";
     var oldStep = allSteps[prev];
     var newStep = allSteps[idx];
 
-    // Slide out old step
+    // Slide out old, slide in new simultaneously
     oldStep.classList.remove("active");
     oldStep.classList.add("slide-out");
+    window.scrollTo(0, 0);
+    newStep.classList.add("active");
 
     setTimeout(function(){
-      // Hide old step
       oldStep.classList.remove("slide-out");
-
-      // Show new step
-      newStep.classList.add("active");
-      window.scrollTo(0, 0);
-
-      sliding = false;
+      setTimeout(function(){ document.body.style.overflow = ""; sliding = false; }, 100);
       updateUI();
       runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
       try{setSCORMLocation(idx);}catch(e){}
@@ -649,6 +647,62 @@ document.addEventListener("DOMContentLoaded", function() {
   stepCompleted[1] = true;
   // Last step always unlocked
   stepCompleted[totalSteps-1] = true;
+
+
+  // === SCROLL-TO-SLIDE (wheel & touch) ===
+  var wheelCooldown = false;
+  var scrollAccum = 0;
+  var scrollThreshold = 200;
+  window.addEventListener("wheel", function(e) {
+    if (sliding || wheelCooldown) return;
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var windowHeight = window.innerHeight;
+    var docHeight = document.documentElement.scrollHeight;
+    var atBottom = scrollTop + windowHeight >= docHeight - 20;
+    var atTop = scrollTop <= 10;
+    if (e.deltaY > 0 && atBottom) {
+      scrollAccum += Math.abs(e.deltaY);
+      e.preventDefault();
+      if (scrollAccum >= scrollThreshold) {
+        scrollAccum = 0;
+        wheelCooldown = true;
+        go(cur + 1);
+        setTimeout(function(){ wheelCooldown = false; }, 1000);
+      }
+    } else if (e.deltaY < 0 && atTop) {
+      scrollAccum += Math.abs(e.deltaY);
+      e.preventDefault();
+      if (scrollAccum >= scrollThreshold) {
+        scrollAccum = 0;
+        wheelCooldown = true;
+        go(cur - 1);
+        setTimeout(function(){ wheelCooldown = false; }, 1000);
+      }
+    } else {
+      scrollAccum = 0;
+    }
+  }, { passive: false });
+
+  var touchStartY = 0;
+  window.addEventListener("touchstart", function(e) {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  window.addEventListener("touchend", function(e) {
+    if (sliding || wheelCooldown) return;
+    var deltaY = touchStartY - e.changedTouches[0].clientY;
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var windowHeight = window.innerHeight;
+    var docHeight = document.documentElement.scrollHeight;
+    if (deltaY > 80 && scrollTop + windowHeight >= docHeight - 20) {
+      wheelCooldown = true;
+      go(cur + 1);
+      setTimeout(function(){ wheelCooldown = false; }, 1000);
+    } else if (deltaY < -80 && scrollTop <= 10) {
+      wheelCooldown = true;
+      go(cur - 1);
+      setTimeout(function(){ wheelCooldown = false; }, 1000);
+    }
+  }, { passive: true });
 
   // === START ===
   go(0);
