@@ -452,7 +452,7 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .bs-characters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0; }
 .bs-char-card { display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #fff; border: .5px solid var(--border); border-radius: var(--r); transition: all var(--tr); }
 .bs-char-card:hover { border-color: var(--brand); transform: translateY(-1px); }
-.bs-avatar { width: 40px; height: 40px; border-radius: 50%; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .75rem; flex-shrink: 0; }
+.bs-avatar { width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0; object-fit: cover; border: 2px solid var(--border); }
 .bs-char-info strong { font-size: .82rem; display: block; }
 .bs-char-info .bs-char-role { font-size: .7rem; color: var(--text-muted); display: block; margin-bottom: 2px; }
 .bs-char-info .bs-char-desc { font-size: .72rem; color: var(--text-secondary); line-height: 1.5; }
