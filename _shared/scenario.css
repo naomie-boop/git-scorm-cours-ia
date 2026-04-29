@@ -1,7 +1,42 @@
 /* =========================================================================
    SCENARIO.CSS — Composant scénario interactif (étape 4)
-   Compatible avec le design system des modules SCORM existant
+   + Fixes globaux d'overflow texte (chargé après css/style.css → override)
    ========================================================================= */
+
+/* === FIX: flip cards qui coupent le texte au verso === */
+.flip-card {
+  overflow: visible !important;
+  min-height: auto !important;
+  height: auto;
+}
+.flip-card-front,
+.flip-card-back {
+  min-height: 180px !important;
+  height: auto !important;
+}
+.flip-card-back {
+  word-break: normal;
+  hyphens: auto;
+}
+.flip-card-back p {
+  font-size: .85rem;
+  line-height: 1.55;
+}
+
+/* === FIX: matching et quiz qui cassent === */
+.match-item, .quiz-option, .scenario-choice {
+  word-break: normal;
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+
+/* === FIX: highlight box texte qui déborde === */
+.highlight-box {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+
 
 .scenario {
   max-width: 680px;
