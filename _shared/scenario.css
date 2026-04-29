@@ -23,11 +23,40 @@
   line-height: 1.55;
 }
 
-/* === FIX: matching et quiz qui cassent === */
-.match-item, .quiz-option, .scenario-choice {
+/* === FIX: matching grid mieux proportionné + padding === */
+.matching-grid {
+  grid-template-columns: 1fr 1.6fr !important;
+  gap: 12px !important;
+  align-items: start !important;
+}
+.match-col {
+  gap: 10px !important;
+}
+.match-item {
+  padding: 14px 16px !important;
+  font-size: .88rem !important;
+  line-height: 1.55 !important;
   word-break: normal;
   hyphens: auto;
   overflow-wrap: break-word;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+/* === FIX: quiz et scenario === */
+.quiz-option, .scenario-choice {
+  word-break: normal;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  line-height: 1.55;
+}
+
+/* Mobile : single column comme avant */
+@media (max-width: 720px) {
+  .matching-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 /* === FIX: highlight box texte qui déborde === */
