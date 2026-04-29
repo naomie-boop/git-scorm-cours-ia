@@ -1,0 +1,173 @@
+/* =========================================================================
+   SCENARIO.CSS — Composant scénario interactif (étape 4)
+   Compatible avec le design system des modules SCORM existant
+   ========================================================================= */
+
+.scenario {
+  max-width: 680px;
+  margin: 24px auto 0;
+  padding: 0;
+  width: 100%;
+}
+
+.scenario-context {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 24px;
+  background: #fff;
+  border: .5px solid var(--border);
+  border-radius: var(--r);
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.scenario-persona-photo {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 2px solid var(--brand);
+  flex-shrink: 0;
+}
+
+.scenario-persona-meta {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--brand);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.scenario-context p {
+  font-size: .92rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin: 0 0 8px;
+}
+
+.scenario-context p:last-child { margin-bottom: 0; }
+.scenario-context strong { color: var(--text-primary); }
+
+.scenario-prompt {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  text-align: left;
+}
+
+.scenario-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.scenario-choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #fff;
+  border: .5px solid var(--border);
+  border-radius: var(--r);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: .9rem;
+  line-height: 1.55;
+  text-align: left;
+  color: var(--text-primary);
+  transition: all var(--tr);
+  width: 100%;
+}
+
+.scenario-choice:hover:not(:disabled) {
+  border-color: var(--brand);
+  background: var(--brand-light);
+  transform: translateY(-1px);
+}
+
+.scenario-choice:disabled { cursor: default; }
+
+.scenario-choice.correct {
+  border-color: var(--success);
+  background: rgba(52, 199, 89, .06);
+}
+
+.scenario-choice.incorrect {
+  border-color: var(--warning);
+  background: rgba(255, 159, 10, .06);
+}
+
+.scenario-choice-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 50%;
+  font-family: monospace;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+.scenario-choice.correct .scenario-choice-letter {
+  background: var(--success);
+  border-color: var(--success);
+  color: #fff;
+}
+
+.scenario-choice.incorrect .scenario-choice-letter {
+  background: var(--warning);
+  border-color: var(--warning);
+  color: #fff;
+}
+
+.scenario-feedback {
+  display: none;
+  padding: 18px 20px;
+  border-radius: var(--r);
+  font-size: .87rem;
+  line-height: 1.65;
+  margin-top: 4px;
+  text-align: left;
+}
+
+.scenario-feedback.visible {
+  display: block;
+  animation: fadeIn .35s ease;
+}
+
+.scenario-feedback.correct {
+  background: rgba(52, 199, 89, .06);
+  border-left: 2px solid var(--success);
+  color: var(--text-primary);
+}
+
+.scenario-feedback.incorrect {
+  background: rgba(255, 159, 10, .06);
+  border-left: 2px solid var(--warning);
+  color: var(--text-primary);
+}
+
+.scenario-feedback strong { color: var(--text-primary); }
+.scenario-feedback em { font-style: italic; color: var(--text-primary); }
+
+@media (max-width: 560px) {
+  .scenario-context {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .scenario-persona-photo {
+    margin: 0 auto;
+  }
+  .scenario-context > div { text-align: left; }
+}
