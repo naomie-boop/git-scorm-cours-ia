@@ -508,7 +508,9 @@ document.addEventListener("DOMContentLoaded", function() {
   // === STEP 0 : unlock only after VF ===
   // (handled by checkVFComplete - step 0 starts locked, VF completion unlocks it)
   // Step 1 (discovery) is always unlocked (reading only)
+  stepCompleted[0] = true;
   stepCompleted[1] = true;
+  if (totalSteps >= 3) stepCompleted[totalSteps-2] = true;
   // Last step always unlocked
   stepCompleted[totalSteps-1] = true;
 
