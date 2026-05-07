@@ -15,7 +15,7 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .cover-page{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:var(--bg-white);transition:opacity .5s ease}
 .cover-grid{position:absolute;inset:0;display:grid;gap:1px;pointer-events:none}
 .cover-grid .pixel{border:.5px solid var(--border);pointer-events:auto;transition:background .3s,opacity .5s}
-.cover-content{position:relative;z-index:20;text-align:center;max-width:560px;padding:48px 40px;background:rgba(255,255,255,0.92);backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);border-radius:24px;box-shadow:0 24px 80px rgba(0,0,0,0.08),0 2px 8px rgba(0,0,0,0.04);border:.5px solid rgba(255,255,255,0.7)}
+.cover-content{position:relative;z-index:20;text-align:center;max-width:560px;padding:40px}.cover-content,.cover-content h1,.cover-content p,.cover-subtitle{color:#fff !important}.cover-subtitle{opacity:.9}.cover-content p{opacity:.95}
 .cover-subtitle{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--brand);font-weight:600;margin-bottom:14px}
 .cover-content h1{font-size:2.2rem;font-weight:800;margin-bottom:10px}
 .cover-content p{font-size:.95rem;color:var(--text-secondary);margin-bottom:24px;line-height:1.6}
