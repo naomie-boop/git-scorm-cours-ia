@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // === COVER ===
   var cover = document.getElementById("coverPage");
   var coverBtn = document.getElementById("coverStartBtn");
-  var coverGrid = null;
+  var coverGrid = document.getElementById("coverGrid");
   var coverMoveHandler = null;
 
   if (coverBtn) coverBtn.onclick = function() {
@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function go(idx) {
     if (idx < 0 || idx >= totalSteps || sliding) return;
+    // Forward lock: must complete current step to go forward (except step 0 on first load)
     var prev = cur;
     cur = idx;
     visited[idx] = true;
@@ -62,23 +63,20 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     sliding = true;
+    scrollAccum = 0;
+    document.body.style.overflow = "hidden";
     var oldStep = allSteps[prev];
     var newStep = allSteps[idx];
 
-    // Slide out old step
+    // Slide out old, slide in new simultaneously
     oldStep.classList.remove("active");
     oldStep.classList.add("slide-out");
+    window.scrollTo(0, 0);
+    newStep.classList.add("active");
 
     setTimeout(function(){
-      // Hide old step
       oldStep.classList.remove("slide-out");
-      // oldStep goes back to display:none via CSS (no .active, no .slide-out)
-
-      // Show new step
-      newStep.classList.add("active");
-      window.scrollTo(0, 0);
-
-      sliding = false;
+      setTimeout(function(){ document.body.style.overflow = ""; sliding = false; }, 100);
       updateUI();
       runCounters(); runTypewriter(); updateScoreDisplay(); startQuizTimers();
       try{setSCORMLocation(idx);}catch(e){}
@@ -88,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function updateUI() {
     var pct = Math.round(Object.keys(visited).length/totalSteps*100);
-    document.querySelectorAll(".progress-bar-fill").forEach(function(b){b.style.height=pct+"%";});
+    document.querySelectorAll(".progress-bar-fill").forEach(function(b){b.style.width=pct+"%";});
     // Progress text
     document.querySelectorAll(".progress-text").forEach(function(t){t.textContent=pct+"% termin\u00e9";});
     // Breadcrumb
@@ -106,11 +104,12 @@ document.addEventListener("DOMContentLoaded", function() {
     if(prev) prev.disabled=cur===0;
     if(next){
       next.textContent=cur===totalSteps-1?"Terminer \u2713":"Suivant \u2192";
+      
       next.disabled=false; next.style.opacity="1";
     }
     // CTA button
     var cta=allSteps[cur]?allSteps[cur].querySelector(".step-next-btn"):null;
-    if(cta){var l2=!stepCompleted[cur]&&cur>0;cta.disabled=l2;cta.style.opacity=l2?"0.3":"1";}
+    if(cta){cta.disabled=false;cta.style.opacity="1";}
   }
 
   function markStepDone(idx) {
@@ -134,10 +133,11 @@ document.addEventListener("DOMContentLoaded", function() {
   function updateScoreDisplay() {
     var container=allSteps[cur]; if(!container) return;
     // Circle
-    var fgStroke=container.querySelector(".fg-stroke"),ct=container.querySelector(".circle-text");
+    var fgStroke=container.querySelector(".fg-stroke"),fgFill=container.querySelector(".fg-fill"),ct=container.querySelector(".circle-text");
     if(fgStroke&&ct&&scoreTotal>0){
-      var pct=Math.round((score/scoreTotal)*100),circ=2*Math.PI*78;
+      var pct=Math.round((score/scoreTotal)*100),circ=2*Math.PI*70;
       fgStroke.style.strokeDasharray=circ;fgStroke.style.strokeDashoffset=circ-(circ*pct/100);
+      if(fgFill){var r2=70*(pct/100);fgFill.setAttribute("r",r2);fgFill.setAttribute("cy",140-r2);}
       ct.textContent=pct+"%";fgStroke.style.stroke=pct>=80?"#34c759":pct>=60?"#0071e3":"#ff3b30";
     }
     // Weak areas
@@ -224,27 +224,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // === PREV/NEXT ===
   document.getElementById("prevBtn").onclick=function(){go(cur-1);};
-  document.getElementById("nextBtn").onclick=function(){go(cur+1);};
-
-  // Init celebration grid immediately
-  var cg=document.getElementById("celebGrid");
-  if(cg){
-    var gs2=18,cols2=["#0071e3","#5ac8fa","#34c759","#5856d6","#ff9f0a"];
-    cg.style.gridTemplateColumns="repeat("+gs2+",1fr)";cg.style.gridTemplateRows="repeat("+gs2+",1fr)";
-    for(var j=0;j<gs2*gs2;j++){var d2=document.createElement("div");d2.className="pixel";cg.appendChild(d2);}
-    cg.parentElement.addEventListener("mousemove",function(e){
-      var r=cg.getBoundingClientRect(),c2=Math.floor((e.clientX-r.left)/(r.width/gs2)),row=Math.floor((e.clientY-r.top)/(r.height/gs2)),idx2=row*gs2+c2;
-      var px=cg.children[idx2];
-      if(px&&!px.dataset.lit){px.dataset.lit="1";px.style.background=cols2[Math.floor(Math.random()*5)];px.style.opacity=".7";
-        setTimeout(function(){px.style.background="";px.style.opacity="";delete px.dataset.lit;},600);}
-    });
-  }
+  document.getElementById("nextBtn").onclick=function(){
+    if(cur===totalSteps-1){
+      // Init celebration grid
+      var cg=document.getElementById("celebGrid");
+      if(cg&&!cg.dataset.init){
+        cg.dataset.init="1";
+        var gs2=18,cols2=["#0071e3","#5ac8fa","#34c759","#5856d6","#ff9f0a"];
+        cg.style.gridTemplateColumns="repeat("+gs2+",1fr)";cg.style.gridTemplateRows="repeat("+gs2+",1fr)";
+        for(var j=0;j<gs2*gs2;j++){var d2=document.createElement("div");d2.className="pixel";cg.appendChild(d2);}
+        cg.parentElement.addEventListener("mousemove",function(e){
+          var r=cg.getBoundingClientRect(),c=Math.floor((e.clientX-r.left)/(r.width/gs2)),row=Math.floor((e.clientY-r.top)/(r.height/gs2)),idx=row*gs2+c;
+          var px=cg.children[idx];
+          if(px&&!px.dataset.lit){px.dataset.lit="1";px.style.background=cols2[Math.floor(Math.random()*5)];px.style.opacity=".7";
+            setTimeout(function(){px.style.background="";px.style.opacity="";delete px.dataset.lit;},600);}
+        });
+      }
+      markStepDone();
+      try{var fs=scoreTotal>0?Math.round((score/scoreTotal)*100):0;setSCORMScore(fs);setSCORMComplete();}catch(e){}
+    } else { markStepDone(cur); go(cur+1); }
+  };
 
   // Breadcrumbs (with FULL lock check)
   document.querySelectorAll(".breadcrumb-link").forEach(function(l){
     l.onclick=function(){
       var target=parseInt(l.dataset.step);if(isNaN(target))return;
-      if(target<=cur){go(target);return;}
       go(target);
     };
   });
@@ -268,10 +272,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var flipped=new Set();
     grid.querySelectorAll(".flip-card").forEach(function(card,i){
       card.addEventListener("click",function(e){e.stopPropagation();card.classList.toggle("flipped");
-        var front=card.querySelector(".flip-card-front");
-        var back=card.querySelector(".flip-card-back");
-        if(card.classList.contains("flipped")){front.style.display="none";back.style.display="block";flipped.add(i);}
-        else{front.style.display="flex";back.style.display="none";}
+        if(card.classList.contains("flipped"))flipped.add(i);
         var total=grid.querySelectorAll(".flip-card").length;
         if(flipped.size>=Math.min(2,total)) markStepDone();
       },true);
@@ -369,131 +370,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  // === BRANCHING SCENARIO ===
-  document.querySelectorAll(".branching-scenario").forEach(function(bs){
-    var bsChoices = {};
-    var bsScore = 0;
-
-    function showBsSection(name) {
-      bs.querySelectorAll(".bs-section").forEach(function(s){
-        s.style.display = s.dataset.bs === name ? "block" : "none";
-      });
-      var section = bs.querySelector('[data-bs="' + name + '"]');
-      if (section) {
-        section.querySelectorAll(".bs-conditional").forEach(function(c){
-          var cond = c.dataset.cond;
-          var show = false;
-          if (cond.indexOf("!=") > -1) {
-            var parts = cond.split("!=");
-            var actNum = parseInt(parts[0].replace("act",""));
-            var val = parseInt(parts[1]);
-            show = bsChoices[actNum] !== val;
-          } else {
-            var parts2 = cond.split("=");
-            var actNum2 = parseInt(parts2[0].replace("act",""));
-            var val2 = parseInt(parts2[1]);
-            show = bsChoices[actNum2] === val2;
-          }
-          c.style.display = show ? "block" : "none";
-        });
-      }
-      bs.scrollIntoView({behavior:"smooth", block:"start"});
-    }
-
-    function updateBsScoreBar() {
-      var fill = document.getElementById("bsScoreFill");
-      var val = document.getElementById("bsScoreVal");
-      if (fill) fill.style.width = (bsScore/8*100) + "%";
-      if (val) val.textContent = bsScore + "/8";
-    }
-
-    var startBtn = bs.querySelector(".bs-start-btn");
-    if (startBtn) startBtn.onclick = function(){ showBsSection("act-1"); };
-
-    bs.querySelectorAll(".bs-choice").forEach(function(ch){
-      ch.onclick = function(){
-        var act = parseInt(ch.dataset.act);
-        var idx = parseInt(ch.dataset.idx);
-        var pts = parseInt(ch.dataset.points);
-        if (bsChoices[act] !== undefined) return;
-        bsChoices[act] = idx;
-        bsScore += pts;
-        scoreTotal += 2; score += pts;
-        if (pts < 2) weakSet.add("Sc\u00e9nario Acte " + act);
-        var parent = ch.closest(".bs-choices-list");
-        parent.querySelectorAll(".bs-choice").forEach(function(c){
-          c.style.pointerEvents = "none";
-          if (c === ch) {
-            var color = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
-            var bg2 = pts >= 2 ? "rgba(52,199,89,.06)" : pts >= 1 ? "rgba(255,159,10,.06)" : "rgba(255,59,48,.06)";
-            c.style.borderColor = color; c.style.background = bg2;
-          } else { c.style.opacity = "0.35"; }
-        });
-        var actSection = ch.closest(".bs-act");
-        var fbBox = actSection.querySelector(".bs-feedback-box");
-        var fbDiv = actSection.querySelector(".bs-fb");
-        if (fbBox && fbDiv) {
-          fbBox.style.display = "block";
-          var color2 = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
-          var bg3 = pts >= 2 ? "rgba(52,199,89,.04)" : pts >= 1 ? "rgba(255,159,10,.04)" : "rgba(255,59,48,.04)";
-          fbDiv.textContent = ch.dataset.feedback;
-          fbDiv.style.display = "block";
-          fbDiv.style.background = bg3;
-          fbDiv.style.borderLeft = "2px solid " + color2;
-          fbDiv.style.padding = "12px 14px";
-          fbDiv.style.borderRadius = "8px";
-        }
-        var indicator = actSection.querySelector(".bs-score-indicator");
-        if (indicator) {
-          indicator.style.display = "block";
-          var label = pts >= 2 ? "+2 points \u2014 Excellent" : pts >= 1 ? "+1 point \u2014 Compromis" : "0 point \u2014 Risqu\u00e9";
-          indicator.querySelector(".bs-points-earned").textContent = label;
-          indicator.style.color = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
-        }
-        updateBsScoreBar();
-        var continueBtn = actSection.querySelector(".bs-continue-btn");
-        if (continueBtn) { continueBtn.style.display = "inline-flex"; }
-      };
-    });
-
-    bs.querySelectorAll(".bs-continue-btn").forEach(function(btn){
-      btn.onclick = function(){
-        var next = btn.dataset.next;
-        if (next === "epilogue") {
-          showBsSection("epilogue");
-          var epSection = bs.querySelector('[data-bs="epilogue"]');
-          var scoreNum = epSection.querySelector(".bs-score-num");
-          if (scoreNum) scoreNum.textContent = bsScore;
-          var circle = epSection.querySelector(".bs-score-circle");
-          if (circle) {
-            circle.style.borderColor = bsScore >= 7 ? "#34c759" : bsScore >= 4 ? "#ff9f0a" : "#ff3b30";
-            circle.style.color = bsScore >= 7 ? "#34c759" : bsScore >= 4 ? "#ff9f0a" : "#ff3b30";
-          }
-          epSection.querySelectorAll(".bs-epilogue-content").forEach(function(ec){
-            var min = parseInt(ec.dataset.min), max = parseInt(ec.dataset.max);
-            ec.style.display = (bsScore >= min && bsScore <= max) ? "block" : "none";
-          });
-          var recapBtn = epSection.querySelector(".bs-continue-btn");
-          if (recapBtn) { setTimeout(function(){ recapBtn.style.display = "inline-flex"; }, 800); }
-          markStepDone();
-        } else if (next === "recap") {
-          showBsSection("recap");
-          var recapSection = bs.querySelector('[data-bs="recap"]');
-          recapSection.querySelectorAll("[data-recap-act]").forEach(function(td){
-            var a = parseInt(td.dataset.recapAct);
-            if (bsChoices[a] !== undefined) {
-              var p = [2,1,0][bsChoices[a]];
-              td.textContent = p + "/2";
-              td.className = "bs-act-result bs-pts-" + p;
-            }
-          });
-        } else {
-          showBsSection(next);
-        }
-      };
-    });
-  });
-
   // === SCENARIO ===
   document.querySelectorAll(".scenario-container").forEach(function(ct){
     var nodes=ct.querySelectorAll(".scenario-node");
@@ -510,6 +386,146 @@ document.addEventListener("DOMContentLoaded", function() {
         var nx=parseInt(ch.dataset.next);
         if(!isNaN(nx)&&nodes[nx])setTimeout(function(){nodes[nx].style.display="block";},600);
         markStepDone();
+      };
+    });
+  });
+
+  // === BRANCHING SCENARIO ===
+  document.querySelectorAll(".branching-scenario").forEach(function(bs){
+    var bsChoices = {};
+    var bsScore = 0;
+
+    function showBsSection(name) {
+      bs.querySelectorAll(".bs-section").forEach(function(s){
+        s.style.display = s.dataset.bs === name ? "block" : "none";
+      });
+      // Handle conditional blocks
+      var section = bs.querySelector('[data-bs="' + name + '"]');
+      if (section) {
+        section.querySelectorAll(".bs-conditional").forEach(function(c){
+          var cond = c.dataset.cond; // e.g. "act1=0" or "act1!=0"
+          var show = false;
+          if (cond.indexOf("!=") > -1) {
+            var parts = cond.split("!=");
+            var actNum = parseInt(parts[0].replace("act",""));
+            var val = parseInt(parts[1]);
+            show = bsChoices[actNum] !== val;
+          } else {
+            var parts2 = cond.split("=");
+            var actNum2 = parseInt(parts2[0].replace("act",""));
+            var val2 = parseInt(parts2[1]);
+            show = bsChoices[actNum2] === val2;
+          }
+          c.style.display = show ? "block" : "none";
+        });
+      }
+      // Scroll to scenario
+      bs.scrollIntoView({behavior:"smooth", block:"start"});
+    }
+
+    function updateBsScoreBar() {
+      var fill = document.getElementById("bsScoreFill");
+      var val = document.getElementById("bsScoreVal");
+      if (fill) fill.style.width = (bsScore/8*100) + "%";
+      if (val) val.textContent = bsScore + "/8";
+    }
+
+    // Start button
+    var startBtn = bs.querySelector(".bs-start-btn");
+    if (startBtn) startBtn.onclick = function(){ showBsSection("act-1"); };
+
+    // Choices
+    bs.querySelectorAll(".bs-choice").forEach(function(ch){
+      ch.onclick = function(){
+        var act = parseInt(ch.dataset.act);
+        var idx = parseInt(ch.dataset.idx);
+        var pts = parseInt(ch.dataset.points);
+        if (bsChoices[act] !== undefined) return;
+        bsChoices[act] = idx;
+        bsScore += pts;
+        // Update global score
+        scoreTotal += 2; score += pts;
+        if (pts < 2) weakSet.add("Sc\u00e9nario Acte " + act);
+        // Highlight
+        var parent = ch.closest(".bs-choices-list");
+        parent.querySelectorAll(".bs-choice").forEach(function(c){
+          c.style.pointerEvents = "none";
+          if (c === ch) {
+            var color = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
+            var bg2 = pts >= 2 ? "rgba(52,199,89,.06)" : pts >= 1 ? "rgba(255,159,10,.06)" : "rgba(255,59,48,.06)";
+            c.style.borderColor = color; c.style.background = bg2;
+          } else { c.style.opacity = "0.35"; }
+        });
+        // Show feedback
+        var actSection = ch.closest(".bs-act");
+        var fbBox = actSection.querySelector(".bs-feedback-box");
+        var fbDiv = actSection.querySelector(".bs-fb");
+        if (fbBox && fbDiv) {
+          fbBox.style.display = "block";
+          var color2 = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
+          var bg3 = pts >= 2 ? "rgba(52,199,89,.04)" : pts >= 1 ? "rgba(255,159,10,.04)" : "rgba(255,59,48,.04)";
+          fbDiv.textContent = ch.dataset.feedback;
+          fbDiv.style.display = "block";
+          fbDiv.style.background = bg3;
+          fbDiv.style.borderLeft = "2px solid " + color2;
+          fbDiv.style.padding = "12px 14px";
+          fbDiv.style.borderRadius = "8px";
+        }
+        // Score indicator
+        var indicator = actSection.querySelector(".bs-score-indicator");
+        if (indicator) {
+          indicator.style.display = "block";
+          var label = pts >= 2 ? "+2 points \u2014 Excellent" : pts >= 1 ? "+1 point \u2014 Compromis" : "0 point \u2014 Risqu\u00e9";
+          indicator.querySelector(".bs-points-earned").textContent = label;
+          indicator.style.color = pts >= 2 ? "#34c759" : pts >= 1 ? "#ff9f0a" : "#ff3b30";
+        }
+        // Update score bar
+        updateBsScoreBar();
+        // Show continue
+        var continueBtn = actSection.querySelector(".bs-continue-btn");
+        if (continueBtn) { continueBtn.style.display = "inline-flex"; }
+      };
+    });
+
+    // Continue buttons
+    bs.querySelectorAll(".bs-continue-btn").forEach(function(btn){
+      btn.onclick = function(){
+        var next = btn.dataset.next;
+        if (next === "epilogue") {
+          showBsSection("epilogue");
+          // Show correct epilogue
+          var epSection = bs.querySelector('[data-bs="epilogue"]');
+          var scoreNum = epSection.querySelector(".bs-score-num");
+          if (scoreNum) scoreNum.textContent = bsScore;
+          // Color the circle
+          var circle = epSection.querySelector(".bs-score-circle");
+          if (circle) {
+            circle.style.borderColor = bsScore >= 7 ? "#34c759" : bsScore >= 4 ? "#ff9f0a" : "#ff3b30";
+            circle.style.color = bsScore >= 7 ? "#34c759" : bsScore >= 4 ? "#ff9f0a" : "#ff3b30";
+          }
+          epSection.querySelectorAll(".bs-epilogue-content").forEach(function(ec){
+            var min = parseInt(ec.dataset.min), max = parseInt(ec.dataset.max);
+            ec.style.display = (bsScore >= min && bsScore <= max) ? "block" : "none";
+          });
+          // Show continue to recap
+          var recapBtn = epSection.querySelector(".bs-continue-btn");
+          if (recapBtn) { setTimeout(function(){ recapBtn.style.display = "inline-flex"; }, 800); }
+          markStepDone();
+        } else if (next === "recap") {
+          showBsSection("recap");
+          // Fill recap scores
+          var recapSection = bs.querySelector('[data-bs="recap"]');
+          recapSection.querySelectorAll("[data-recap-act]").forEach(function(td){
+            var a = parseInt(td.dataset.recapAct);
+            if (bsChoices[a] !== undefined) {
+              var p = [2,1,0][bsChoices[a]];
+              td.textContent = p + "/2";
+              td.className = "bs-act-result bs-pts-" + p;
+            }
+          });
+        } else {
+          showBsSection(next);
+        }
       };
     });
   });
@@ -540,7 +556,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
   });
   // Quiz retry
-  document.querySelectorAll(".quiz-retry-btn").forEach(function(btn){btn.onclick=function(){go(1);};});
+  document.querySelectorAll(".quiz-retry-btn").forEach(function(btn){btn.onclick=function(){go(2);};});
 
   // === VRAI/FAUX (unlock after ALL answered) ===
   document.querySelectorAll(".vf-btn").forEach(function(btn){
@@ -557,11 +573,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // === REVEAL ===
   document.querySelectorAll(".reveal-card").forEach(function(c){
-    c._origHTML=c.innerHTML;
-    c.onclick=function(){
-      if(c.classList.contains("revealed")){c.classList.remove("revealed");c.innerHTML=c._origHTML;}
-      else{c.classList.add("revealed");c.innerHTML=c.dataset.content+'<span class="reveal-label">Cliquez pour fermer</span>';}
-    };
+    c.onclick=function(){if(c.classList.contains("revealed"))return;c.classList.add("revealed");c.textContent=c.dataset.content;};
   });
 
   // === BLANKS (block re-selection of filled slots, unlock after ALL filled) ===
@@ -623,14 +635,14 @@ document.addEventListener("DOMContentLoaded", function() {
     var nextLabel=navLabels[idx+1]||"suivante";
     var teasers=["Pr\u00eat \u00e0 explorer cet enjeu ?","Passons aux risques concrets.","D\u00e9couvrez comment y r\u00e9pondre.","Vivez une situation r\u00e9aliste.","Testez vos connaissances.","Voyons votre score.","Terminez en beaut\u00e9."];
     var previews=["M\u00e9canismes IA, usages concrets et principes cl\u00e9s.","Les risques identifi\u00e9s avec des exemples r\u00e9els.","Des mesures concr\u00e8tes avec des activit\u00e9s interactives.","Un sc\u00e9nario professionnel.","Un quiz pour valider vos acquis.","Votre synth\u00e8se personnalis\u00e9e.","Votre badge de compl\u00e9tion."];
-    
-    
+    var cta=document.createElement("div");cta.className="step-next-cta";
+    cta.innerHTML="<div class='next-teaser'>\u2705 Section termin\u00e9e</div><div class='next-title'>"+(teasers[idx]||"")+"</div><div class='next-preview'>"+(previews[idx]||"")+"</div><button class='step-next-btn' data-goto='"+(idx+1)+"'>Continuer vers "+nextLabel+" <span class='arrow'>\u2192</span></button>";
+    step.appendChild(cta);
   });
+  document.querySelectorAll(".step-next-btn").forEach(function(btn){btn.onclick=function(){var t=parseInt(btn.dataset.goto);if(!isNaN(t))go(t);};});
 
   // === STEP 0 : unlock only after VF ===
   // (handled by checkVFComplete - step 0 starts locked, VF completion unlocks it)
-  // Step 0 (intro video) has no activity, auto-complete
-  stepCompleted[0] = true;
   // Last step always unlocked
   stepCompleted[totalSteps-1] = true;
 
