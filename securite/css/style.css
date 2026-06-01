@@ -680,3 +680,28 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
   .bs-recap-table { font-size: .72rem; }
   .bs-recap-table th, .bs-recap-table td { padding: 6px 6px; }
 }
+
+/* ============================================================
+   RETOURS CLIENT SNCF — ajustements layout (juin 2026)
+   ============================================================ */
+
+/* Page 2 « Complétez les phrases » : aligner les 3 blocs (titre + texte)
+   en harmonisant la hauteur des items des deux colonnes. */
+.matching-grid{align-items:stretch}
+.matching-grid .match-item{display:flex;align-items:center;min-height:72px}
+
+/* Page 3 : 4 blocs affichés 2 par ligne, agrandis, texte visible
+   directement — suppression du retournement (menu déroulant). */
+.flip-cards-grid{grid-template-columns:repeat(2,1fr) !important;gap:16px}
+.flip-card{perspective:none !important;height:auto !important;min-height:0 !important;cursor:default !important}
+.flip-card-inner{position:static !important;height:auto !important;min-height:0 !important;transform:none !important;transition:none !important;transform-style:flat !important;display:flex;flex-direction:column;border-radius:var(--r);overflow:hidden;border:.5px solid var(--border)}
+.flip-card.flipped .flip-card-inner{transform:none !important}
+.flip-card-front,.flip-card-back{position:static !important;inset:auto !important;backface-visibility:visible !important;transform:none !important;width:100%;border:none !important}
+.flip-card-front{padding:14px 18px !important;align-items:flex-start;text-align:left;justify-content:center}
+.flip-card-back{overflow:visible !important;padding:16px 18px !important}
+.flip-card-back p{font-size:.85rem !important;line-height:1.55}
+.flip-hint{display:none !important}
+
+@media (max-width:640px){
+  .flip-cards-grid{grid-template-columns:1fr !important}
+}
