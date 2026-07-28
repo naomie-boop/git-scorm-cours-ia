@@ -713,6 +713,18 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 .flip-card-back p{font-size:.85rem !important;line-height:1.55}
 .flip-hint{display:none !important}
 
+/* 28/07 : les 4 blocs passent en menu déroulant. Fermés, les 4 en-têtes ont
+   exactement la même hauteur ; à l'ouverture, chaque bloc grandit seul sans
+   étirer son voisin de ligne. */
+.flip-cards-grid{align-items:start}
+.flip-card{cursor:pointer !important}
+.flip-card-front{position:relative !important;padding:16px 46px 16px 18px !important;min-height:56px}
+.flip-card-front h4{margin-bottom:0}
+.flip-card-front::after{content:"";position:absolute;right:20px;top:50%;width:9px;height:9px;margin-top:-7px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .25s ease;opacity:.9}
+.flip-card.flipped .flip-card-front::after{transform:rotate(-135deg);margin-top:-2px}
+.flip-card-back{display:none !important}
+.flip-card.flipped .flip-card-back{display:block !important}
+
 @media (max-width:640px){
   .flip-cards-grid{grid-template-columns:1fr !important}
 }
