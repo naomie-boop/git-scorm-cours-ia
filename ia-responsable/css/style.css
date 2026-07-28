@@ -687,8 +687,18 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 
 /* Page 2 « Complétez les phrases » : aligner les 3 blocs (titre + texte)
    en harmonisant la hauteur des items des deux colonnes. */
-.matching-grid{align-items:stretch}
-.matching-grid .match-col{display:grid;grid-auto-rows:1fr;gap:4px}
+/* Anneau de score : le conteneur faisait 140x180 pour un SVG de 180x180, et le
+   pourcentage était posé à 150px du haut, donc sous l'anneau au lieu d'être au
+   centre. Conteneur carré, texte centré, trait décoratif du bas retiré. */
+.progress-circle{width:180px;height:180px}
+.progress-circle .circle-text{top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.progress-circle .bottom-line,.progress-circle .top-line{display:none}
+
+/* La grille a 3 pistes (1fr 16px 1fr) mais seulement 2 colonnes d'items :
+   la colonne de droite tombait dans la piste de 16px, d'où des blocs
+   écrasés et une zone vide à droite. Deux pistes égales, gouttière de 16px. */
+.matching-grid{align-items:stretch;grid-template-columns:1fr 1fr;gap:16px}
+.matching-grid .match-col{display:grid;grid-auto-rows:1fr;gap:16px}
 .matching-grid .match-item{display:flex;align-items:center;min-height:72px}
 
 /* Page 3 : 4 blocs affichés 2 par ligne, agrandis, texte visible
@@ -705,4 +715,11 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 
 @media (max-width:640px){
   .flip-cards-grid{grid-template-columns:1fr !important}
+}
+
+/* Sous 768 px la maquette d'origine empile les deux colonnes ; le correctif
+   ci-dessus etant plus bas dans le fichier, il faut le neutraliser ici. */
+@media(max-width:768px){
+  .matching-grid{grid-template-columns:1fr;gap:12px}
+  .matching-grid .match-col{grid-auto-rows:auto;gap:12px}
 }

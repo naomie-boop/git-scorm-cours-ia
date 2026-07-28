@@ -104,6 +104,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function updateScoreDisplay() {
     var container=allSteps[cur]; if(!container) return;
     // Circle
+    var wrap=container.querySelector(".progress-circle-wrap");
+    if(wrap) wrap.style.display=scoreTotal>0?"":"none";  // pas de quiz fait = pas d'anneau vide
     var fgStroke=container.querySelector(".fg-stroke"),fgFill=container.querySelector(".fg-fill"),ct=container.querySelector(".circle-text");
     if(fgStroke&&ct&&scoreTotal>0){
       var pct=Math.round((score/scoreTotal)*100),circ=2*Math.PI*70;

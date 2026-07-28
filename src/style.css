@@ -639,3 +639,28 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
   .bs-recap-table { font-size: .72rem; }
   .bs-recap-table th, .bs-recap-table td { padding: 6px 6px; }
 }
+
+
+/* ============================================================
+   RETOURS CLIENT SNCF - 28/07/2026
+   ============================================================ */
+
+/* Grille d'association : 3 pistes declarees (1fr 16px 1fr) pour seulement
+   2 colonnes d'items, donc la colonne de droite tombait dans la piste de
+   16px (blocs ecrases, zone vide a droite). Deux pistes egales. */
+.matching-grid{align-items:stretch;grid-template-columns:1fr 1fr;gap:16px}
+.matching-grid .match-col{display:grid;grid-auto-rows:1fr;gap:16px}
+.matching-grid .match-item{display:flex;align-items:center;min-height:72px}
+
+/* Anneau de score : conteneur 140x180 pour un SVG 180x180 et pourcentage
+   pose a 150px du haut, donc sous l'anneau. Conteneur carre, texte centre. */
+.progress-circle{width:180px;height:180px}
+.progress-circle .circle-text{top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.progress-circle .bottom-line,.progress-circle .top-line{display:none}
+
+/* Sous 768 px la maquette d'origine empile les deux colonnes ; le correctif
+   ci-dessus etant plus bas dans le fichier, il faut le neutraliser ici. */
+@media(max-width:768px){
+  .matching-grid{grid-template-columns:1fr;gap:12px}
+  .matching-grid .match-col{grid-auto-rows:auto;gap:12px}
+}
