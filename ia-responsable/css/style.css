@@ -688,6 +688,7 @@ h1,h2,h3,h4{font-family:"Bricolage Grotesque",system-ui,sans-serif;line-height:1
 /* Page 2 « Complétez les phrases » : aligner les 3 blocs (titre + texte)
    en harmonisant la hauteur des items des deux colonnes. */
 .matching-grid{align-items:stretch}
+.matching-grid .match-col{display:grid;grid-auto-rows:1fr;gap:4px}
 .matching-grid .match-item{display:flex;align-items:center;min-height:72px}
 
 /* Page 3 : 4 blocs affichés 2 par ligne, agrandis, texte visible
