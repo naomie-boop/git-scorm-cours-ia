@@ -5,6 +5,64 @@
 <link rel="stylesheet" href="../_shared/scenario.css">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Inter+Tight:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head><body>
+<!-- ================= FINITIONS D'AFFICHAGE ================== -->
+<!-- css/style.css n'est pas livré avec les modules : ces retouches sont
+     donc portées ici, et s'appliquent à toutes les étapes du module.
+     Aucun fichier JavaScript n'est modifié. -->
+<style>
+/* ---- 1. Le bloc « Section terminée », en bas de chaque étape -------
+
+   Avant : un lavis rectangulaire
+     background: linear-gradient(180deg, transparent, rgba(0,113,227,.02));
+     border-top: .5px solid var(--border);
+   La teinte atteignait sa pleine valeur exactement sur le bord bas, et
+   les côtés coupaient franc sur le fond de page : le cadre du bloc se
+   voyait sur ses quatre côtés.
+
+   Après : une lueur elliptique dont les rayons sont choisis pour
+   qu'elle soit déjà transparente avant chaque bord. Centre à 50 % 60 %,
+   rayons 46 % de la largeur et 36 % de la hauteur : la teinte s'éteint
+   à 4 % et 96 % en largeur, à 24 % et 96 % en hauteur. Plus aucun bord
+   ne porte de couleur, donc plus aucune démarcation. */
+.step-next-cta{
+  position:relative!important;
+  border-top:0!important;
+  background:radial-gradient(46% 36% at 50% 60%,
+      rgba(0,113,227,.05) 0%,
+      rgba(0,113,227,.022) 55%,
+      rgba(0,113,227,0) 100%)!important}
+
+/* La séparation avec la section du dessus est conservée, mais sous
+   forme d'un filet court qui s'efface à ses deux extrémités : il ne
+   dessine plus la largeur du bloc, donc plus de coin visible. */
+.step-next-cta::before{
+  content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:min(440px,70%);height:1px;pointer-events:none;
+  background:linear-gradient(90deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,.055) 24%,
+      rgba(0,0,0,.055) 76%,
+      rgba(0,0,0,0) 100%)}
+
+/* ---- 2. Le quiz : « Valider » collé à la dernière réponse ----------
+
+   Le bouton est le frère immédiat de .quiz-options et ne portait
+   aucune marge : il touchait la dernière case de réponse. On ne vise
+   que ce cas précis, pour ne pas décaler le bouton s'il servait un
+   jour dans une rangée horizontale. */
+.quiz-options + .quiz-validate-btn{margin-top:16px!important}
+
+/* Le retour de réponse, qui suit le bouton, respire un peu plus. */
+.quiz-validate-btn + .quiz-feedback{margin-top:12px!important}
+
+/* Et les réponses entre elles, qui étaient à 5 px. */
+.quiz-options{gap:8px!important}
+</style>
+<!-- ============== fin des finitions d'affichage ============== -->
+
+
+
+
 <div class="cover-page" id="coverPage" style="background:#0008CF">
 
   <div class="cover-content" style="color:#fff">
@@ -43,7 +101,662 @@
     <li><strong>Code du travail</strong> &rarr; Consultation des représentants du personnel pour tout outil affectant les conditions de travail.</li>
   </ol></div>
   <div class="divider"></div>
-  <div class="matching-container animate-in">
+  
+<!-- ============== EXERCICE : POINTS À RELIER =====================
+     Remplace l'exercice d'association par clic de l'étape 2.
+     L'ancien exercice reste dans la page, masqué : c'est lui qui
+     valide l'étape dans app.js, renseigné automatiquement ici.
+     Autonome : styles portés par .chasse, script en fonction
+     anonyme immédiate, aucune variable globale, aucun réseau.
+     ============================================================== -->
+<div class="animate-in">
+  <div class="chasse" id="relier-juridique">
+    <style>
+.chasse{--bg:#eef0f4; --surface:#fff;
+  --border:#e4e7ec; --border-fort:#d0d5dd; --trait:#f0f2f5;
+  --ink:#101828; --ink-doux:#475467; --ink-tenu:#98a2b3;
+  --accent:#1352b3; --accent-2:#eaf1fb; --accent-3:#d7e5f8;
+  --juste:#12805c; --juste-doux:#edf8f3; --juste-bord:#a6e0cb;
+  --faux:#b42318;
+  --r:14px; --rs:9px; --rx:6px;
+  --ombre-s:0 1px 2px rgba(16,24,40,.06);
+  --ombre-m:0 1px 3px rgba(16,24,40,.08), 0 10px 26px -14px rgba(16,24,40,.28);
+  --ombre-g:0 2px 4px rgba(16,24,40,.06), 0 22px 48px -20px rgba(16,24,40,.32);
+  --police:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+.chasse *{box-sizing:border-box}
+.chasse .enveloppe{max-width:900px;margin:0 auto;padding:30px 20px 70px}
+.chasse .tete{margin-bottom:18px}
+.chasse .tete .surtitre{color:var(--accent);font-size:.7rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.chasse .tete h1{font-size:1.5rem;line-height:1.2;margin:0 0 5px;letter-spacing:-.02em}
+.chasse .tete p{margin:0;color:var(--ink-doux);font-size:.88rem}
+.chasse .nav{display:flex;gap:6px;overflow-x:auto;padding:5px 2px 10px;margin-bottom:12px}
+.chasse .nav button{flex:0 0 auto;font:inherit;font-size:.76rem;font-weight:500;
+  color:var(--ink-doux);background:var(--surface);border:1px solid var(--border);
+  border-radius:999px;padding:7px 13px;cursor:pointer;white-space:nowrap;
+  box-shadow:var(--ombre-s);transition:all .18s ease}
+.chasse .nav button:hover{border-color:var(--border-fort);color:var(--ink)}
+.chasse .nav button[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.chasse .nav .puce{display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--juste);margin-left:7px;vertical-align:middle}
+.chasse .nav button[aria-current="true"] .puce{background:#fff}
+.chasse button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chasse .scene{background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r);overflow:hidden;box-shadow:var(--ombre-m)}
+.chasse .scene-tete{padding:18px 22px 15px;border-bottom:1px solid var(--border)}
+.chasse .scene-tete .module{color:var(--accent);font-size:.67rem;font-weight:700;
+  letter-spacing:.11em;text-transform:uppercase;margin-bottom:5px}
+.chasse .scene-tete h2{font-size:1.12rem;margin:0 0 4px;letter-spacing:-.015em}
+.chasse .scene-tete .consigne{margin:0;color:var(--ink-doux);font-size:.85rem}
+.chasse .barre{display:flex;align-items:center;gap:11px;flex-wrap:wrap;
+  padding:11px 22px;background:#f9fafb;border-bottom:1px solid var(--border)}
+.chasse .compteur{font-size:.8rem;font-weight:600}
+.chasse .jauge{display:flex;gap:5px}
+.chasse .jauge span{width:24px;height:5px;border-radius:3px;background:var(--border-fort);
+  transition:background .25s ease}
+.chasse .jauge span.pleine{background:var(--juste)}
+.chasse .retour{font-size:.8rem;color:var(--faux);margin-left:auto;min-height:1.2em}
+.chasse .retour.neutre{color:var(--ink-tenu)}
+.chasse .decor{padding:22px;background:#f2f4f7}
+.chasse .zone{position:relative;display:block;width:100%;text-align:left;
+  font:inherit;color:inherit;background:transparent;border:0;padding:0;margin:0;
+  border-radius:var(--rs);cursor:zoom-in;
+  transition:background .15s ease,opacity .25s ease}
+.chasse .zone:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chasse .zone.verrouillee{cursor:default}
+.chasse .zone.estompee{opacity:.28}
+.chasse .loupe{position:absolute;border-radius:50%;pointer-events:none;z-index:5;
+  background:rgba(255,255,255,.5);
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);
+  border:1.5px solid var(--juste);box-shadow:0 4px 14px rgba(18,128,92,.18);
+  animation:chposer .22s ease-out both}
+.chasse .loupe.rate{border-color:var(--faux);box-shadow:0 4px 14px rgba(180,35,24,.18)}
+.chasse .loupe.retrait{animation:chretirer .35s ease-in both}
+.chasse .app{border-radius:12px;border:1px solid var(--border-fort);background:#fff;
+  overflow:hidden;box-shadow:var(--ombre-g)}
+.chasse .app-bar{display:flex;align-items:center;gap:11px;height:40px;padding:0 13px;
+  background:linear-gradient(#fcfcfd,#f2f4f7);border-bottom:1px solid var(--border)}
+.chasse .feux{display:flex;gap:6px;flex:0 0 auto}
+.chasse .feux i{width:11px;height:11px;border-radius:50%;display:block}
+.chasse .feux i:nth-child(1){background:#ff5f57}
+.chasse .feux i:nth-child(2){background:#febc2e}
+.chasse .feux i:nth-child(3){background:#28c840}
+.chasse .app-titre{flex:1;text-align:center;font-size:.74rem;color:var(--ink-doux);
+  font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chasse .app-bar .fin{flex:0 0 auto;display:flex;gap:6px;color:var(--ink-tenu)}
+.chasse .app-corps{display:flex;min-height:250px}
+.chasse .rail{flex:0 0 168px;background:#fafbfc;border-right:1px solid var(--border);padding:12px 10px}
+.chasse .rail .groupe{font-size:.62rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-tenu);padding:6px 8px}
+.chasse .rail .item{display:flex;align-items:center;gap:8px;padding:7px 9px;border-radius:var(--rx);
+  font-size:.78rem;color:var(--ink-doux)}
+.chasse .rail .item.actif{background:var(--accent-2);color:var(--accent);font-weight:600}
+.chasse .rail .item .pt{width:6px;height:6px;border-radius:50%;background:var(--border-fort);flex:0 0 auto}
+.chasse .rail .item.actif .pt{background:var(--accent)}
+.chasse .rail .compte{margin-left:auto;font-size:.66rem;color:var(--ink-tenu)}
+.chasse .vue{flex:1;min-width:0;display:flex;flex-direction:column}
+.chasse .vue-tete{display:flex;align-items:center;gap:10px;padding:11px 16px;
+  border-bottom:1px solid var(--border);flex-wrap:wrap}
+.chasse .fil{font-size:.72rem;color:var(--ink-tenu)}
+.chasse .chip{display:inline-flex;align-items:center;gap:6px;font-size:.71rem;font-weight:500;
+  padding:4px 10px;border-radius:999px;background:#f2f4f7;color:var(--ink-doux);
+  border:1px solid var(--border)}
+.chasse .chip.bleu{background:var(--accent-2);color:var(--accent);border-color:var(--accent-3)}
+.chasse .btn-ui{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:600;
+  padding:7px 13px;border-radius:var(--rx);background:#fff;color:var(--ink-doux);
+  border:1px solid var(--border-fort);box-shadow:var(--ombre-s)}
+.chasse .btn-ui.plein{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chasse .vue-corps{padding:16px;flex:1}
+.chasse .vue-pied{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:11px 16px;border-top:1px solid var(--border);background:#fafbfc}
+.chasse .pousse{margin-left:auto}
+.chasse svg.ic{width:14px;height:14px;flex:0 0 auto;stroke:currentColor;fill:none;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.chasse .board{background:#fbfbfd;background-image:radial-gradient(#e0e4ea 1px,transparent 1px);
+  background-size:22px 22px;padding:18px;min-height:250px}
+.chasse .board-tete{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+.chasse .board-tete .t{font-size:.78rem;font-weight:600}
+.chasse .avatars{display:flex;margin-left:auto}
+.chasse .avatars span{width:24px;height:24px;border-radius:50%;border:2px solid #fff;
+  display:grid;place-items:center;font-size:.6rem;font-weight:700;color:#fff;margin-left:-7px}
+.chasse .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:14px}
+.chasse .notes .zone{padding:0}
+.chasse .pense{display:block;background:#fff3bf;border-radius:3px;padding:13px 13px 30px;
+  font-size:.82rem;line-height:1.4;min-height:104px;position:relative;
+  box-shadow:0 1px 1px rgba(16,24,40,.08),0 10px 18px -12px rgba(16,24,40,.5)}
+.chasse .pense .par{position:absolute;left:13px;bottom:10px;font-size:.62rem;
+  font-weight:700;color:#9a8130;letter-spacing:.06em}
+.chasse .notes .zone:nth-child(3n+1) .pense{transform:rotate(-.7deg)}
+.chasse .notes .zone:nth-child(3n+2) .pense{transform:rotate(.5deg)}
+.chasse .notes .zone:hover:not(.verrouillee) .pense{background:#ffeb9c;
+  box-shadow:0 2px 3px rgba(16,24,40,.1),0 14px 22px -12px rgba(16,24,40,.55)}
+.chasse .page-blanche{background:#fff;border:1px solid var(--border);border-radius:var(--rs);
+  padding:22px 24px;box-shadow:var(--ombre-s);max-width:520px}
+.chasse .page-blanche h3{font-size:1.05rem;margin:0 0 4px;letter-spacing:-.015em}
+.chasse .page-blanche .sous{font-size:.72rem;color:var(--ink-tenu);margin:0 0 14px;
+  padding-bottom:12px;border-bottom:1px solid var(--trait)}
+.chasse .para{display:block;padding:7px 9px;margin:0 -9px 2px;font-size:.85rem;
+  color:var(--ink-doux);border-radius:var(--rx)}
+.chasse .zone:hover:not(.verrouillee) .para{background:var(--accent-2)}
+.chasse .deux-col{display:flex;gap:16px;align-items:flex-start}
+.chasse .controle{flex:0 0 210px;background:#fff;border:1px solid var(--border);
+  border-radius:var(--rs);padding:12px;box-shadow:var(--ombre-s)}
+.chasse .controle .t{font-size:.63rem;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-tenu);margin-bottom:9px}
+.chasse .controle .lg{display:flex;align-items:center;gap:8px;font-size:.76rem;
+  color:var(--ink-doux);padding:6px 7px;border-radius:var(--rx);margin:0 -7px}
+.chasse .zone:hover:not(.verrouillee) .lg{background:var(--accent-2)}
+.chasse .pastille-ok{width:15px;height:15px;border-radius:50%;background:var(--juste-doux);
+  border:1px solid var(--juste-bord);flex:0 0 auto}
+.chasse .pastille-non{width:15px;height:15px;border-radius:50%;background:#f2f4f7;
+  border:1px solid var(--border-fort);flex:0 0 auto}
+.chasse .etapes{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.72rem;color:var(--ink-tenu)}
+.chasse .etapes b{display:inline-flex;align-items:center;gap:6px;font-weight:600;color:var(--ink-doux)}
+.chasse .etapes .n{width:19px;height:19px;border-radius:50%;background:#f2f4f7;
+  display:grid;place-items:center;font-size:.64rem;color:var(--ink-doux)}
+.chasse .etapes .n.on{background:var(--accent);color:#fff}
+.chasse .etapes .sep{flex:1;height:1px;background:var(--border);min-width:14px}
+.chasse .champs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.chasse .champ{display:block;padding:2px}
+.chasse .champ .lab{display:block;font-size:.7rem;font-weight:600;color:var(--ink-doux);margin-bottom:5px}
+.chasse .champ .saisie{display:block;background:#fff;border:1px solid var(--border-fort);
+  border-radius:var(--rx);padding:9px 11px;font-size:.82rem;box-shadow:var(--ombre-s);
+  min-height:38px}
+.chasse .zone:hover:not(.verrouillee) .saisie{border-color:var(--accent);background:#fcfdff}
+.chasse .champ.large{grid-column:1 / -1}
+.chasse .fil-msg{padding:16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.chasse .msg{display:flex;gap:10px;align-items:flex-start;padding:6px;margin:-6px;border-radius:var(--rs)}
+.chasse .zone:hover:not(.verrouillee) .msg{background:#f9fafb}
+.chasse .ava{width:28px;height:28px;border-radius:8px;flex:0 0 auto;display:grid;place-items:center;
+  font-size:.63rem;font-weight:700}
+.chasse .ava.ia{background:var(--ink);color:#fff}
+.chasse .ava.moi{background:var(--accent-2);color:var(--accent);border-radius:50%}
+.chasse .msg .bloc{min-width:0}
+.chasse .msg .qui{display:block;font-size:.7rem;font-weight:600;margin-bottom:2px}
+.chasse .msg .txt{display:block;font-size:.85rem;color:var(--ink-doux)}
+.chasse .composeur{display:flex;align-items:center;gap:9px;margin:0 16px 16px;
+  border:1px solid var(--border-fort);border-radius:11px;padding:9px 11px;
+  background:#fff;box-shadow:var(--ombre-s);color:var(--ink-tenu);font-size:.8rem}
+.chasse .envoyer{width:28px;height:28px;border-radius:8px;background:var(--accent);color:#fff;
+  display:grid;place-items:center;margin-left:auto;flex:0 0 auto}
+.chasse .bureau{position:relative;border-radius:12px;overflow:hidden;
+  border:1px solid var(--border-fort);box-shadow:var(--ombre-g)}
+.chasse .bureau svg{display:block;width:100%;height:auto}
+.chasse .bureau .zone{position:absolute;display:flex;align-items:flex-end;
+  border-radius:10px;padding:4px}
+.chasse .bureau .zone:hover:not(.verrouillee){background:rgba(19,82,179,.09);
+  box-shadow:inset 0 0 0 1.5px rgba(19,82,179,.35)}
+.chasse .bureau .tag{display:block;width:100%;background:rgba(255,255,255,.97);
+  border:1px solid var(--border);border-radius:8px;padding:7px 9px;
+  font-size:.73rem;line-height:1.35;box-shadow:var(--ombre-s)}
+.chasse .bureau .quoi{display:block;font-size:.6rem;font-weight:700;color:var(--ink-tenu);
+  text-transform:uppercase;letter-spacing:.09em;margin-bottom:1px}
+.chasse .mail-tete{padding:16px 18px 13px;border-bottom:1px solid var(--border)}
+.chasse .mail-tete h3{font-size:1.02rem;margin:0 0 11px;letter-spacing:-.015em}
+.chasse .exp{display:flex;align-items:center;gap:10px}
+.chasse .exp .rond{width:34px;height:34px;border-radius:50%;background:#dbe6f6;color:var(--accent);
+  display:grid;place-items:center;font-size:.72rem;font-weight:700;flex:0 0 auto}
+.chasse .exp .qui{font-size:.79rem;font-weight:600}
+.chasse .exp .a{font-size:.71rem;color:var(--ink-tenu)}
+.chasse .exp .quand{margin-left:auto;font-size:.71rem;color:var(--ink-tenu);white-space:nowrap}
+.chasse .mail-corps{padding:14px 18px 4px}
+.chasse .mail-corps .para{font-size:.85rem;color:var(--ink-doux)}
+.chasse .signature{padding:10px 18px 16px;font-size:.75rem;color:var(--ink-tenu)}
+.chasse .liste-mails{flex:0 0 190px;border-right:1px solid var(--border);background:#fcfcfd;padding:8px}
+.chasse .apercu{padding:9px 10px;border-radius:var(--rx);margin-bottom:3px}
+.chasse .apercu.on{background:var(--accent-2)}
+.chasse .apercu .de{font-size:.72rem;font-weight:600}
+.chasse .apercu .ob{font-size:.7rem;color:var(--ink-doux);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.chasse .apercu .ex{font-size:.67rem;color:var(--ink-tenu);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.chasse .gantt{padding:14px 16px 8px}
+.chasse .gantt-tete{display:grid;grid-template-columns:186px 1fr;gap:12px;
+  padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:6px}
+.chasse .semaines{display:grid;grid-template-columns:repeat(12,1fr);font-size:.6rem;
+  color:var(--ink-tenu);text-align:center}
+.chasse .ligne-g{display:grid;grid-template-columns:186px 1fr;gap:12px;align-items:center;
+  padding:7px 6px;margin:0 -6px;border-radius:var(--rx)}
+.chasse .zone:hover:not(.verrouillee) .ligne-g{background:#f9fafb}
+.chasse .ligne-g .nom{font-size:.78rem;overflow:hidden}
+.chasse .ligne-g .nom small{display:block;font-size:.65rem;color:var(--ink-tenu)}
+.chasse .piste{position:relative;height:22px;border-radius:5px;
+  background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.333% - 1px),
+    var(--trait) calc(8.333% - 1px),var(--trait) 8.333%)}
+.chasse .barre-g{position:absolute;top:3px;height:16px;border-radius:5px;
+  background:var(--accent);box-shadow:var(--ombre-s)}
+.chasse .barre-g.vide{background:transparent;border:1.5px dashed var(--border-fort)}
+.chasse .navigateur{border-radius:12px;border:1px solid var(--border-fort);overflow:hidden;
+  background:#fff;box-shadow:var(--ombre-g)}
+.chasse .onglets{display:flex;align-items:flex-end;gap:6px;padding:8px 10px 0;
+  background:linear-gradient(#eceef2,#e6e9ee)}
+.chasse .onglets .feux{margin-right:6px;padding-bottom:8px}
+.chasse .onglet{background:#fff;border-radius:8px 8px 0 0;padding:7px 14px;font-size:.71rem;
+  color:var(--ink-doux);border:1px solid var(--border);border-bottom:0;max-width:230px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chasse .url{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#fff;
+  border-bottom:1px solid var(--border)}
+.chasse .url .champ-url{flex:1;background:#f2f4f7;border-radius:999px;padding:5px 12px;
+  font-size:.71rem;color:var(--ink-doux);display:flex;align-items:center;gap:7px}
+.chasse .site{position:relative;background:#f8fafc;min-height:352px;padding:0 0 16px}
+.chasse .site-nav{display:flex;align-items:center;gap:16px;padding:12px 18px;background:#fff;
+  border-bottom:1px solid var(--border);font-size:.72rem;color:var(--ink-tenu)}
+.chasse .site-nav .marque{width:74px;height:9px;border-radius:3px;background:var(--accent);opacity:.85}
+.chasse .site-corps{padding:18px 20px}
+.chasse .faux-titre{height:15px;width:52%;border-radius:5px;background:#dde2e9;margin-bottom:12px}
+.chasse .faux-l{height:8px;border-radius:4px;background:#e6eaef;margin-bottom:8px}
+.chasse .widget{position:absolute;right:16px;bottom:16px;width:296px;background:#fff;
+  border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  box-shadow:0 4px 8px rgba(16,24,40,.08),0 26px 50px -18px rgba(16,24,40,.42)}
+.chasse .widget-tete{display:flex;align-items:center;gap:9px;padding:11px 13px;
+  background:var(--accent);color:#fff}
+.chasse .widget-tete .rondw{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.22);
+  display:grid;place-items:center;font-size:.72rem;font-weight:700;flex:0 0 auto}
+.chasse .widget-tete .nomw{font-size:.8rem;font-weight:600}
+.chasse .widget-corps{padding:12px 13px;display:flex;flex-direction:column;gap:9px;background:#fbfcfd}
+.chasse .widget-corps .zone{width:auto;max-width:90%}
+.chasse .widget-corps .z-moi{align-self:flex-end}
+.chasse .widget-corps .z-ia{align-self:flex-start}
+.chasse .widget-actions .zone{width:auto}
+.chasse .bulle-u{display:block;background:var(--accent-2);border:1px solid var(--accent-3);
+  border-radius:13px 13px 3px 13px;padding:8px 11px;font-size:.78rem}
+.chasse .bulle-a{display:block;background:#fff;border:1px solid var(--border);
+  border-radius:13px 13px 13px 3px;padding:8px 11px;font-size:.78rem;box-shadow:var(--ombre-s)}
+.chasse .mini{display:inline-block}
+.chasse .widget-actions{display:flex;gap:6px;flex-wrap:wrap;padding:0 13px 11px;background:#fbfcfd}
+.chasse .mini{font-size:.68rem;padding:5px 10px;border-radius:999px;background:#fff;
+  border:1px solid var(--border);color:var(--ink-doux)}
+.chasse .zone:hover:not(.verrouillee) .mini,.chasse .zone:hover:not(.verrouillee) .bulle-a,.chasse .zone:hover:not(.verrouillee) .bulle-u{border-color:var(--accent)}
+.chasse .widget-pied{padding:8px 13px;border-top:1px solid var(--border);background:#fff;
+  font-size:.66rem;color:var(--ink-tenu)}
+.chasse .zone:hover:not(.verrouillee) .widget-tete{filter:brightness(1.12)}
+.chasse .reg{display:flex;align-items:center;gap:14px;padding:13px 8px;margin:0 -8px;
+  border-bottom:1px solid var(--trait);border-radius:var(--rx)}
+.chasse .zone:hover:not(.verrouillee) .reg{background:#f9fafb}
+.chasse .reg .cle{font-size:.81rem;font-weight:500}
+.chasse .reg .cle small{display:block;font-size:.68rem;color:var(--ink-tenu);font-weight:400}
+.chasse .reg .ctrl{margin-left:auto;flex:0 0 auto}
+.chasse .select{display:inline-flex;align-items:center;gap:9px;font-size:.76rem;color:var(--ink-doux);
+  background:#fff;border:1px solid var(--border-fort);border-radius:var(--rx);
+  padding:7px 10px;box-shadow:var(--ombre-s)}
+.chasse .zone:hover:not(.verrouillee) .select{border-color:var(--accent)}
+.chasse .switch{width:38px;height:22px;border-radius:999px;background:var(--accent);
+  position:relative;display:inline-block}
+.chasse .switch i{position:absolute;top:3px;left:19px;width:16px;height:16px;border-radius:50%;
+  background:#fff;box-shadow:var(--ombre-s)}
+.chasse .trouvailles{padding:16px 22px 0}
+.chasse .carte{border:1px solid var(--juste-bord);border-left:3px solid var(--juste);
+  background:var(--juste-doux);border-radius:var(--rs);padding:12px 15px;margin:0 0 9px}
+.chasse .carte .cite{font-size:.81rem;font-weight:600;margin:0 0 4px}
+.chasse .carte .pourquoi{font-size:.83rem;color:var(--ink-doux);margin:0}
+.chasse .conclusion{margin:16px 22px 0;padding:13px 16px;border-radius:var(--rs);
+  border:1px solid var(--accent-3);background:var(--accent-2);font-size:.85rem;font-weight:500}
+.chasse .actions{display:flex;gap:8px;flex-wrap:wrap;padding:16px 22px 20px}
+.chasse .actions button{font:inherit;font-size:.81rem;font-weight:600;cursor:pointer;
+  padding:9px 15px;border-radius:var(--rx);border:1px solid var(--border-fort);
+  background:#fff;color:var(--ink-doux);box-shadow:var(--ombre-s);transition:all .18s ease}
+.chasse .actions button:hover:not(:disabled){background:#f9fafb;color:var(--ink)}
+.chasse .actions button:disabled{opacity:.45;cursor:not-allowed}
+.chasse .actions button.principal{background:var(--accent);border-color:var(--accent);color:#fff}
+.chasse .actions button.principal:hover{background:#0f4494;color:#fff}
+.chasse .pied{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:13px}
+.chasse .pied button{font:inherit;font-size:.81rem;cursor:pointer;padding:8px 14px;
+  border-radius:var(--rx);border:1px solid var(--border);background:#fff;
+  color:var(--ink-doux);box-shadow:var(--ombre-s)}
+.chasse .pied button:disabled{opacity:.4;cursor:not-allowed}
+.chasse .pied .position{font-size:.77rem;color:var(--ink-tenu)}
+.chasse .invisible{position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap}
+.chasse .pile{display:flex;flex-direction:column;gap:18px}
+.chasse .exo-kick{color:var(--accent);font-size:.65rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:5px}
+.chasse .lien-zone{position:relative;padding:2px 8px}
+.chasse .lien-svg{position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;overflow:visible;z-index:1}
+.chasse .lien-svg path{fill:none;stroke-width:2.4;stroke-linecap:round;opacity:.92}
+.chasse .lien-svg path.trace{animation:chtracer .38s ease-out both}
+.chasse .lien-cols{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:42px}
+.chasse .lien-col{display:flex;flex-direction:column;gap:12px}
+.chasse .lien-case{position:relative;font:inherit;text-align:left;width:100%;
+  background:#fff;border:1px solid var(--border-fort);border-radius:var(--rs);
+  padding:13px 15px;cursor:pointer;box-shadow:var(--ombre-s);min-height:58px;
+  display:flex;align-items:center;color:var(--ink);
+  transition:border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.chasse .lien-case:hover:not(:disabled){border-color:var(--cat,var(--accent))}
+.chasse .lien-case:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chasse .lien-g .lien-case{font-size:.86rem;font-weight:600}
+.chasse .lien-d .lien-case{font-size:.82rem;color:var(--ink-doux);line-height:1.45}
+.chasse .lien-case .anc{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;
+  background:#fff;border:2px solid var(--border-fort);transform:translateY(-50%);
+  transition:background .18s ease,border-color .18s ease}
+.chasse .lien-g .lien-case .anc{right:-7px}
+.chasse .lien-d .lien-case .anc{left:-7px}
+.chasse .lien-case.actif{border-color:var(--cat);background:#fbfcfe;
+  box-shadow:0 0 0 3px rgba(19,82,179,.12)}
+.chasse .lien-case.relie{border-color:var(--cat)}
+.chasse .lien-case.relie .anc,.chasse .lien-case.actif .anc{background:var(--cat);border-color:var(--cat)}
+.chasse .lien-case.juste{border-color:var(--juste);background:var(--juste-doux);cursor:default}
+.chasse .lien-case.juste .anc{background:var(--juste);border-color:var(--juste)}
+.chasse .lien-case.faux{border-color:var(--faux);animation:chtrembler .4s ease}
+.chasse .lien-liste{display:none;flex-direction:column;gap:12px}
+.chasse .lien-item{border:1px solid var(--border);border-radius:var(--rs);
+  background:#fff;padding:13px 14px;box-shadow:var(--ombre-s)}
+.chasse .lien-item .txt{display:block;font-size:.85rem;color:var(--ink-doux);
+  line-height:1.5;margin-bottom:9px}
+.chasse .lien-item select{font:inherit;font-size:.82rem;width:100%;min-height:44px;
+  padding:9px 11px;border-radius:var(--rx);border:1px solid var(--border-fort);
+  background:#fff;color:var(--ink)}
+.chasse .lien-item select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chasse .lien-item.juste{border-color:var(--juste);background:var(--juste-doux)}
+.chasse .lien-item.faux{border-color:var(--faux);animation:chtrembler .4s ease}
+.chasse .aide-etroit{display:none}
+@keyframes chposer{from{opacity:0;transform:scale(.45)}to{opacity:1;transform:scale(1)}}
+@keyframes chretirer{to{opacity:0;transform:scale(1.25)}}
+@media (max-width:760px){
+.chasse .rail,.chasse .liste-mails{display:none}
+.chasse .deux-col{flex-direction:column}
+.chasse .controle{flex:1 1 auto;width:100%}
+.chasse .page-blanche{max-width:none}
+.chasse .champs{grid-template-columns:1fr}
+.chasse .gantt-tete,.chasse .ligne-g{grid-template-columns:120px 1fr}
+.chasse .widget{position:static;width:auto;margin:14px 16px 0}
+.chasse .site{min-height:0}
+}
+@media (max-width:600px){
+.chasse .enveloppe{padding:18px 12px 54px}
+.chasse .scene-tete,.chasse .barre,.chasse .decor,.chasse .trouvailles,.chasse .actions{padding-left:14px;padding-right:14px}
+.chasse .conclusion{margin-left:14px;margin-right:14px}
+.chasse .para,.chasse .reg,.chasse .champ .saisie,.chasse .ligne-g,.chasse .msg,.chasse .controle .lg{min-height:44px}
+.chasse .msg{align-items:center}
+.chasse .notes{grid-template-columns:1fr 1fr}
+.chasse .gantt-tete .semaines{display:none}
+.chasse .gantt-tete,.chasse .ligne-g{grid-template-columns:1fr;gap:5px}
+.chasse .retour{margin-left:0;width:100%}
+.chasse .actions button{flex:1 1 auto}
+.chasse .bureau svg{display:none}
+.chasse .bureau{background:#fff;box-shadow:none}
+.chasse .bureau .zone{position:static!important;width:100%!important;height:auto!important;
+    left:auto!important;top:auto!important;margin-bottom:7px;padding:0}
+.chasse .bureau .tag{min-height:44px}
+}
+@media (prefers-reduced-motion:reduce){
+.chasse *,.chasse *::before,.chasse *::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important}
+}
+@keyframes chtracer{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes chtrembler{0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-5px)}40%{transform:translateX(5px)}
+  60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}
+@media (max-width:760px){
+.chasse .lien-cols{gap:26px}
+}
+@media (max-width:600px){
+.chasse .lien-cols,.chasse .lien-svg{display:none}
+.chasse .lien-liste{display:flex}
+.chasse .lien-zone{padding:0}
+.chasse .aide-large{display:none}
+.chasse .aide-etroit{display:inline}
+}
+
+.chasse{display:block;margin:18px 0 6px;border:1px solid #e4e7ec;border-radius:14px;
+  background:#fff;overflow:hidden;font-family:inherit;font-size:15px;line-height:1.5;
+  color:#101828;text-align:left}
+.chasse *{box-sizing:border-box}
+.chasse p,.chasse h4{margin:0}
+.chasse h4{font-family:inherit}
+.chasse .ch-tete{padding:16px 18px 13px;border-bottom:1px solid #e4e7ec}
+.chasse .ch-kick{color:#1352b3;font-size:.65rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:5px}
+.chasse .ch-titre{font-size:1rem;font-weight:700;letter-spacing:-.015em;margin-bottom:4px;
+  line-height:1.3}
+.chasse .ch-consigne{font-size:.83rem;color:#475467;line-height:1.5}
+.chasse .barre{padding:11px 18px}
+.chasse .decor{padding:18px}
+.chasse .trouvailles{padding:14px 18px 0}
+.chasse .conclusion{margin:14px 18px 0}
+.chasse .actions{padding:14px 18px 16px}
+@media (max-width:600px){
+  .chasse .ch-tete,.chasse .barre,.chasse .decor,.chasse .trouvailles,.chasse .actions{
+    padding-left:13px;padding-right:13px}
+  .chasse .conclusion{margin-left:13px;margin-right:13px}
+}
+    </style>
+    <div class="ch-tete">
+      <div class="ch-kick">Points à relier</div>
+      <div class="ch-titre">Reliez chaque obligation à la situation qui n’y répond pas.</div>
+      <div class="ch-consigne"><span class="aide-large">Cliquez une catégorie à gauche, puis la situation qui lui correspond à droite. La bonne réponse passe au vert tout de suite.</span><span class="aide-etroit">Sous chaque situation, choisissez la catégorie qui lui correspond. La bonne réponse passe au vert tout de suite.</span></div>
+    </div>
+    <div class="ch-jeu"></div>
+  </div>
+</div>
+<script>
+(function(){
+  var R = document.getElementById("relier-juridique");
+  if (!R) { return; }
+  var L = {"module":"Juridique","consigne":"Reliez chaque obligation à la situation qui n’y répond pas.","gauche":[{"id":"a","label":"Regarder les risques"},{"id":"b","label":"Garder une trace"},{"id":"c","label":"Prévenir les personnes"}],"droite":[{"id":"1","cible":"c","texte":"Les candidats ne savent pas qu’un outil a servi à classer leur dossier."},{"id":"2","cible":"a","texte":"L’outil de tri est mis en service sans que personne n’ait examiné ce qu’il peut mal faire."},{"id":"3","cible":"b","texte":"Rien ne permet de savoir qui a utilisé l’outil, ni pour quelle décision."}]};
+  var UI = {"surtitre":"Exercice pratique","titre":"Chasse aux erreurs","sousTitre":"Neuf situations du quotidien. Dans chacune, deux choses ne vont pas. À vous de les trouver.","navEtiquette":"Choix de la situation","navScene":"Situation {n}, {module}","position":"Module {n} sur {total} · {module}","compteur":"{trouvees} sur {total} repérées","aideZone":"Activez cet élément si vous pensez qu’il pose un problème.","ariaZone":"Élément {i} sur {total}. {texte}","ariaZoneTrouvee":"Élément identifié comme problématique. {texte}","retourFaux":"Ici, tout va bien. Regardez ailleurs.","retourJuste":"Bien vu.","retourVide":"","citeIntro":"{texte}","btnRecommencer":"Recommencer","btnIndice":"Besoin d’un indice","indiceDonne":"Ce qui va bien a été estompé. Cherchez dans ce qui reste.","btnSuivante":"Situation suivante","btnTerminer":"Vous avez parcouru les neuf situations","btnPrec":"Précédent","btnSuiv":"Suivant","decorPublier":"Publier maintenant","decorApercu":"Aperçu","decorEnregistrer":"Enregistrer","decorSoumettre":"Envoyer pour validation","decorRepondre":"Répondre","decorTransferer":"Transférer","decorSemaine":"S","exoUn":"Exercice 1 sur 2 · Chasse aux erreurs","exoDeux":"Exercice 2 sur 2 · Points à relier","lienAideLarge":"Cliquez une catégorie à gauche, puis la situation qui lui correspond à droite. La bonne réponse passe au vert tout de suite.","lienAideEtroit":"Sous chaque situation, choisissez la catégorie qui lui correspond. La bonne réponse passe au vert tout de suite.","lienCompteur":"{faites} sur {total} trouvées","lienRecommencer":"Recommencer","lienChoisir":"Choisir une catégorie","lienAvant":"","lienJuste":"Bien vu.","lienFaux":"Ce n’est pas celle-ci. Essayez une autre catégorie.","lienToutJuste":"Les trois sont justes. Bravo.","lienChoisirGauche":"Choisissez d’abord une catégorie à gauche.","ariaGauche":"Catégorie {label}. Activez pour la choisir.","ariaGaucheActif":"Catégorie {label}, choisie.","ariaGaucheJuste":"Catégorie {label}, reliée et validée.","ariaDroite":"Situation : {texte}. Activez pour la relier à la catégorie choisie.","ariaDroiteRelie":"Situation : {texte}. Reliée à {label}. Activez pour effacer le trait.","ariaDroiteJuste":"Situation : {texte}. Reliée à {label}, validée.","ariaSelect":"Catégorie pour la situation : {texte}"};
+  var ANCIEN = "ancien-juridique";
+  var COUL = ["#1352b3","#6941c6","#b54708"], VERT = "#12805c";
+  var e = { paires:{}, figees:{}, selection:null };
+  var jeu = R.querySelector(".ch-jeu");
+  var zone, svg, elCompteur, elJauge, elRetour;
+
+  function fmt(m,v){ return m.replace(/\{(\w+)\}/g,function(t,c){
+    return Object.prototype.hasOwnProperty.call(v,c)?v[c]:t; }); }
+  function el(b,c,t){ var n=document.createElement(b);
+    if(c){n.className=c;} if(t!==undefined){n.textContent=t;} return n; }
+  function petit(){ return window.matchMedia("(max-width:600px)").matches; }
+  function couleurCat(idG){ var k=0; L.gauche.forEach(function(g,i){ if(g.id===idG){k=i;} }); return COUL[k%COUL.length]; }
+  function labelCat(idG){ var t=""; L.gauche.forEach(function(g){ if(g.id===idG){t=g.label;} }); return t; }
+  function texteDroite(id){ var t=""; L.droite.forEach(function(d){ if(d.id===id){t=d.texte;} }); return t; }
+  function nbReliees(){ return Object.keys(e.paires).length; }
+  function nbFigees(){ return Object.keys(e.figees).length; }
+
+  function rendre(){
+    jeu.innerHTML="";
+    var barre=el("div","barre"); barre.setAttribute("aria-live","polite");
+    elCompteur=el("div","compteur"); elJauge=el("div","jauge"); elRetour=el("div","retour");
+    barre.appendChild(elCompteur); barre.appendChild(elJauge); barre.appendChild(elRetour);
+    jeu.appendChild(barre);
+
+    var decor=el("div","decor");
+    zone=el("div","lien-zone");
+    svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+    svg.setAttribute("class","lien-svg"); svg.setAttribute("aria-hidden","true");
+    zone.appendChild(svg);
+
+    var cols=el("div","lien-cols");
+    var cg=el("div","lien-col lien-g"), cd=el("div","lien-col lien-d");
+    L.gauche.forEach(function(g,i){
+      var b=el("button","lien-case"); b.type="button";
+      b.setAttribute("data-id",g.id);
+      b.style.setProperty("--cat",COUL[i%COUL.length]);
+      b.appendChild(el("span",null,g.label)); b.appendChild(el("span","anc"));
+      b.addEventListener("click",function(){ clicGauche(g.id); });
+      cg.appendChild(b);
+    });
+    L.droite.forEach(function(d){
+      var b=el("button","lien-case"); b.type="button";
+      b.setAttribute("data-id",d.id);
+      b.appendChild(el("span",null,d.texte)); b.appendChild(el("span","anc"));
+      b.addEventListener("click",function(){ clicDroite(d.id); });
+      cd.appendChild(b);
+    });
+    cols.appendChild(cg); cols.appendChild(cd); zone.appendChild(cols);
+
+    /* repli sous 600 px : une liste déroulante sous chaque situation */
+    var liste=el("div","lien-liste");
+    L.droite.forEach(function(d){
+      var it=el("div","lien-item"); it.setAttribute("data-id",d.id);
+      it.appendChild(el("span","txt",d.texte));
+      var sel=document.createElement("select");
+      sel.setAttribute("aria-label",fmt(UI.ariaSelect,{texte:d.texte}));
+      var vide=document.createElement("option"); vide.value=""; vide.textContent=UI.lienChoisir;
+      sel.appendChild(vide);
+      L.gauche.forEach(function(g){
+        var o=document.createElement("option"); o.value=g.id; o.textContent=g.label; sel.appendChild(o);
+      });
+      sel.addEventListener("change",function(){ choixListe(d.id,sel.value); });
+      it.appendChild(sel); liste.appendChild(it);
+    });
+    zone.appendChild(liste);
+    decor.appendChild(zone); jeu.appendChild(decor);
+
+    var actions=el("div","actions");
+    var bRec=el("button",null,UI.lienRecommencer); bRec.type="button";
+    bRec.addEventListener("click",recommencer);
+    actions.appendChild(bRec);
+    jeu.appendChild(actions);
+    maj();
+  }
+
+  function clicGauche(idG){
+    var figee=false, deja=null;
+    Object.keys(e.paires).forEach(function(idD){
+      if(e.paires[idD]===idG){ deja=idD; if(e.figees[idD]){ figee=true; } }
+    });
+    if(figee){ return; }
+    if(deja && !e.selection){ delete e.paires[deja]; maj(); return; }
+    e.selection = (e.selection===idG) ? null : idG;
+    maj();
+  }
+
+  function clicDroite(idD){
+    if(e.figees[idD]){ return; }
+    if(!e.selection){
+      if(e.paires[idD]){ delete e.paires[idD]; maj(); }
+      else { annoncer(UI.lienChoisirGauche); }
+      return;
+    }
+    Object.keys(e.paires).forEach(function(autre){
+      if(e.paires[autre]===e.selection && !e.figees[autre]){ delete e.paires[autre]; }
+    });
+    e.paires[idD]=e.selection; e.selection=null; maj(); evaluer(idD);
+  }
+
+  function choixListe(idD,idG){
+    if(e.figees[idD]){ return; }
+    if(!idG){ delete e.paires[idD]; maj(); return; }
+    Object.keys(e.paires).forEach(function(autre){
+      if(e.paires[autre]===idG && !e.figees[autre]){ delete e.paires[autre]; }
+    });
+    e.paires[idD]=idG; maj(); evaluer(idD);
+  }
+
+  function maj(){
+    zone.querySelectorAll(".lien-g .lien-case").forEach(function(b){
+      var id=b.getAttribute("data-id"), relie=null, figee=false;
+      Object.keys(e.paires).forEach(function(idD){
+        if(e.paires[idD]===id){ relie=idD; if(e.figees[idD]){ figee=true; } }
+      });
+      b.classList.toggle("actif", e.selection===id);
+      b.classList.toggle("relie", !!relie && !figee);
+      b.classList.toggle("juste", figee);
+      b.disabled=figee;
+      var lab=labelCat(id);
+      b.setAttribute("aria-label", figee ? fmt(UI.ariaGaucheJuste,{label:lab})
+        : (e.selection===id ? fmt(UI.ariaGaucheActif,{label:lab}) : fmt(UI.ariaGauche,{label:lab})));
+      b.setAttribute("aria-pressed", e.selection===id ? "true" : "false");
+    });
+    zone.querySelectorAll(".lien-d .lien-case").forEach(function(b){
+      var id=b.getAttribute("data-id"), idG=e.paires[id], figee=!!e.figees[id];
+      b.classList.toggle("relie", !!idG && !figee);
+      b.classList.toggle("juste", figee);
+      b.disabled=figee;
+      if(idG){ b.style.setProperty("--cat",couleurCat(idG)); } else { b.style.removeProperty("--cat"); }
+      var txt=texteDroite(id);
+      b.setAttribute("aria-label", figee ? fmt(UI.ariaDroiteJuste,{texte:txt,label:labelCat(idG)})
+        : (idG ? fmt(UI.ariaDroiteRelie,{texte:txt,label:labelCat(idG)}) : fmt(UI.ariaDroite,{texte:txt})));
+    });
+    zone.querySelectorAll(".lien-item").forEach(function(it){
+      var id=it.getAttribute("data-id"), s=it.querySelector("select");
+      s.value=e.paires[id]||""; s.disabled=!!e.figees[id];
+      it.classList.toggle("juste", !!e.figees[id]);
+    });
+    elCompteur.textContent=fmt(UI.lienCompteur,{faites:nbFigees(),total:L.droite.length});
+    elJauge.innerHTML="";
+    for(var k=0;k<L.droite.length;k++){
+      var seg=el("span"); if(k<nbFigees()){ seg.className="pleine"; } elJauge.appendChild(seg);
+    }
+    dessiner();
+  }
+
+  function annoncer(m){ elRetour.textContent=m; elRetour.className="retour neutre"; }
+
+  function dessiner(){
+    while(svg.firstChild){ svg.removeChild(svg.firstChild); }
+    if(petit()){ return; }
+    var rz=zone.getBoundingClientRect();
+    Object.keys(e.paires).forEach(function(idD){
+      var idG=e.paires[idD];
+      var ag=zone.querySelector('.lien-g .lien-case[data-id="'+idG+'"] .anc');
+      var ad=zone.querySelector('.lien-d .lien-case[data-id="'+idD+'"] .anc');
+      if(!ag||!ad){ return; }
+      var a=ag.getBoundingClientRect(), b=ad.getBoundingClientRect();
+      var x1=a.left+a.width/2-rz.left, y1=a.top+a.height/2-rz.top;
+      var x2=b.left+b.width/2-rz.left, y2=b.top+b.height/2-rz.top;
+      var dx=Math.max(30,(x2-x1)*0.45);
+      var p=document.createElementNS("http://www.w3.org/2000/svg","path");
+      p.setAttribute("d","M"+x1+","+y1+" C"+(x1+dx)+","+y1+" "+(x2-dx)+","+y2+" "+x2+","+y2);
+      p.setAttribute("stroke", e.figees[idD] ? VERT : couleurCat(idG));
+      p.setAttribute("pathLength","1"); p.setAttribute("stroke-dasharray","1");
+      p.setAttribute("class","trace");
+      svg.appendChild(p);
+    });
+  }
+
+  /* SCORM : retour immédiat. La paire juste se fige en vert dès le clic,
+     la paire fausse tremble puis s'efface. Pas de bouton Vérifier. */
+  function evaluer(idD){
+    var cible=null;
+    L.droite.forEach(function(d){ if(d.id===idD){ cible=d.cible; } });
+    if(e.paires[idD]===cible){
+      e.figees[idD]=true; maj();
+      if(nbFigees()===L.droite.length){ annoncer(UI.lienToutJuste); validerAncien(); }
+      else { annoncer(UI.lienJuste); }
+      return;
+    }
+    var b=zone.querySelector('.lien-d .lien-case[data-id="'+idD+'"]');
+    var it=zone.querySelector('.lien-item[data-id="'+idD+'"]');
+    if(b){ b.classList.add("faux"); } if(it){ it.classList.add("faux"); }
+    annoncer(UI.lienFaux);
+    window.setTimeout(function(){
+      if(b){ b.classList.remove("faux"); } if(it){ it.classList.remove("faux"); }
+      delete e.paires[idD]; maj();
+    },460);
+  }
+
+  function recommencer(){
+    e={ paires:{}, figees:{}, selection:null };
+    annoncer("");
+    maj();
+  }
+
+  /* SCORM : c'est l'ancien exercice, masqué, qui déclenche la complétion
+     de l'étape et le score dans app.js. On le renseigne une seule fois,
+     quand les trois liaisons sont justes. Aucun fichier JS n'est modifié. */
+  function validerAncien(){
+    try{
+      var anc=document.getElementById(ANCIEN);
+      if(!anc || anc.getAttribute("data-fait")==="1"){ return; }
+      anc.setAttribute("data-fait","1");
+      anc.querySelectorAll(".match-left .match-item").forEach(function(g){
+        var d=anc.querySelector('.match-right .match-item[data-match="'+g.getAttribute("data-match")+'"]');
+        if(d){ g.click(); d.click(); }
+      });
+    }catch(err){}
+  }
+
+  var minuteur=null;
+  window.addEventListener("resize",function(){
+    window.clearTimeout(minuteur);
+    minuteur=window.setTimeout(dessiner,80);
+  });
+
+  rendre();
+})();</script>
+<div class="ancien-exercice" id="ancien-juridique" hidden style="display:none"><div class="matching-container animate-in">
     <h4>Complétez les phrases</h4>
     <p style="font-size:.85rem;color:var(--text-muted)">Associez chaque texte juridique à la situation qu'il encadre.</p>
     <div class="matching-grid">
@@ -59,7 +772,7 @@
       </div>
     </div>
     <div class="dnd-feedback"></div>
-  </div>
+  </div></div>
 
 
 </div></div>
@@ -70,7 +783,222 @@
     <p class="hero-subtitle">4 obligations clés à respecter pour tout projet IA.</p>
   </div>
 <div class="content-section">
-    <div class="flip-cards-grid animate-in">
+<div class="module-schema animate-in">
+<style>
+.module-schema{
+  --bg:#F7F8FA;--surface:#FFFFFF;--border:#E8EAEE;--divider:#E5E7EB;
+  --ink:#16191D;--ink-muted:#5F6B76;--ink-subtle:#8A94A0;--accent:#0B63CE;
+  font-family:"Inter Tight",-apple-system,system-ui,sans-serif;
+  background:#F7F8FA;border:.5px solid rgba(0,0,0,.06);border-radius:14px;
+  margin:14px 0 18px;padding:16px 10px;overflow-x:auto}
+.module-schema svg{width:100%;max-width:620px;height:auto;display:block;margin:0 auto}
+.module-schema .eyebrow{font-size:12px;font-weight:500;letter-spacing:1.2px;fill:var(--ink-subtle)}
+.module-schema .title{font-size:15px;font-weight:500;fill:var(--ink)}
+.module-schema .caption{font-size:12px;font-weight:400;fill:var(--ink-muted)}
+.module-schema .core{font-size:15px;font-weight:500;fill:var(--ink)}
+.module-schema .core-sub{font-size:12px;font-weight:400;fill:var(--ink-subtle)}
+.module-schema .icon{font-size:16px}
+.module-schema .link{stroke:var(--divider);stroke-width:1;fill:none}
+.module-schema .rule{stroke:var(--divider);stroke-width:1;fill:none}
+.module-schema .arc{stroke:var(--divider);stroke-width:1;fill:none;stroke-linecap:round}
+.module-schema .chev{stroke:var(--ink-subtle);stroke-width:1;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.module-schema .track{stroke:var(--border);stroke-width:1}
+.module-schema .num{font-size:12px;font-weight:500}
+@media (max-width:640px){.module-schema{padding:12px 6px}}
+</style>
+<svg viewBox="0 0 680 220" role="img" aria-labelledby="s3t s3d" xmlns="http://www.w3.org/2000/svg">
+  <title id="s3t">Juridique</title>
+  <desc id="s3d">Pipeline séquentiel en quatre étapes fléchées de gauche à droite : évaluer la conformité, superviser avec traçabilité, journaliser les usages, informer l'usager.</desc>
+
+  <text class="eyebrow" x="40" y="34">AI ACT · 4 PILIERS</text>
+
+  <line class="rule" x1="140" y1="120" x2="234" y2="120"/>
+  <polyline class="chev" points="228,116 234,120 228,124"/>
+  <line class="rule" x1="290" y1="120" x2="384" y2="120"/>
+  <polyline class="chev" points="378,116 384,120 378,124"/>
+  <line class="rule" x1="440" y1="120" x2="534" y2="120"/>
+  <polyline class="chev" points="528,116 534,120 528,124"/>
+
+  <circle cx="115" cy="120" r="17" fill="#FFFFFF" stroke="#0B6BD8" stroke-width="1"/>
+  <text class="icon" x="115" y="120" text-anchor="middle" dominant-baseline="central">📋</text>
+  <text class="title"   x="115" y="175" text-anchor="middle">Évaluer</text>
+  <text class="caption" x="115" y="193" text-anchor="middle">conformité de l'outil</text>
+
+  <circle cx="265" cy="120" r="17" fill="#FFFFFF" stroke="#514FCB" stroke-width="1"/>
+  <text class="icon" x="265" y="120" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text class="title"   x="265" y="175" text-anchor="middle">Superviser</text>
+  <text class="caption" x="265" y="193" text-anchor="middle">validation traçable</text>
+
+  <circle cx="415" cy="120" r="17" fill="#FFFFFF" stroke="#2BB24C" stroke-width="1"/>
+  <text class="icon" x="415" y="120" text-anchor="middle" dominant-baseline="central">📒</text>
+  <text class="title"   x="415" y="175" text-anchor="middle">Journaliser</text>
+  <text class="caption" x="415" y="193" text-anchor="middle">registre des usages</text>
+
+  <circle cx="565" cy="120" r="17" fill="#FFFFFF" stroke="#F7941D" stroke-width="1"/>
+  <text class="icon" x="565" y="120" text-anchor="middle" dominant-baseline="central">📢</text>
+  <text class="title"   x="565" y="175" text-anchor="middle">Informer</text>
+  <text class="caption" x="565" y="193" text-anchor="middle">informer l'usager</text>
+
+</svg>
+</div>
+
+    <!-- ============ CARTES QUI SE RETOURNENT AU SURVOL ================
+     Rétablit le retournement des 4 cartes de l'étape 3, désactivé en
+     juin 2026 par le bloc « RETOURS CLIENT SNCF » de css/style.css.
+     La face colorée cache l'explication ; au survol, au focus clavier
+     ou au toucher, la carte pivote et découvre le texte.
+
+     Autonome : tout est porté par .cartes-retour, script en fonction
+     anonyme immédiate, aucune variable globale, aucune dépendance
+     réseau, et css/style.css n'est pas touché.
+
+     app.js valide l'étape après deux cartes retournées, en écoutant le
+     clic. Un survol ne produit pas de clic : le script en émet un, une
+     seule fois par carte, puis retire la classe que app.js vient de
+     poser, pour que le survol reste seul maître de l'affichage.
+     ================================================================ -->
+<style>
+/* la grille reste à deux cartes par ligne, comme demandé en juin */
+.flip-cards-grid.cartes-retour{
+  grid-template-columns:repeat(2,1fr)!important;gap:16px!important;margin:14px 0}
+
+/* la carte est une scène 3D de hauteur fixe : les deux faces doivent
+   se superposer exactement, sinon le pivot saute */
+.flip-cards-grid.cartes-retour .flip-card{
+  perspective:1200px!important;height:252px!important;min-height:252px!important;
+  align-self:stretch!important;cursor:pointer!important;
+  background:none!important;border:0!important}
+
+.flip-cards-grid.cartes-retour .flip-card-inner{
+  position:relative!important;display:block!important;
+  width:100%!important;height:100%!important;min-height:0!important;
+  border:0!important;border-radius:var(--r)!important;overflow:visible!important;
+  transform-style:preserve-3d!important;
+  transition:transform .55s cubic-bezier(.22,.68,.28,1)!important}
+
+/* les deux faces : dos masqué, pour qu'on ne voie que celle de devant.
+   Aucune couleur de fond n'est posée sur la face avant : elle vient du
+   système de couleurs de style.css (bleu, violet, vert, orange). */
+.flip-cards-grid.cartes-retour .flip-card-front,
+.flip-cards-grid.cartes-retour .flip-card-back{
+  position:absolute!important;inset:0!important;
+  width:100%!important;height:100%!important;
+  border-radius:var(--r)!important;
+  display:flex!important;flex-direction:column!important;
+  -webkit-backface-visibility:hidden!important;backface-visibility:hidden!important;
+  box-shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px -16px rgba(16,24,40,.28)}
+
+.flip-cards-grid.cartes-retour .flip-card-front{
+  transform:rotateY(0deg)!important;border:0!important;
+  align-items:flex-start!important;justify-content:center!important;
+  text-align:left!important;padding:20px!important}
+
+.flip-cards-grid.cartes-retour .flip-card-back{
+  transform:rotateY(180deg)!important;background:#fff!important;
+  border:.5px solid var(--border)!important;
+  align-items:flex-start!important;justify-content:flex-start!important;
+  text-align:left!important;padding:18px 20px!important;overflow-y:auto!important}
+
+.flip-cards-grid.cartes-retour .flip-card-back p{
+  font-size:.82rem!important;line-height:1.6!important;margin:0!important}
+
+/* l'invitation, remise en place : le bloc de juin la masquait */
+.flip-cards-grid.cartes-retour .flip-hint{
+  display:inline-block!important;font-size:.62rem!important;
+  letter-spacing:.02em;opacity:.85;margin-top:10px!important}
+.flip-cards-grid.cartes-retour .flip-card-back .flip-hint{display:none!important}
+
+/* le retournement : au survol, au focus clavier, ou par la classe que
+   pose app.js quand on touche la carte sur un écran tactile */
+.flip-cards-grid.cartes-retour .flip-card.flipped .flip-card-inner,
+.flip-cards-grid.cartes-retour .flip-card:focus-visible .flip-card-inner{
+  transform:rotateY(180deg)!important}
+@media (hover:hover) and (pointer:fine){
+  .flip-cards-grid.cartes-retour .flip-card:hover .flip-card-inner{
+    transform:rotateY(180deg)!important}
+}
+.flip-cards-grid.cartes-retour .flip-card:focus{outline:none}
+.flip-cards-grid.cartes-retour .flip-card:focus-visible{
+  outline:2px solid var(--brand);outline-offset:3px}
+
+/* une carte par ligne sur petit écran : plus large, donc moins de
+   lignes de texte, donc une carte moins haute */
+@media (max-width:640px){
+  .flip-cards-grid.cartes-retour{grid-template-columns:1fr!important}
+  .flip-cards-grid.cartes-retour .flip-card{
+    height:212px!important;min-height:212px!important}
+}
+
+/* mouvement réduit : on échange les faces sans animer le pivot */
+@media (prefers-reduced-motion:reduce){
+  .flip-cards-grid.cartes-retour .flip-card-inner{transition:none!important}
+}
+</style>
+<script>(function(){
+  var grille = document.querySelector(".flip-cards-grid.cartes-retour");
+  if (!grille) { return; }
+  var cartes = grille.querySelectorAll(".flip-card");
+  if (!cartes.length) { return; }
+
+  var survol = !!(window.matchMedia &&
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches);
+  var signalees = [];
+
+  /* app.js compte les cartes retournées sur l'événement clic et valide
+     l'étape à partir de deux. On lui envoie donc un clic au premier
+     survol, puis on retire la classe qu'il vient de poser : sur un
+     écran à souris, c'est le survol seul qui décide de l'affichage.
+     Si app.js n'écoute pas encore, la classe n'apparaît pas : on ne
+     note rien, et le survol suivant réessaie. */
+  function signaler(carte, i){
+    if (signalees.indexOf(i) !== -1) { return; }
+    carte.click();
+    if (carte.classList.contains("flipped")) {
+      signalees.push(i);
+      if (survol) { carte.classList.remove("flipped"); }
+    }
+  }
+
+  Array.prototype.forEach.call(cartes, function(carte, i){
+    /* focusable au clavier. Pas de role="button" : les deux faces
+       restent lisibles par un lecteur d'écran, qui n'est pas concerné
+       par le pivot. */
+    carte.setAttribute("tabindex", "0");
+
+    var invite = carte.querySelector(".flip-card-front .flip-hint");
+    if (invite) {
+      invite.textContent = survol ? "Survolez pour lire" : "Touchez pour lire";
+    }
+
+    /* la carte ne compte pour la validation que si la souris s'y
+       attarde : un simple balayage de l'écran ne doit pas valider
+       l'étape sans que rien n'ait été lu. Au clavier, le focus est
+       délibéré, donc il compte tout de suite. */
+    var minuteur = null;
+    carte.addEventListener("mouseenter", function(){
+      minuteur = window.setTimeout(function(){ signaler(carte, i); }, 700);
+    });
+    carte.addEventListener("mouseleave", function(){
+      if (minuteur) { window.clearTimeout(minuteur); minuteur = null; }
+    });
+    carte.addEventListener("focus", function(){ signaler(carte, i); });
+
+    /* sur un écran à souris, un clic ne doit pas épingler la carte
+       ouverte : on laisse app.js compter, puis on nettoie. */
+    if (survol) {
+      carte.addEventListener("click", function(){
+        window.setTimeout(function(){ carte.classList.remove("flipped"); }, 0);
+      });
+    }
+
+    carte.addEventListener("keydown", function(ev){
+      if (ev.key === "Enter" || ev.key === " " || ev.key === "Spacebar") {
+        ev.preventDefault(); carte.click();
+      }
+    });
+  });
+})();</script>
+    <div class="flip-cards-grid cartes-retour animate-in">
       <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Évaluation des risques</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>Avant d'adopter un nouvel outil d'IA, l'entreprise doit s'assurer qu'il est conforme aux lois européennes. L'objectif est de vérifier que l'outil ne présente pas de danger pour les droits des salariés ou des clients.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
       <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Supervision humaine</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>Aucune décision impactante ne doit reposer uniquement sur une IA. Une validation humaine avec traçabilité est obligatoire pour tout contenu publié ou décision opérationnelle. Le validateur doit pouvoir contester ou modifier la sortie générée par le système.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
       <div class="flip-card"><div class="flip-card-inner"><div class="flip-card-front"><h4>Journalisation</h4><span class="flip-hint">Cliquez pour découvrir</span></div><div class="flip-card-back"><p>L'article 26 de l'AI Act impose la tenue d'un registre des usages d'IA. Pour chaque système : finalité, données utilisées, décisions impactées, validateur, date. Cette traçabilité permet de répondre aux contrôles de la CNIL et aux demandes des personnes concernées.</p><span class="flip-hint">Cliquez pour fermer</span></div></div></div>
@@ -81,26 +1009,506 @@
 <div class="step-container" id="step-3">
   <div class="step-hero">
     <div class="step-number">Étape 4 sur 7</div>
-    <h2>Scénario : conformité AI Act</h2>
-    <p class="hero-subtitle">Une équipe veut déployer un outil IA. Quelle est la première étape juridique ?</p>
+    <h2>Scénario : sécuriser un outil avant sa mise en service</h2>
+    <p class="hero-subtitle">Un outil de pré-tri démarre dans trois semaines. Rien n'est encore cadré.</p>
   </div>
   <div class="content-section">
     <div class="scenario" data-scenario>
       <div class="scenario-context">
         <div class="scenario-persona-photo" style="background-image:url('../_shared/img/Marc.jpg')"></div>
         <div>
-          <div class="scenario-persona-meta">Marc · Juriste interne</div>
-          <p>Une équipe RH veut déployer un outil IA externe pour pré-trier des candidatures. Le fournisseur affirme que son outil est « 100 % sécurisé et conforme ». L'équipe vous demande de valider rapidement le projet.</p>
+          <div class="scenario-persona-meta">Marc · Responsable des ressources humaines</div>
+          <p>Votre service met en service dans trois semaines un outil qui pré-triera les candidatures. Rien n'a encore été cadré sur le plan juridique. Le fournisseur affirme que son outil est « 100 % conforme », mais la responsabilité repose sur l'entreprise qui le déploie, pas sur celle qui le vend.</p>
         </div>
       </div>
-      <p class="scenario-prompt">Que faites-vous en premier ?</p>
-      <div class="scenario-choices">
-        <button type="button" class="scenario-choice" data-correct="false" data-feedback="<strong>Insuffisant.</strong> La déclaration commerciale du fournisseur ne suffit pas. La responsabilité juridique repose sur l'entreprise qui déploie l'outil : il faut vérifier soi-même la conformité avant tout déploiement."><span class="scenario-choice-letter">A</span><span>Faire confiance à la déclaration du fournisseur et autoriser immédiatement le déploiement.</span></button>
-        <button type="button" class="scenario-choice" data-correct="true" data-feedback="<strong>Bonne réponse.</strong> Avant tout déploiement, l'entreprise doit vérifier que l'outil ne porte pas atteinte aux droits des candidats : non-discrimination, respect de la vie privée et maintien du contrôle humain sur la décision finale. C'est la vérification minimum exigée par la loi."><span class="scenario-choice-letter">B</span><span>Valider le projet uniquement après avoir vérifié trois points clés : la non-discrimination des candidats, le respect de leur vie privée et le maintien du contrôle humain sur la décision finale.</span></button>
-        <button type="button" class="scenario-choice" data-correct="false" data-feedback="<strong>Trop bloquant.</strong> Refuser systématiquement tout outil IA externe n'est pas tenable. Le rôle juridique n'est pas d'interdire mais d'encadrer pour rendre l'usage conforme."><span class="scenario-choice-letter">C</span><span>Refuser systématiquement tout outil d'IA externe pour ne prendre aucun risque juridique.</span></button>
+      <!-- ============ SCENARIO : ORDRE DES GESTES ================= -->
+<style>
+/* ---- Classement à ordonner, étape 4 -------------------------------
+   Tout est porté par .rang : css/style.css n'est pas livré avec les
+   modules, et scenario.css ne connaît pas cet exercice. */
+.rang{margin:6px 0 0}
+/* Ce que l'apprenant cherche à obtenir. Sans cette ligne, on lisait une
+   situation puis on devait classer, sans savoir vers quoi. */
+.rang .rang-mission{font-size:.84rem;font-weight:600;color:var(--text-primary);
+  margin:0 0 14px;padding:11px 14px;background:var(--brand-light);
+  border-left:2px solid var(--brand);border-radius:0 var(--rs) var(--rs) 0;
+  line-height:1.5}
+.rang .rang-question{font-size:.95rem;font-weight:700;margin:0 0 4px;
+  font-family:"Bricolage Grotesque",sans-serif}
+.rang .rang-aide{font-size:.78rem;color:var(--text-secondary);margin:0 0 14px;line-height:1.55}
+
+.rang .rang-barre{display:flex;align-items:center;gap:10px;margin-bottom:10px;
+  font-size:.72rem;color:var(--text-muted)}
+.rang .rang-jauge{display:flex;gap:4px}
+.rang .rang-jauge span{width:22px;height:3px;border-radius:2px;background:rgba(0,0,0,.09)}
+.rang .rang-jauge span.pleine{background:var(--brand)}
+
+.rang .rang-liste{display:flex;flex-direction:column;gap:8px}
+.rang .rang-carte{display:flex;align-items:flex-start;gap:12px;width:100%;
+  text-align:left;font:inherit;color:inherit;padding:13px 15px;
+  background:#fff;border:.5px solid var(--border);border-radius:var(--rs);
+  cursor:pointer;transition:border-color .18s ease,background .18s ease}
+.rang .rang-carte:hover:not(.figee){border-color:var(--brand);background:#fcfdff}
+.rang .rang-carte:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.rang .rang-carte.choisie{border-color:var(--brand);background:var(--brand-light)}
+.rang .rang-carte.figee{cursor:default}
+
+/* la pastille : un tiret tant que la carte n'est pas placée, son rang ensuite */
+.rang .rang-num{flex:0 0 auto;width:26px;height:26px;border-radius:50%;
+  display:grid;place-items:center;font-size:.76rem;font-weight:700;
+  background:rgba(0,0,0,.05);color:var(--text-muted);transition:all .18s ease}
+.rang .rang-carte.choisie .rang-num{background:var(--brand);color:#fff}
+.rang .rang-texte{font-size:.85rem;line-height:1.5}
+
+.rang .rang-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.rang .rang-actions button{font:inherit;font-size:.82rem;font-weight:600;
+  padding:9px 20px;border-radius:var(--pill);cursor:pointer;border:.5px solid var(--border);
+  background:#fff;color:var(--text-primary);transition:all .18s ease}
+.rang .rang-actions button.principal{background:var(--brand);color:#fff;border-color:transparent}
+.rang .rang-actions button:disabled{opacity:.4;cursor:not-allowed}
+
+/* la correction */
+.rang .rang-retour{display:none;margin-top:16px;padding:15px 17px;
+  border-radius:var(--r);border:.5px solid var(--border);background:#fbfbfd}
+.rang .rang-retour.visible{display:block}
+.rang .rang-verdict{font-size:.88rem;font-weight:700;margin:0 0 4px}
+.rang .rang-retour.juste .rang-verdict{color:#12805c}
+.rang .rang-retour.presque .rang-verdict{color:#b54708}
+.rang .rang-retour.revoir .rang-verdict{color:#b42318}
+.rang .rang-precision{font-size:.82rem;color:var(--text-secondary);margin:0 0 12px;line-height:1.55}
+.rang .rang-attendu{font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;
+  color:var(--text-muted);font-weight:600;margin:0 0 8px}
+.rang .rang-etape{display:flex;gap:11px;padding:10px 0;border-top:.5px solid var(--border)}
+.rang .rang-etape .n{flex:0 0 auto;width:22px;height:22px;border-radius:50%;
+  background:#dbe6f6;color:var(--brand);display:grid;place-items:center;
+  font-size:.7rem;font-weight:700}
+/* Ces deux-là doivent être des blocs : en ligne, le titre en gris foncé
+   et la raison en gris clair se suivaient sur la même ligne, sans
+   séparation, et se lisaient comme une seule phrase illisible. */
+.rang .rang-etape .col{display:block;min-width:0}
+.rang .rang-etape .t{display:block;font-size:.82rem;line-height:1.5;
+  color:var(--text-primary);font-weight:600}
+.rang .rang-etape .p{display:block;font-size:.78rem;color:var(--text-secondary);
+  line-height:1.55;margin-top:3px}
+.rang .rang-cle{font-size:.82rem;font-weight:600;margin:12px 0 0;padding-top:12px;
+  border-top:.5px solid var(--border)}
+
+@media (max-width:640px){
+  .rang .rang-carte{padding:12px 13px;gap:10px}
+  .rang .rang-texte{font-size:.83rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .rang .rang-carte,.rang .rang-num,.rang .rang-actions button{transition:none}
+}
+</style>
+      <div class="rang" id="rang-juridique">
+        <p class="rang-mission">Votre mission : rendre le projet conforme avant la mise en service, dans trois semaines.</p>
+        <p class="rang-question">Dans quel ordre appliquez-vous les obligations de l'entreprise ?</p>
+        <p class="rang-aide">Cliquez les actions dans l'ordre où vous les mèneriez : le premier clic place une action en 1, le suivant en 2, le dernier en 3. Un deuxième clic sur une action la retire de votre classement.</p>
+        <div class="rang-barre" aria-live="polite">
+          <span class="rang-etat"></span>
+          <span class="rang-jauge" aria-hidden="true"></span>
+        </div>
+        <div class="rang-liste"></div>
+        <div class="rang-actions">
+          <button type="button" class="rang-verifier principal" disabled>Vérifier l'ordre</button>
+          <button type="button" class="rang-recommencer">Recommencer</button>
+        </div>
+        <div class="rang-retour" role="status" aria-live="polite"></div>
       </div>
-      <div class="scenario-feedback"></div>
+<script>(function(){
+  var R = document.getElementById("rang-juridique");
+  if (!R) { return; }
+  var D = {"etapes": [{"titre": "Évaluer : vérifier que l'outil ne porte pas atteinte aux droits des candidats, ni par discrimination ni sur leurs données", "pourquoi": "C'est la vérification que l'AI Act exige avant toute mise en service. Tant qu'elle n'est pas faite, on ne sait pas ce qu'il faudra surveiller ensuite."}, {"titre": "Superviser et journaliser : désigner qui valide chaque rejet, et inscrire l'usage au registre", "pourquoi": "Aucune décision touchant à l'emploi ne peut reposer sur l'outil seul. L'article 26 de l'AI Act impose de consigner la finalité, le validateur et la date."}, {"titre": "Informer : prévenir les candidats qu'un outil intervient, et consulter les représentants du personnel", "pourquoi": "L'article 50 impose d'informer les personnes concernées. Et pour un outil qui touche aux conditions de travail, le Comité Social et Économique (CSE), l'instance qui représente les salariés, doit être consulté avant la mise en service, conformément à l'article L. 2312-8 du Code du travail."}], "affichage": [2, 0, 1], "cle": "Ce sont les quatre piliers du module, dans leur ordre : évaluer, superviser, journaliser, informer."};
+
+  var choix = [];          /* indices d'etapes, dans l'ordre cliqué */
+  var corrige = false;
+
+  var liste = R.querySelector(".rang-liste");
+  var jauge = R.querySelector(".rang-jauge");
+  var etat = R.querySelector(".rang-etat");
+  var bVerif = R.querySelector(".rang-verifier");
+  var bReset = R.querySelector(".rang-recommencer");
+  var retour = R.querySelector(".rang-retour");
+
+  function carteDe(i){ return liste.querySelector('.rang-carte[data-etape="' + i + '"]'); }
+
+  function redessiner(){
+    D.affichage.forEach(function(i){
+      var c = carteDe(i);
+      var p = choix.indexOf(i);
+      c.classList.toggle("choisie", p !== -1);
+      c.classList.toggle("figee", corrige);
+      c.querySelector(".rang-num").textContent = p === -1 ? "–" : String(p + 1);
+      c.setAttribute("aria-label",
+        (p === -1 ? "Non placé. " : "Placé en position " + (p + 1) + " sur 3. ")
+        + D.etapes[i].titre);
+    });
+    jauge.innerHTML = "";
+    for (var k = 0; k < D.etapes.length; k++) {
+      var s = document.createElement("span");
+      if (k < choix.length) { s.className = "pleine"; }
+      jauge.appendChild(s);
+    }
+    etat.textContent = choix.length + " sur " + D.etapes.length + " placés";
+    bVerif.disabled = corrige || choix.length !== D.etapes.length;
+  }
+
+  function activer(i){
+    if (corrige) { return; }
+    var p = choix.indexOf(i);
+    if (p === -1) { choix.push(i); } else { choix.splice(p, 1); }
+    redessiner();
+  }
+
+  /* Correction graduée. Ce qui compte le plus est le geste par lequel on
+     ouvre : c'est lui qui conditionne les deux autres. Sauf quand
+     D.libre est vrai : les trois actions sont alors indépendantes, tout
+     ordre est juste, seul compte de n'en oublier aucune. */
+  function verifier(){
+    var exact = choix.every(function(v, k){ return v === k; });
+    var posDuPremier = choix.indexOf(0);
+    var niveau, verdict, precision, valide;
+
+    if (D.libre) {
+      niveau = "juste"; valide = true;
+      verdict = "Les trois sont justes.";
+      precision = "L'ordre n'a pas d'importance ici. " + D.cle;
+    } else if (exact) {
+      niveau = "juste"; valide = true;
+      verdict = "C'est l'ordre attendu.";
+      precision = D.cle;
+    } else if (posDuPremier === 0) {
+      niveau = "presque"; valide = true;
+      verdict = "Vous commencez par le bon geste.";
+      precision = "Les deux suivants sont à échanger. " + D.cle;
+    } else {
+      niveau = "revoir"; valide = false;
+      verdict = "Ce n'est pas par là qu'on ouvre.";
+      precision = "Ce que vous avez placé en "
+        + (posDuPremier === 1 ? "deuxième" : "troisième")
+        + " position doit venir en premier. " + D.cle;
+    }
+    if (D.nuance) { precision += " " + D.nuance; }
+
+    var etiquette = D.libre ? "Les trois vérifications" : "L'ordre attendu";
+    var html = '<p class="rang-verdict"></p><p class="rang-precision"></p>'
+             + '<p class="rang-attendu"></p>';
+    retour.innerHTML = html;
+    retour.querySelector(".rang-verdict").textContent = verdict;
+    retour.querySelector(".rang-precision").textContent = precision;
+    retour.querySelector(".rang-attendu").textContent = etiquette;
+
+    D.etapes.forEach(function(e, k){
+      var l = document.createElement("div");
+      l.className = "rang-etape";
+      var n = document.createElement("span");
+      n.className = "n"; n.textContent = D.libre ? "•" : String(k + 1);
+      var col = document.createElement("span");
+      col.className = "col";
+      var t = document.createElement("span");
+      t.className = "t"; t.textContent = e.titre;
+      var p = document.createElement("span");
+      p.className = "p"; p.textContent = e.pourquoi;
+      col.appendChild(t); col.appendChild(p);
+      l.appendChild(n); l.appendChild(col);
+      retour.appendChild(l);
+    });
+    retour.className = "rang-retour visible " + niveau;
+
+    corrige = true;
+    redessiner();
+
+    /* app.js valide l'étape ; l'ancien scénario l'appelait sur la bonne
+       réponse, on l'appelle dès que le premier geste est juste. */
+    if (valide && typeof window.markStepDone === "function") {
+      try { window.markStepDone(); } catch (e) {}
+    }
+  }
+
+  function recommencer(){
+    choix = []; corrige = false;
+    retour.className = "rang-retour"; retour.innerHTML = "";
+    redessiner();
+  }
+
+  D.affichage.forEach(function(i){
+    var c = document.createElement("button");
+    c.type = "button"; c.className = "rang-carte";
+    c.setAttribute("data-etape", String(i));
+    var n = document.createElement("span");
+    n.className = "rang-num"; n.setAttribute("aria-hidden", "true"); n.textContent = "–";
+    var t = document.createElement("span");
+    t.className = "rang-texte"; t.textContent = D.etapes[i].titre;
+    c.appendChild(n); c.appendChild(t);
+    c.addEventListener("click", function(){ activer(i); });
+    liste.appendChild(c);
+  });
+
+  bVerif.addEventListener("click", verifier);
+  bReset.addEventListener("click", recommencer);
+  redessiner();
+})();</script>
+<!-- ========== fin du scenario : ordre des gestes ============= -->
     </div>
   </div>
 </div>
-<div class="step-container" id="step-4"><div class="step-hero"><div class="step-number">Étape 5 sur 7</div><h2>Quiz</h2><p class="hero-subtitle">Testez vos connaissances.</p></div><div class="content-section"><div class="quiz-container"><div class="quiz-score-bar animate-in"><span class="score-label">Score</span><div class="score-track"><div class="score-fill" style="width:0%"></div></div><span class="score-value" id="quizScoreVal">0%</span></div><div class="quiz-question animate-in"><div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div><div class="question-number">Question 1 / 2</div><h4>Avant de déployer un outil d'IA dans une équipe, quel est le principal enjeu juridique à anticiper ?</h4><div class="quiz-options"><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Choisir l'outil le moins cher du marché pour limiter les coûts.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Vérifier que l'outil respecte le droit des personnes : protection des données, non-discrimination et information des collaborateurs.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>S'assurer qu'aucun collaborateur ne pourra critiquer publiquement l'outil après son déploiement.</span></div></div><button class="quiz-validate-btn" disabled>Valider</button><div class="quiz-feedback" data-correct-text="Exact. Trois enjeux juridiques structurent toute décision : protéger les données personnelles, éviter les discriminations et informer les collaborateurs concernés." data-incorrect-text="Réponse B. L'enjeu juridique principal est de protéger les droits des personnes : données personnelles, non-discrimination et information des collaborateurs."></div></div><div class="quiz-question animate-in"><div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div><div class="question-number">Question 2 / 2</div><h4>Un collaborateur copie des données de réservation voyageurs (nom, trajet, email) dans ChatGPT. Quel est le problème juridique principal ?</h4><div class="quiz-options"><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Aucun, ChatGPT est un outil professionnel courant.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">B</span><span>Problème de propriété intellectuelle sur le rapport généré.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">C</span><span>Violation du RGPD : transfert de données personnelles vers un service tiers sans base légale.</span></div></div><button class="quiz-validate-btn" disabled>Valider</button><div class="quiz-feedback" data-correct-text="Exact. Tout transfert de données personnelles vers un outil d'IA externe sans base légale viole le RGPD." data-incorrect-text="Réponse C. L'envoi de données personnelles à un service tiers sans base légale viole le RGPD."></div></div><div class="quiz-retry-msg" style="display:none"><p>Score insuffisant.</p><button class="quiz-retry-btn quiz-validate-btn">Revoir</button></div></div></div></div><div class="step-container" id="step-5"><div class="step-hero"><div class="step-number">Étape 6 sur 7</div><h2>Synthèse</h2><p class="hero-subtitle">Ce que vous avez appris.</p></div><div class="content-section"><div class="animate-in"><div class="progress-circle-wrap"><div class="progress-circle"><svg width="180" height="180" viewBox="0 0 180 180"><circle class="bg" cx="90" cy="90" r="78"/><circle class="fg-stroke" cx="90" cy="90" r="78" stroke-dasharray="490.09" stroke-dashoffset="490.09"/></svg><div class="circle-text">—</div></div></div></div><div class="animate-in"><div class="highlight-box"><strong>Félicitations &#127881; ! Vous avez exploré le cadre juridique applicable à l'IA en entreprise et les obligations à respecter au quotidien.</strong></div></div><div class="animate-in"><h3>Vous avez appris à :</h3><ol class="numbered-list"><li><span><strong>Identifier les trois textes clés</strong> qui encadrent l'usage de l'IA en entreprise : le RGPD pour les données personnelles, l'AI Act pour la classification des systèmes, et le Code du travail pour la consultation des représentants du personnel.</span></li><li><span><strong>Reconnaître les obligations principales</strong> : évaluation des risques selon la taxonomie AI Act, supervision humaine systématique, journalisation des usages et transparence vis-à-vis des utilisateurs.</span></li><li><span><strong>Adopter les bons réflexes</strong> dans un projet IA : ne jamais envoyer de données personnelles dans un outil externe, consulter le CSE quand l'outil affecte le travail, et maintenir une traçabilité complète des décisions assistées par IA.</span></li></ol></div><div class="animate-in"><p>Ces réflexes vous permettent de déployer l'IA de façon <strong>conforme, sécurisée et soutenable</strong>, en protégeant à la fois l'entreprise, ses collaborateurs et ses usagers.</p></div></div></div><div class="step-container" id="step-6"><div class="step-celebration"><div class="celebration-grid" id="celebGrid"></div><div class="celebration-content"><div class="badge-icon">&#9878;</div><h2>Félicitations !</h2><p>Vous avez terminé le module <strong>Cadre juridique de l'IA</strong></p><p class="celebration-sub">Appliquez ces bonnes pratiques au quotidien.</p><div class="badge-message"></div></div></div></div><div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div><div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#9650;</button><div class="breadcrumb" id="breadcrumb"><span class="breadcrumb-item"><span class="breadcrumb-link active" data-step="0"><span class="step-num">1</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="1"><span class="step-num">2</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="2"><span class="step-num">3</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="3"><span class="step-num">4</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="4"><span class="step-num">5</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="5"><span class="step-num">6</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="6"><span class="step-num">7</span></span></span></div><button class="nav-btn primary" id="nextBtn">&#9660;</button></div></div></main></div><script src="js/scorm.js"></script><script src="js/app.js"></script><script src="../_shared/scenario.js"></script></body></html>
+<div class="step-container" id="step-4"><div class="step-hero"><div class="step-number">Étape 5 sur 7</div><h2>Quiz</h2><p class="hero-subtitle">Testez vos connaissances.</p></div><div class="content-section"><div class="quiz-container"><div class="quiz-score-bar animate-in"><span class="score-label">Score</span><div class="score-track"><div class="score-fill" style="width:0%"></div></div><span class="score-value" id="quizScoreVal">0%</span></div><div class="quiz-question animate-in"><div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div><div class="question-number">Question 1 / 2</div><h4>Avant de déployer un outil d'IA dans une équipe, quel est le principal enjeu juridique à anticiper ?</h4><div class="quiz-options"><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Choisir l'outil le moins cher du marché pour limiter les coûts.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">B</span><span>Vérifier que l'outil respecte le droit des personnes : protection des données, non-discrimination et information des collaborateurs.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">C</span><span>S'assurer qu'aucun collaborateur ne pourra critiquer publiquement l'outil après son déploiement.</span></div></div><button class="quiz-validate-btn" disabled>Valider</button><div class="quiz-feedback" data-correct-text="Exact. Trois enjeux juridiques structurent toute décision : protéger les données personnelles, éviter les discriminations et informer les collaborateurs concernés." data-incorrect-text="Réponse B. L'enjeu juridique principal est de protéger les droits des personnes : données personnelles, non-discrimination et information des collaborateurs."></div></div><div class="quiz-question animate-in"><div class="quiz-timer"><span>&#9201;</span><div class="quiz-timer-bar"><div class="quiz-timer-fill"></div></div></div><div class="question-number">Question 2 / 2</div><h4>Un collaborateur copie des données de réservation voyageurs (nom, trajet, email) dans ChatGPT. Quel est le problème juridique principal ?</h4><div class="quiz-options"><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">A</span><span>Aucun, ChatGPT est un outil professionnel courant.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="false"><span class="option-letter">B</span><span>Problème de propriété intellectuelle sur le rapport généré.</span></div><div class="quiz-option" role="button" tabindex="0" data-correct="true"><span class="option-letter">C</span><span>Violation du RGPD : transfert de données personnelles vers un service tiers sans base légale.</span></div></div><button class="quiz-validate-btn" disabled>Valider</button><div class="quiz-feedback" data-correct-text="Exact. Tout transfert de données personnelles vers un outil d'IA externe sans base légale viole le RGPD." data-incorrect-text="Réponse C. L'envoi de données personnelles à un service tiers sans base légale viole le RGPD."></div></div><div class="quiz-retry-msg" style="display:none"><p>Score insuffisant.</p><button class="quiz-retry-btn quiz-validate-btn">Revoir</button></div></div>
+<!-- ================= ACTIVITÉ : CHASSE AUX ERREURS =================
+     Ajoutée à l'étape 5, à la suite des deux questions du quiz.
+     Autonome : styles portés par .chasse, script en fonction anonyme
+     immédiate, aucune variable globale, aucune dépendance réseau.
+     SCORM : bloc déplaçable tel quel dans une autre étape.
+     ================================================================ -->
+<div class="divider"></div>
+<div class="animate-in">
+  <div class="chasse" id="chasse-juridique">
+    
+    <div class="ch-tete">
+      <div class="ch-kick">Exercice pratique · Chasse aux erreurs</div>
+      <div class="ch-titre">Vous vérifiez la fiche du projet avant de l’envoyer.</div>
+      <div class="ch-consigne">Deux choses ne vont pas. Cliquez dessus.</div>
+    </div>
+    <div class="ch-jeu"></div>
+    <p class="invisible" id="chasse-juridique-aide">Activez cet élément si vous pensez qu’il pose un problème.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var R = document.getElementById("chasse-juridique");
+  if (!R) { return; }
+  var S = {"module":"Juridique","format":"formulaire","titre":"Vous vérifiez la fiche du projet avant de l’envoyer.","consigne":"Deux choses ne vont pas. Cliquez dessus.","cadre":{"fenetre":"Fiches projet · nouvel outil","etapes":["Le projet","Les vérifications","L’envoi"],"etapeActive":1,"rail":["Mes projets","À vérifier","Validés","Modèles"]},"elements":[{"cle":"À quoi sert l’outil","texte":"Classer les candidatures que nous recevons","large":true,"faute":false},{"cle":"A-t-on regardé les risques ?","texte":"Non, d’autres l’utilisent déjà","faute":true,"explication":"Trier des candidatures touche directement à l’emploi des personnes concernées. Les risques s’examinent avant la mise en service, et le fait que d’autres utilisent déjà l’outil n’en dispense pas."},{"cle":"Qui est responsable en cas d’erreur ?","texte":"L’entreprise qui vend l’outil","faute":true,"explication":"La responsabilité juridique repose sur l’entreprise qui déploie l’outil, pas sur celle qui le vend. C’est donc à elle de vérifier la conformité avant la mise en service."},{"cle":"Les candidats sont-ils prévenus ?","texte":"Oui, dès le début","faute":false},{"cle":"Qui note qui utilise l’outil ?","texte":"Le service qui suit le projet","faute":false},{"cle":"Combien de temps garde-t-on les données ?","texte":"Le temps du recrutement","faute":false}],"conclusion":"Avant de lancer un outil : regarder les risques, prévenir les personnes concernées, et savoir qui répond en cas d’erreur."};
+  var UI = {"surtitre":"Exercice pratique","titre":"Chasse aux erreurs","sousTitre":"Neuf situations du quotidien. Dans chacune, deux choses ne vont pas. À vous de les trouver.","navEtiquette":"Choix de la situation","navScene":"Situation {n}, {module}","position":"Situation {n} sur {total}","compteur":"{trouvees} sur {total} repérées","aideZone":"Activez cet élément si vous pensez qu’il pose un problème.","ariaZone":"Élément {i} sur {total}. {texte}","ariaZoneTrouvee":"Élément identifié comme problématique. {texte}","retourFaux":"Ici, tout va bien. Regardez ailleurs.","retourJuste":"Bien vu.","retourVide":"","citeIntro":"{texte}","btnRecommencer":"Recommencer","btnIndice":"Besoin d’un indice","indiceDonne":"Ce qui va bien a été estompé. Cherchez dans ce qui reste.","btnSuivante":"Situation suivante","btnTerminer":"Vous avez parcouru les neuf situations","btnPrec":"Précédent","btnSuiv":"Suivant","decorPublier":"Publier maintenant","decorApercu":"Aperçu","decorEnregistrer":"Enregistrer","decorSoumettre":"Envoyer pour validation","decorRepondre":"Répondre","decorTransferer":"Transférer","decorSemaine":"S"};
+  var AIDE = "chasse-juridique-aide";
+  var CLICS_AVANT_INDICE = 3, DUREE_LOUPE_RATEE = 1500;
+  var etat = { trouvees: [], clicsRates: 0, indiceUtilise: false };
+
+  function fmt(m, v){ return m.replace(/\{(\w+)\}/g, function(t,c){
+    return Object.prototype.hasOwnProperty.call(v,c) ? v[c] : t; }); }
+  function el(b,c,t){ var n=document.createElement(b);
+    if(c){n.className=c;} if(t!==undefined){n.textContent=t;} return n; }
+  function html(b,c,code){ var n=el(b,c); n.insertAdjacentHTML("beforeend",code); return n; }
+  function nbFautes(){ return S.elements.filter(function(e){return e.faute;}).length; }
+
+  var ICO = {
+    cadenas:'<svg class="ic" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+    fleche:'<svg class="ic" viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>',
+    chevron:'<svg class="ic" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>',
+    loupe:'<svg class="ic" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>',
+    plus:'<svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
+    retour:'<svg class="ic" viewBox="0 0 24 24"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg>'
+  };
+  function feux(){ return '<span class="feux"><i></i><i></i><i></i></span>'; }
+  function fenetre(titre){
+    var a=el("div","app"); var bar=html("div","app-bar",feux());
+    bar.appendChild(el("div","app-titre",titre));
+    bar.appendChild(html("div","fin",ICO.loupe));
+    a.appendChild(bar); var corps=el("div","app-corps"); a.appendChild(corps);
+    return { app:a, corps:corps };
+  }
+  function railDe(items,actif){
+    var r=el("div","rail");
+    items.forEach(function(it,i){
+      var nom=Array.isArray(it)?it[0]:it, cpt=Array.isArray(it)?it[1]:"";
+      var l=el("div","item"+(i===(actif===undefined?0:actif)?" actif":""));
+      l.appendChild(el("span","pt")); l.appendChild(el("span",null,nom));
+      if(cpt){ l.appendChild(el("span","compte",cpt)); }
+      r.appendChild(l);
+    });
+    return r;
+  }
+  function zone(s,item,i,contenu){
+    var z=document.createElement("button");
+    z.type="button"; z.className="zone"; z.setAttribute("data-index",String(i));
+    z.setAttribute("aria-describedby",AIDE);
+    var lu=(item.cle||item.quoi||item.quand||item.qui||"");
+    z.setAttribute("aria-label",fmt(UI.ariaZone,{i:i+1,total:s.elements.length,
+      texte:(lu?lu+". ":"")+item.texte}));
+    z.appendChild(contenu);
+    z.addEventListener("click",function(ev){ activer(z,i,ev); });
+    z.addEventListener("keydown",function(ev){
+      if(ev.key==="Enter"||ev.key===" "||ev.key==="Spacebar"){ ev.preventDefault(); activer(z,i,null); }
+    });
+    return z;
+  }
+
+  /* décor de ce module, repris tel quel du banc d'essai */
+  var decor = function (s) {
+    const f = fenetre(s.cadre.fenetre);
+    f.corps.appendChild(railDe(s.cadre.rail, 1));
+    const vue = el("div", "vue");
+    const vt = el("div", "vue-tete");
+    const et = el("div", "etapes");
+    s.cadre.etapes.forEach(function (nom, i) {
+      const b = el("b");
+      b.appendChild(el("span", "n" + (i === s.cadre.etapeActive ? " on" : ""), String(i + 1)));
+      b.appendChild(el("span", null, nom));
+      et.appendChild(b);
+      if (i < s.cadre.etapes.length - 1) { et.appendChild(el("span", "sep")); }
+    });
+    vt.appendChild(et);
+    vue.appendChild(vt);
+
+    const corps = el("div", "vue-corps");
+    const grille = el("div", "champs");
+    s.elements.forEach(function (item, i) {
+      const c = el("span", "champ" + (item.large ? " large" : ""));
+      c.appendChild(el("span", "lab", item.cle));
+      c.appendChild(el("span", "saisie", item.texte));
+      const z = zone(s, item, i, c);
+      if (item.large) { z.style.gridColumn = "1 / -1"; }
+      grille.appendChild(z);
+    });
+    corps.appendChild(grille);
+    vue.appendChild(corps);
+
+    const pied = el("div", "vue-pied");
+    pied.appendChild(el("span", "btn-ui", UI.decorEnregistrer));
+    const p2 = el("span", "btn-ui plein pousse", UI.decorSoumettre);
+    pied.appendChild(p2);
+    vue.appendChild(pied);
+    f.corps.appendChild(vue);
+    return f.app;
+  };
+
+  var jeu = R.querySelector(".ch-jeu");
+  var elCompteur, elJauge, elRetour, elTrouvailles, elConclusion, btnInd;
+
+  function rendre(){
+    jeu.innerHTML="";
+    var barre=el("div","barre"); barre.setAttribute("aria-live","polite");
+    elCompteur=el("div","compteur"); elJauge=el("div","jauge"); elRetour=el("div","retour");
+    barre.appendChild(elCompteur); barre.appendChild(elJauge); barre.appendChild(elRetour);
+    jeu.appendChild(barre);
+
+    var d=el("div","decor"); d.appendChild(decor(S)); jeu.appendChild(d);
+
+    elTrouvailles=el("div","trouvailles"); jeu.appendChild(elTrouvailles);
+    elConclusion=el("div","conclusion",S.conclusion); elConclusion.hidden=true;
+    jeu.appendChild(elConclusion);
+
+    var actions=el("div","actions");
+    var bRec=el("button",null,UI.btnRecommencer); bRec.type="button";
+    bRec.addEventListener("click",recommencer);
+    btnInd=el("button",null,UI.btnIndice); btnInd.type="button";
+    btnInd.addEventListener("click",donnerIndice);
+    actions.appendChild(bRec); actions.appendChild(btnInd);
+    jeu.appendChild(actions);
+
+    etat.trouvees.forEach(function(i){ marquerTrouvee(i,false); });
+    if(etat.indiceUtilise){ appliquerIndice(); }
+    majCompteur(); majActions();
+  }
+
+  function zoneDe(i){ return jeu.querySelector('.zone[data-index="'+i+'"]'); }
+
+  function poserLoupe(z,ev,juste){
+    var r=z.getBoundingClientRect();
+    var t=Math.max(22,Math.min(34,Math.min(r.width,r.height)*0.55+10));
+    var x,y;
+    if(ev && typeof ev.clientX==="number" && ev.clientX!==0){ x=ev.clientX-r.left; y=ev.clientY-r.top; }
+    else { x=r.width/2; y=r.height/2; }
+    var l=el("span","loupe"+(juste?"":" rate"));
+    l.style.width=t+"px"; l.style.height=t+"px";
+    l.style.left=(x-t/2)+"px"; l.style.top=(y-t/2)+"px";
+    z.appendChild(l); return l;
+  }
+
+  function activer(z,i,ev){
+    var item=S.elements[i];
+    if(z.classList.contains("verrouillee")){ return; }
+    if(item.faute){
+      if(etat.trouvees.indexOf(i)===-1){ etat.trouvees.push(i); }
+      poserLoupe(z,ev,true); marquerTrouvee(i,true);
+      annoncer(UI.retourJuste,false); majCompteur(); majActions();
+      /* SCORM : l'étape est déjà validée par le quiz, l'activité ne
+         modifie pas la progression. Point d'extraction si besoin. */
+      return;
+    }
+    etat.clicsRates+=1;
+    var ancienne=z.querySelector(".loupe.rate");
+    if(ancienne){ ancienne.remove(); }
+    var l=poserLoupe(z,ev,false);
+    window.setTimeout(function(){
+      l.classList.add("retrait");
+      window.setTimeout(function(){ if(l.parentNode){ l.remove(); } },360);
+    },DUREE_LOUPE_RATEE);
+    annoncer(UI.retourFaux,true); majActions();
+  }
+
+  function marquerTrouvee(i,anime){
+    var z=zoneDe(i); if(!z){ return; }
+    z.classList.add("verrouillee"); z.classList.remove("estompee");
+    z.setAttribute("aria-label",fmt(UI.ariaZoneTrouvee,{texte:S.elements[i].texte}));
+    z.setAttribute("aria-disabled","true");
+    if(!anime && !z.querySelector(".loupe")){ poserLoupe(z,null,true); }
+    ajouterCarte(i);
+  }
+
+  function ajouterCarte(i){
+    if(!elTrouvailles || elTrouvailles.querySelector('[data-carte="'+i+'"]')){ return; }
+    var c=el("div","carte"); c.setAttribute("data-carte",String(i));
+    c.appendChild(el("p","cite",fmt(UI.citeIntro,{texte:S.elements[i].texte})));
+    c.appendChild(el("p","pourquoi",S.elements[i].explication||""));
+    elTrouvailles.appendChild(c);
+  }
+
+  function annoncer(m,erreur){
+    if(!elRetour){ return; }
+    elRetour.textContent=m; elRetour.className="retour"+(erreur?"":" neutre");
+  }
+
+  function majCompteur(){
+    var total=nbFautes();
+    elCompteur.textContent=fmt(UI.compteur,{trouvees:etat.trouvees.length,total:total});
+    elJauge.innerHTML="";
+    for(var k=0;k<total;k++){
+      var seg=el("span"); if(k<etat.trouvees.length){ seg.className="pleine"; }
+      elJauge.appendChild(seg);
+    }
+  }
+
+  function majActions(){
+    var complet=etat.trouvees.length===nbFautes();
+    if(btnInd){ btnInd.disabled=complet||etat.indiceUtilise||etat.clicsRates<CLICS_AVANT_INDICE; }
+    if(elConclusion){ elConclusion.hidden=!complet; }
+    if(complet){ annoncer(UI.retourVide,false); }
+  }
+
+  function appliquerIndice(){
+    S.elements.forEach(function(item,i){
+      if(!item.faute){ var z=zoneDe(i); if(z){ z.classList.add("estompee"); } }
+    });
+  }
+  function donnerIndice(){
+    if(etat.indiceUtilise){ return; }
+    etat.indiceUtilise=true; appliquerIndice();
+    annoncer(UI.indiceDonne,false); majActions();
+  }
+  function recommencer(){
+    etat={ trouvees:[], clicsRates:0, indiceUtilise:false };
+    rendre();
+  }
+
+  rendre();
+})();</script>
+</div></div><div class="step-container" id="step-5"><div class="step-hero"><div class="step-number">Étape 6 sur 7</div><h2>Synthèse</h2><p class="hero-subtitle">Ce que vous avez appris.</p></div><div class="content-section"><div class="animate-in"><div class="progress-circle-wrap"><div class="progress-circle"><svg width="180" height="180" viewBox="0 0 180 180"><circle class="bg" cx="90" cy="90" r="78"/><circle class="fg-stroke" cx="90" cy="90" r="78" stroke-dasharray="490.09" stroke-dashoffset="490.09"/></svg><div class="circle-text">—</div></div></div></div><div class="animate-in"><div class="highlight-box"><strong>Félicitations &#127881; ! Vous avez exploré le cadre juridique applicable à l'IA en entreprise et les obligations à respecter au quotidien.</strong></div></div><div class="animate-in"><h3>Vous avez appris à :</h3><ol class="numbered-list"><li><span><strong>Identifier les trois textes clés</strong> qui encadrent l'usage de l'IA en entreprise : le RGPD pour les données personnelles, l'AI Act pour la classification des systèmes, et le Code du travail pour la consultation des représentants du personnel.</span></li><li><span><strong>Reconnaître les obligations principales</strong> : évaluation des risques selon la taxonomie AI Act, supervision humaine systématique, journalisation des usages et transparence vis-à-vis des utilisateurs.</span></li><li><span><strong>Adopter les bons réflexes</strong> dans un projet IA : ne jamais envoyer de données personnelles dans un outil externe, consulter le CSE quand l'outil affecte le travail, et maintenir une traçabilité complète des décisions assistées par IA.</span></li></ol></div><div class="animate-in"><p>Ces réflexes vous permettent de déployer l'IA de façon <strong>conforme, sécurisée et soutenable</strong>, en protégeant à la fois l'entreprise, ses collaborateurs et ses usagers.</p></div></div></div><div class="step-container" id="step-6"><div class="step-celebration"><div class="celebration-grid" id="celebGrid"></div><div class="celebration-content"><div class="badge-icon badge-valide">
+<style>
+.badge-valide{position:relative;overflow:visible}
+.badge-valide .bv-check{width:52px;height:52px;display:block;position:relative;z-index:2}
+.badge-valide .bv-conf{position:absolute;inset:0;pointer-events:none;z-index:1}
+.badge-valide .bv-conf i{position:absolute;left:50%;top:50%;width:7px;height:11px;
+  border-radius:2px;background:var(--c);
+  transform:translate(var(--x),var(--y)) rotate(var(--r));
+  animation:bvpop .55s cubic-bezier(.2,.9,.3,1.4) both;animation-delay:var(--d)}
+.badge-valide .bv-conf i.rond{width:7px;height:7px;border-radius:50%}
+@keyframes bvpop{from{transform:translate(0,0) rotate(0deg) scale(.2);opacity:0}
+  to{transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1);opacity:1}}
+@media (prefers-reduced-motion:reduce){.badge-valide .bv-conf i{animation:none}}
+</style>
+<span class="bv-conf" aria-hidden="true"><i style="--x:-64px;--y:-38px;--r:-22deg;--c:#ff9f0a;--d:.05s"></i><i class="rond" style="--x:-46px;--y:-58px;--c:#34c759;--r:0deg;--d:.12s"></i><i style="--x:-14px;--y:-70px;--r:16deg;--c:#5ac8fa;--d:.18s"></i><i style="--x:22px;--y:-64px;--r:-12deg;--c:#ff375f;--d:.09s"></i><i class="rond" style="--x:54px;--y:-44px;--c:#ffd60a;--r:0deg;--d:.22s"></i><i style="--x:70px;--y:-10px;--r:28deg;--c:#34c759;--d:.15s"></i><i style="--x:62px;--y:32px;--r:-18deg;--c:#5ac8fa;--d:.26s"></i><i class="rond" style="--x:54px;--y:44px;--c:#ff9f0a;--r:0deg;--d:.2s"></i><i style="--x:-52px;--y:46px;--r:14deg;--c:#ff375f;--d:.3s"></i><i style="--x:-62px;--y:34px;--r:-26deg;--c:#ffd60a;--d:.11s"></i><i class="rond" style="--x:-72px;--y:-4px;--c:#5ac8fa;--r:0deg;--d:.24s"></i></span>
+<svg class="bv-check" viewBox="0 0 48 48" role="img" aria-label="Module validé">
+<path d="M13 24.5l8 8 15-17" fill="none" stroke="#fff" stroke-width="4.6"
+      stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div><h2>Félicitations !</h2><p>Vous avez terminé le module <strong>Cadre juridique de l'IA</strong></p><p class="celebration-sub">Appliquez ces bonnes pratiques au quotidien.</p><div class="badge-message"></div></div></div></div><div class="step-navigation"><div class="nav-progress"><div class="progress-bar-bg"><div class="progress-bar-fill"></div></div></div><div class="nav-row"><button class="nav-btn" id="prevBtn" disabled>&#9650;</button><div class="breadcrumb" id="breadcrumb"><span class="breadcrumb-item"><span class="breadcrumb-link active" data-step="0"><span class="step-num">1</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="1"><span class="step-num">2</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="2"><span class="step-num">3</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="3"><span class="step-num">4</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="4"><span class="step-num">5</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="5"><span class="step-num">6</span></span></span><span class="breadcrumb-item"><span class="breadcrumb-link" data-step="6"><span class="step-num">7</span></span></span></div><button class="nav-btn primary" id="nextBtn">&#9660;</button></div></div></main></div><script src="js/scorm.js"></script><script src="js/app.js"></script><script src="../_shared/scenario.js"></script></body></html>
