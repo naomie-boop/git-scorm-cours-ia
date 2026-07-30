@@ -63,6 +63,7 @@
 
 
 
+
 <div class="cover-page" id="coverPage" style="background:#0008CF">
 
   <div class="cover-content" style="color:#fff">
@@ -102,6 +103,8 @@
   </ol></div>
   <div class="divider"></div>
   
+
+
 <!-- ============== EXERCICE : POINTS À RELIER =====================
      Remplace l'exercice d'association par clic de l'étape 2.
      L'ancien exercice reste dans la page, masqué : c'est lui qui
@@ -524,7 +527,7 @@
     </style>
     <div class="ch-tete">
       <div class="ch-kick">Points à relier</div>
-      <div class="ch-titre">Reliez chaque réflexe à la situation qui le met en défaut.</div>
+      <div class="ch-titre">Reliez chaque défaut des documents à la situation qui l’illustre.</div>
       <div class="ch-consigne"><span class="aide-large">Cliquez une catégorie à gauche, puis la situation qui lui correspond à droite. La bonne réponse passe au vert tout de suite.</span><span class="aide-etroit">Sous chaque situation, choisissez la catégorie qui lui correspond. La bonne réponse passe au vert tout de suite.</span></div>
     </div>
     <div class="ch-jeu"></div>
@@ -534,7 +537,7 @@
 (function(){
   var R = document.getElementById("relier-data");
   if (!R) { return; }
-  var L = {"module":"Données","consigne":"Reliez chaque réflexe à la situation qui le met en défaut.","gauche":[{"id":"a","label":"Documents à jour"},{"id":"b","label":"Sources vérifiées"},{"id":"c","label":"Erreurs signalées"}],"droite":[{"id":"1","cible":"b","texte":"Un document déposé dans la base n’a été relu par personne."},{"id":"2","cible":"c","texte":"Une erreur repérée par un agent n’est jamais remontée au référent."},{"id":"3","cible":"a","texte":"L’assistant cite une procédure de 2021, alors qu’elle a changé depuis."}]};
+  var L = {"module":"Données","consigne":"Reliez chaque défaut des documents à la situation qui l’illustre.","gauche":[{"id":"a","label":"Le vieillissement des documents"},{"id":"b","label":"Les contradictions entre documents"},{"id":"c","label":"L’absence de sources"}],"droite":[{"id":"1","cible":"b","texte":"Deux versions d’une note sur les congés coexistent : deux agents reçoivent deux réponses différentes."},{"id":"2","cible":"c","texte":"L’assistant répond sans dire d’où vient l’information, donc personne ne peut la vérifier."},{"id":"3","cible":"a","texte":"L’assistant cite une procédure de 2021, alors qu’elle a changé depuis."}]};
   var UI = {"surtitre":"Exercice pratique","titre":"Chasse aux erreurs","sousTitre":"Neuf situations du quotidien. Dans chacune, deux choses ne vont pas. À vous de les trouver.","navEtiquette":"Choix de la situation","navScene":"Situation {n}, {module}","position":"Module {n} sur {total} · {module}","compteur":"{trouvees} sur {total} repérées","aideZone":"Activez cet élément si vous pensez qu’il pose un problème.","ariaZone":"Élément {i} sur {total}. {texte}","ariaZoneTrouvee":"Élément identifié comme problématique. {texte}","retourFaux":"Ici, tout va bien. Regardez ailleurs.","retourJuste":"Bien vu.","retourVide":"","citeIntro":"{texte}","btnRecommencer":"Recommencer","btnIndice":"Besoin d’un indice","indiceDonne":"Ce qui va bien a été estompé. Cherchez dans ce qui reste.","btnSuivante":"Situation suivante","btnTerminer":"Vous avez parcouru les neuf situations","btnPrec":"Précédent","btnSuiv":"Suivant","decorPublier":"Publier maintenant","decorApercu":"Aperçu","decorEnregistrer":"Enregistrer","decorSoumettre":"Envoyer pour validation","decorRepondre":"Répondre","decorTransferer":"Transférer","decorSemaine":"S","exoUn":"Exercice 1 sur 2 · Chasse aux erreurs","exoDeux":"Exercice 2 sur 2 · Points à relier","lienAideLarge":"Cliquez une catégorie à gauche, puis la situation qui lui correspond à droite. La bonne réponse passe au vert tout de suite.","lienAideEtroit":"Sous chaque situation, choisissez la catégorie qui lui correspond. La bonne réponse passe au vert tout de suite.","lienCompteur":"{faites} sur {total} trouvées","lienRecommencer":"Recommencer","lienChoisir":"Choisir une catégorie","lienAvant":"","lienJuste":"Bien vu.","lienFaux":"Ce n’est pas celle-ci. Essayez une autre catégorie.","lienToutJuste":"Les trois sont justes. Bravo.","lienChoisirGauche":"Choisissez d’abord une catégorie à gauche.","ariaGauche":"Catégorie {label}. Activez pour la choisir.","ariaGaucheActif":"Catégorie {label}, choisie.","ariaGaucheJuste":"Catégorie {label}, reliée et validée.","ariaDroite":"Situation : {texte}. Activez pour la relier à la catégorie choisie.","ariaDroiteRelie":"Situation : {texte}. Reliée à {label}. Activez pour effacer le trait.","ariaDroiteJuste":"Situation : {texte}. Reliée à {label}, validée.","ariaSelect":"Catégorie pour la situation : {texte}"};
   var ANCIEN = "ancien-data";
   var COUL = ["#1352b3","#6941c6","#b54708"], VERT = "#12805c";

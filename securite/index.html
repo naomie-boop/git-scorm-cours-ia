@@ -63,6 +63,7 @@
 
 
 
+
 <div class="cover-page" id="coverPage" style="background:#0008CF">
 
   <div class="cover-content" style="color:#fff">
@@ -102,6 +103,9 @@
   </ol></div>
   <div class="divider"></div>
   
+
+
+
 <!-- ============== EXERCICE : POINTS À RELIER =====================
      Remplace l'exercice d'association par clic de l'étape 2.
      L'ancien exercice reste dans la page, masqué : c'est lui qui
@@ -524,7 +528,7 @@
     </style>
     <div class="ch-tete">
       <div class="ch-kick">Points à relier</div>
-      <div class="ch-titre">Reliez chaque règle à la situation qui la met en défaut.</div>
+      <div class="ch-titre">Reliez chaque menace à la situation qui l’illustre.</div>
       <div class="ch-consigne"><span class="aide-large">Cliquez une catégorie à gauche, puis la situation qui lui correspond à droite. La bonne réponse passe au vert tout de suite.</span><span class="aide-etroit">Sous chaque situation, choisissez la catégorie qui lui correspond. La bonne réponse passe au vert tout de suite.</span></div>
     </div>
     <div class="ch-jeu"></div>
@@ -534,7 +538,7 @@
 (function(){
   var R = document.getElementById("relier-securite");
   if (!R) { return; }
-  var L = {"module":"Sécurité","consigne":"Reliez chaque règle à la situation qui la met en défaut.","gauche":[{"id":"a","label":"Données personnelles"},{"id":"b","label":"Documents de l’entreprise"},{"id":"c","label":"Ce que l’outil répond"}],"droite":[{"id":"1","cible":"b","texte":"Un compte rendu confidentiel est copié dans une IA gratuite trouvée sur internet."},{"id":"2","cible":"c","texte":"Une réponse de l’assistant est envoyée à un usager sans avoir été relue."},{"id":"3","cible":"a","texte":"Le nom et le matricule d’un collègue sont saisis dans un outil extérieur."}]};
+  var L = {"module":"Sécurité","consigne":"Reliez chaque menace à la situation qui l’illustre.","gauche":[{"id":"a","label":"Shadow AI"},{"id":"b","label":"Fuite de données"},{"id":"c","label":"Hameçonnage par IA"}],"droite":[{"id":"1","cible":"c","texte":"Un message vocal imite la voix du directeur et réclame un virement urgent."},{"id":"2","cible":"a","texte":"Une équipe utilise une IA trouvée sur internet, hors du cadre fixé par l’entreprise."},{"id":"3","cible":"b","texte":"Un compte rendu confidentiel est collé dans une intelligence artificielle extérieure, pour le résumer."}]};
   var UI = {"surtitre":"Exercice pratique","titre":"Chasse aux erreurs","sousTitre":"Neuf situations du quotidien. Dans chacune, deux choses ne vont pas. À vous de les trouver.","navEtiquette":"Choix de la situation","navScene":"Situation {n}, {module}","position":"Module {n} sur {total} · {module}","compteur":"{trouvees} sur {total} repérées","aideZone":"Activez cet élément si vous pensez qu’il pose un problème.","ariaZone":"Élément {i} sur {total}. {texte}","ariaZoneTrouvee":"Élément identifié comme problématique. {texte}","retourFaux":"Ici, tout va bien. Regardez ailleurs.","retourJuste":"Bien vu.","retourVide":"","citeIntro":"{texte}","btnRecommencer":"Recommencer","btnIndice":"Besoin d’un indice","indiceDonne":"Ce qui va bien a été estompé. Cherchez dans ce qui reste.","btnSuivante":"Situation suivante","btnTerminer":"Vous avez parcouru les neuf situations","btnPrec":"Précédent","btnSuiv":"Suivant","decorPublier":"Publier maintenant","decorApercu":"Aperçu","decorEnregistrer":"Enregistrer","decorSoumettre":"Envoyer pour validation","decorRepondre":"Répondre","decorTransferer":"Transférer","decorSemaine":"S","exoUn":"Exercice 1 sur 2 · Chasse aux erreurs","exoDeux":"Exercice 2 sur 2 · Points à relier","lienAideLarge":"Cliquez une catégorie à gauche, puis la situation qui lui correspond à droite. La bonne réponse passe au vert tout de suite.","lienAideEtroit":"Sous chaque situation, choisissez la catégorie qui lui correspond. La bonne réponse passe au vert tout de suite.","lienCompteur":"{faites} sur {total} trouvées","lienRecommencer":"Recommencer","lienChoisir":"Choisir une catégorie","lienAvant":"","lienJuste":"Bien vu.","lienFaux":"Ce n’est pas celle-ci. Essayez une autre catégorie.","lienToutJuste":"Les trois sont justes. Bravo.","lienChoisirGauche":"Choisissez d’abord une catégorie à gauche.","ariaGauche":"Catégorie {label}. Activez pour la choisir.","ariaGaucheActif":"Catégorie {label}, choisie.","ariaGaucheJuste":"Catégorie {label}, reliée et validée.","ariaDroite":"Situation : {texte}. Activez pour la relier à la catégorie choisie.","ariaDroiteRelie":"Situation : {texte}. Reliée à {label}. Activez pour effacer le trait.","ariaDroiteJuste":"Situation : {texte}. Reliée à {label}, validée.","ariaSelect":"Catégorie pour la situation : {texte}"};
   var ANCIEN = "ancien-securite";
   var COUL = ["#1352b3","#6941c6","#b54708"], VERT = "#12805c";
